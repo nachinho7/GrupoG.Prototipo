@@ -47,6 +47,7 @@
             numeroCliente = new TextBox();
             BotonObtenerDatos = new Button();
             VolverAlMenu = new Button();
+            btnEliminar = new Button();
             SuspendLayout();
             // 
             // LabelNumeroCliente
@@ -104,6 +105,7 @@
             btnGenerar.TabIndex = 14;
             btnGenerar.Text = "Generar";
             btnGenerar.UseVisualStyleBackColor = true;
+            btnGenerar.Click += btnGenerar_Click;
             // 
             // ListaDatosMercaderia
             // 
@@ -189,11 +191,23 @@
             VolverAlMenu.UseVisualStyleBackColor = true;
             VolverAlMenu.Click += VolverAlMenu_Click;
             // 
+            // btnEliminar
+            // 
+            btnEliminar.Location = new Point(211, 471);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(106, 44);
+            btnEliminar.TabIndex = 31;
+            btnEliminar.Text = "Limpiar Dato";
+            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
+
+            // 
             // PantallaPreparacion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(482, 529);
+            Controls.Add(btnEliminar);
             Controls.Add(VolverAlMenu);
             Controls.Add(BotonObtenerDatos);
             Controls.Add(numeroCliente);
@@ -233,5 +247,6 @@
         private TextBox numeroCliente;
         private Button BotonObtenerDatos;
         private Button VolverAlMenu;
+        private Button btnEliminar;
     }
 }

@@ -14,7 +14,8 @@ namespace GrupoG.Prototipo.Pantallas.Preparacion
                 NumeroCliente = 2045,
                 Mercaderias = new List<Mercaderias>
                 {
-                    new Mercaderias { id = 1, nombreMercaderia = "Botellas", descripcionMercaderia = "Plástico", cantidadMercaderia = 2 }
+                    new Mercaderias { id = 1, nombreMercaderia = "Botellas", descripcionMercaderia = "Plástico", cantidadMercaderia = 2 },
+                    new Mercaderias { id = 2, nombreMercaderia = "Vasos", descripcionMercaderia = "Plástico", cantidadMercaderia = 500 }
                 }
             },
             new Clientes
@@ -31,6 +32,7 @@ namespace GrupoG.Prototipo.Pantallas.Preparacion
                 Mercaderias = new List<Mercaderias>
                 {
                     new Mercaderias { id = 3, nombreMercaderia = "Aceites", descripcionMercaderia = "Comida", cantidadMercaderia = 30 }
+
                 }
             }
         };

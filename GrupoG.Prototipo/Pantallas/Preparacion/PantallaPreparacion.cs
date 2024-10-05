@@ -114,6 +114,58 @@ namespace GrupoG.Prototipo
                 MessageBox.Show("Ingrese una cantidad válida.");
             }
         }
+        private void btnGenerar_Click(object sender, EventArgs e)
+        {
+            // Verificar si hay elementos en la lista de previsualización
+            if (ListaPrevisualizacionOrdenesPreparacion.Items.Count == 0)
+            {
+                MessageBox.Show("No hay elementos en la lista de previsualización. Agrega mercadería antes de generar la orden.");
+                return; // Salir del método si no hay elementos
+            }
+
+            // Mostrar mensaje de éxito
+            MessageBox.Show("La orden de preparación ha sido generada exitosamente.");
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            // Verificar si hay un elemento seleccionado en la lista de previsualización
+            if (ListaPrevisualizacionOrdenesPreparacion.SelectedItems.Count > 0)
+            {
+                // Obtener el ítem seleccionado
+                var selectedItem = ListaPrevisualizacionOrdenesPreparacion.SelectedItems[0];
+
+                // Obtener la cantidad seleccionada
+                int cantidadEliminada = int.Parse(selectedItem.SubItems[3].Text);
+
+                // Confirmar la eliminación
+                var confirmResult = MessageBox.Show("¿Está seguro de que desea eliminar el elemento seleccionado?",
+                                                     "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    // Eliminar el ítem seleccionado
+                    ListaPrevisualizacionOrdenesPreparacion.Items.Remove(selectedItem);
+                    MessageBox.Show("Elemento eliminado.");
+
+                    // Buscar el ítem correspondiente en ListaDatosMercaderia
+                    foreach (ListViewItem item in ListaDatosMercaderia.Items)
+                    {
+                        if (item.Text == selectedItem.SubItems[1].Text) // Comparar ID de mercadería
+                        {
+                            // Actualizar la cantidad de mercadería disponible
+                            int cantidadDisponibleActual = int.Parse(item.SubItems[2].Text);
+                            item.SubItems[2].Text = (cantidadDisponibleActual + cantidadEliminada).ToString();
+                            break; // Salir del bucle una vez encontrado
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione un elemento para eliminar.");
+            }
+        }
+
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {
