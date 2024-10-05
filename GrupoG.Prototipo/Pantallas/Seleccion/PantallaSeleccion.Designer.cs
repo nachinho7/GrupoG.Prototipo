@@ -35,6 +35,7 @@
             EstadoColumna = new ColumnHeader();
             FechaColumna = new ColumnHeader();
             BotonGenerarOS = new Button();
+            VolverAlMenu = new Button();
             SuspendLayout();
             // 
             // ListaOrdenSeleccion
@@ -77,18 +78,28 @@
             BotonGenerarOS.Text = "Generar Orden de Seleccion";
             BotonGenerarOS.UseVisualStyleBackColor = true;
             // 
+            // VolverAlMenu
+            // 
+            VolverAlMenu.Location = new Point(50, 249);
+            VolverAlMenu.Name = "VolverAlMenu";
+            VolverAlMenu.Size = new Size(75, 39);
+            VolverAlMenu.TabIndex = 5;
+            VolverAlMenu.Text = "Volver al Menú";
+            VolverAlMenu.UseVisualStyleBackColor = true;
+            VolverAlMenu.Click += VolverAlMenu_Click;
+            // 
             // PantallaSeleccion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(630, 308);
+            Controls.Add(VolverAlMenu);
             Controls.Add(BotonGenerarOS);
             Controls.Add(ListaOrdenSeleccion);
             Name = "PantallaSeleccion";
             Text = "Orden de Seleccion";
             Load += PantallaSeleccion_Load;
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -99,5 +110,6 @@
         private ColumnHeader EstadoColumna;
         private ColumnHeader FechaColumna;
         private Button BotonGenerarOS;
+        private Button VolverAlMenu;
     }
 }

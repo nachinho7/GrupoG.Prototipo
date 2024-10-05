@@ -37,7 +37,7 @@
             ColumnaCodigo = new ColumnHeader();
             ColumnaUbicacion = new ColumnHeader();
             ColumnaTipo = new ColumnHeader();
-            button4 = new Button();
+            VolverAlMenu = new Button();
             SuspendLayout();
             // 
             // label1
@@ -112,21 +112,22 @@
             ColumnaTipo.Text = "Tipo";
             ColumnaTipo.Width = 150;
             // 
-            // button4
+            // VolverAlMenu
             // 
-            button4.Location = new Point(74, 274);
-            button4.Name = "button4";
-            button4.Size = new Size(107, 38);
-            button4.TabIndex = 26;
-            button4.Text = "Volver al Menú";
-            button4.UseVisualStyleBackColor = true;
+            VolverAlMenu.Location = new Point(87, 274);
+            VolverAlMenu.Name = "VolverAlMenu";
+            VolverAlMenu.Size = new Size(75, 39);
+            VolverAlMenu.TabIndex = 10;
+            VolverAlMenu.Text = "Volver al Menú";
+            VolverAlMenu.UseVisualStyleBackColor = true;
+            VolverAlMenu.Click += VolverAlMenu_Click;
             // 
             // PantallaEntrega
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(700, 338);
-            Controls.Add(button4);
+            Controls.Add(VolverAlMenu);
             Controls.Add(listView1);
             Controls.Add(button2);
             Controls.Add(Empaquetar);
@@ -150,6 +151,7 @@
         private ColumnHeader ColumnaCodigo;
         private ColumnHeader ColumnaUbicacion;
         private ColumnHeader ColumnaTipo;
-        private Button button4;
+        private Button BotonVolverMenu;
+        private Button VolverAlMenu;
     }
 }

@@ -36,5 +36,10 @@ namespace GrupoG.Prototipo.Pantallas
         {
 
         }
+
+        private void VolverAlMenu_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

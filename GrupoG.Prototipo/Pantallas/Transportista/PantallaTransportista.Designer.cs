@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            button1 = new Button();
+            VolverAlMenu = new Button();
             button2 = new Button();
             button3 = new Button();
             listView1 = new ListView();
@@ -47,14 +47,15 @@
             label1.TabIndex = 0;
             label1.Text = "Ingrese DNI del Transportista";
             // 
-            // button1
+            // VolverAlMenu
             // 
-            button1.Location = new Point(118, 253);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 39);
-            button1.TabIndex = 4;
-            button1.Text = "Volver al Menú";
-            button1.UseVisualStyleBackColor = true;
+            VolverAlMenu.Location = new Point(118, 253);
+            VolverAlMenu.Name = "VolverAlMenu";
+            VolverAlMenu.Size = new Size(75, 39);
+            VolverAlMenu.TabIndex = 4;
+            VolverAlMenu.Text = "Volver al Menú";
+            VolverAlMenu.UseVisualStyleBackColor = true;
+            VolverAlMenu.Click += VolverAlMenu_Click;
             // 
             // button2
             // 
@@ -107,7 +108,7 @@
             Controls.Add(listView1);
             Controls.Add(button3);
             Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(VolverAlMenu);
             Controls.Add(label1);
             Name = "PantallaTransportista";
             Text = "Transportista";
@@ -119,7 +120,7 @@
         #endregion
 
         private Label label1;
-        private Button button1;
+        private Button VolverAlMenu;
         private Button button2;
         private Button button3;
         private ListView listView1;

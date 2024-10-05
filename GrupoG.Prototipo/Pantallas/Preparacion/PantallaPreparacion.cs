@@ -93,5 +93,10 @@ namespace GrupoG.Prototipo
                 MessageBox.Show("Ingrese una cantidad válida.");
             }
         }
+
+        private void VolverAlMenu_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
