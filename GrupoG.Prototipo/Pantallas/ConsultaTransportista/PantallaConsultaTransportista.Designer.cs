@@ -28,12 +28,102 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            label1 = new Label();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
+            listView1 = new ListView();
+            ClienteTransportista = new ColumnHeader();
+            EstadoTransportista = new ColumnHeader();
+            Patente = new ColumnHeader();
+            SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(204, 92);
+            label1.Name = "label1";
+            label1.Size = new Size(157, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Ingrese DNI del Transportista";
+            // 
+            // button1
+            // 
+            button1.Location = new Point(118, 253);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 39);
+            button1.TabIndex = 4;
+            button1.Text = "Volver al Menú";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(226, 253);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 39);
+            button2.TabIndex = 5;
+            button2.Text = "Limpiar Datos";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(375, 253);
+            button3.Name = "button3";
+            button3.Size = new Size(87, 39);
+            button3.TabIndex = 6;
+            button3.Text = "Buscar Transportista";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // listView1
+            // 
+            listView1.Columns.AddRange(new ColumnHeader[] { ClienteTransportista, EstadoTransportista, Patente });
+            listView1.Location = new Point(101, 121);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(384, 104);
+            listView1.TabIndex = 8;
+            listView1.UseCompatibleStateImageBehavior = false;
+            listView1.View = View.Details;
+            listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
+            // 
+            // ClienteTransportista
+            // 
+            ClienteTransportista.Text = "Cliente vinculado al transportista";
+            ClienteTransportista.Width = 190;
+            // 
+            // EstadoTransportista
+            // 
+            EstadoTransportista.Text = "Estado Transportista";
+            EstadoTransportista.Width = 120;
+            // 
+            // Patente
+            // 
+            Patente.Text = "Patente";
+            // 
+            // PantallaConsultaTransportista
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(599, 389);
+            Controls.Add(listView1);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(button1);
+            Controls.Add(label1);
+            Name = "PantallaConsultaTransportista";
+            Text = "Transportista";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label label1;
+        private Button button1;
+        private Button button2;
+        private Button button3;
+        private ListView listView1;
+        private ColumnHeader ClienteTransportista;
+        private ColumnHeader EstadoTransportista;
+        private ColumnHeader Patente;
     }
 }
