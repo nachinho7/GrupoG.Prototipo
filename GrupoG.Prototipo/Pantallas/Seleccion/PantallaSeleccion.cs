@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GrupoG.Prototipo.Pantallas
 {
-    public partial class PantallaSeleccion : Form
+    public partial class PantallaOrdenSeleccion : Form
     {
-        public PantallaSeleccion()
+        public PantallaOrdenSeleccion()
         {
             InitializeComponent();
         }
