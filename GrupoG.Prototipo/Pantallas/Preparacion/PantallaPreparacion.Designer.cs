@@ -48,12 +48,15 @@
             Cantidad1 = new ColumnHeader();
             contextMenuStrip1 = new ContextMenuStrip(components);
             boxCantidad = new TextBox();
+            button4 = new Button();
+            Mercaderia = new ListBox();
+            numeroCliente = new TextBox();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(40, 31);
+            label1.Location = new Point(40, 32);
             label1.Name = "label1";
             label1.Size = new Size(67, 15);
             label1.TabIndex = 0;
@@ -64,7 +67,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(40, 74);
+            label2.Location = new Point(40, 81);
             label2.Name = "label2";
             label2.Size = new Size(72, 15);
             label2.TabIndex = 1;
@@ -74,7 +77,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(40, 113);
+            label3.Location = new Point(40, 127);
             label3.Name = "label3";
             label3.Size = new Size(99, 15);
             label3.TabIndex = 2;
@@ -83,7 +86,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(40, 208);
+            label7.Location = new Point(40, 248);
             label7.Name = "label7";
             label7.Size = new Size(110, 15);
             label7.TabIndex = 6;
@@ -91,7 +94,7 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(271, 208);
+            btnAgregar.Location = new Point(271, 248);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(96, 23);
             btnAgregar.TabIndex = 7;
@@ -101,7 +104,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(40, 255);
+            label8.Location = new Point(40, 283);
             label8.Name = "label8";
             label8.Size = new Size(209, 15);
             label8.TabIndex = 8;
@@ -110,18 +113,18 @@
             // 
             // btnLimpiar
             // 
-            btnLimpiar.Location = new Point(246, 415);
+            btnLimpiar.Location = new Point(220, 473);
             btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(121, 23);
+            btnLimpiar.Size = new Size(108, 44);
             btnLimpiar.TabIndex = 13;
             btnLimpiar.Text = "Limpiar Datos";
             btnLimpiar.UseVisualStyleBackColor = true;
             // 
             // btnGenerar
             // 
-            btnGenerar.Location = new Point(403, 415);
+            btnGenerar.Location = new Point(345, 473);
             btnGenerar.Name = "btnGenerar";
-            btnGenerar.Size = new Size(87, 23);
+            btnGenerar.Size = new Size(106, 44);
             btnGenerar.TabIndex = 14;
             btnGenerar.Text = "Generar";
             btnGenerar.UseVisualStyleBackColor = true;
@@ -132,7 +135,7 @@
             listView1.Columns.AddRange(new ColumnHeader[] { Id, Nombre, Cantidad });
             listView1.Location = new Point(40, 145);
             listView1.Name = "listView1";
-            listView1.Size = new Size(327, 53);
+            listView1.Size = new Size(375, 94);
             listView1.TabIndex = 15;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -153,9 +156,9 @@
             // listView2
             // 
             listView2.Columns.AddRange(new ColumnHeader[] { NumeroOrden, Id1, Nombre1, Cantidad1 });
-            listView2.Location = new Point(40, 273);
+            listView2.Location = new Point(40, 301);
             listView2.Name = "listView2";
-            listView2.Size = new Size(360, 68);
+            listView2.Size = new Size(375, 140);
             listView2.TabIndex = 16;
             listView2.UseCompatibleStateImageBehavior = false;
             listView2.View = View.Details;
@@ -184,16 +187,44 @@
             // 
             // boxCantidad
             // 
-            boxCantidad.Location = new Point(156, 205);
+            boxCantidad.Location = new Point(156, 245);
             boxCantidad.Name = "boxCantidad";
             boxCantidad.Size = new Size(100, 23);
             boxCantidad.TabIndex = 18;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(40, 473);
+            button4.Name = "button4";
+            button4.Size = new Size(99, 44);
+            button4.TabIndex = 26;
+            button4.Text = "Volver al Menú";
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // Mercaderia
+            // 
+            Mercaderia.FormattingEnabled = true;
+            Mercaderia.ItemHeight = 15;
+            Mercaderia.Location = new Point(118, 81);
+            Mercaderia.Name = "Mercaderia";
+            Mercaderia.Size = new Size(109, 34);
+            Mercaderia.TabIndex = 27;
+            // 
+            // numeroCliente
+            // 
+            numeroCliente.Location = new Point(118, 29);
+            numeroCliente.Name = "numeroCliente";
+            numeroCliente.Size = new Size(100, 23);
+            numeroCliente.TabIndex = 28;
             // 
             // PantallaPreparacion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(592, 450);
+            ClientSize = new Size(482, 529);
+            Controls.Add(numeroCliente);
+            Controls.Add(Mercaderia);
+            Controls.Add(button4);
             Controls.Add(boxCantidad);
             Controls.Add(listView2);
             Controls.Add(listView1);
@@ -233,5 +264,8 @@
         private ColumnHeader Cantidad1;
         private ContextMenuStrip contextMenuStrip1;
         private TextBox boxCantidad;
+        private Button button4;
+        private ListBox Mercaderia;
+        private TextBox numeroCliente;
     }
 }

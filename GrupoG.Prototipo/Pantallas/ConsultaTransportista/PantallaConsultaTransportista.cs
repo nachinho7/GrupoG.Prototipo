@@ -26,5 +26,10 @@ namespace GrupoG.Prototipo.Pantallas
         {
 
         }
+
+        private void PantallaConsultaTransportista_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

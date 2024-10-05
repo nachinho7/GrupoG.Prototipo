@@ -37,14 +37,15 @@
             ColumnaCodigo = new ColumnHeader();
             ColumnaUbicacion = new ColumnHeader();
             ColumnaTipo = new ColumnHeader();
+            button4 = new Button();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(84, 46);
+            label1.Location = new Point(74, 34);
             label1.Name = "label1";
-            label1.Size = new Size(100, 20);
+            label1.Size = new Size(79, 15);
             label1.TabIndex = 0;
             label1.Text = "Nro de Orden";
             label1.Click += label1_Click;
@@ -53,16 +54,18 @@
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Nro de orden" });
-            comboBox1.Location = new Point(190, 38);
+            comboBox1.Location = new Point(166, 28);
+            comboBox1.Margin = new Padding(3, 2, 3, 2);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(151, 28);
+            comboBox1.Size = new Size(133, 23);
             comboBox1.TabIndex = 2;
             // 
             // Empaquetar
             // 
-            Empaquetar.Location = new Point(479, 365);
+            Empaquetar.Location = new Point(506, 274);
+            Empaquetar.Margin = new Padding(3, 2, 3, 2);
             Empaquetar.Name = "Empaquetar";
-            Empaquetar.Size = new Size(101, 29);
+            Empaquetar.Size = new Size(103, 38);
             Empaquetar.TabIndex = 7;
             Empaquetar.Text = "Empaquetar\r\n";
             Empaquetar.UseVisualStyleBackColor = true;
@@ -70,9 +73,10 @@
             // 
             // button2
             // 
-            button2.Location = new Point(603, 365);
+            button2.Location = new Point(373, 274);
+            button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(128, 29);
+            button2.Size = new Size(112, 38);
             button2.TabIndex = 8;
             button2.Text = "Limpiar datos";
             button2.UseVisualStyleBackColor = true;
@@ -80,9 +84,10 @@
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { ColumnaNumeroCliente, ColumnaCodigo, ColumnaUbicacion, ColumnaTipo });
-            listView1.Location = new Point(99, 133);
+            listView1.Location = new Point(87, 100);
+            listView1.Margin = new Padding(3, 2, 3, 2);
             listView1.Name = "listView1";
-            listView1.Size = new Size(596, 181);
+            listView1.Size = new Size(522, 137);
             listView1.TabIndex = 9;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -107,16 +112,27 @@
             ColumnaTipo.Text = "Tipo";
             ColumnaTipo.Width = 150;
             // 
+            // button4
+            // 
+            button4.Location = new Point(74, 274);
+            button4.Name = "button4";
+            button4.Size = new Size(107, 38);
+            button4.TabIndex = 26;
+            button4.Text = "Volver al Menú";
+            button4.UseVisualStyleBackColor = true;
+            // 
             // PantallaEntrega
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
+            Controls.Add(button4);
             Controls.Add(listView1);
             Controls.Add(button2);
             Controls.Add(Empaquetar);
             Controls.Add(comboBox1);
             Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "PantallaEntrega";
             Text = "Orden de Entrega";
             ResumeLayout(false);
@@ -134,5 +150,6 @@
         private ColumnHeader ColumnaCodigo;
         private ColumnHeader ColumnaUbicacion;
         private ColumnHeader ColumnaTipo;
+        private Button button4;
     }
 }

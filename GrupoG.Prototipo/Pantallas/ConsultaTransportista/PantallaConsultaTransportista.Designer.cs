@@ -77,9 +77,9 @@
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { ClienteTransportista, EstadoTransportista, Patente });
-            listView1.Location = new Point(101, 121);
+            listView1.Location = new Point(102, 119);
             listView1.Name = "listView1";
-            listView1.Size = new Size(384, 104);
+            listView1.Size = new Size(374, 104);
             listView1.TabIndex = 8;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -111,6 +111,7 @@
             Controls.Add(label1);
             Name = "PantallaConsultaTransportista";
             Text = "Transportista";
+            Load += PantallaConsultaTransportista_Load;
             ResumeLayout(false);
             PerformLayout();
         }

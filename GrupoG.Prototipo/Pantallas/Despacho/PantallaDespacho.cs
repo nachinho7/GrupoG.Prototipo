@@ -16,5 +16,25 @@ namespace GrupoG.Prototipo.Pantallas
         {
             InitializeComponent();
         }
+
+        private void PantallaDespacho_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
