@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -37,18 +36,17 @@
             label8 = new Label();
             btnLimpiar = new Button();
             btnGenerar = new Button();
-            listView1 = new ListView();
+            ListaDatosMercaderia = new ListView();
             Id = new ColumnHeader();
             Nombre = new ColumnHeader();
             Cantidad = new ColumnHeader();
-            listView2 = new ListView();
+            ListaPrevisualizacionOrdenesPreparacion = new ListView();
             NumeroOrden = new ColumnHeader();
             Id1 = new ColumnHeader();
             Nombre1 = new ColumnHeader();
             Cantidad1 = new ColumnHeader();
-            contextMenuStrip1 = new ContextMenuStrip(components);
-            boxCantidad = new TextBox();
-            button4 = new Button();
+            TextBoxCantidad = new TextBox();
+            BotonVolverMenu = new Button();
             Mercaderia = new ListBox();
             numeroCliente = new TextBox();
             SuspendLayout();
@@ -130,16 +128,16 @@
             btnGenerar.UseVisualStyleBackColor = true;
             btnGenerar.Click += button3_Click;
             // 
-            // listView1
+            // ListaDatosMercaderia
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { Id, Nombre, Cantidad });
-            listView1.Location = new Point(40, 145);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(375, 94);
-            listView1.TabIndex = 15;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
-            listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
+            ListaDatosMercaderia.Columns.AddRange(new ColumnHeader[] { Id, Nombre, Cantidad });
+            ListaDatosMercaderia.Location = new Point(40, 145);
+            ListaDatosMercaderia.Name = "ListaDatosMercaderia";
+            ListaDatosMercaderia.Size = new Size(375, 94);
+            ListaDatosMercaderia.TabIndex = 15;
+            ListaDatosMercaderia.UseCompatibleStateImageBehavior = false;
+            ListaDatosMercaderia.View = View.Details;
+            ListaDatosMercaderia.SelectedIndexChanged += listView1_SelectedIndexChanged;
             // 
             // Id
             // 
@@ -153,15 +151,15 @@
             // 
             Cantidad.Text = "Cantidad";
             // 
-            // listView2
+            // ListaPrevisualizacionOrdenesPreparacion
             // 
-            listView2.Columns.AddRange(new ColumnHeader[] { NumeroOrden, Id1, Nombre1, Cantidad1 });
-            listView2.Location = new Point(40, 301);
-            listView2.Name = "listView2";
-            listView2.Size = new Size(375, 140);
-            listView2.TabIndex = 16;
-            listView2.UseCompatibleStateImageBehavior = false;
-            listView2.View = View.Details;
+            ListaPrevisualizacionOrdenesPreparacion.Columns.AddRange(new ColumnHeader[] { NumeroOrden, Id1, Nombre1, Cantidad1 });
+            ListaPrevisualizacionOrdenesPreparacion.Location = new Point(40, 301);
+            ListaPrevisualizacionOrdenesPreparacion.Name = "ListaPrevisualizacionOrdenesPreparacion";
+            ListaPrevisualizacionOrdenesPreparacion.Size = new Size(375, 140);
+            ListaPrevisualizacionOrdenesPreparacion.TabIndex = 16;
+            ListaPrevisualizacionOrdenesPreparacion.UseCompatibleStateImageBehavior = false;
+            ListaPrevisualizacionOrdenesPreparacion.View = View.Details;
             // 
             // NumeroOrden
             // 
@@ -180,26 +178,21 @@
             // 
             Cantidad1.Text = "Cantidad";
             // 
-            // contextMenuStrip1
+            // TextBoxCantidad
             // 
-            contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(61, 4);
+            TextBoxCantidad.Location = new Point(156, 245);
+            TextBoxCantidad.Name = "TextBoxCantidad";
+            TextBoxCantidad.Size = new Size(100, 23);
+            TextBoxCantidad.TabIndex = 18;
             // 
-            // boxCantidad
+            // BotonVolverMenu
             // 
-            boxCantidad.Location = new Point(156, 245);
-            boxCantidad.Name = "boxCantidad";
-            boxCantidad.Size = new Size(100, 23);
-            boxCantidad.TabIndex = 18;
-            // 
-            // button4
-            // 
-            button4.Location = new Point(40, 473);
-            button4.Name = "button4";
-            button4.Size = new Size(99, 44);
-            button4.TabIndex = 26;
-            button4.Text = "Volver al Menú";
-            button4.UseVisualStyleBackColor = true;
+            BotonVolverMenu.Location = new Point(40, 473);
+            BotonVolverMenu.Name = "BotonVolverMenu";
+            BotonVolverMenu.Size = new Size(99, 44);
+            BotonVolverMenu.TabIndex = 26;
+            BotonVolverMenu.Text = "Volver al Menú";
+            BotonVolverMenu.UseVisualStyleBackColor = true;
             // 
             // Mercaderia
             // 
@@ -224,10 +217,10 @@
             ClientSize = new Size(482, 529);
             Controls.Add(numeroCliente);
             Controls.Add(Mercaderia);
-            Controls.Add(button4);
-            Controls.Add(boxCantidad);
-            Controls.Add(listView2);
-            Controls.Add(listView1);
+            Controls.Add(BotonVolverMenu);
+            Controls.Add(TextBoxCantidad);
+            Controls.Add(ListaPrevisualizacionOrdenesPreparacion);
+            Controls.Add(ListaDatosMercaderia);
             Controls.Add(btnGenerar);
             Controls.Add(btnLimpiar);
             Controls.Add(label8);
@@ -253,18 +246,17 @@
         private Label label8;
         private Button btnLimpiar;
         private Button btnGenerar;
-        private ListView listView1;
+        private ListView ListaDatosMercaderia;
         private ColumnHeader Id;
         private ColumnHeader Nombre;
         private ColumnHeader Cantidad;
-        private ListView listView2;
+        private ListView ListaPrevisualizacionOrdenesPreparacion;
         private ColumnHeader NumeroOrden;
         private ColumnHeader Id1;
         private ColumnHeader Nombre1;
         private ColumnHeader Cantidad1;
-        private ContextMenuStrip contextMenuStrip1;
-        private TextBox boxCantidad;
-        private Button button4;
+        private TextBox TextBoxCantidad;
+        private Button BotonVolverMenu;
         private ListBox Mercaderia;
         private TextBox numeroCliente;
     }
