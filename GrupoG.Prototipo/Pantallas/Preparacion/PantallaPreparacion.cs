@@ -13,11 +13,13 @@ namespace GrupoG.Prototipo
 
         // Variable para almacenar la cantidad disponible de la mercadería seleccionada
         private int cantidadDisponible;
+        private int numeroOrden; // Variable para el número de orden
 
         public PantallaPreparacion()
         {
             InitializeComponent();
             model = new PantallaPreparacionModel();
+            numeroOrden = 1; // Inicializamos el número de orden
         }
 
         private void BotonObtenerDatos_Click(object sender, EventArgs e)
@@ -83,9 +85,23 @@ namespace GrupoG.Prototipo
                 }
                 else
                 {
-                    // Aquí puedes agregar la lógica para procesar la cantidad seleccionada
+                    // Agregar la entrada a la lista de previsualización
+                    var item = new ListViewItem(numeroOrden.ToString());
+                    item.SubItems.Add(ListaDatosMercaderia.SelectedItems[0].Text); // ID de mercadería
+                    item.SubItems.Add(ListaDatosMercaderia.SelectedItems[0].SubItems[1].Text); // Nombre de mercadería
+                    item.SubItems.Add(cantidadSeleccionada.ToString()); // Cantidad seleccionada
+
+                    // Agregar el ítem a la lista de previsualización
+                    ListaPrevisualizacionOrdenesPreparacion.Items.Add(item);
+
+                    // Reducir la cantidad disponible de mercadería
+                    cantidadDisponible -= cantidadSeleccionada;
+                    ListaDatosMercaderia.SelectedItems[0].SubItems[2].Text = cantidadDisponible.ToString();
+
+                    // Incrementar el número de orden
+                    numeroOrden++;
+
                     MessageBox.Show($"Has agregado {cantidadSeleccionada} unidades.");
-                    // Puedes agregar más lógica aquí, como actualizar un pedido o lista
                 }
             }
             else
