@@ -69,6 +69,11 @@ namespace GrupoG.Prototipo
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            if (ListaDatosMercaderia.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Por favor, seleccione un id de mercadería.");
+                return; // Salir del método si no hay selección
+            }
             // Validar la cantidad ingresada por el usuario
             int cantidadSeleccionada;
 
@@ -98,8 +103,8 @@ namespace GrupoG.Prototipo
                     cantidadDisponible -= cantidadSeleccionada;
                     ListaDatosMercaderia.SelectedItems[0].SubItems[2].Text = cantidadDisponible.ToString();
 
-                    // Incrementar el número de orden
-                    numeroOrden++;
+                    // Incrementar el número de orden. Mover a despues de "generar orden"
+                    //numeroOrden++;
 
                     MessageBox.Show($"Has agregado {cantidadSeleccionada} unidades.");
                 }
