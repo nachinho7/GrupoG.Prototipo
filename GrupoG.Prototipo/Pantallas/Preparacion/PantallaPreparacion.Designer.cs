@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             label7 = new Label();
-            button1 = new Button();
+            btnAgregar = new Button();
             label8 = new Label();
-            button2 = new Button();
-            button3 = new Button();
+            btnLimpiar = new Button();
+            btnGenerar = new Button();
             listView1 = new ListView();
             Id = new ColumnHeader();
             Nombre = new ColumnHeader();
@@ -45,6 +46,8 @@
             Id1 = new ColumnHeader();
             Nombre1 = new ColumnHeader();
             Cantidad1 = new ColumnHeader();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            boxCantidad = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -80,20 +83,20 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(40, 204);
+            label7.Location = new Point(40, 208);
             label7.Name = "label7";
             label7.Size = new Size(110, 15);
             label7.TabIndex = 6;
             label7.Text = "Cantidad a agregar:";
             // 
-            // button1
+            // btnAgregar
             // 
-            button1.Location = new Point(246, 204);
-            button1.Name = "button1";
-            button1.Size = new Size(96, 23);
-            button1.TabIndex = 7;
-            button1.Text = "Agregar";
-            button1.UseVisualStyleBackColor = true;
+            btnAgregar.Location = new Point(271, 208);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(96, 23);
+            btnAgregar.TabIndex = 7;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -105,24 +108,24 @@
             label8.Text = "Previsualización Orden de Preparación";
             label8.Click += label8_Click;
             // 
-            // button2
+            // btnLimpiar
             // 
-            button2.Location = new Point(246, 415);
-            button2.Name = "button2";
-            button2.Size = new Size(121, 23);
-            button2.TabIndex = 13;
-            button2.Text = "Limpiar Datos";
-            button2.UseVisualStyleBackColor = true;
+            btnLimpiar.Location = new Point(246, 415);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(121, 23);
+            btnLimpiar.TabIndex = 13;
+            btnLimpiar.Text = "Limpiar Datos";
+            btnLimpiar.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnGenerar
             // 
-            button3.Location = new Point(403, 415);
-            button3.Name = "button3";
-            button3.Size = new Size(87, 23);
-            button3.TabIndex = 14;
-            button3.Text = "Generar";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            btnGenerar.Location = new Point(403, 415);
+            btnGenerar.Name = "btnGenerar";
+            btnGenerar.Size = new Size(87, 23);
+            btnGenerar.TabIndex = 14;
+            btnGenerar.Text = "Generar";
+            btnGenerar.UseVisualStyleBackColor = true;
+            btnGenerar.Click += button3_Click;
             // 
             // listView1
             // 
@@ -174,17 +177,30 @@
             // 
             Cantidad1.Text = "Cantidad";
             // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(61, 4);
+            // 
+            // boxCantidad
+            // 
+            boxCantidad.Location = new Point(156, 205);
+            boxCantidad.Name = "boxCantidad";
+            boxCantidad.Size = new Size(100, 23);
+            boxCantidad.TabIndex = 18;
+            // 
             // PantallaPreparacion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(592, 450);
+            Controls.Add(boxCantidad);
             Controls.Add(listView2);
             Controls.Add(listView1);
-            Controls.Add(button3);
-            Controls.Add(button2);
+            Controls.Add(btnGenerar);
+            Controls.Add(btnLimpiar);
             Controls.Add(label8);
-            Controls.Add(button1);
+            Controls.Add(btnAgregar);
             Controls.Add(label7);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -202,10 +218,10 @@
         private Label label2;
         private Label label3;
         private Label label7;
-        private Button button1;
+        private Button btnAgregar;
         private Label label8;
-        private Button button2;
-        private Button button3;
+        private Button btnLimpiar;
+        private Button btnGenerar;
         private ListView listView1;
         private ColumnHeader Id;
         private ColumnHeader Nombre;
@@ -215,5 +231,7 @@
         private ColumnHeader Id1;
         private ColumnHeader Nombre1;
         private ColumnHeader Cantidad1;
+        private ContextMenuStrip contextMenuStrip1;
+        private TextBox boxCantidad;
     }
 }
