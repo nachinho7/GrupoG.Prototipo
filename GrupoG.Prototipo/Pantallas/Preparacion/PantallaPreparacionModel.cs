@@ -1,28 +1,44 @@
-﻿using System;
+﻿using GrupoG.Prototipo.Objetos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GrupoG.Prototipo.Pantallas.Preparacion
 {
     internal class PantallaPreparacionModel
     {
-        public List<Clientes> Clientes { get; private set; } =
-        [
-            new Clientes { NumeroCliente = 2045 },
-            new Clientes { NumeroCliente = 3080 },
-            new Clientes { NumeroCliente = 1224 },
-            new Clientes { NumeroCliente = 8564 },
-            new Clientes { NumeroCliente = 8745 },
-        ];
+        public List<Clientes> Clientes { get; private set; } = new List<Clientes>
+        {
+            new Clientes
+            {
+                NumeroCliente = 2045,
+                Mercaderias = new List<Mercaderias>
+                {
+                    new Mercaderias { id = 1, nombreMercaderia = "Botellas", descripcionMercaderia = "Plástico", cantidadMercaderia = 2 }
+                }
+            },
+            new Clientes
+            {
+                NumeroCliente = 3080,
+                Mercaderias = new List<Mercaderias>
+                {
+                    new Mercaderias { id = 2, nombreMercaderia = "Pelotas", descripcionMercaderia = "Goma", cantidadMercaderia = 10 }
+                }
+            },
+            new Clientes
+            {
+                NumeroCliente = 1224,
+                Mercaderias = new List<Mercaderias>
+                {
+                    new Mercaderias { id = 3, nombreMercaderia = "Aceites", descripcionMercaderia = "Comida", cantidadMercaderia = 30 }
+                }
+            }
+        };
 
-
-
-    };
-
-
-
-
-
+        public List<Mercaderias> ObtenerMercaderiaPorCliente(int numeroCliente)
+        {
+            var cliente = Clientes.FirstOrDefault(c => c.NumeroCliente == numeroCliente);
+            return cliente?.Mercaderias ?? new List<Mercaderias>();
+        }
+    }
 }
