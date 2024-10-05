@@ -49,7 +49,6 @@
             button3 = new Button();
             label8 = new Label();
             richTextBox1 = new RichTextBox();
-            button2 = new Button();
             VolverAlMenu = new Button();
             SuspendLayout();
             // 
@@ -90,7 +89,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(472, 492);
+            button1.Location = new Point(425, 491);
             button1.Name = "button1";
             button1.Size = new Size(107, 38);
             button1.TabIndex = 5;
@@ -228,15 +227,6 @@
             richTextBox1.TabIndex = 23;
             richTextBox1.Text = "";
             // 
-            // button2
-            // 
-            button2.Location = new Point(348, 495);
-            button2.Name = "button2";
-            button2.Size = new Size(107, 38);
-            button2.TabIndex = 24;
-            button2.Text = "Limpiar Datos";
-            button2.UseVisualStyleBackColor = true;
-            // 
             // VolverAlMenu
             // 
             VolverAlMenu.Location = new Point(40, 491);
@@ -246,7 +236,6 @@
             VolverAlMenu.Text = "Volver al Menú";
             VolverAlMenu.UseVisualStyleBackColor = true;
             VolverAlMenu.Click += VolverAlMenu_Click;
-
             // 
             // PantallaDespacho
             // 
@@ -254,7 +243,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(603, 545);
             Controls.Add(VolverAlMenu);
-            Controls.Add(button2);
             Controls.Add(richTextBox1);
             Controls.Add(label8);
             Controls.Add(button3);
@@ -304,7 +292,6 @@
         private Button button3;
         private Label label8;
         private RichTextBox richTextBox1;
-        private Button button2;
         private Button VolverAlMenu;
     }
 }

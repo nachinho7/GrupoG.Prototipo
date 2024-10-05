@@ -33,7 +33,6 @@
             labelCantidadAgregar = new Label();
             btnAgregar = new Button();
             labelPrevisualizacionOrden = new Label();
-            btnLimpiar = new Button();
             btnGenerar = new Button();
             ListaDatosMercaderia = new ListView();
             Id = new ColumnHeader();
@@ -97,18 +96,9 @@
             labelPrevisualizacionOrden.TabIndex = 8;
             labelPrevisualizacionOrden.Text = "Previsualización Orden de Preparación";
             // 
-            // btnLimpiar
-            // 
-            btnLimpiar.Location = new Point(220, 473);
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(108, 44);
-            btnLimpiar.TabIndex = 13;
-            btnLimpiar.Text = "Limpiar Datos";
-            btnLimpiar.UseVisualStyleBackColor = true;
-            // 
             // btnGenerar
             // 
-            btnGenerar.Location = new Point(345, 473);
+            btnGenerar.Location = new Point(351, 471);
             btnGenerar.Name = "btnGenerar";
             btnGenerar.Size = new Size(106, 44);
             btnGenerar.TabIndex = 14;
@@ -198,7 +188,6 @@
             VolverAlMenu.Text = "Volver al Menú";
             VolverAlMenu.UseVisualStyleBackColor = true;
             VolverAlMenu.Click += VolverAlMenu_Click;
-
             // 
             // PantallaPreparacion
             // 
@@ -212,7 +201,6 @@
             Controls.Add(ListaPrevisualizacionOrdenesPreparacion);
             Controls.Add(ListaDatosMercaderia);
             Controls.Add(btnGenerar);
-            Controls.Add(btnLimpiar);
             Controls.Add(labelPrevisualizacionOrden);
             Controls.Add(btnAgregar);
             Controls.Add(labelCantidadAgregar);
@@ -231,7 +219,6 @@
         private Label labelCantidadAgregar;
         private Button btnAgregar;
         private Label labelPrevisualizacionOrden;
-        private Button btnLimpiar;
         private Button btnGenerar;
         private ListView ListaDatosMercaderia;
         private ColumnHeader Id;

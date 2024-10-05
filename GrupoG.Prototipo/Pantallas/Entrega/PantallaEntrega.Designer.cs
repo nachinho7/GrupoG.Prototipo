@@ -31,7 +31,6 @@
             label1 = new Label();
             comboBox1 = new ComboBox();
             Empaquetar = new Button();
-            button2 = new Button();
             listView1 = new ListView();
             ColumnaNumeroCliente = new ColumnHeader();
             ColumnaCodigo = new ColumnHeader();
@@ -62,7 +61,7 @@
             // 
             // Empaquetar
             // 
-            Empaquetar.Location = new Point(506, 274);
+            Empaquetar.Location = new Point(474, 274);
             Empaquetar.Margin = new Padding(3, 2, 3, 2);
             Empaquetar.Name = "Empaquetar";
             Empaquetar.Size = new Size(103, 38);
@@ -70,16 +69,6 @@
             Empaquetar.Text = "Empaquetar\r\n";
             Empaquetar.UseVisualStyleBackColor = true;
             Empaquetar.Click += Empaquetar_Click;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(373, 274);
-            button2.Margin = new Padding(3, 2, 3, 2);
-            button2.Name = "button2";
-            button2.Size = new Size(112, 38);
-            button2.TabIndex = 8;
-            button2.Text = "Limpiar datos";
-            button2.UseVisualStyleBackColor = true;
             // 
             // listView1
             // 
@@ -129,7 +118,6 @@
             ClientSize = new Size(700, 338);
             Controls.Add(VolverAlMenu);
             Controls.Add(listView1);
-            Controls.Add(button2);
             Controls.Add(Empaquetar);
             Controls.Add(comboBox1);
             Controls.Add(label1);
@@ -145,7 +133,6 @@
         private Label label1;
         private ComboBox comboBox1;
         private Button Empaquetar;
-        private Button button2;
         private ListView listView1;
         private ColumnHeader ColumnaNumeroCliente;
         private ColumnHeader ColumnaCodigo;

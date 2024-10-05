@@ -30,7 +30,6 @@
         {
             label1 = new Label();
             VolverAlMenu = new Button();
-            button2 = new Button();
             button3 = new Button();
             listView1 = new ListView();
             ClienteTransportista = new ColumnHeader();
@@ -57,15 +56,6 @@
             VolverAlMenu.Text = "Volver al Menú";
             VolverAlMenu.UseVisualStyleBackColor = true;
             VolverAlMenu.Click += VolverAlMenu_Click;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(226, 253);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 39);
-            button2.TabIndex = 5;
-            button2.Text = "Limpiar Datos";
-            button2.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -108,7 +98,6 @@
             ClientSize = new Size(599, 389);
             Controls.Add(listView1);
             Controls.Add(button3);
-            Controls.Add(button2);
             Controls.Add(VolverAlMenu);
             Controls.Add(label1);
             Name = "PantallaTransportista";
@@ -122,7 +111,6 @@
 
         private Label label1;
         private Button VolverAlMenu;
-        private Button button2;
         private Button button3;
         private ListView listView1;
         private ColumnHeader ClienteTransportista;
