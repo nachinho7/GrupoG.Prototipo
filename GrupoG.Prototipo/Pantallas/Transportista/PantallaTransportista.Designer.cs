@@ -41,11 +41,12 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(184, 83);
+            label1.Location = new Point(209, 76);
             label1.Name = "label1";
             label1.Size = new Size(157, 15);
             label1.TabIndex = 0;
             label1.Text = "Ingrese DNI del Transportista";
+            label1.Click += label1_Click;
             // 
             // VolverAlMenu
             // 
@@ -78,7 +79,7 @@
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { ClienteTransportista, EstadoTransportista, Patente });
-            listView1.Location = new Point(102, 119);
+            listView1.Location = new Point(101, 131);
             listView1.Name = "listView1";
             listView1.Size = new Size(374, 104);
             listView1.TabIndex = 8;
