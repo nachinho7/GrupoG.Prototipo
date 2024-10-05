@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GrupoG.Prototipo.Pantallas.Menu
 {
-    internal class PantallaMenuModel
+    internal class Class1
     {
     }
 }

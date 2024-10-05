@@ -28,80 +28,83 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
+            BotonTransportista = new Button();
+            BotonPreparacion = new Button();
+            BotonSeleccion = new Button();
+            BotonEntrega = new Button();
+            BotonDespacho = new Button();
             SuspendLayout();
             // 
-            // button1
+            // BotonTransportista
             // 
-            button1.Location = new Point(130, 52);
-            button1.Name = "button1";
-            button1.Size = new Size(115, 24);
-            button1.TabIndex = 0;
-            button1.Text = "Transportista";
-            button1.UseVisualStyleBackColor = true;
+            BotonTransportista.Location = new Point(112, 46);
+            BotonTransportista.Name = "BotonTransportista";
+            BotonTransportista.Size = new Size(162, 44);
+            BotonTransportista.TabIndex = 0;
+            BotonTransportista.Text = "Transportista";
+            BotonTransportista.UseVisualStyleBackColor = true;
+            BotonTransportista.Click += this.BotonTransportista_Click;
             // 
-            // button2
+            // BotonPreparacion
             // 
-            button2.Location = new Point(130, 111);
-            button2.Name = "button2";
-            button2.Size = new Size(115, 24);
-            button2.TabIndex = 1;
-            button2.Text = "Preparacion";
-            button2.UseVisualStyleBackColor = true;
+            BotonPreparacion.Location = new Point(112, 117);
+            BotonPreparacion.Name = "BotonPreparacion";
+            BotonPreparacion.Size = new Size(162, 44);
+            BotonPreparacion.TabIndex = 1;
+            BotonPreparacion.Text = "Preparación";
+            BotonPreparacion.UseVisualStyleBackColor = true;
+            BotonPreparacion.Click += this.button2_Click;
             // 
-            // button3
+            // BotonSeleccion
             // 
-            button3.Location = new Point(130, 169);
-            button3.Name = "button3";
-            button3.Size = new Size(115, 24);
-            button3.TabIndex = 2;
-            button3.Text = "Seleccion";
-            button3.UseVisualStyleBackColor = true;
+            BotonSeleccion.Location = new Point(112, 193);
+            BotonSeleccion.Name = "BotonSeleccion";
+            BotonSeleccion.Size = new Size(162, 44);
+            BotonSeleccion.TabIndex = 2;
+            BotonSeleccion.Text = "Selección";
+            BotonSeleccion.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // BotonEntrega
             // 
-            button4.Location = new Point(130, 221);
-            button4.Name = "button4";
-            button4.Size = new Size(115, 24);
-            button4.TabIndex = 3;
-            button4.Text = "Entrega";
-            button4.UseVisualStyleBackColor = true;
+            BotonEntrega.Location = new Point(112, 269);
+            BotonEntrega.Name = "BotonEntrega";
+            BotonEntrega.Size = new Size(162, 44);
+            BotonEntrega.TabIndex = 3;
+            BotonEntrega.Text = "Entrega";
+            BotonEntrega.UseVisualStyleBackColor = true;
+            BotonEntrega.Click += this.button4_Click;
             // 
-            // button5
+            // BotonDespacho
             // 
-            button5.Location = new Point(130, 276);
-            button5.Name = "button5";
-            button5.Size = new Size(115, 24);
-            button5.TabIndex = 4;
-            button5.Text = "Despacho";
-            button5.UseVisualStyleBackColor = true;
+            BotonDespacho.Location = new Point(112, 347);
+            BotonDespacho.Name = "BotonDespacho";
+            BotonDespacho.Size = new Size(162, 44);
+            BotonDespacho.TabIndex = 4;
+            BotonDespacho.Text = "Despacho";
+            BotonDespacho.UseVisualStyleBackColor = true;
+            BotonDespacho.Click += this.BotonDespacho_Click;
             // 
             // PantallaMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(389, 357);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            ClientSize = new Size(411, 428);
+            Controls.Add(BotonDespacho);
+            Controls.Add(BotonEntrega);
+            Controls.Add(BotonSeleccion);
+            Controls.Add(BotonPreparacion);
+            Controls.Add(BotonTransportista);
             Name = "PantallaMenu";
             Text = "Menú";
-            Load += this.PantallaMenu_Load;
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private Button button5;
+        private Button BotonTransportista;
+        private Button BotonPreparacion;
+        private Button BotonSeleccion;
+        private Button BotonEntrega;
+        private Button BotonDespacho;
     }
 }
