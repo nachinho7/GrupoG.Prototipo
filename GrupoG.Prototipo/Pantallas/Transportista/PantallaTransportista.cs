@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GrupoG.Prototipo.Pantallas
 {
-    public partial class PantallaConsultaTransportista : Form
+    public partial class PantallaTransportista : Form
     {
-        public PantallaConsultaTransportista()
+        public PantallaTransportista()
         {
             InitializeComponent();
         }

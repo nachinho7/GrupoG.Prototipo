@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GrupoG.Prototipo.Pantallas.ConsultaTransportista
 {
-    internal class PantallaConsultaTransportistaModel
+    internal class PantallaTransportistaModel
     {
     }
 }

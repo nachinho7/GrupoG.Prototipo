@@ -1,6 +1,6 @@
 ﻿namespace GrupoG.Prototipo.Pantallas
 {
-    partial class PantallaConsultaTransportista
+    partial class PantallaTransportista
     {
         /// <summary>
         /// Required designer variable.
@@ -41,7 +41,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(209, 89);
+            label1.Location = new Point(184, 83);
             label1.Name = "label1";
             label1.Size = new Size(157, 15);
             label1.TabIndex = 0;
@@ -99,7 +99,7 @@
             // 
             Patente.Text = "Patente";
             // 
-            // PantallaConsultaTransportista
+            // PantallaTransportista
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -109,7 +109,7 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label1);
-            Name = "PantallaConsultaTransportista";
+            Name = "PantallaTransportista";
             Text = "Transportista";
             Load += PantallaConsultaTransportista_Load;
             ResumeLayout(false);
