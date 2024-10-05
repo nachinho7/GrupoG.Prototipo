@@ -53,9 +53,9 @@
             // LabelNumeroCliente
             // 
             LabelNumeroCliente.AutoSize = true;
-            LabelNumeroCliente.Location = new Point(40, 32);
+            LabelNumeroCliente.Location = new Point(46, 43);
             LabelNumeroCliente.Name = "LabelNumeroCliente";
-            LabelNumeroCliente.Size = new Size(67, 15);
+            LabelNumeroCliente.Size = new Size(83, 20);
             LabelNumeroCliente.TabIndex = 0;
             LabelNumeroCliente.Text = "N° Cliente: ";
             LabelNumeroCliente.UseWaitCursor = true;
@@ -63,53 +63,57 @@
             // labelDatosMercaderia
             // 
             labelDatosMercaderia.AutoSize = true;
-            labelDatosMercaderia.Location = new Point(40, 75);
+            labelDatosMercaderia.Location = new Point(46, 100);
             labelDatosMercaderia.Name = "labelDatosMercaderia";
-            labelDatosMercaderia.Size = new Size(99, 15);
+            labelDatosMercaderia.Size = new Size(127, 20);
             labelDatosMercaderia.TabIndex = 2;
             labelDatosMercaderia.Text = "Datos Mercadería";
             // 
             // labelCantidadAgregar
             // 
             labelCantidadAgregar.AutoSize = true;
-            labelCantidadAgregar.Location = new Point(40, 245);
+            labelCantidadAgregar.Location = new Point(46, 327);
             labelCantidadAgregar.Name = "labelCantidadAgregar";
-            labelCantidadAgregar.Size = new Size(110, 15);
+            labelCantidadAgregar.Size = new Size(140, 20);
             labelCantidadAgregar.TabIndex = 6;
             labelCantidadAgregar.Text = "Cantidad a agregar:";
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(273, 242);
+            btnAgregar.Location = new Point(312, 323);
+            btnAgregar.Margin = new Padding(3, 4, 3, 4);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(96, 23);
+            btnAgregar.Size = new Size(110, 31);
             btnAgregar.TabIndex = 7;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // labelPrevisualizacionOrden
             // 
             labelPrevisualizacionOrden.AutoSize = true;
-            labelPrevisualizacionOrden.Location = new Point(40, 283);
+            labelPrevisualizacionOrden.Location = new Point(46, 377);
             labelPrevisualizacionOrden.Name = "labelPrevisualizacionOrden";
-            labelPrevisualizacionOrden.Size = new Size(209, 15);
+            labelPrevisualizacionOrden.Size = new Size(263, 20);
             labelPrevisualizacionOrden.TabIndex = 8;
             labelPrevisualizacionOrden.Text = "Previsualización Orden de Preparación";
             // 
             // btnLimpiar
             // 
-            btnLimpiar.Location = new Point(220, 473);
+            btnLimpiar.Location = new Point(251, 631);
+            btnLimpiar.Margin = new Padding(3, 4, 3, 4);
             btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(108, 44);
+            btnLimpiar.Size = new Size(123, 59);
             btnLimpiar.TabIndex = 13;
             btnLimpiar.Text = "Limpiar Datos";
             btnLimpiar.UseVisualStyleBackColor = true;
             // 
             // btnGenerar
             // 
-            btnGenerar.Location = new Point(345, 473);
+            btnGenerar.Location = new Point(394, 631);
+            btnGenerar.Margin = new Padding(3, 4, 3, 4);
             btnGenerar.Name = "btnGenerar";
-            btnGenerar.Size = new Size(106, 44);
+            btnGenerar.Size = new Size(121, 59);
             btnGenerar.TabIndex = 14;
             btnGenerar.Text = "Generar";
             btnGenerar.UseVisualStyleBackColor = true;
@@ -117,9 +121,10 @@
             // ListaDatosMercaderia
             // 
             ListaDatosMercaderia.Columns.AddRange(new ColumnHeader[] { Id, Nombre, Cantidad });
-            ListaDatosMercaderia.Location = new Point(40, 103);
+            ListaDatosMercaderia.Location = new Point(46, 137);
+            ListaDatosMercaderia.Margin = new Padding(3, 4, 3, 4);
             ListaDatosMercaderia.Name = "ListaDatosMercaderia";
-            ListaDatosMercaderia.Size = new Size(375, 124);
+            ListaDatosMercaderia.Size = new Size(428, 164);
             ListaDatosMercaderia.TabIndex = 15;
             ListaDatosMercaderia.UseCompatibleStateImageBehavior = false;
             ListaDatosMercaderia.View = View.Details;
@@ -139,9 +144,10 @@
             // ListaPrevisualizacionOrdenesPreparacion
             // 
             ListaPrevisualizacionOrdenesPreparacion.Columns.AddRange(new ColumnHeader[] { NumeroOrden, Id1, Nombre1, Cantidad1 });
-            ListaPrevisualizacionOrdenesPreparacion.Location = new Point(40, 301);
+            ListaPrevisualizacionOrdenesPreparacion.Location = new Point(46, 401);
+            ListaPrevisualizacionOrdenesPreparacion.Margin = new Padding(3, 4, 3, 4);
             ListaPrevisualizacionOrdenesPreparacion.Name = "ListaPrevisualizacionOrdenesPreparacion";
-            ListaPrevisualizacionOrdenesPreparacion.Size = new Size(375, 140);
+            ListaPrevisualizacionOrdenesPreparacion.Size = new Size(428, 185);
             ListaPrevisualizacionOrdenesPreparacion.TabIndex = 16;
             ListaPrevisualizacionOrdenesPreparacion.UseCompatibleStateImageBehavior = false;
             ListaPrevisualizacionOrdenesPreparacion.View = View.Details;
@@ -165,32 +171,37 @@
             // 
             // TextBoxCantidad
             // 
-            TextBoxCantidad.Location = new Point(156, 242);
+            TextBoxCantidad.Location = new Point(178, 323);
+            TextBoxCantidad.Margin = new Padding(3, 4, 3, 4);
             TextBoxCantidad.Name = "TextBoxCantidad";
-            TextBoxCantidad.Size = new Size(100, 23);
+            TextBoxCantidad.Size = new Size(114, 27);
             TextBoxCantidad.TabIndex = 18;
+            ListaDatosMercaderia.SelectedIndexChanged += ListaDatosMercaderia_SelectedIndexChanged;
             // 
             // BotonVolverMenu
             // 
-            BotonVolverMenu.Location = new Point(40, 473);
+            BotonVolverMenu.Location = new Point(46, 631);
+            BotonVolverMenu.Margin = new Padding(3, 4, 3, 4);
             BotonVolverMenu.Name = "BotonVolverMenu";
-            BotonVolverMenu.Size = new Size(99, 44);
+            BotonVolverMenu.Size = new Size(113, 59);
             BotonVolverMenu.TabIndex = 26;
             BotonVolverMenu.Text = "Volver al Menú";
             BotonVolverMenu.UseVisualStyleBackColor = true;
             // 
             // numeroCliente
             // 
-            numeroCliente.Location = new Point(118, 29);
+            numeroCliente.Location = new Point(135, 39);
+            numeroCliente.Margin = new Padding(3, 4, 3, 4);
             numeroCliente.Name = "numeroCliente";
-            numeroCliente.Size = new Size(100, 23);
+            numeroCliente.Size = new Size(114, 27);
             numeroCliente.TabIndex = 28;
             // 
             // BotonObtenerDatos
             // 
-            BotonObtenerDatos.Location = new Point(273, 28);
+            BotonObtenerDatos.Location = new Point(312, 37);
+            BotonObtenerDatos.Margin = new Padding(3, 4, 3, 4);
             BotonObtenerDatos.Name = "BotonObtenerDatos";
-            BotonObtenerDatos.Size = new Size(142, 23);
+            BotonObtenerDatos.Size = new Size(162, 31);
             BotonObtenerDatos.TabIndex = 29;
             BotonObtenerDatos.Text = "Obtener Datos";
             BotonObtenerDatos.UseVisualStyleBackColor = true;
@@ -198,9 +209,9 @@
             // 
             // PantallaPreparacion
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(482, 529);
+            ClientSize = new Size(551, 705);
             Controls.Add(BotonObtenerDatos);
             Controls.Add(numeroCliente);
             Controls.Add(BotonVolverMenu);
@@ -214,6 +225,7 @@
             Controls.Add(labelCantidadAgregar);
             Controls.Add(labelDatosMercaderia);
             Controls.Add(LabelNumeroCliente);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "PantallaPreparacion";
             Text = "Orden de Preparación";
             ResumeLayout(false);

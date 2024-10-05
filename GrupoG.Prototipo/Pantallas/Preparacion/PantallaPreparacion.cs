@@ -11,6 +11,9 @@ namespace GrupoG.Prototipo
     {
         private readonly PantallaPreparacionModel model;
 
+        // Variable para almacenar la cantidad disponible de la mercadería seleccionada
+        private int cantidadDisponible;
+
         public PantallaPreparacion()
         {
             InitializeComponent();
@@ -45,6 +48,49 @@ namespace GrupoG.Prototipo
             else
             {
                 MessageBox.Show("Ingrese un número de cliente válido.");
+            }
+        }
+
+        private void ListaDatosMercaderia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ListaDatosMercaderia.SelectedItems.Count > 0)
+            {
+                // Obtener el ítem seleccionado
+                var selectedItem = ListaDatosMercaderia.SelectedItems[0];
+
+                // Mostrar la cantidad disponible y habilitar el TextBox
+                cantidadDisponible = int.Parse(selectedItem.SubItems[2].Text);
+                TextBoxCantidad.Text = "";
+                TextBoxCantidad.Enabled = true; // Asegúrate de que el TextBox esté habilitado
+            }
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            // Validar la cantidad ingresada por el usuario
+            int cantidadSeleccionada;
+
+            // Asegúrate de que el TextBox esté habilitado antes de leer el valor
+            if (TextBoxCantidad.Enabled && int.TryParse(TextBoxCantidad.Text, out cantidadSeleccionada))
+            {
+                if (cantidadSeleccionada > cantidadDisponible)
+                {
+                    MessageBox.Show("La cantidad seleccionada no puede exceder la cantidad disponible.");
+                }
+                else if (cantidadSeleccionada <= 0)
+                {
+                    MessageBox.Show("La cantidad seleccionada debe ser mayor que cero.");
+                }
+                else
+                {
+                    // Aquí puedes agregar la lógica para procesar la cantidad seleccionada
+                    MessageBox.Show($"Has agregado {cantidadSeleccionada} unidades.");
+                    // Puedes agregar más lógica aquí, como actualizar un pedido o lista
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ingrese una cantidad válida.");
             }
         }
     }
