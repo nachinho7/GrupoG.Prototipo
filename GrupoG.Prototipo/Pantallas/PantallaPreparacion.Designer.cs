@@ -1,6 +1,6 @@
 ﻿namespace GrupoG.Prototipo
 {
-    partial class Form1
+    partial class PantallaPreparacion
     {
         /// <summary>
         ///  Required designer variable.
