@@ -28,75 +28,77 @@
         /// </summary>
         private void InitializeComponent()
         {
-            BotonTransportista = new Button();
-            BotonPreparacion = new Button();
-            BotonSeleccion = new Button();
-            BotonEntrega = new Button();
-            BotonDespacho = new Button();
-            SuspendLayout();
+            this.BotonTransportista = new System.Windows.Forms.Button();
+            this.BotonPreparacion = new System.Windows.Forms.Button();
+            this.BotonSeleccion = new System.Windows.Forms.Button();
+            this.BotonEntrega = new System.Windows.Forms.Button();
+            this.BotonDespacho = new System.Windows.Forms.Button();
+            this.SuspendLayout();
             // 
             // BotonTransportista
             // 
-            BotonTransportista.Location = new Point(112, 46);
-            BotonTransportista.Name = "BotonTransportista";
-            BotonTransportista.Size = new Size(162, 44);
-            BotonTransportista.TabIndex = 0;
-            BotonTransportista.Text = "Transportista";
-            BotonTransportista.UseVisualStyleBackColor = true;
-            BotonTransportista.Click += this.BotonTransportista_Click;
+            this.BotonTransportista.Location = new System.Drawing.Point(112, 46);
+            this.BotonTransportista.Name = "BotonTransportista";
+            this.BotonTransportista.Size = new System.Drawing.Size(162, 44);
+            this.BotonTransportista.TabIndex = 0;
+            this.BotonTransportista.Text = "Transportista";
+            this.BotonTransportista.UseVisualStyleBackColor = true;
+            this.BotonTransportista.Click += new System.EventHandler(this.BotonTransportista_Click);
             // 
             // BotonPreparacion
             // 
-            BotonPreparacion.Location = new Point(112, 117);
-            BotonPreparacion.Name = "BotonPreparacion";
-            BotonPreparacion.Size = new Size(162, 44);
-            BotonPreparacion.TabIndex = 1;
-            BotonPreparacion.Text = "Preparación";
-            BotonPreparacion.UseVisualStyleBackColor = true;
-            BotonPreparacion.Click += this.button2_Click;
+            this.BotonPreparacion.Location = new System.Drawing.Point(112, 117);
+            this.BotonPreparacion.Name = "BotonPreparacion";
+            this.BotonPreparacion.Size = new System.Drawing.Size(162, 44);
+            this.BotonPreparacion.TabIndex = 1;
+            this.BotonPreparacion.Text = "Preparación";
+            this.BotonPreparacion.UseVisualStyleBackColor = true;
+            this.BotonPreparacion.Click += new System.EventHandler(this.BotonPreparacion_Click);
             // 
             // BotonSeleccion
             // 
-            BotonSeleccion.Location = new Point(112, 193);
-            BotonSeleccion.Name = "BotonSeleccion";
-            BotonSeleccion.Size = new Size(162, 44);
-            BotonSeleccion.TabIndex = 2;
-            BotonSeleccion.Text = "Selección";
-            BotonSeleccion.UseVisualStyleBackColor = true;
+            this.BotonSeleccion.Location = new System.Drawing.Point(112, 193);
+            this.BotonSeleccion.Name = "BotonSeleccion";
+            this.BotonSeleccion.Size = new System.Drawing.Size(162, 44);
+            this.BotonSeleccion.TabIndex = 2;
+            this.BotonSeleccion.Text = "Selección";
+            this.BotonSeleccion.UseVisualStyleBackColor = true;
+            this.BotonSeleccion.Click += new System.EventHandler(this.BotonSeleccion_Click);
             // 
             // BotonEntrega
             // 
-            BotonEntrega.Location = new Point(112, 269);
-            BotonEntrega.Name = "BotonEntrega";
-            BotonEntrega.Size = new Size(162, 44);
-            BotonEntrega.TabIndex = 3;
-            BotonEntrega.Text = "Entrega";
-            BotonEntrega.UseVisualStyleBackColor = true;
-            BotonEntrega.Click += this.button4_Click;
+            this.BotonEntrega.Location = new System.Drawing.Point(112, 269);
+            this.BotonEntrega.Name = "BotonEntrega";
+            this.BotonEntrega.Size = new System.Drawing.Size(162, 44);
+            this.BotonEntrega.TabIndex = 3;
+            this.BotonEntrega.Text = "Entrega";
+            this.BotonEntrega.UseVisualStyleBackColor = true;
+            this.BotonEntrega.Click += new System.EventHandler(this.BotonEntrega_Click);
             // 
             // BotonDespacho
             // 
-            BotonDespacho.Location = new Point(112, 347);
-            BotonDespacho.Name = "BotonDespacho";
-            BotonDespacho.Size = new Size(162, 44);
-            BotonDespacho.TabIndex = 4;
-            BotonDespacho.Text = "Despacho";
-            BotonDespacho.UseVisualStyleBackColor = true;
-            BotonDespacho.Click += this.BotonDespacho_Click;
+            this.BotonDespacho.Location = new System.Drawing.Point(112, 347);
+            this.BotonDespacho.Name = "BotonDespacho";
+            this.BotonDespacho.Size = new System.Drawing.Size(162, 44);
+            this.BotonDespacho.TabIndex = 4;
+            this.BotonDespacho.Text = "Despacho";
+            this.BotonDespacho.UseVisualStyleBackColor = true;
+            this.BotonDespacho.Click += new System.EventHandler(this.BotonDespacho_Click);
             // 
             // PantallaMenu
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(411, 428);
-            Controls.Add(BotonDespacho);
-            Controls.Add(BotonEntrega);
-            Controls.Add(BotonSeleccion);
-            Controls.Add(BotonPreparacion);
-            Controls.Add(BotonTransportista);
-            Name = "PantallaMenu";
-            Text = "Menú";
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(411, 428);
+            this.Controls.Add(this.BotonDespacho);
+            this.Controls.Add(this.BotonEntrega);
+            this.Controls.Add(this.BotonSeleccion);
+            this.Controls.Add(this.BotonPreparacion);
+            this.Controls.Add(this.BotonTransportista);
+            this.Name = "PantallaMenu";
+            this.Text = "Menú";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

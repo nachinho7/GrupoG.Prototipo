@@ -1,6 +1,6 @@
 ﻿namespace GrupoG.Prototipo.Pantallas
 {
-    partial class PantallaOrdenSeleccion
+    partial class PantallaSeleccion
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem2 = new ListViewItem("");
+            ListViewItem listViewItem1 = new ListViewItem("");
             ListaOrdenSeleccion = new ListView();
             OrdenColumna = new ColumnHeader();
             ClienteColumna = new ColumnHeader();
@@ -40,8 +40,8 @@
             // ListaOrdenSeleccion
             // 
             ListaOrdenSeleccion.Columns.AddRange(new ColumnHeader[] { OrdenColumna, ClienteColumna, EstadoColumna, FechaColumna });
-            ListaOrdenSeleccion.Items.AddRange(new ListViewItem[] { listViewItem2 });
-            ListaOrdenSeleccion.Location = new Point(12, 12);
+            ListaOrdenSeleccion.Items.AddRange(new ListViewItem[] { listViewItem1 });
+            ListaOrdenSeleccion.Location = new Point(14, 12);
             ListaOrdenSeleccion.Name = "ListaOrdenSeleccion";
             ListaOrdenSeleccion.Size = new Size(604, 207);
             ListaOrdenSeleccion.TabIndex = 0;
@@ -77,17 +77,18 @@
             BotonGenerarOS.Text = "Generar Orden de Seleccion";
             BotonGenerarOS.UseVisualStyleBackColor = true;
             // 
-            // PantallaOrdenSeleccion
+            // PantallaSeleccion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(630, 308);
             Controls.Add(BotonGenerarOS);
             Controls.Add(ListaOrdenSeleccion);
-            Name = "PantallaOrdenSeleccion";
+            Name = "PantallaSeleccion";
             Text = "Orden de Seleccion";
-            Load += Form1_Load;
+            Load += PantallaSeleccion_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
