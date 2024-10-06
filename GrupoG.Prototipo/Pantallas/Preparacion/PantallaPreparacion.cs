@@ -19,13 +19,12 @@ namespace GrupoG.Prototipo
         {
             InitializeComponent();
             model = new PantallaPreparacionModel();
-            numeroOrden = 1; // Inicializamos el número de orden
+            numeroOrden = 1;
         }
 
         private void BotonObtenerDatos_Click(object sender, EventArgs e)
         {
-            // Convertimos el texto a número de cliente
-            var clienteNumeroText = numeroCliente.Text; // Aquí 'numeroCliente' debe ser un TextBox
+            var clienteNumeroText = numeroCliente.Text;
             int clienteNumero;
 
             if (int.TryParse(clienteNumeroText, out clienteNumero))
@@ -48,7 +47,6 @@ namespace GrupoG.Prototipo
                 }
                 else
                 {
-                    // Deshabilitar el campo de número de cliente después de obtener los datos
                     numeroCliente.Enabled = false;
                 }
             }
@@ -68,7 +66,7 @@ namespace GrupoG.Prototipo
                 // Mostrar la cantidad disponible y habilitar el TextBox
                 cantidadDisponible = int.Parse(selectedItem.SubItems[2].Text);
                 TextBoxCantidad.Text = "";
-                TextBoxCantidad.Enabled = true; // Asegúrate de que el TextBox esté habilitado
+                TextBoxCantidad.Enabled = true;
             }
         }
 
@@ -77,12 +75,11 @@ namespace GrupoG.Prototipo
             if (ListaDatosMercaderia.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Por favor, seleccione un id de mercadería.");
-                return; // Salir del método si no hay selección
+                return;
             }
             // Validar la cantidad ingresada por el usuario
             int cantidadSeleccionada;
 
-            // Asegúrate de que el TextBox esté habilitado antes de leer el valor
             if (TextBoxCantidad.Enabled && int.TryParse(TextBoxCantidad.Text, out cantidadSeleccionada))
             {
                 if (cantidadSeleccionada > cantidadDisponible)
@@ -97,9 +94,9 @@ namespace GrupoG.Prototipo
                 {
                     // Agregar la entrada a la lista de previsualización
                     var item = new ListViewItem(numeroOrden.ToString());
-                    item.SubItems.Add(ListaDatosMercaderia.SelectedItems[0].Text); // ID de mercadería
-                    item.SubItems.Add(ListaDatosMercaderia.SelectedItems[0].SubItems[1].Text); // Nombre de mercadería
-                    item.SubItems.Add(cantidadSeleccionada.ToString()); // Cantidad seleccionada
+                    item.SubItems.Add(ListaDatosMercaderia.SelectedItems[0].Text);
+                    item.SubItems.Add(ListaDatosMercaderia.SelectedItems[0].SubItems[1].Text);
+                    item.SubItems.Add(cantidadSeleccionada.ToString());
 
                     // Agregar el ítem a la lista de previsualización
                     ListaPrevisualizacionOrdenesPreparacion.Items.Add(item);
@@ -125,26 +122,22 @@ namespace GrupoG.Prototipo
             if (ListaPrevisualizacionOrdenesPreparacion.Items.Count == 0)
             {
                 MessageBox.Show("No hay elementos en la lista de previsualización. Agrega mercadería antes de generar la orden.");
-                return; // Salir del método si no hay elementos
+                return;
             }
 
-            // Mostrar mensaje de éxito
             MessageBox.Show("La orden de preparación ha sido generada exitosamente.");
 
-            // Limpiar los datos de la lista de previsualización
             ListaPrevisualizacionOrdenesPreparacion.Items.Clear();
             ListaDatosMercaderia.Items.Clear();
 
-            // Limpiar el TextBox de cantidad y deshabilitarlo
-            TextBoxCantidad.Text = string.Empty; // Limpiar el contenido del TextBox
-            TextBoxCantidad.Enabled = false; // Deshabilitar el TextBox de cantidad
+            TextBoxCantidad.Text = string.Empty;
+            TextBoxCantidad.Enabled = false;
 
-            // Habilitar el campo de número de cliente nuevamente
             numeroCliente.Enabled = true;
-            numeroCliente.Text = string.Empty; // Limpiar el campo de número de cliente
+            numeroCliente.Text = string.Empty;
 
-            // Reiniciar el número de orden si es necesario
-            //numeroOrden = 1; // Puedes ajustar esta lógica si quieres que el número de orden se reinicie o continúe
+            // Reiniciar numero de orden si es necesario
+            //numeroOrden = 1;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -158,7 +151,6 @@ namespace GrupoG.Prototipo
                 // Obtener la cantidad seleccionada
                 int cantidadEliminada = int.Parse(selectedItem.SubItems[3].Text);
 
-                // Confirmar la eliminación
                 var confirmResult = MessageBox.Show("¿Está seguro de que desea eliminar el elemento seleccionado?",
                                                      "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (confirmResult == DialogResult.Yes)
@@ -167,7 +159,6 @@ namespace GrupoG.Prototipo
                     ListaPrevisualizacionOrdenesPreparacion.Items.Remove(selectedItem);
                     MessageBox.Show("Elemento eliminado.");
 
-                    // Buscar el ítem correspondiente en ListaDatosMercaderia
                     foreach (ListViewItem item in ListaDatosMercaderia.Items)
                     {
                         if (item.Text == selectedItem.SubItems[1].Text) // Comparar ID de mercadería
@@ -175,7 +166,7 @@ namespace GrupoG.Prototipo
                             // Actualizar la cantidad de mercadería disponible
                             int cantidadDisponibleActual = int.Parse(item.SubItems[2].Text);
                             item.SubItems[2].Text = (cantidadDisponibleActual + cantidadEliminada).ToString();
-                            break; // Salir del bucle una vez encontrado
+                            break;
                         }
                     }
                 }
@@ -187,15 +178,13 @@ namespace GrupoG.Prototipo
         }
         private void BotonLimpiarCliente_Click(object sender, EventArgs e)
         {
-            // Habilitar el campo de número de cliente nuevamente y limpiar su contenido
+
             numeroCliente.Enabled = true;
             numeroCliente.Text = string.Empty;
 
-            // Limpiar la lista de mercaderías mostradas
             ListaDatosMercaderia.Items.Clear();
             ListaPrevisualizacionOrdenesPreparacion.Items.Clear();
 
-            // Limpiar el TextBox de cantidad
             TextBoxCantidad.Text = string.Empty;
             TextBoxCantidad.Enabled = false;
         }
@@ -210,8 +199,6 @@ namespace GrupoG.Prototipo
 
 
 
-//TODO: [cuando se pone generar, se tiene que limpiar todo - ok] y descontar la cantidad si lo vuelvo a buscar 
-//TODO: agregar un crear all, para limpiar todo. Paracido a generar - ok
-//TODO: Que se bloquee el boton de obtener datos si ya se uno xx - ok
+//TODO: descontar la cantidad si lo vuelvo a buscar 
 //TODO: Ver comentarios
 //TODO: ver mensajes de error
