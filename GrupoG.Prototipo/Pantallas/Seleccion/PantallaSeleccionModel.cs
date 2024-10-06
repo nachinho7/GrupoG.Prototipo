@@ -47,6 +47,7 @@ namespace GrupoG.Prototipo.Pantallas.Seleccion
             {
                 new Orden(1, 1001, "Pendiente", DateTime.Now),
                 new Orden(2, 1002, "Completado", DateTime.Now.AddDays(-1)),
+                new Orden(4, 1002, "Pendiente", DateTime.Now.AddDays(-1)),
                 // Agrega más órdenes según sea necesario
             };
 

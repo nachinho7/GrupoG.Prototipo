@@ -39,30 +39,41 @@ namespace GrupoG.Prototipo.Pantallas
 
         private void BotonGenerarOS_Click(object sender, EventArgs e)
         {
-            List<Orden> ordenesSeleccionadas = new List<Orden>();
+            // Crear un diccionario para agrupar órdenes por número de cliente
+            Dictionary<int, List<Orden>> ordenesPorCliente = new Dictionary<int, List<Orden>>();
 
             foreach (ListViewItem item in ListaOrdenSeleccion.SelectedItems)
             {
                 Orden orden = (Orden)item.Tag;
-                ordenesSeleccionadas.Add(orden);
+
+                // Agrupar órdenes por el número de cliente
+                if (!ordenesPorCliente.ContainsKey(orden.NroCliente))
+                {
+                    ordenesPorCliente[orden.NroCliente] = new List<Orden>();
+                }
+                ordenesPorCliente[orden.NroCliente].Add(orden);
             }
 
-            if (ordenesSeleccionadas.Count > 0)
+            if (ordenesPorCliente.Count > 0)
             {
-                // Generar la orden de selección a través del modelo
-                OrdenSeleccion nuevaSeleccion = modelo.GenerarOrdenDeSeleccion(ordenesSeleccionadas);
+                foreach (var grupo in ordenesPorCliente)
+                {
+                    // Generar la orden de selección a través del modelo para cada grupo de órdenes por cliente
+                    OrdenSeleccion nuevaSeleccion = modelo.GenerarOrdenDeSeleccion(grupo.Value);
+
+                    // Mostrar el mensaje de éxito para cada orden de selección creada
+                    MessageBox.Show($"Se generó una orden de selección que incluye {grupo.Value.Count} órdenes para el cliente {grupo.Key}.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
 
                 // Actualizar la vista
                 CargarOrdenes();
-
-                // Mostrar el mensaje de una sola orden de selección creada
-                MessageBox.Show($"Se generó una orden de selección que incluye {ordenesSeleccionadas.Count} órden/es.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 MessageBox.Show("No se seleccionaron órdenes.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {
