@@ -77,6 +77,8 @@
             BotonGenerarOS.TabIndex = 1;
             BotonGenerarOS.Text = "Generar Orden de Seleccion";
             BotonGenerarOS.UseVisualStyleBackColor = true;
+            BotonGenerarOS.Click += BotonGenerarOS_Click;
+
             // 
             // VolverAlMenu
             // 
