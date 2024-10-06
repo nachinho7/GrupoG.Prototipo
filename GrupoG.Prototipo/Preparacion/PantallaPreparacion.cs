@@ -212,5 +212,15 @@ namespace GrupoG.Prototipo
         {
             this.Close();
         }
+
+        private void PantallaPreparacion_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelPrevisualizacionOrden_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
