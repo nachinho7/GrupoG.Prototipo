@@ -12,8 +12,8 @@ namespace GrupoG.Prototipo
         private readonly PantallaPreparacionModel model;
 
         // Variable para almacenar la cantidad disponible de la mercadería seleccionada
-        private int cantidadDisponible;
-        private int numeroOrden;
+        //private int cantidadDisponible;
+        //private int numeroOrden;
 
         public PantallaPreparacion()
         {
@@ -36,7 +36,7 @@ namespace GrupoG.Prototipo
 
             foreach (var mercaderia in mercaderias)
             {
-                var item = new ListViewItem(mercaderia.id.ToString());
+                var item = new ListViewItem(mercaderia.idMercaderia.ToString());
                 item.SubItems.Add(mercaderia.nombreMercaderia);
                 item.SubItems.Add(mercaderia.cantidadMercaderia.ToString());
                 ListaDatosMercaderia.Items.Add(item);
