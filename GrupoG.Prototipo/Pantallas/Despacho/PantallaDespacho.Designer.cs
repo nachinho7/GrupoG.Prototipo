@@ -46,6 +46,7 @@
             dniTransportista = new TextBox();
             labelTransportista = new Label();
             BotonObtenerDatos = new Button();
+            btnLimpiarCliente = new Button();
             SuspendLayout();
             // 
             // label1
@@ -75,6 +76,7 @@
             btnGenerarRemito.TabIndex = 5;
             btnGenerarRemito.Text = "Generar Remito";
             btnGenerarRemito.UseVisualStyleBackColor = true;
+            btnGenerarRemito.Click += btnGenerarRemito_Click;
             // 
             // listviewOrdenEntrega
             // 
@@ -165,6 +167,7 @@
             // 
             // btnBuscarTransportista
             // 
+            btnBuscarTransportista.Enabled = false;
             btnBuscarTransportista.Location = new Point(434, 575);
             btnBuscarTransportista.Margin = new Padding(4, 5, 4, 5);
             btnBuscarTransportista.Name = "btnBuscarTransportista";
@@ -176,6 +179,7 @@
             // 
             // dniTransportista
             // 
+            dniTransportista.Enabled = false;
             dniTransportista.Location = new Point(160, 608);
             dniTransportista.Margin = new Padding(4, 5, 4, 5);
             dniTransportista.Name = "dniTransportista";
@@ -194,7 +198,7 @@
             // 
             // BotonObtenerDatos
             // 
-            BotonObtenerDatos.Location = new Point(407, 33);
+            BotonObtenerDatos.Location = new Point(370, 23);
             BotonObtenerDatos.Margin = new Padding(4, 5, 4, 5);
             BotonObtenerDatos.Name = "BotonObtenerDatos";
             BotonObtenerDatos.Size = new Size(153, 63);
@@ -203,11 +207,23 @@
             BotonObtenerDatos.UseVisualStyleBackColor = true;
             BotonObtenerDatos.Click += BotonObtenerDatos_Click;
             // 
+            // btnLimpiarCliente
+            // 
+            btnLimpiarCliente.Location = new Point(544, 23);
+            btnLimpiarCliente.Margin = new Padding(4, 5, 4, 5);
+            btnLimpiarCliente.Name = "btnLimpiarCliente";
+            btnLimpiarCliente.Size = new Size(153, 63);
+            btnLimpiarCliente.TabIndex = 31;
+            btnLimpiarCliente.Text = "Limpiar Cliente";
+            btnLimpiarCliente.UseVisualStyleBackColor = true;
+            btnLimpiarCliente.Click += btnlimpiarCliente_Click;
+            // 
             // PantallaDespacho
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(691, 1018);
+            ClientSize = new Size(710, 1018);
+            Controls.Add(btnLimpiarCliente);
             Controls.Add(BotonObtenerDatos);
             Controls.Add(listviewTransportista);
             Controls.Add(btnBuscarTransportista);
@@ -249,5 +265,6 @@
         private Label labelTransportista;
         private ColumnHeader OrdenEntrega;
         private Button BotonObtenerDatos;
+        private Button btnLimpiarCliente;
     }
 }

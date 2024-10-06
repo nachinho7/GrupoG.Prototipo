@@ -44,6 +44,9 @@ namespace GrupoG.Prototipo.Pantallas
                 item.SubItems.Add(orden.NroCliente.ToString());
                 listviewOrdenEntrega.Items.Add(item);
             }
+
+            dniTransportista.Enabled = true;
+            btnBuscarTransportista.Enabled = true;
         }
 
         private void btnBuscarTransportista_Click(object sender, EventArgs e)
@@ -86,5 +89,71 @@ namespace GrupoG.Prototipo.Pantallas
             item.SubItems.Add(transportista.patente);
             listviewTransportista.Items.Add(item);
         }
+
+        private void btnGenerarRemito_Click(object sender, EventArgs e)
+        {
+            // Verificar si el cliente está habilitado
+            if (string.IsNullOrWhiteSpace(numeroCliente.Text) || !int.TryParse(numeroCliente.Text, out int clienteNumero) || listviewTransportista.Items.Count == 0)
+            {
+                MessageBox.Show("No se puede generar remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Verificar si hay un transportista seleccionado
+            if (string.IsNullOrWhiteSpace(dniTransportista.Text) || !int.TryParse(dniTransportista.Text, out int dniTransportistaInt))
+            {
+                MessageBox.Show("No se puede generar remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Obtener el transportista seleccionado
+            var transportista = model.ObtenerTransportistaPorDni(dniTransportistaInt);
+
+            if (transportista == null || !transportista.habilitadoTransportista)
+            {
+                MessageBox.Show("No se puede generar remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Obtener el número de orden desde el ListView
+            if (listviewOrdenEntrega.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Seleccione una orden de entrega antes de generar el remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Obtener la orden seleccionada
+            var selectedItem = listviewOrdenEntrega.SelectedItems[0];
+            string numeroOrden = selectedItem.SubItems[0].Text; // Suponiendo que el ID de despacho está en la primera columna
+
+            // Datos adicionales opcionales
+            string datosAdicionales = textboxDatosAdicionales.Text;
+
+            // Mostrar el mensaje de éxito
+            string mensaje = $"La orden N°{numeroOrden} ha sido despachada, y el remito ha sido generado.\n" +
+                     $"Cliente: {clienteNumero}\n" +
+                     $"DNI Transportista: {dniTransportistaInt}\n" +
+                     $"{(string.IsNullOrWhiteSpace(datosAdicionales) ? "" : $"Datos Adicionales: {datosAdicionales}")}";
+
+            // Mostrar el mensaje de éxito
+            MessageBox.Show(mensaje, "El remito ha sido generado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnlimpiarCliente_Click(object sender, EventArgs e)
+        {
+            numeroCliente.Enabled = true;
+            numeroCliente.Text = string.Empty;
+
+            listviewOrdenEntrega.Items.Clear();
+            dniTransportista.Text = string.Empty;
+            textboxDatosAdicionales.Text = string.Empty;
+            listviewTransportista.Items.Clear();
+
+
+            dniTransportista.Enabled = false;
+            btnBuscarTransportista.Enabled = false;
+        }
+
+       
     }
 }

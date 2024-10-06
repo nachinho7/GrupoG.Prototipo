@@ -36,9 +36,10 @@
             // 
             // BotonPreparacion
             // 
-            BotonPreparacion.Location = new Point(112, 57);
+            BotonPreparacion.Location = new Point(160, 95);
+            BotonPreparacion.Margin = new Padding(4, 5, 4, 5);
             BotonPreparacion.Name = "BotonPreparacion";
-            BotonPreparacion.Size = new Size(162, 44);
+            BotonPreparacion.Size = new Size(231, 73);
             BotonPreparacion.TabIndex = 1;
             BotonPreparacion.Text = "Orden de Preparación";
             BotonPreparacion.UseVisualStyleBackColor = true;
@@ -46,9 +47,10 @@
             // 
             // BotonSeleccion
             // 
-            BotonSeleccion.Location = new Point(112, 140);
+            BotonSeleccion.Location = new Point(160, 233);
+            BotonSeleccion.Margin = new Padding(4, 5, 4, 5);
             BotonSeleccion.Name = "BotonSeleccion";
-            BotonSeleccion.Size = new Size(162, 44);
+            BotonSeleccion.Size = new Size(231, 73);
             BotonSeleccion.TabIndex = 2;
             BotonSeleccion.Text = "Orden de Selección";
             BotonSeleccion.UseVisualStyleBackColor = true;
@@ -56,9 +58,10 @@
             // 
             // BotonEntrega
             // 
-            BotonEntrega.Location = new Point(112, 222);
+            BotonEntrega.Location = new Point(160, 370);
+            BotonEntrega.Margin = new Padding(4, 5, 4, 5);
             BotonEntrega.Name = "BotonEntrega";
-            BotonEntrega.Size = new Size(162, 44);
+            BotonEntrega.Size = new Size(231, 73);
             BotonEntrega.TabIndex = 3;
             BotonEntrega.Text = "Orden de Entrega";
             BotonEntrega.UseVisualStyleBackColor = true;
@@ -66,23 +69,25 @@
             // 
             // BotonDespacho
             // 
-            BotonDespacho.Location = new Point(112, 305);
+            BotonDespacho.Location = new Point(160, 508);
+            BotonDespacho.Margin = new Padding(4, 5, 4, 5);
             BotonDespacho.Name = "BotonDespacho";
-            BotonDespacho.Size = new Size(162, 44);
+            BotonDespacho.Size = new Size(231, 73);
             BotonDespacho.TabIndex = 4;
-            BotonDespacho.Text = "Oden de Despacho";
+            BotonDespacho.Text = "Orden de Despacho";
             BotonDespacho.UseVisualStyleBackColor = true;
             BotonDespacho.Click += BotonDespacho_Click;
             // 
             // PantallaMenu
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(411, 401);
+            ClientSize = new Size(587, 668);
             Controls.Add(BotonDespacho);
             Controls.Add(BotonEntrega);
             Controls.Add(BotonSeleccion);
             Controls.Add(BotonPreparacion);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "PantallaMenu";
             Text = "Menú";
             ResumeLayout(false);
