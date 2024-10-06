@@ -22,10 +22,6 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             LabelNumeroCliente = new Label();
@@ -36,32 +32,31 @@
             Id = new ColumnHeader();
             Nombre = new ColumnHeader();
             Cantidad = new ColumnHeader();
+            ColumnaUbicacion = new ColumnHeader();
             ListaPrevisualizacionOrdenesPreparacion = new ListView();
             Id1 = new ColumnHeader();
             Nombre1 = new ColumnHeader();
             Cantidad1 = new ColumnHeader();
+            columnUbicacion = new ColumnHeader();
             TextBoxCantidad = new TextBox();
             numeroCliente = new TextBox();
             BotonObtenerDatos = new Button();
             VolverAlMenu = new Button();
             btnEliminar = new Button();
             BotonLimpiarCliente = new Button();
-            ColumnaUbicacion = new ColumnHeader();
             labelNroOrden = new Label();
-            textBox1 = new TextBox();
+            textBoxNroOdenPrevisualizacion = new TextBox();
             labelFecha = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            columnUbicacion = new ColumnHeader();
+            PickerFechaDespacho = new DateTimePicker();
             labelTransportista = new Label();
-            textBox2 = new TextBox();
+            textBoxDNITransportista = new TextBox();
             GroupBoxPrevisualizacion = new GroupBox();
             groupBoxDatosMercaderia = new GroupBox();
             GroupBoxPrevisualizacion.SuspendLayout();
             groupBoxDatosMercaderia.SuspendLayout();
             SuspendLayout();
-            // 
-            // LabelNumeroCliente
-            // 
+
+
             LabelNumeroCliente.AutoSize = true;
             LabelNumeroCliente.Location = new Point(40, 32);
             LabelNumeroCliente.Name = "LabelNumeroCliente";
@@ -69,18 +64,16 @@
             LabelNumeroCliente.TabIndex = 0;
             LabelNumeroCliente.Text = "N° Cliente: ";
             LabelNumeroCliente.UseWaitCursor = true;
-            // 
-            // labelCantidadAgregar
-            // 
+
+
             labelCantidadAgregar.AutoSize = true;
             labelCantidadAgregar.Location = new Point(6, 173);
             labelCantidadAgregar.Name = "labelCantidadAgregar";
             labelCantidadAgregar.Size = new Size(110, 15);
             labelCantidadAgregar.TabIndex = 6;
             labelCantidadAgregar.Text = "Cantidad a agregar:";
-            // 
-            // btnAgregar
-            // 
+
+ 
             btnAgregar.Location = new Point(311, 161);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(126, 38);
@@ -88,9 +81,8 @@
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
             btnAgregar.Click += btnAgregar_Click;
-            // 
-            // btnGenerar
-            // 
+
+
             btnGenerar.Location = new Point(400, 740);
             btnGenerar.Name = "btnGenerar";
             btnGenerar.Size = new Size(107, 38);
@@ -125,6 +117,11 @@
             Cantidad.Text = "Cantidad";
             Cantidad.Width = 120;
             // 
+            // ColumnaUbicacion
+            // 
+            ColumnaUbicacion.Text = "Ubicacion";
+            ColumnaUbicacion.Width = 100;
+            // 
             // ListaPrevisualizacionOrdenesPreparacion
             // 
             ListaPrevisualizacionOrdenesPreparacion.Columns.AddRange(new ColumnHeader[] { Id1, Nombre1, Cantidad1, columnUbicacion });
@@ -148,6 +145,11 @@
             // 
             Cantidad1.Text = "Cantidad";
             Cantidad1.Width = 120;
+            // 
+            // columnUbicacion
+            // 
+            columnUbicacion.Text = "Ubicacion";
+            columnUbicacion.Width = 120;
             // 
             // TextBoxCantidad
             // 
@@ -203,11 +205,6 @@
             BotonLimpiarCliente.UseVisualStyleBackColor = true;
             BotonLimpiarCliente.Click += BotonLimpiarCliente_Click;
             // 
-            // ColumnaUbicacion
-            // 
-            ColumnaUbicacion.Text = "Ubicacion";
-            ColumnaUbicacion.Width = 100;
-            // 
             // labelNroOrden
             // 
             labelNroOrden.AutoSize = true;
@@ -217,12 +214,12 @@
             labelNroOrden.TabIndex = 33;
             labelNroOrden.Text = "N° de Orden";
             // 
-            // textBox1
+            // textBoxNroOdenPrevisualizacion
             // 
-            textBox1.Location = new Point(122, 25);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(212, 23);
-            textBox1.TabIndex = 34;
+            textBoxNroOdenPrevisualizacion.Location = new Point(122, 25);
+            textBoxNroOdenPrevisualizacion.Name = "textBoxNroOdenPrevisualizacion";
+            textBoxNroOdenPrevisualizacion.Size = new Size(212, 23);
+            textBoxNroOdenPrevisualizacion.TabIndex = 34;
             // 
             // labelFecha
             // 
@@ -233,17 +230,12 @@
             labelFecha.TabIndex = 35;
             labelFecha.Text = "Fecha de Despacho";
             // 
-            // dateTimePicker1
+            // PickerFechaDespacho
             // 
-            dateTimePicker1.Location = new Point(122, 57);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(212, 23);
-            dateTimePicker1.TabIndex = 36;
-            // 
-            // columnUbicacion
-            // 
-            columnUbicacion.Text = "Ubicacion";
-            columnUbicacion.Width = 120;
+            PickerFechaDespacho.Location = new Point(122, 57);
+            PickerFechaDespacho.Name = "PickerFechaDespacho";
+            PickerFechaDespacho.Size = new Size(212, 23);
+            PickerFechaDespacho.TabIndex = 36;
             // 
             // labelTransportista
             // 
@@ -254,23 +246,23 @@
             labelTransportista.TabIndex = 37;
             labelTransportista.Text = "DNI Transportista";
             // 
-            // textBox2
+            // textBoxDNITransportista
             // 
-            textBox2.Location = new Point(122, 98);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(212, 23);
-            textBox2.TabIndex = 38;
+            textBoxDNITransportista.Location = new Point(122, 98);
+            textBoxDNITransportista.Name = "textBoxDNITransportista";
+            textBoxDNITransportista.Size = new Size(212, 23);
+            textBoxDNITransportista.TabIndex = 38;
             // 
             // GroupBoxPrevisualizacion
             // 
-            GroupBoxPrevisualizacion.Controls.Add(textBox2);
+            GroupBoxPrevisualizacion.Controls.Add(textBoxDNITransportista);
             GroupBoxPrevisualizacion.Controls.Add(labelNroOrden);
             GroupBoxPrevisualizacion.Controls.Add(labelTransportista);
             GroupBoxPrevisualizacion.Controls.Add(ListaPrevisualizacionOrdenesPreparacion);
-            GroupBoxPrevisualizacion.Controls.Add(dateTimePicker1);
+            GroupBoxPrevisualizacion.Controls.Add(PickerFechaDespacho);
             GroupBoxPrevisualizacion.Controls.Add(btnEliminar);
             GroupBoxPrevisualizacion.Controls.Add(labelFecha);
-            GroupBoxPrevisualizacion.Controls.Add(textBox1);
+            GroupBoxPrevisualizacion.Controls.Add(textBoxNroOdenPrevisualizacion);
             GroupBoxPrevisualizacion.Location = new Point(40, 344);
             GroupBoxPrevisualizacion.Name = "GroupBoxPrevisualizacion";
             GroupBoxPrevisualizacion.Size = new Size(579, 377);
@@ -337,12 +329,12 @@
         private Button BotonLimpiarCliente;
         private ColumnHeader ColumnaUbicacion;
         private Label labelNroOrden;
-        private TextBox textBox1;
+        private TextBox textBoxNroOdenPrevisualizacion;
         private Label labelFecha;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker PickerFechaDespacho;
         private ColumnHeader columnUbicacion;
         private Label labelTransportista;
-        private TextBox textBox2;
+        private TextBox textBoxDNITransportista;
         private GroupBox GroupBoxPrevisualizacion;
         private GroupBox groupBoxDatosMercaderia;
     }
