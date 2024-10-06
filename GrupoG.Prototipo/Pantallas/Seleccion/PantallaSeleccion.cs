@@ -20,7 +20,6 @@ namespace GrupoG.Prototipo.Pantallas
             CargarOrdenes();
         }
 
-        // Cargar las órdenes en el ListView desde el modelo
         private void CargarOrdenes()
         {
             ListaOrdenSeleccion.Items.Clear();
@@ -32,14 +31,14 @@ namespace GrupoG.Prototipo.Pantallas
                 item.SubItems.Add(orden.NroCliente.ToString());
                 item.SubItems.Add(orden.Estado);
                 item.SubItems.Add(orden.FechaGeneracion.ToShortDateString());
-                item.Tag = orden; // Asociar el modelo de orden al ListViewItem
+                item.Tag = orden;
                 ListaOrdenSeleccion.Items.Add(item);
             }
         }
 
         private void BotonGenerarOS_Click(object sender, EventArgs e)
         {
-            // Crear un diccionario para agrupar órdenes por número de cliente
+            // Diccionario para agrupar órdenes por número de cliente
             Dictionary<int, List<Orden>> ordenesPorCliente = new Dictionary<int, List<Orden>>();
 
             foreach (ListViewItem item in ListaOrdenSeleccion.SelectedItems)
@@ -58,14 +57,11 @@ namespace GrupoG.Prototipo.Pantallas
             {
                 foreach (var grupo in ordenesPorCliente)
                 {
-                    // Generar la orden de selección a través del modelo para cada grupo de órdenes por cliente
                     OrdenSeleccion nuevaSeleccion = modelo.GenerarOrdenDeSeleccion(grupo.Value);
 
-                    // Mostrar el mensaje de éxito para cada orden de selección creada
                     MessageBox.Show($"Se generó una orden de selección que incluye {grupo.Value.Count} órdenes para el cliente {grupo.Key}.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
-                // Actualizar la vista
                 CargarOrdenes();
             }
             else

@@ -30,7 +30,7 @@ namespace GrupoG.Prototipo.Pantallas
         {
             if (string.IsNullOrWhiteSpace(numeroCliente.Text) || !int.TryParse(numeroCliente.Text, out int numeroClienteInt))
             {
-                MessageBox.Show("Por favor, ingrese un número de cliente válido.");
+                MessageBox.Show("Por favor, ingrese un número de cliente válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -74,7 +74,7 @@ namespace GrupoG.Prototipo.Pantallas
             }
             else
             {
-                MessageBox.Show("No se encontró el transportista con ese DNI.");
+                MessageBox.Show("No se encontró el transportista con ese DNI.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 listviewTransportista.Items.Clear();
             }
         }
@@ -124,7 +124,7 @@ namespace GrupoG.Prototipo.Pantallas
 
             // Obtener la orden seleccionada
             var selectedItem = listviewOrdenEntrega.SelectedItems[0];
-            string numeroOrden = selectedItem.SubItems[0].Text; // Suponiendo que el ID de despacho está en la primera columna
+            string numeroOrden = selectedItem.SubItems[0].Text;
 
             // Datos adicionales opcionales
             string datosAdicionales = textboxDatosAdicionales.Text;
