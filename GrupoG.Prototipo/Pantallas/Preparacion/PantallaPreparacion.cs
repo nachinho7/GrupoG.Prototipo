@@ -13,7 +13,7 @@ namespace GrupoG.Prototipo
 
         // Variable para almacenar la cantidad disponible de la mercadería seleccionada
         private int cantidadDisponible;
-        private int numeroOrden; // Variable para el número de orden
+        private int numeroOrden;
 
         public PantallaPreparacion()
         {
@@ -70,7 +70,7 @@ namespace GrupoG.Prototipo
         {
             if (ListaDatosMercaderia.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Por favor, seleccione id de mercadería.");
+                MessageBox.Show("Por favor, seleccione id de mercadería.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             // Validar la cantidad ingresada por el usuario
@@ -80,11 +80,11 @@ namespace GrupoG.Prototipo
             {
                 if (cantidadSeleccionada > cantidadDisponible)
                 {
-                    MessageBox.Show("La cantidad seleccionada no puede exceder la cantidad disponible.");
+                    MessageBox.Show("La cantidad seleccionada no puede exceder la cantidad disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else if (cantidadSeleccionada <= 0)
                 {
-                    MessageBox.Show("La cantidad seleccionada debe ser mayor que cero.");
+                    MessageBox.Show("La cantidad seleccionada debe ser mayor que cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -101,12 +101,12 @@ namespace GrupoG.Prototipo
                     cantidadDisponible -= cantidadSeleccionada;
                     ListaDatosMercaderia.SelectedItems[0].SubItems[2].Text = cantidadDisponible.ToString();
 
-                    MessageBox.Show($"Se agregaron {cantidadSeleccionada} unidades.");
+                    MessageBox.Show($"Se agregaron {cantidadSeleccionada} unidades.", "Unidades Agregadas", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
-                MessageBox.Show("Por favor, ingrese una cantidad válida.");
+                MessageBox.Show("Por favor, ingrese una cantidad válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -115,7 +115,7 @@ namespace GrupoG.Prototipo
             // Verificar si hay elementos en la lista de previsualización
             if (ListaPrevisualizacionOrdenesPreparacion.Items.Count == 0)
             {
-                MessageBox.Show("No hay elementos en la lista de previsualización. Agrega mercadería antes de generar la orden.");
+                MessageBox.Show("No hay elementos en la lista de previsualización. Agrega mercadería antes de generar la orden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -144,7 +144,7 @@ namespace GrupoG.Prototipo
                 }
             }
 
-            MessageBox.Show("La orden de preparación se ha generado exitosamente y la cantidad de mercadería ha sido actualizada.");
+            MessageBox.Show("La orden de preparación se ha generado exitosamente.", "Orden Generada", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Limpiar la lista de previsualización y resetear el formulario
             ListaPrevisualizacionOrdenesPreparacion.Items.Clear();
@@ -176,11 +176,11 @@ namespace GrupoG.Prototipo
                 {
                     // Eliminar el ítem seleccionado
                     ListaPrevisualizacionOrdenesPreparacion.Items.Remove(selectedItem);
-                    MessageBox.Show("Elemento eliminado.");
+                    MessageBox.Show("Elemento eliminado.", "Elemento Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     foreach (ListViewItem item in ListaDatosMercaderia.Items)
                     {
-                        if (item.Text == selectedItem.SubItems[1].Text) // Comparar ID de mercadería
+                        if (item.Text == selectedItem.SubItems[1].Text)
                         {
                             // Actualizar la cantidad de mercadería disponible
                             int cantidadDisponibleActual = int.Parse(item.SubItems[2].Text);
@@ -192,7 +192,7 @@ namespace GrupoG.Prototipo
             }
             else
             {
-                MessageBox.Show("Por favor, seleccione un elemento para eliminar.");
+                MessageBox.Show("Por favor, seleccione un elemento para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

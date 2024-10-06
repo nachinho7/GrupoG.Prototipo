@@ -20,7 +20,7 @@ namespace GrupoG.Prototipo.Pantallas
             CargarOrdenes();
         }
 
-        // Método para cargar las órdenes en el ListView desde el modelo
+        // Cargar las órdenes en el ListView desde el modelo
         private void CargarOrdenes()
         {
             ListaOrdenSeleccion.Items.Clear();
