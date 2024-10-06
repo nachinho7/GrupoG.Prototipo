@@ -35,6 +35,13 @@ namespace GrupoG.Prototipo.Pantallas
             }
 
             var ordenes = model.ObtenerOrdenesPorCliente(numeroClienteInt);
+
+            if (ordenes == null || ordenes.Count == 0)
+            {
+                MessageBox.Show("No se encontraron órdenes para el cliente ingresado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             listviewOrdenEntrega.Items.Clear();
 
             foreach (var orden in ordenes)
@@ -53,7 +60,7 @@ namespace GrupoG.Prototipo.Pantallas
         {
             if (string.IsNullOrWhiteSpace(dniTransportista.Text) || !int.TryParse(dniTransportista.Text, out int dniInt))
             {
-                MessageBox.Show("Por favor, ingrese un DNI válido.");
+                MessageBox.Show("Por favor, ingrese un DNI válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -92,14 +99,12 @@ namespace GrupoG.Prototipo.Pantallas
 
         private void btnGenerarRemito_Click(object sender, EventArgs e)
         {
-            // Verificar si el cliente está habilitado
             if (string.IsNullOrWhiteSpace(numeroCliente.Text) || !int.TryParse(numeroCliente.Text, out int clienteNumero) || listviewTransportista.Items.Count == 0)
             {
                 MessageBox.Show("No se puede generar remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Verificar si hay un transportista seleccionado
             if (string.IsNullOrWhiteSpace(dniTransportista.Text) || !int.TryParse(dniTransportista.Text, out int dniTransportistaInt))
             {
                 MessageBox.Show("No se puede generar remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -122,21 +127,38 @@ namespace GrupoG.Prototipo.Pantallas
                 return;
             }
 
-            // Obtener la orden seleccionada
             var selectedItem = listviewOrdenEntrega.SelectedItems[0];
             string numeroOrden = selectedItem.SubItems[0].Text;
 
-            // Datos adicionales opcionales
+            if (!int.TryParse(numeroOrden, out int idDespacho))
+            {
+                MessageBox.Show("Error al obtener el ID de la orden seleccionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             string datosAdicionales = textboxDatosAdicionales.Text;
 
-            // Mostrar el mensaje de éxito
             string mensaje = $"La orden N°{numeroOrden} ha sido despachada, y el remito ha sido generado.\n" +
-                     $"Cliente: {clienteNumero}\n" +
-                     $"DNI Transportista: {dniTransportistaInt}\n" +
-                     $"{(string.IsNullOrWhiteSpace(datosAdicionales) ? "" : $"Datos Adicionales: {datosAdicionales}")}";
+                             $"Cliente: {clienteNumero}\n" +
+                             $"DNI Transportista: {dniTransportistaInt}\n" +
+                             $"{(string.IsNullOrWhiteSpace(datosAdicionales) ? "" : $"Datos Adicionales: {datosAdicionales}")}";
 
-            // Mostrar el mensaje de éxito
-            MessageBox.Show(mensaje, "El remito ha sido generado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(mensaje, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            listviewOrdenEntrega.Items.Remove(selectedItem);
+
+            model.EliminarOrdenPorId(idDespacho);
+            listviewOrdenEntrega.Items.Clear();
+
+            numeroCliente.Text = string.Empty;
+            numeroCliente.Enabled = true;
+
+            dniTransportista.Text = string.Empty;
+            listviewTransportista.Items.Clear();
+            textboxDatosAdicionales.Text = string.Empty;
+
+            dniTransportista.Enabled = false;
+            btnBuscarTransportista.Enabled = false;
         }
 
         private void btnlimpiarCliente_Click(object sender, EventArgs e)

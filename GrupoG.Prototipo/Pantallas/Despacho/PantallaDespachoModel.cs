@@ -53,26 +53,36 @@ namespace GrupoG.Prototipo.Pantallas.Despacho
             // Filtrar y devolver las órdenes de despacho relacionadas al cliente
             var ordenesFiltradas = ordenesDespacho.Where(o => o.NroCliente == numeroCliente).ToList();
 
-            Console.WriteLine($"Se encontraron {ordenesFiltradas.Count} órdenes para el cliente {numeroCliente}");
+            Console.WriteLine($"Se encontraron {ordenesFiltradas.Count} ordenes para el cliente {numeroCliente}", "Ordenes Encontradas", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             return ordenesFiltradas;
         }
 
         public Transportistas ObtenerTransportistaPorDni(int dniTransportista)
         {
-            // Buscar el transportista en la lista por su DNI
             var transportista = Transportistas.FirstOrDefault(t => t.dniTransportista == dniTransportista);
 
             if (transportista != null)
             {
-                Console.WriteLine($"Transportista encontrado con DNI {dniTransportista}");
+                Console.WriteLine($"Transportista encontrado con DNI {dniTransportista}", "Transportista Habilitado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                Console.WriteLine($"No se encontró el transportista con DNI {dniTransportista}");
+                Console.WriteLine($"No se encontró el transportista con DNI {dniTransportista}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return transportista;
         }
+
+        public void EliminarOrdenPorId(int idDespacho)
+        {
+            var ordenAEliminar = ordenesDespacho.FirstOrDefault(o => o.IdDespacho == idDespacho);
+
+            if (ordenAEliminar != null)
+            {
+                ordenesDespacho.Remove(ordenAEliminar);
+            }
+        }
+
     }
 }
