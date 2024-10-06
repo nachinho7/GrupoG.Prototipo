@@ -28,58 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            comboBox1 = new ComboBox();
-            Empaquetar = new Button();
-            listView1 = new ListView();
+            BotonEmpaquetar = new Button();
+            ListaOrdenesEmpaquetar = new ListView();
             ColumnaNumeroCliente = new ColumnHeader();
             ColumnaCodigo = new ColumnHeader();
             ColumnaUbicacion = new ColumnHeader();
             ColumnaTipo = new ColumnHeader();
-            VolverAlMenu = new Button();
+            BotonVolverAlMenu = new Button();
+            ColumnaNumeroOrden = new ColumnHeader();
             SuspendLayout();
             // 
-            // label1
+            // BotonEmpaquetar
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(74, 34);
-            label1.Name = "label1";
-            label1.Size = new Size(79, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Nro de Orden";
-            label1.Click += label1_Click;
+            BotonEmpaquetar.Location = new Point(672, 274);
+            BotonEmpaquetar.Margin = new Padding(3, 2, 3, 2);
+            BotonEmpaquetar.Name = "BotonEmpaquetar";
+            BotonEmpaquetar.Size = new Size(103, 38);
+            BotonEmpaquetar.TabIndex = 7;
+            BotonEmpaquetar.Text = "Empaquetar\r\n";
+            BotonEmpaquetar.UseVisualStyleBackColor = true;
+            BotonEmpaquetar.Click += Empaquetar_Click;
             // 
-            // comboBox1
+            // ListaOrdenesEmpaquetar
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Nro de orden" });
-            comboBox1.Location = new Point(166, 28);
-            comboBox1.Margin = new Padding(3, 2, 3, 2);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(133, 23);
-            comboBox1.TabIndex = 2;
-            // 
-            // Empaquetar
-            // 
-            Empaquetar.Location = new Point(474, 274);
-            Empaquetar.Margin = new Padding(3, 2, 3, 2);
-            Empaquetar.Name = "Empaquetar";
-            Empaquetar.Size = new Size(103, 38);
-            Empaquetar.TabIndex = 7;
-            Empaquetar.Text = "Empaquetar\r\n";
-            Empaquetar.UseVisualStyleBackColor = true;
-            Empaquetar.Click += Empaquetar_Click;
-            // 
-            // listView1
-            // 
-            listView1.Columns.AddRange(new ColumnHeader[] { ColumnaNumeroCliente, ColumnaCodigo, ColumnaUbicacion, ColumnaTipo });
-            listView1.Location = new Point(87, 100);
-            listView1.Margin = new Padding(3, 2, 3, 2);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(522, 137);
-            listView1.TabIndex = 9;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            ListaOrdenesEmpaquetar.Columns.AddRange(new ColumnHeader[] { ColumnaNumeroOrden, ColumnaNumeroCliente, ColumnaCodigo, ColumnaUbicacion, ColumnaTipo });
+            ListaOrdenesEmpaquetar.Location = new Point(53, 35);
+            ListaOrdenesEmpaquetar.Margin = new Padding(3, 2, 3, 2);
+            ListaOrdenesEmpaquetar.Name = "ListaOrdenesEmpaquetar";
+            ListaOrdenesEmpaquetar.Size = new Size(755, 210);
+            ListaOrdenesEmpaquetar.TabIndex = 9;
+            ListaOrdenesEmpaquetar.UseCompatibleStateImageBehavior = false;
+            ListaOrdenesEmpaquetar.View = View.Details;
             // 
             // ColumnaNumeroCliente
             // 
@@ -101,44 +80,44 @@
             ColumnaTipo.Text = "Tipo";
             ColumnaTipo.Width = 150;
             // 
-            // VolverAlMenu
+            // BotonVolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(87, 274);
-            VolverAlMenu.Name = "VolverAlMenu";
-            VolverAlMenu.Size = new Size(75, 39);
-            VolverAlMenu.TabIndex = 10;
-            VolverAlMenu.Text = "Volver al Menú";
-            VolverAlMenu.UseVisualStyleBackColor = true;
-            VolverAlMenu.Click += VolverAlMenu_Click;
+            BotonVolverAlMenu.Location = new Point(87, 274);
+            BotonVolverAlMenu.Name = "BotonVolverAlMenu";
+            BotonVolverAlMenu.Size = new Size(103, 38);
+            BotonVolverAlMenu.TabIndex = 10;
+            BotonVolverAlMenu.Text = "Volver al Menú";
+            BotonVolverAlMenu.UseVisualStyleBackColor = true;
+            BotonVolverAlMenu.Click += VolverAlMenu_Click;
+            // 
+            // ColumnaNumeroOrden
+            // 
+            ColumnaNumeroOrden.Text = "Numero de Órden";
+            ColumnaNumeroOrden.Width = 150;
             // 
             // PantallaEntrega
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 338);
-            Controls.Add(VolverAlMenu);
-            Controls.Add(listView1);
-            Controls.Add(Empaquetar);
-            Controls.Add(comboBox1);
-            Controls.Add(label1);
+            ClientSize = new Size(878, 349);
+            Controls.Add(BotonVolverAlMenu);
+            Controls.Add(ListaOrdenesEmpaquetar);
+            Controls.Add(BotonEmpaquetar);
             Margin = new Padding(3, 2, 3, 2);
             Name = "PantallaEntrega";
-            Text = "Orden de Entrega";
+            Text = "Órden de Entrega";
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private Label label1;
-        private ComboBox comboBox1;
-        private Button Empaquetar;
-        private ListView listView1;
+        private Button BotonEmpaquetar;
+        private ListView ListaOrdenesEmpaquetar;
         private ColumnHeader ColumnaNumeroCliente;
         private ColumnHeader ColumnaCodigo;
         private ColumnHeader ColumnaUbicacion;
         private ColumnHeader ColumnaTipo;
         private Button BotonVolverMenu;
-        private Button VolverAlMenu;
+        private Button BotonVolverAlMenu;
+        private ColumnHeader ColumnaNumeroOrden;
     }
 }
