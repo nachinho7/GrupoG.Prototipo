@@ -46,6 +46,11 @@ namespace GrupoG.Prototipo
                 {
                     MessageBox.Show("No se encontró mercadería para el cliente ingresado.");
                 }
+                else
+                {
+                    // Deshabilitar el campo de número de cliente después de obtener los datos
+                    numeroCliente.Enabled = false;
+                }
             }
             else
             {
@@ -125,6 +130,21 @@ namespace GrupoG.Prototipo
 
             // Mostrar mensaje de éxito
             MessageBox.Show("La orden de preparación ha sido generada exitosamente.");
+
+            // Limpiar los datos de la lista de previsualización
+            ListaPrevisualizacionOrdenesPreparacion.Items.Clear();
+            ListaDatosMercaderia.Items.Clear();
+
+            // Limpiar el TextBox de cantidad y deshabilitarlo
+            TextBoxCantidad.Text = string.Empty; // Limpiar el contenido del TextBox
+            TextBoxCantidad.Enabled = false; // Deshabilitar el TextBox de cantidad
+
+            // Habilitar el campo de número de cliente nuevamente
+            numeroCliente.Enabled = true;
+            numeroCliente.Text = string.Empty; // Limpiar el campo de número de cliente
+
+            // Reiniciar el número de orden si es necesario
+            //numeroOrden = 1; // Puedes ajustar esta lógica si quieres que el número de orden se reinicie o continúe
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -165,6 +185,20 @@ namespace GrupoG.Prototipo
                 MessageBox.Show("Por favor, seleccione un elemento para eliminar.");
             }
         }
+        private void BotonLimpiarCliente_Click(object sender, EventArgs e)
+        {
+            // Habilitar el campo de número de cliente nuevamente y limpiar su contenido
+            numeroCliente.Enabled = true;
+            numeroCliente.Text = string.Empty;
+
+            // Limpiar la lista de mercaderías mostradas
+            ListaDatosMercaderia.Items.Clear();
+            ListaPrevisualizacionOrdenesPreparacion.Items.Clear();
+
+            // Limpiar el TextBox de cantidad
+            TextBoxCantidad.Text = string.Empty;
+            TextBoxCantidad.Enabled = false;
+        }
 
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
@@ -173,3 +207,11 @@ namespace GrupoG.Prototipo
         }
     }
 }
+
+
+
+//TODO: [cuando se pone generar, se tiene que limpiar todo - ok] y descontar la cantidad si lo vuelvo a buscar 
+//TODO: agregar un crear all, para limpiar todo. Paracido a generar - ok
+//TODO: Que se bloquee el boton de obtener datos si ya se uno xx - ok
+//TODO: Ver comentarios
+//TODO: ver mensajes de error
