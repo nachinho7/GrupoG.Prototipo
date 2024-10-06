@@ -172,6 +172,7 @@
             btnBuscarTransportista.TabIndex = 28;
             btnBuscarTransportista.Text = "Buscar Transportista";
             btnBuscarTransportista.UseVisualStyleBackColor = true;
+            btnBuscarTransportista.Click += btnBuscarTransportista_Click;
             // 
             // dniTransportista
             // 
