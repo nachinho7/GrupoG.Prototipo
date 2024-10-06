@@ -29,239 +29,205 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            textBox1 = new TextBox();
-            label2 = new Label();
-            listBox1 = new ListBox();
-            button1 = new Button();
-            listView1 = new ListView();
+            numeroCliente = new TextBox();
+            btnGenerarRemito = new Button();
+            listviewOrdenEntrega = new ListView();
             Mercaderia = new ColumnHeader();
             Cantidad = new ColumnHeader();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            checkBox1 = new CheckBox();
-            button3 = new Button();
-            label8 = new Label();
-            richTextBox1 = new RichTextBox();
+            labelOrdenEntrega = new Label();
+            labelDatosAdicionales = new Label();
+            textboxDatosAdicionales = new RichTextBox();
             VolverAlMenu = new Button();
+            listviewTransportista = new ListView();
+            ClienteTransportista = new ColumnHeader();
+            EstadoTransportista = new ColumnHeader();
+            Patente = new ColumnHeader();
+            btnBuscarTransportista = new Button();
+            dniTransportista = new TextBox();
+            labelTransportista = new Label();
+            OrdenEntrega = new ColumnHeader();
+            BotonObtenerDatos = new Button();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(42, 25);
+            label1.Location = new Point(60, 42);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(61, 15);
+            label1.Size = new Size(90, 25);
             label1.TabIndex = 0;
             label1.Text = "N° Cliente";
             // 
-            // textBox1
+            // numeroCliente
             // 
-            textBox1.Location = new Point(133, 22);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 1;
+            numeroCliente.Location = new Point(190, 37);
+            numeroCliente.Margin = new Padding(4, 5, 4, 5);
+            numeroCliente.Name = "numeroCliente";
+            numeroCliente.Size = new Size(141, 31);
+            numeroCliente.TabIndex = 1;
             // 
-            // label2
+            // btnGenerarRemito
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(43, 66);
-            label2.Name = "label2";
-            label2.Size = new Size(115, 15);
-            label2.TabIndex = 3;
-            label2.Text = "Orden/es de entrega";
+            btnGenerarRemito.Location = new Point(481, 931);
+            btnGenerarRemito.Margin = new Padding(4, 5, 4, 5);
+            btnGenerarRemito.Name = "btnGenerarRemito";
+            btnGenerarRemito.Size = new Size(153, 63);
+            btnGenerarRemito.TabIndex = 5;
+            btnGenerarRemito.Text = "Generar Remito";
+            btnGenerarRemito.UseVisualStyleBackColor = true;
             // 
-            // listBox1
+            // listviewOrdenEntrega
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(43, 84);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(138, 109);
-            listBox1.TabIndex = 4;
-            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(425, 491);
-            button1.Name = "button1";
-            button1.Size = new Size(107, 38);
-            button1.TabIndex = 5;
-            button1.Text = "Generar Remito";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // listView1
-            // 
-            listView1.Columns.AddRange(new ColumnHeader[] { Mercaderia, Cantidad });
-            listView1.Location = new Point(260, 84);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(319, 119);
-            listView1.TabIndex = 6;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            listviewOrdenEntrega.Columns.AddRange(new ColumnHeader[] { OrdenEntrega, Mercaderia, Cantidad });
+            listviewOrdenEntrega.Location = new Point(61, 139);
+            listviewOrdenEntrega.Margin = new Padding(4, 5, 4, 5);
+            listviewOrdenEntrega.Name = "listviewOrdenEntrega";
+            listviewOrdenEntrega.Size = new Size(574, 189);
+            listviewOrdenEntrega.TabIndex = 6;
+            listviewOrdenEntrega.UseCompatibleStateImageBehavior = false;
+            listviewOrdenEntrega.View = View.Details;
             // 
             // Mercaderia
             // 
             Mercaderia.Text = "Mercaderia";
-            Mercaderia.Width = 80;
+            Mercaderia.Width = 150;
             // 
             // Cantidad
             // 
             Cantidad.Text = "Cantidad";
-            Cantidad.Width = 80;
+            Cantidad.Width = 150;
             // 
-            // label3
+            // labelOrdenEntrega
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(260, 66);
-            label3.Name = "label3";
-            label3.Size = new Size(66, 15);
-            label3.TabIndex = 7;
-            label3.Text = "Mercaderia";
-            label3.Click += label3_Click;
+            labelOrdenEntrega.AutoSize = true;
+            labelOrdenEntrega.Location = new Point(57, 109);
+            labelOrdenEntrega.Margin = new Padding(4, 0, 4, 0);
+            labelOrdenEntrega.Name = "labelOrdenEntrega";
+            labelOrdenEntrega.Size = new Size(176, 25);
+            labelOrdenEntrega.TabIndex = 7;
+            labelOrdenEntrega.Text = "Orden/es de Entrega";
+            labelOrdenEntrega.Click += label3_Click;
             // 
-            // label4
+            // labelDatosAdicionales
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(58, 331);
-            label4.Name = "label4";
-            label4.Size = new Size(51, 15);
-            label4.TabIndex = 8;
-            label4.Text = "Nombre";
+            labelDatosAdicionales.AutoSize = true;
+            labelDatosAdicionales.Location = new Point(60, 349);
+            labelDatosAdicionales.Margin = new Padding(4, 0, 4, 0);
+            labelDatosAdicionales.Name = "labelDatosAdicionales";
+            labelDatosAdicionales.Size = new Size(154, 25);
+            labelDatosAdicionales.TabIndex = 21;
+            labelDatosAdicionales.Text = "Datos Adicionales";
+            labelDatosAdicionales.Click += label8_Click;
             // 
-            // label5
+            // textboxDatosAdicionales
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(58, 389);
-            label5.Name = "label5";
-            label5.Size = new Size(51, 15);
-            label5.TabIndex = 9;
-            label5.Text = "Apellido";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(234, 331);
-            label6.Name = "label6";
-            label6.Size = new Size(27, 15);
-            label6.TabIndex = 10;
-            label6.Text = "DNI";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(220, 389);
-            label7.Name = "label7";
-            label7.Size = new Size(47, 15);
-            label7.TabIndex = 11;
-            label7.Text = "Patente";
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(43, 349);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(95, 23);
-            textBox2.TabIndex = 13;
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(40, 407);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(95, 23);
-            textBox3.TabIndex = 14;
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(203, 349);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(95, 23);
-            textBox4.TabIndex = 15;
-            // 
-            // textBox5
-            // 
-            textBox5.Location = new Point(203, 407);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(95, 23);
-            textBox5.TabIndex = 16;
-            // 
-            // checkBox1
-            // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(378, 410);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(86, 19);
-            checkBox1.TabIndex = 19;
-            checkBox1.Text = "Habilitado?";
-            checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(378, 365);
-            button3.Name = "button3";
-            button3.Size = new Size(87, 39);
-            button3.TabIndex = 20;
-            button3.Text = "Buscar Transportista";
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(43, 206);
-            label8.Name = "label8";
-            label8.Size = new Size(101, 15);
-            label8.TabIndex = 21;
-            label8.Text = "Datos Adicionales";
-            // 
-            // richTextBox1
-            // 
-            richTextBox1.Location = new Point(40, 234);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(539, 79);
-            richTextBox1.TabIndex = 23;
-            richTextBox1.Text = "";
+            textboxDatosAdicionales.Location = new Point(61, 392);
+            textboxDatosAdicionales.Margin = new Padding(4, 5, 4, 5);
+            textboxDatosAdicionales.Name = "textboxDatosAdicionales";
+            textboxDatosAdicionales.Size = new Size(577, 122);
+            textboxDatosAdicionales.TabIndex = 23;
+            textboxDatosAdicionales.Text = "";
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(40, 491);
+            VolverAlMenu.Location = new Point(60, 929);
+            VolverAlMenu.Margin = new Padding(4, 5, 4, 5);
             VolverAlMenu.Name = "VolverAlMenu";
-            VolverAlMenu.Size = new Size(75, 39);
+            VolverAlMenu.Size = new Size(107, 65);
             VolverAlMenu.TabIndex = 25;
             VolverAlMenu.Text = "Volver al Menú";
             VolverAlMenu.UseVisualStyleBackColor = true;
             VolverAlMenu.Click += VolverAlMenu_Click;
             // 
+            // listviewTransportista
+            // 
+            listviewTransportista.Columns.AddRange(new ColumnHeader[] { ClienteTransportista, EstadoTransportista, Patente });
+            listviewTransportista.Location = new Point(115, 650);
+            listviewTransportista.Margin = new Padding(4, 5, 4, 5);
+            listviewTransportista.Name = "listviewTransportista";
+            listviewTransportista.Size = new Size(453, 193);
+            listviewTransportista.TabIndex = 29;
+            listviewTransportista.UseCompatibleStateImageBehavior = false;
+            listviewTransportista.View = View.Details;
+            // 
+            // ClienteTransportista
+            // 
+            ClienteTransportista.Text = "N° Cliente";
+            ClienteTransportista.Width = 120;
+            // 
+            // EstadoTransportista
+            // 
+            EstadoTransportista.Text = "Transportista habilitado?";
+            EstadoTransportista.Width = 230;
+            // 
+            // Patente
+            // 
+            Patente.Text = "Patente";
+            Patente.Width = 95;
+            // 
+            // btnBuscarTransportista
+            // 
+            btnBuscarTransportista.Location = new Point(434, 575);
+            btnBuscarTransportista.Margin = new Padding(4, 5, 4, 5);
+            btnBuscarTransportista.Name = "btnBuscarTransportista";
+            btnBuscarTransportista.Size = new Size(124, 65);
+            btnBuscarTransportista.TabIndex = 28;
+            btnBuscarTransportista.Text = "Buscar Transportista";
+            btnBuscarTransportista.UseVisualStyleBackColor = true;
+            // 
+            // dniTransportista
+            // 
+            dniTransportista.Location = new Point(160, 609);
+            dniTransportista.Margin = new Padding(4, 5, 4, 5);
+            dniTransportista.Name = "dniTransportista";
+            dniTransportista.Size = new Size(204, 31);
+            dniTransportista.TabIndex = 27;
+            // 
+            // labelTransportista
+            // 
+            labelTransportista.AutoSize = true;
+            labelTransportista.Location = new Point(140, 565);
+            labelTransportista.Margin = new Padding(4, 0, 4, 0);
+            labelTransportista.Name = "labelTransportista";
+            labelTransportista.Size = new Size(241, 25);
+            labelTransportista.TabIndex = 26;
+            labelTransportista.Text = "Ingrese DNI del Transportista";
+            // 
+            // OrdenEntrega
+            // 
+            OrdenEntrega.Text = "N° Orden";
+            OrdenEntrega.Width = 150;
+            // 
+            // BotonObtenerDatos
+            // 
+            BotonObtenerDatos.Location = new Point(407, 34);
+            BotonObtenerDatos.Margin = new Padding(4, 5, 4, 5);
+            BotonObtenerDatos.Name = "BotonObtenerDatos";
+            BotonObtenerDatos.Size = new Size(151, 40);
+            BotonObtenerDatos.TabIndex = 30;
+            BotonObtenerDatos.Text = "Obtener Datos";
+            BotonObtenerDatos.UseVisualStyleBackColor = true;
+            // 
             // PantallaDespacho
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(603, 545);
+            ClientSize = new Size(692, 1019);
+            Controls.Add(BotonObtenerDatos);
+            Controls.Add(listviewTransportista);
+            Controls.Add(btnBuscarTransportista);
+            Controls.Add(dniTransportista);
+            Controls.Add(labelTransportista);
             Controls.Add(VolverAlMenu);
-            Controls.Add(richTextBox1);
-            Controls.Add(label8);
-            Controls.Add(button3);
-            Controls.Add(checkBox1);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(label7);
-            Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(listView1);
-            Controls.Add(button1);
-            Controls.Add(listBox1);
-            Controls.Add(label2);
-            Controls.Add(textBox1);
+            Controls.Add(textboxDatosAdicionales);
+            Controls.Add(labelDatosAdicionales);
+            Controls.Add(labelOrdenEntrega);
+            Controls.Add(listviewOrdenEntrega);
+            Controls.Add(btnGenerarRemito);
+            Controls.Add(numeroCliente);
             Controls.Add(label1);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "PantallaDespacho";
             Text = "Orden de Despacho";
             Load += PantallaDespacho_Load;
@@ -272,26 +238,23 @@
         #endregion
 
         private Label label1;
-        private TextBox textBox1;
-        private Label label2;
-        private ListBox listBox1;
-        private Button button1;
-        private ListView listView1;
+        private TextBox numeroCliente;
+        private Button btnGenerarRemito;
+        private ListView listviewOrdenEntrega;
         private ColumnHeader Mercaderia;
         private ColumnHeader Cantidad;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private Label label6;
-        private Label label7;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private CheckBox checkBox1;
-        private Button button3;
-        private Label label8;
-        private RichTextBox richTextBox1;
+        private Label labelOrdenEntrega;
+        private Label labelDatosAdicionales;
+        private RichTextBox textboxDatosAdicionales;
         private Button VolverAlMenu;
+        private ListView listviewTransportista;
+        private ColumnHeader ClienteTransportista;
+        private ColumnHeader EstadoTransportista;
+        private ColumnHeader Patente;
+        private Button btnBuscarTransportista;
+        private TextBox dniTransportista;
+        private Label labelTransportista;
+        private ColumnHeader OrdenEntrega;
+        private Button BotonObtenerDatos;
     }
 }
