@@ -9,7 +9,7 @@ namespace GrupoG.Prototipo.Objetos
         public int NroCliente { get; set; }
         public string Estado { get; set; }
 
-        // Constructor
+        // Creamos el constructor
         public OrdenDespacho(int idDespacho, int nroCliente, string estado)
         {
             IdDespacho = idDespacho;

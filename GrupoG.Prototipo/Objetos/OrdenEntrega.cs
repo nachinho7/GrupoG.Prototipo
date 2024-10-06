@@ -11,7 +11,7 @@ namespace GrupoG.Prototipo.Objetos
     internal class OrdenEntrega
     {
         public int IdEntrega { get; set; }
-        public List<PantallaEntregaModel.Orden> Ordenes { get; set; } // Usar el tipo correcto aquí
+        public List<PantallaEntregaModel.Orden> Ordenes { get; set; } 
         public int NroCliente { get; set; }
         public int Codigo { get; set; }
         public string Tipo { get; set; }

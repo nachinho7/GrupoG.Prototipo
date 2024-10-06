@@ -30,15 +30,14 @@ namespace GrupoG.Prototipo.Pantallas
 
             foreach (var orden in ordenes)
             {
-                // Crear un nuevo ListViewItem con el número de orden como texto principal
                 var item = new ListViewItem(orden.NroOrden.ToString());
 
-                // Agregar los subelementos correspondientes a cada columna
+                // subitems
                 item.SubItems.Add(orden.NroCliente.ToString());
                 item.SubItems.Add(orden.Codigo.ToString());
                 item.SubItems.Add(orden.Tipo.ToString());
 
-                // Agregar el ListViewItem a la lista
+              
                 ListaOrdenesEmpaquetar.Items.Add(item);
             }
         }
@@ -57,19 +56,17 @@ namespace GrupoG.Prototipo.Pantallas
                 return;
             }
 
-            // Obtén el ítem seleccionado
+            
             var selectedItem = ListaOrdenesEmpaquetar.SelectedItems[0];
 
-            // Encuentra la orden correspondiente usando el número de orden
+            // nro orden
             int nroOrden = int.Parse(selectedItem.Text);
             var orden = model.ObtenerOrdenes().FirstOrDefault(o => o.NroOrden == nroOrden);
 
             if (orden != null)
             {
-                // Marca la orden como empaquetada
+                
                 orden.Empaquetada = true;
-
-                // Elimina el ítem de la lista
                 ListaOrdenesEmpaquetar.Items.Remove(selectedItem);
 
                 MessageBox.Show($"La orden {nroOrden} ha sido empaquetada.", "Orden Empaquetada", MessageBoxButtons.OK, MessageBoxIcon.Information);
