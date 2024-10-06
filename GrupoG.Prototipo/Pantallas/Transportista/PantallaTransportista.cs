@@ -1,45 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GrupoG.Prototipo.Pantallas.ConsultaTransportista;
+using System;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GrupoG.Prototipo.Pantallas
 {
     public partial class PantallaTransportista : Form
     {
+        private PantallaTransportistaModel _model;
+
         public PantallaTransportista()
         {
-            InitializeComponent();
+            InitializeComponent(); // Asegúrate de que InitializeComponent esté correctamente definido
+            _model = new PantallaTransportistaModel(); // Inicializar el modelo
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        // Método que se ejecuta cuando el formulario se carga
         private void PantallaConsultaTransportista_Load(object sender, EventArgs e)
         {
+        }
 
+        // Método para buscar transportista cuando se hace click en "Buscar Transportista"
+        private void BuscarTransportista_Click(object sender, EventArgs e)
+        {
+            // Obtener el DNI ingresado en dniTextBox
+            if (int.TryParse(dniTextBox.Text, out int dni))
+            {
+                // Buscar transportista en el modelo
+                var transportista = _model.Clientes.Find(t => t.dniTransportista == dni);
+
+                // Si se encuentra el transportista, mostrar sus datos en listView1
+                if (transportista != null)
+                {
+                    listView1.Items.Clear(); // Limpiar la lista
+                    ListViewItem item = new ListViewItem(transportista.Clientes[0].NumeroCliente.ToString());
+                    item.SubItems.Add(transportista.habilitadoTransportista ? "Habilitado" : "No habilitado");
+                    item.SubItems.Add(transportista.patente);
+                    listView1.Items.Add(item);
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el transportista con ese DNI.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, ingrese un DNI válido.");
+            }
         }
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

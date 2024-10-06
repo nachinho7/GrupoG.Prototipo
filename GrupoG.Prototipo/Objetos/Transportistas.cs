@@ -10,6 +10,7 @@ namespace GrupoG.Prototipo.Objetos
     {
         public string nombreTransportista { get; set; }
         public string apellidoTransportista { get; set; }
+        public string patente { get; set; }
         public int dniTransportista { get; set; }
         public bool habilitadoTransportista { get; set; }
 
