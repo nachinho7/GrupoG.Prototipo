@@ -1,7 +1,6 @@
 ﻿using GrupoG.Prototipo.Pantallas.ConsultaTransportista;
 using System;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GrupoG.Prototipo.Pantallas
 {
@@ -26,6 +25,13 @@ namespace GrupoG.Prototipo.Pantallas
             // Obtener el DNI ingresado en dniTextBox
             if (int.TryParse(dniTextBox.Text, out int dni))
             {
+                // Validar que el DNI esté entre 1.000.000 y 99.999.999
+                if (dni < 1000000 || dni > 99999999)
+                {
+                    MessageBox.Show("Por favor, ingrese un DNI válido.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return; // Salir si el DNI no es válido
+                }
+
                 // Buscar transportista en el modelo
                 var transportista = _model.Clientes.Find(t => t.dniTransportista == dni);
 
