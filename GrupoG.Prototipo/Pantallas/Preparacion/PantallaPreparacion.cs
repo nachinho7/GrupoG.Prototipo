@@ -24,35 +24,31 @@ namespace GrupoG.Prototipo
 
         private void BotonObtenerDatos_Click(object sender, EventArgs e)
         {
-            var clienteNumeroText = numeroCliente.Text;
-            int clienteNumero;
-
-            if (int.TryParse(clienteNumeroText, out clienteNumero))
+            if (!int.TryParse(numeroCliente.Text, out int clienteNumero))
             {
-                var mercaderias = model.ObtenerMercaderiaPorCliente(clienteNumero);
+                MessageBox.Show("El número de cliente ingresado no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-                ListaDatosMercaderia.Items.Clear();
+            var mercaderias = model.ObtenerMercaderiaPorCliente(clienteNumero);
 
-                foreach (var mercaderia in mercaderias)
-                {
-                    var item = new ListViewItem(mercaderia.id.ToString());
-                    item.SubItems.Add(mercaderia.nombreMercaderia);
-                    item.SubItems.Add(mercaderia.cantidadMercaderia.ToString());
-                    ListaDatosMercaderia.Items.Add(item);
-                }
+            ListaDatosMercaderia.Items.Clear();
 
-                if (mercaderias.Count == 0)
-                {
-                    MessageBox.Show("No se encontró mercadería para el cliente ingresado.");
-                }
-                else
-                {
-                    numeroCliente.Enabled = false;
-                }
+            foreach (var mercaderia in mercaderias)
+            {
+                var item = new ListViewItem(mercaderia.id.ToString());
+                item.SubItems.Add(mercaderia.nombreMercaderia);
+                item.SubItems.Add(mercaderia.cantidadMercaderia.ToString());
+                ListaDatosMercaderia.Items.Add(item);
+            }
+
+            if (mercaderias.Count == 0)
+            {
+                MessageBox.Show("El número de cliente ingresado no se encuentra registrado en el sistema.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                MessageBox.Show("Ingrese un número de cliente válido.");
+                numeroCliente.Enabled = false;
             }
         }
 
@@ -74,7 +70,7 @@ namespace GrupoG.Prototipo
         {
             if (ListaDatosMercaderia.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Por favor, seleccione un id de mercadería.");
+                MessageBox.Show("Por favor, seleccione id de mercadería.");
                 return;
             }
             // Validar la cantidad ingresada por el usuario
@@ -105,15 +101,12 @@ namespace GrupoG.Prototipo
                     cantidadDisponible -= cantidadSeleccionada;
                     ListaDatosMercaderia.SelectedItems[0].SubItems[2].Text = cantidadDisponible.ToString();
 
-                    // Incrementar el número de orden. Mover a despues de "generar orden"
-                    //numeroOrden++;
-
-                    MessageBox.Show($"Has agregado {cantidadSeleccionada} unidades.");
+                    MessageBox.Show($"Se agregaron {cantidadSeleccionada} unidades.");
                 }
             }
             else
             {
-                MessageBox.Show("Ingrese una cantidad válida.");
+                MessageBox.Show("Por favor, ingrese una cantidad válida.");
             }
         }
         private void btnGenerar_Click(object sender, EventArgs e)
@@ -125,7 +118,7 @@ namespace GrupoG.Prototipo
                 return;
             }
 
-            MessageBox.Show("La orden de preparación ha sido generada exitosamente.");
+            MessageBox.Show("La orden de preparación generada exitosamente.");
 
             ListaPrevisualizacionOrdenesPreparacion.Items.Clear();
             ListaDatosMercaderia.Items.Clear();
@@ -136,8 +129,8 @@ namespace GrupoG.Prototipo
             numeroCliente.Enabled = true;
             numeroCliente.Text = string.Empty;
 
-            // Reiniciar numero de orden si es necesario
-            //numeroOrden = 1;
+            // Incrementar el número de orden.
+            numeroOrden++;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -151,8 +144,7 @@ namespace GrupoG.Prototipo
                 // Obtener la cantidad seleccionada
                 int cantidadEliminada = int.Parse(selectedItem.SubItems[3].Text);
 
-                var confirmResult = MessageBox.Show("¿Está seguro de que desea eliminar el elemento seleccionado?",
-                                                     "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                var confirmResult = MessageBox.Show("¿Desea eliminar el elemento seleccionado?","Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (confirmResult == DialogResult.Yes)
                 {
                     // Eliminar el ítem seleccionado
@@ -197,8 +189,4 @@ namespace GrupoG.Prototipo
     }
 }
 
-
-
 //TODO: descontar la cantidad si lo vuelvo a buscar 
-//TODO: Ver comentarios
-//TODO: ver mensajes de error

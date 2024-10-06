@@ -34,7 +34,7 @@ namespace GrupoG.Prototipo.Pantallas.Preparacion
                     new Mercaderias { id = 3, nombreMercaderia = "Aceites", descripcionMercaderia = "Comida", cantidadMercaderia = 30 }
 
                 }
-            }
+            },
         };
 
         public List<Mercaderias> ObtenerMercaderiaPorCliente(int numeroCliente)
