@@ -52,27 +52,24 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(60, 42);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(42, 25);
             label1.Name = "label1";
-            label1.Size = new Size(90, 25);
+            label1.Size = new Size(61, 15);
             label1.TabIndex = 0;
             label1.Text = "N° Cliente";
             // 
             // numeroCliente
             // 
-            numeroCliente.Location = new Point(190, 37);
-            numeroCliente.Margin = new Padding(4, 5, 4, 5);
+            numeroCliente.Location = new Point(133, 22);
             numeroCliente.Name = "numeroCliente";
-            numeroCliente.Size = new Size(141, 31);
+            numeroCliente.Size = new Size(100, 23);
             numeroCliente.TabIndex = 1;
             // 
             // btnGenerarRemito
             // 
-            btnGenerarRemito.Location = new Point(481, 932);
-            btnGenerarRemito.Margin = new Padding(4, 5, 4, 5);
+            btnGenerarRemito.Location = new Point(337, 559);
             btnGenerarRemito.Name = "btnGenerarRemito";
-            btnGenerarRemito.Size = new Size(153, 63);
+            btnGenerarRemito.Size = new Size(107, 38);
             btnGenerarRemito.TabIndex = 5;
             btnGenerarRemito.Text = "Generar Remito";
             btnGenerarRemito.UseVisualStyleBackColor = true;
@@ -81,10 +78,9 @@
             // listviewOrdenEntrega
             // 
             listviewOrdenEntrega.Columns.AddRange(new ColumnHeader[] { OrdenEntrega, Estado });
-            listviewOrdenEntrega.Location = new Point(51, 154);
-            listviewOrdenEntrega.Margin = new Padding(4, 5, 4, 5);
+            listviewOrdenEntrega.Location = new Point(36, 92);
             listviewOrdenEntrega.Name = "listviewOrdenEntrega";
-            listviewOrdenEntrega.Size = new Size(587, 189);
+            listviewOrdenEntrega.Size = new Size(412, 115);
             listviewOrdenEntrega.TabIndex = 6;
             listviewOrdenEntrega.UseCompatibleStateImageBehavior = false;
             listviewOrdenEntrega.View = View.Details;
@@ -102,38 +98,34 @@
             // labelOrdenEntrega
             // 
             labelOrdenEntrega.AutoSize = true;
-            labelOrdenEntrega.Location = new Point(57, 108);
-            labelOrdenEntrega.Margin = new Padding(4, 0, 4, 0);
+            labelOrdenEntrega.Location = new Point(40, 65);
             labelOrdenEntrega.Name = "labelOrdenEntrega";
-            labelOrdenEntrega.Size = new Size(176, 25);
+            labelOrdenEntrega.Size = new Size(115, 15);
             labelOrdenEntrega.TabIndex = 7;
             labelOrdenEntrega.Text = "Orden/es de Entrega";
             // 
             // labelDatosAdicionales
             // 
             labelDatosAdicionales.AutoSize = true;
-            labelDatosAdicionales.Location = new Point(60, 348);
-            labelDatosAdicionales.Margin = new Padding(4, 0, 4, 0);
+            labelDatosAdicionales.Location = new Point(42, 209);
             labelDatosAdicionales.Name = "labelDatosAdicionales";
-            labelDatosAdicionales.Size = new Size(154, 25);
+            labelDatosAdicionales.Size = new Size(101, 15);
             labelDatosAdicionales.TabIndex = 21;
             labelDatosAdicionales.Text = "Datos Adicionales";
             // 
             // textboxDatosAdicionales
             // 
-            textboxDatosAdicionales.Location = new Point(61, 392);
-            textboxDatosAdicionales.Margin = new Padding(4, 5, 4, 5);
+            textboxDatosAdicionales.Location = new Point(43, 235);
             textboxDatosAdicionales.Name = "textboxDatosAdicionales";
-            textboxDatosAdicionales.Size = new Size(577, 122);
+            textboxDatosAdicionales.Size = new Size(405, 75);
             textboxDatosAdicionales.TabIndex = 23;
             textboxDatosAdicionales.Text = "";
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(51, 932);
-            VolverAlMenu.Margin = new Padding(4, 5, 4, 5);
+            VolverAlMenu.Location = new Point(36, 559);
             VolverAlMenu.Name = "VolverAlMenu";
-            VolverAlMenu.Size = new Size(153, 63);
+            VolverAlMenu.Size = new Size(107, 38);
             VolverAlMenu.TabIndex = 25;
             VolverAlMenu.Text = "Volver al Menú";
             VolverAlMenu.UseVisualStyleBackColor = true;
@@ -142,10 +134,9 @@
             // listviewTransportista
             // 
             listviewTransportista.Columns.AddRange(new ColumnHeader[] { ClienteTransportista, EstadoTransportista, Patente });
-            listviewTransportista.Location = new Point(51, 673);
-            listviewTransportista.Margin = new Padding(4, 5, 4, 5);
+            listviewTransportista.Location = new Point(36, 404);
             listviewTransportista.Name = "listviewTransportista";
-            listviewTransportista.Size = new Size(575, 192);
+            listviewTransportista.Size = new Size(404, 117);
             listviewTransportista.TabIndex = 29;
             listviewTransportista.UseCompatibleStateImageBehavior = false;
             listviewTransportista.View = View.Details;
@@ -157,7 +148,7 @@
             // 
             // EstadoTransportista
             // 
-            EstadoTransportista.Text = "Transportista habilitado?";
+            EstadoTransportista.Text = "Estado Transportista";
             EstadoTransportista.Width = 230;
             // 
             // Patente
@@ -168,10 +159,9 @@
             // btnBuscarTransportista
             // 
             btnBuscarTransportista.Enabled = false;
-            btnBuscarTransportista.Location = new Point(434, 575);
-            btnBuscarTransportista.Margin = new Padding(4, 5, 4, 5);
+            btnBuscarTransportista.Location = new Point(304, 345);
             btnBuscarTransportista.Name = "btnBuscarTransportista";
-            btnBuscarTransportista.Size = new Size(153, 63);
+            btnBuscarTransportista.Size = new Size(107, 38);
             btnBuscarTransportista.TabIndex = 28;
             btnBuscarTransportista.Text = "Buscar Transportista";
             btnBuscarTransportista.UseVisualStyleBackColor = true;
@@ -180,28 +170,25 @@
             // dniTransportista
             // 
             dniTransportista.Enabled = false;
-            dniTransportista.Location = new Point(160, 608);
-            dniTransportista.Margin = new Padding(4, 5, 4, 5);
+            dniTransportista.Location = new Point(112, 365);
             dniTransportista.Name = "dniTransportista";
-            dniTransportista.Size = new Size(204, 31);
+            dniTransportista.Size = new Size(144, 23);
             dniTransportista.TabIndex = 27;
             // 
             // labelTransportista
             // 
             labelTransportista.AutoSize = true;
-            labelTransportista.Location = new Point(140, 565);
-            labelTransportista.Margin = new Padding(4, 0, 4, 0);
+            labelTransportista.Location = new Point(98, 339);
             labelTransportista.Name = "labelTransportista";
-            labelTransportista.Size = new Size(241, 25);
+            labelTransportista.Size = new Size(157, 15);
             labelTransportista.TabIndex = 26;
             labelTransportista.Text = "Ingrese DNI del Transportista";
             // 
             // BotonObtenerDatos
             // 
-            BotonObtenerDatos.Location = new Point(370, 23);
-            BotonObtenerDatos.Margin = new Padding(4, 5, 4, 5);
+            BotonObtenerDatos.Location = new Point(259, 14);
             BotonObtenerDatos.Name = "BotonObtenerDatos";
-            BotonObtenerDatos.Size = new Size(153, 63);
+            BotonObtenerDatos.Size = new Size(107, 38);
             BotonObtenerDatos.TabIndex = 30;
             BotonObtenerDatos.Text = "Obtener Datos";
             BotonObtenerDatos.UseVisualStyleBackColor = true;
@@ -209,10 +196,9 @@
             // 
             // btnLimpiarCliente
             // 
-            btnLimpiarCliente.Location = new Point(544, 23);
-            btnLimpiarCliente.Margin = new Padding(4, 5, 4, 5);
+            btnLimpiarCliente.Location = new Point(381, 14);
             btnLimpiarCliente.Name = "btnLimpiarCliente";
-            btnLimpiarCliente.Size = new Size(153, 63);
+            btnLimpiarCliente.Size = new Size(107, 38);
             btnLimpiarCliente.TabIndex = 31;
             btnLimpiarCliente.Text = "Limpiar Cliente";
             btnLimpiarCliente.UseVisualStyleBackColor = true;
@@ -220,9 +206,9 @@
             // 
             // PantallaDespacho
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(710, 1018);
+            ClientSize = new Size(497, 611);
             Controls.Add(btnLimpiarCliente);
             Controls.Add(BotonObtenerDatos);
             Controls.Add(listviewTransportista);
@@ -237,7 +223,6 @@
             Controls.Add(btnGenerarRemito);
             Controls.Add(numeroCliente);
             Controls.Add(label1);
-            Margin = new Padding(4, 5, 4, 5);
             Name = "PantallaDespacho";
             Text = "Orden de Despacho";
             Load += PantallaDespacho_Load;

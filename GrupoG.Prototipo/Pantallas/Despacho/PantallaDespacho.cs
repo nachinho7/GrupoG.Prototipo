@@ -126,6 +126,11 @@ namespace GrupoG.Prototipo.Pantallas
                 MessageBox.Show("Seleccione una orden de entrega antes de generar el remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (listviewOrdenEntrega.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("No se puede seleccionar más de una orden seguida para despachar.", "Selección inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             var selectedItem = listviewOrdenEntrega.SelectedItems[0];
             string numeroOrden = selectedItem.SubItems[0].Text;
