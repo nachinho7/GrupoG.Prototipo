@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GrupoG.Prototipo.Preparacion;
 
-namespace GrupoG.Prototipo.Objetos
+namespace GrupoG.Prototipo.Despacho
 {
     internal class Transportistas
     {

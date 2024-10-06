@@ -1,5 +1,5 @@
-using GrupoG.Prototipo.Objetos;
-using GrupoG.Prototipo.Pantallas.Preparacion;
+using GrupoG.Prototipo;
+using GrupoG.Prototipo.Preparacion;
 using System;
 using System.Collections.Generic;
 using System.Linq;

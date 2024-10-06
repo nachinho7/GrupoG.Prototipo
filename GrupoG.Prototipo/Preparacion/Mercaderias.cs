@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GrupoG.Prototipo.Objetos
+namespace GrupoG.Prototipo.Preparacion
 {
     internal class Mercaderias
     {

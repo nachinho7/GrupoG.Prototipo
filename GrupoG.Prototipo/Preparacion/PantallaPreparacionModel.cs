@@ -1,9 +1,8 @@
-﻿using GrupoG.Prototipo.Objetos;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GrupoG.Prototipo.Pantallas.Preparacion
+namespace GrupoG.Prototipo.Preparacion
 {
     internal class PantallaPreparacionModel
     {

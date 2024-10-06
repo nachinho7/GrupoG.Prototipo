@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GrupoG.Prototipo.Pantallas.Seleccion
+namespace GrupoG.Prototipo.Seleccion
 {
     public class Orden
     {
@@ -19,19 +19,19 @@ namespace GrupoG.Prototipo.Pantallas.Seleccion
         }
     }
 
-    public class OrdenSeleccion
-    {
-        public int IdSeleccion { get; set; }
-        public List<Orden> Ordenes { get; set; }
-        public DateTime FechaCreacion { get; set; }
+    //public class OrdenSeleccion
+    //{
+    //    public int IdSeleccion { get; set; }
+    //    public List<Orden> Ordenes { get; set; }
+    //    public DateTime FechaCreacion { get; set; }
 
-        public OrdenSeleccion(int idSeleccion, List<Orden> ordenes)
-        {
-            IdSeleccion = idSeleccion;
-            Ordenes = ordenes;
-            FechaCreacion = DateTime.Now;
-        }
-    }
+    //    //public OrdenSeleccion(int idSeleccion, List<Orden> ordenes)
+    //    //{
+    //    //    IdSeleccion = idSeleccion;
+    //    //    Ordenes = ordenes;
+    //    //    FechaCreacion = DateTime.Now;
+    //    //}
+    //}
 
     public class PantallaSeleccionModel
     {
@@ -62,17 +62,17 @@ namespace GrupoG.Prototipo.Pantallas.Seleccion
             return ordenesSeleccion;
         }
 
-        public OrdenSeleccion GenerarOrdenDeSeleccion(List<Orden> ordenesSeleccionadas)
-        {
-            OrdenSeleccion nuevaSeleccion = new OrdenSeleccion(siguienteIdSeleccion++, ordenesSeleccionadas);
-            ordenesSeleccion.Add(nuevaSeleccion);
+        //public OrdenSeleccion GenerarOrdenDeSeleccion(List<Orden> ordenesSeleccionadas)
+        //{
+        //    OrdenSeleccion nuevaSeleccion = new OrdenSeleccion(siguienteIdSeleccion++, ordenesSeleccionadas);
+        //    ordenesSeleccion.Add(nuevaSeleccion);
 
-            foreach (var orden in ordenesSeleccionadas)
-            {
-                ordenes.Remove(orden);
-            }
+        //    foreach (var orden in ordenesSeleccionadas)
+        //    {
+        //        ordenes.Remove(orden);
+        //    }
 
-            return nuevaSeleccion;
-        }
+        //    return nuevaSeleccion;
+        //}
     }
 }

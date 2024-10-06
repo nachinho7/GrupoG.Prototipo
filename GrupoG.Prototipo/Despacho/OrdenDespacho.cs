@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GrupoG.Prototipo.Objetos
+namespace GrupoG.Prototipo.Despacho
 {
     internal class OrdenDespacho
     {

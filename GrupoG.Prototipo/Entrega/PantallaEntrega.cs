@@ -1,4 +1,4 @@
-﻿using GrupoG.Prototipo.Pantallas.Entrega;
+﻿using GrupoG.Prototipo.Entrega;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

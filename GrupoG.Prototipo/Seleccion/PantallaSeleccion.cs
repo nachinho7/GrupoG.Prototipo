@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using GrupoG.Prototipo.Pantallas.Seleccion;
+using GrupoG.Prototipo.Seleccion;
 
 namespace GrupoG.Prototipo.Pantallas
 {
@@ -57,7 +57,7 @@ namespace GrupoG.Prototipo.Pantallas
             {
                 foreach (var grupo in ordenesPorCliente)
                 {
-                    OrdenSeleccion nuevaSeleccion = modelo.GenerarOrdenDeSeleccion(grupo.Value);
+                    //OrdenSeleccion nuevaSeleccion = modelo.GenerarOrdenDeSeleccion(grupo.Value);
 
                     MessageBox.Show($"Se generó una orden de selección que incluye {grupo.Value.Count} órdenes para el cliente {grupo.Key}.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

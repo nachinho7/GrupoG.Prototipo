@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using GrupoG.Prototipo.Objetos;
-using GrupoG.Prototipo.Pantallas.Despacho;
+using GrupoG.Prototipo.Despacho;
 
 namespace GrupoG.Prototipo.Pantallas
 {

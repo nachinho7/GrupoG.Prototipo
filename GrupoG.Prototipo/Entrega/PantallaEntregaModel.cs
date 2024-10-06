@@ -1,11 +1,11 @@
-﻿using GrupoG.Prototipo.Pantallas.Seleccion;
+﻿using GrupoG.Prototipo.Pantallas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GrupoG.Prototipo.Pantallas.Entrega
+namespace GrupoG.Prototipo.Entrega
 {
     internal class PantallaEntregaModel
     {

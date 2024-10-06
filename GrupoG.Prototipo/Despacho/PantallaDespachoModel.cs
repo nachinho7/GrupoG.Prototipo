@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using GrupoG.Prototipo.Objetos;
+using GrupoG.Prototipo.Preparacion;
 
-namespace GrupoG.Prototipo.Pantallas.Despacho
+namespace GrupoG.Prototipo.Despacho
 {
     internal class PantallaDespachoModel
     {
