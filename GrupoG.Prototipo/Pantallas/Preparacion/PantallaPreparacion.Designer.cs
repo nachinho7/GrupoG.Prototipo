@@ -83,7 +83,7 @@
             // 
             btnAgregar.Location = new Point(273, 242);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(96, 23);
+            btnAgregar.Size = new Size(107, 38);
             btnAgregar.TabIndex = 7;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
@@ -100,11 +100,11 @@
             // 
             // btnGenerar
             // 
-            btnGenerar.Location = new Point(351, 471);
+            btnGenerar.Location = new Point(352, 471);
             btnGenerar.Name = "btnGenerar";
-            btnGenerar.Size = new Size(106, 44);
+            btnGenerar.Size = new Size(107, 38);
             btnGenerar.TabIndex = 14;
-            btnGenerar.Text = "Generar";
+            btnGenerar.Text = "Generar Orden";
             btnGenerar.UseVisualStyleBackColor = true;
             btnGenerar.Click += btnGenerar_Click;
             // 
@@ -118,8 +118,6 @@
             ListaDatosMercaderia.UseCompatibleStateImageBehavior = false;
             ListaDatosMercaderia.View = View.Details;
             ListaDatosMercaderia.SelectedIndexChanged += ListaDatosMercaderia_SelectedIndexChanged;
-            //this.ListaDatosMercaderia.SelectedIndexChanged += new System.EventHandler(this.ListaDatosMercaderia_SelectedIndexChanged);
-
             // 
             // Id
             // 
@@ -176,9 +174,9 @@
             // 
             // BotonObtenerDatos
             // 
-            BotonObtenerDatos.Location = new Point(263, 27);
+            BotonObtenerDatos.Location = new Point(246, 20);
             BotonObtenerDatos.Name = "BotonObtenerDatos";
-            BotonObtenerDatos.Size = new Size(106, 24);
+            BotonObtenerDatos.Size = new Size(107, 38);
             BotonObtenerDatos.TabIndex = 29;
             BotonObtenerDatos.Text = "Obtener Datos";
             BotonObtenerDatos.UseVisualStyleBackColor = true;
@@ -186,9 +184,9 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(40, 476);
+            VolverAlMenu.Location = new Point(12, 471);
             VolverAlMenu.Name = "VolverAlMenu";
-            VolverAlMenu.Size = new Size(75, 39);
+            VolverAlMenu.Size = new Size(107, 38);
             VolverAlMenu.TabIndex = 30;
             VolverAlMenu.Text = "Volver al Menú";
             VolverAlMenu.UseVisualStyleBackColor = true;
@@ -196,27 +194,27 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(211, 471);
+            btnEliminar.Location = new Point(210, 471);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(106, 44);
+            btnEliminar.Size = new Size(107, 38);
             btnEliminar.TabIndex = 31;
-            btnEliminar.Text = "Limpiar Dato";
+            btnEliminar.Text = "Limpiar Dato Seleccionado";
             btnEliminar.UseVisualStyleBackColor = true;
             btnEliminar.Click += btnEliminar_Click;
             // 
             // BotonLimpiarCliente
             // 
-            BotonLimpiarCliente.Location = new Point(364, 66);
+            BotonLimpiarCliente.Location = new Point(363, 20);
             BotonLimpiarCliente.Name = "BotonLimpiarCliente";
-            BotonLimpiarCliente.Size = new Size(106, 24);
+            BotonLimpiarCliente.Size = new Size(107, 38);
             BotonLimpiarCliente.TabIndex = 32;
             BotonLimpiarCliente.Text = "Nueva Busqueda";
             BotonLimpiarCliente.UseVisualStyleBackColor = true;
             BotonLimpiarCliente.Click += BotonLimpiarCliente_Click;
-           // 
-           // PantallaPreparacion
-           // 
-           AutoScaleDimensions = new SizeF(7F, 15F);
+            // 
+            // PantallaPreparacion
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(482, 529);
             Controls.Add(BotonLimpiarCliente);

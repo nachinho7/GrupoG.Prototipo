@@ -51,12 +51,12 @@
             // 
             // OrdenColumna
             // 
-            OrdenColumna.Text = "Nro de Orden";
+            OrdenColumna.Text = "Nº de Orden";
             OrdenColumna.Width = 150;
             // 
             // ClienteColumna
             // 
-            ClienteColumna.Text = "Nro de Cliente";
+            ClienteColumna.Text = "Nº de Cliente";
             ClienteColumna.Width = 150;
             // 
             // EstadoColumna
@@ -71,20 +71,19 @@
             // 
             // BotonGenerarOS
             // 
-            BotonGenerarOS.Location = new Point(408, 257);
+            BotonGenerarOS.Location = new Point(477, 257);
             BotonGenerarOS.Name = "BotonGenerarOS";
-            BotonGenerarOS.Size = new Size(208, 23);
+            BotonGenerarOS.Size = new Size(107, 38);
             BotonGenerarOS.TabIndex = 1;
             BotonGenerarOS.Text = "Generar Orden de Seleccion";
             BotonGenerarOS.UseVisualStyleBackColor = true;
             BotonGenerarOS.Click += BotonGenerarOS_Click;
-
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(50, 249);
+            VolverAlMenu.Location = new Point(54, 257);
             VolverAlMenu.Name = "VolverAlMenu";
-            VolverAlMenu.Size = new Size(75, 39);
+            VolverAlMenu.Size = new Size(107, 38);
             VolverAlMenu.TabIndex = 5;
             VolverAlMenu.Text = "Volver al Menú";
             VolverAlMenu.UseVisualStyleBackColor = true;

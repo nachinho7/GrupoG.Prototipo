@@ -39,10 +39,10 @@
             // 
             // BotonEmpaquetar
             // 
-            BotonEmpaquetar.Location = new Point(514, 274);
+            BotonEmpaquetar.Location = new Point(516, 274);
             BotonEmpaquetar.Margin = new Padding(3, 2, 3, 2);
             BotonEmpaquetar.Name = "BotonEmpaquetar";
-            BotonEmpaquetar.Size = new Size(103, 38);
+            BotonEmpaquetar.Size = new Size(107, 38);
             BotonEmpaquetar.TabIndex = 7;
             BotonEmpaquetar.Text = "Empaquetar\r\n";
             BotonEmpaquetar.UseVisualStyleBackColor = true;
@@ -61,12 +61,12 @@
             // 
             // ColumnaNumeroOrden
             // 
-            ColumnaNumeroOrden.Text = "Numero de Orden";
+            ColumnaNumeroOrden.Text = "Nº de Orden";
             ColumnaNumeroOrden.Width = 150;
             // 
             // ColumnaNumeroCliente
             // 
-            ColumnaNumeroCliente.Text = "Nro de Cliente";
+            ColumnaNumeroCliente.Text = "Nº Cliente";
             ColumnaNumeroCliente.Width = 150;
             // 
             // ColumnaCodigo
@@ -83,7 +83,7 @@
             // 
             BotonVolverAlMenu.Location = new Point(87, 274);
             BotonVolverAlMenu.Name = "BotonVolverAlMenu";
-            BotonVolverAlMenu.Size = new Size(103, 38);
+            BotonVolverAlMenu.Size = new Size(107, 38);
             BotonVolverAlMenu.TabIndex = 10;
             BotonVolverAlMenu.Text = "Volver al Menú";
             BotonVolverAlMenu.UseVisualStyleBackColor = true;

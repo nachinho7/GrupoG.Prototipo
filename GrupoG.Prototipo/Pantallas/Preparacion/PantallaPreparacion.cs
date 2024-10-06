@@ -109,6 +109,7 @@ namespace GrupoG.Prototipo
                 MessageBox.Show("Por favor, ingrese una cantidad válida.");
             }
         }
+
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             // Verificar si hay elementos en la lista de previsualización
@@ -118,8 +119,34 @@ namespace GrupoG.Prototipo
                 return;
             }
 
-            MessageBox.Show("La orden de preparación generada exitosamente.");
+            foreach (ListViewItem item in ListaPrevisualizacionOrdenesPreparacion.Items)
+            {
+                // Obtener el ID de la mercadería
+                int idMercaderia = int.Parse(item.SubItems[1].Text);
 
+                // Obtener la cantidad seleccionada para esa mercadería
+                int cantidadSeleccionada = int.Parse(item.SubItems[3].Text);
+
+                // Buscar el cliente en el modelo
+                int clienteNumero = int.Parse(numeroCliente.Text);
+                var cliente = model.Clientes.FirstOrDefault(c => c.NumeroCliente == clienteNumero);
+
+                if (cliente != null)
+                {
+                    // Buscar la mercadería correspondiente dentro del cliente
+                    var mercaderia = cliente.Mercaderias.FirstOrDefault(m => m.id == idMercaderia);
+
+                    if (mercaderia != null)
+                    {
+                        // Descontar la cantidad de la mercadería en el modelo
+                        mercaderia.cantidadMercaderia -= cantidadSeleccionada;
+                    }
+                }
+            }
+
+            MessageBox.Show("La orden de preparación se ha generado exitosamente y la cantidad de mercadería ha sido actualizada.");
+
+            // Limpiar la lista de previsualización y resetear el formulario
             ListaPrevisualizacionOrdenesPreparacion.Items.Clear();
             ListaDatosMercaderia.Items.Clear();
 
@@ -144,7 +171,7 @@ namespace GrupoG.Prototipo
                 // Obtener la cantidad seleccionada
                 int cantidadEliminada = int.Parse(selectedItem.SubItems[3].Text);
 
-                var confirmResult = MessageBox.Show("¿Desea eliminar el elemento seleccionado?","Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                var confirmResult = MessageBox.Show("¿Desea eliminar el elemento seleccionado?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (confirmResult == DialogResult.Yes)
                 {
                     // Eliminar el ítem seleccionado
@@ -168,9 +195,9 @@ namespace GrupoG.Prototipo
                 MessageBox.Show("Por favor, seleccione un elemento para eliminar.");
             }
         }
+
         private void BotonLimpiarCliente_Click(object sender, EventArgs e)
         {
-
             numeroCliente.Enabled = true;
             numeroCliente.Text = string.Empty;
 
@@ -181,12 +208,9 @@ namespace GrupoG.Prototipo
             TextBoxCantidad.Enabled = false;
         }
 
-
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {
             this.Close();
         }
     }
 }
-
-//TODO: descontar la cantidad si lo vuelvo a buscar 

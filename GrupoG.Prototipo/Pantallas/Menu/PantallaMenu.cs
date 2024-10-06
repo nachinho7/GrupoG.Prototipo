@@ -10,11 +10,11 @@ namespace GrupoG.Prototipo.Pantallas.Menu
             InitializeComponent();
         }
 
-        private void BotonTransportista_Click(object sender, EventArgs e)
+        /*private void BotonTransportista_Click(object sender, EventArgs e)
         {
             PantallaTransportista form = new(); 
             form.ShowDialog();
-        }
+        }*/
 
         private void BotonPreparacion_Click(object sender, EventArgs e)
         {
