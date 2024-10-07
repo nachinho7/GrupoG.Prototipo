@@ -8,7 +8,7 @@ namespace GrupoG.Prototipo
 {
     public partial class PantallaPreparacion : Form
     {
-        private readonly PantallaPreparacionModel model;
+        PantallaPreparacionModel model;
         private int cantidadDisponible;
         private int numeroOrden;
 
@@ -58,7 +58,7 @@ namespace GrupoG.Prototipo
             foreach (var mercaderia in mercaderias)
             {
                 var item = new ListViewItem(mercaderia.idMercaderia.ToString());
-                item.SubItems.Add(mercaderia.nombreMercaderia);
+                item.SubItems.Add(mercaderia.nombreMercaderia.ToString());
                 item.SubItems.Add(mercaderia.cantidadMercaderia.ToString());
                 item.SubItems.Add(mercaderia.ubicacionMercaderia);
                 ListaDatosMercaderia.Items.Add(item);
@@ -125,15 +125,17 @@ namespace GrupoG.Prototipo
         {
             ListaPrevisualizacionOrdenesPreparacion.Items.Clear();
 
-            foreach (var orden in model.ObtenerOrdenPreparacion(numeroOrden))
+            var ordenesPreparacion = model.ObtenerOrdenPreparacion(numeroOrden);
+
+            foreach (var orden in ordenesPreparacion)
             {
                 foreach (var mercaderia in orden.Mercaderias)
                 {
-                    var listItem = new ListViewItem(orden.NumeroOrdenPreparacion.ToString());
-                    listItem.SubItems.Add(mercaderia.idMercaderia.ToString());
+                    var listItem = new ListViewItem(mercaderia.idMercaderia.ToString());
                     listItem.SubItems.Add(mercaderia.nombreMercaderia);
                     listItem.SubItems.Add(mercaderia.cantidadMercaderia.ToString());
                     listItem.SubItems.Add(mercaderia.ubicacionMercaderia);
+
                     ListaPrevisualizacionOrdenesPreparacion.Items.Add(listItem);
                 }
             }
@@ -176,10 +178,10 @@ namespace GrupoG.Prototipo
             string detallesMercaderia = "";
             foreach (ListViewItem item in ListaPrevisualizacionOrdenesPreparacion.Items)
             {
-                detallesMercaderia += $"ID: {item.SubItems[1].Text}\n" +
-                                      $"Nombre: {item.SubItems[2].Text}\n" +
-                                      $"Cantidad: {item.SubItems[3].Text}\n" +
-                                      $"Ubicación: {item.SubItems[4].Text}\n";
+                detallesMercaderia += $"ID: {item.SubItems[0].Text}\n" +
+                                      $"  Nombre: {item.SubItems[1].Text}\n" +
+                                      $"  Cantidad: {item.SubItems[2].Text}\n" +
+                                      $"  Ubicación: {item.SubItems[3].Text}\n";
             }
 
             string numeroClienteOrden = numeroCliente.Text;
@@ -197,12 +199,52 @@ namespace GrupoG.Prototipo
             if (exito)
             {
                 LimpiarFormulario();
+                numeroOrden++;
+                textBoxNroOdenPrevisualizacion.Text = numeroOrden.ToString();
+
             }
             else
             {
                 MessageBox.Show("Error al generar la orden de preparación.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (ListaPrevisualizacionOrdenesPreparacion.SelectedItems.Count > 0)
+            {
+                var selectedItem = ListaPrevisualizacionOrdenesPreparacion.SelectedItems[0];
+                int cantidadEliminada = int.Parse(selectedItem.SubItems[2].Text);
+                int idMercaderia = int.Parse(selectedItem.SubItems[0].Text);
+
+                var confirmResult = MessageBox.Show("¿Desea eliminar el elemento seleccionado?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    model.EliminarMercaderiaDePreparacion(numeroOrden, idMercaderia, cantidadEliminada);
+
+                    ListaPrevisualizacionOrdenesPreparacion.Items.Remove(selectedItem);
+                    MessageBox.Show("Elemento eliminado.", "Elemento Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    foreach (ListViewItem item in ListaDatosMercaderia.Items)
+                    {
+                        if (item.Text == selectedItem.SubItems[0].Text)
+                        {
+                            int cantidadDisponibleActual = int.Parse(item.SubItems[2].Text);
+                            item.SubItems[2].Text = (cantidadDisponibleActual + cantidadEliminada).ToString();
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione un elemento para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
 
         private void LimpiarFormulario()
         {
@@ -219,49 +261,15 @@ namespace GrupoG.Prototipo
             PickerFechaDespacho.Format = DateTimePickerFormat.Custom;
             PickerFechaDespacho.Checked = false;
 
-            numeroOrden++;
             textBoxNroOdenPrevisualizacion.Text = numeroOrden.ToString();
         }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            if (ListaPrevisualizacionOrdenesPreparacion.SelectedItems.Count > 0)
-            {
-                var selectedItem = ListaPrevisualizacionOrdenesPreparacion.SelectedItems[0];
-                int idMercaderia = int.Parse(selectedItem.SubItems[1].Text);
-                string nombreMercaderia = selectedItem.SubItems[2].Text;
-                int cantidadEliminada = int.Parse(selectedItem.SubItems[3].Text);
-
-                var confirmResult = MessageBox.Show("¿Desea eliminar el elemento seleccionado?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (confirmResult == DialogResult.Yes)
-                {
-                    model.EliminarMercaderiaDePreparacion(numeroOrden, idMercaderia, cantidadEliminada);
-
-                    ActualizarListaPrevisualizacion();
-
-                    foreach (ListViewItem item in ListaDatosMercaderia.Items)
-                    {
-                        if (item.Text == idMercaderia.ToString())
-                        {
-                            int cantidadDisponibleActual = int.Parse(item.SubItems[2].Text);
-                            item.SubItems[2].Text = (cantidadDisponibleActual + cantidadEliminada).ToString();
-                            break;
-                        }
-                    }
-
-                    MessageBox.Show("Elemento eliminado.", "Elemento Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Por favor, seleccione un elemento para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void BotonLimpiarCliente_Click(object sender, EventArgs e)
         {
+            model.LimpiarOrdenesPreparacion();
+            ActualizarListaPrevisualizacion();
             LimpiarFormulario();
         }
+
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {

@@ -78,27 +78,31 @@ namespace GrupoG.Prototipo.Preparacion
             return ordenesPreparacion.Where(o => o.NumeroOrdenPreparacion == numeroOrden).ToList();
         }
 
-        public void EliminarMercaderiaDePreparacion(int numeroOrden, int idMercaderia, int cantidadEliminada)
+        public void EliminarMercaderiaDePreparacion(int numeroOrden, int idMercaderia, int cantidad)
         {
-            var orden = ordenesPreparacion.FirstOrDefault(o => o.NumeroOrdenPreparacion == numeroOrden);
+            var orden = ordenesPreparacion.Find(o => o.NumeroOrdenPreparacion == numeroOrden);
             if (orden != null)
             {
-                var mercaderia = orden.Mercaderias.FirstOrDefault(m => m.idMercaderia == idMercaderia);
+                var mercaderia = orden.Mercaderias.Find(m => m.idMercaderia == idMercaderia);
                 if (mercaderia != null)
                 {
-                    mercaderia.cantidadMercaderia -= cantidadEliminada;
-                    if (mercaderia.cantidadMercaderia <= 0)
+                    if (cantidad < mercaderia.cantidadMercaderia)
+                    {
+                        mercaderia.cantidadMercaderia -= cantidad;
+                    }
+                    else
                     {
                         orden.Mercaderias.Remove(mercaderia);
                     }
                 }
-
-                if (!orden.Mercaderias.Any())
-                {
-                    ordenesPreparacion.Remove(orden);
-                }
             }
         }
+
+        public void LimpiarOrdenesPreparacion()
+        {
+            ordenesPreparacion.Clear();
+        }
+
 
         public bool GenerarOrdenPreparacion(int numeroOrden, DateTime fechaDespacho, int dniTransportista)
         {
