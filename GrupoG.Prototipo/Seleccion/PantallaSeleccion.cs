@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using GrupoG.Prototipo.Seleccion;
 
@@ -17,20 +18,34 @@ namespace GrupoG.Prototipo.Pantallas
 
         private void PantallaSeleccion_Load(object sender, EventArgs e)
         {
-            CargarOrdenes();
+            CargarOrdenes(); // Carga inicial de órdenes
         }
 
         private void CargarOrdenes()
         {
             ListaOrdenSeleccion.Items.Clear();
-            List<Orden> ordenes = modelo.ObtenerOrdenes();
+            List<OrdenPreparacion2> ordenes = modelo.ObtenerOrdenes();
 
             foreach (var orden in ordenes)
             {
-                ListViewItem item = new ListViewItem(orden.NroOrden.ToString());
-                item.SubItems.Add(orden.NroCliente.ToString());
-                item.SubItems.Add(orden.Estado);
-                item.SubItems.Add(orden.FechaGeneracion.ToShortDateString());
+                ListViewItem item = new ListViewItem(orden.NumeroOrdenPreparacion.ToString());
+                item.SubItems.Add(orden.NumeroCliente.ToString());
+                item.SubItems.Add(orden.FechaDespacho.ToShortDateString());
+                item.Tag = orden;
+                ListaOrdenSeleccion.Items.Add(item);
+            }
+        }
+
+        private void FiltrarOrdenesPorFecha(DateTime fecha)
+        {
+            ListaOrdenSeleccion.Items.Clear();
+            List<OrdenPreparacion2> ordenesFiltradas = modelo.FiltrarOrdenesPorFecha(fecha);
+
+            foreach (var orden in ordenesFiltradas)
+            {
+                ListViewItem item = new ListViewItem(orden.NumeroOrdenPreparacion.ToString());
+                item.SubItems.Add(orden.NumeroCliente.ToString());
+                item.SubItems.Add(orden.FechaDespacho.ToShortDateString());
                 item.Tag = orden;
                 ListaOrdenSeleccion.Items.Add(item);
             }
@@ -38,28 +53,25 @@ namespace GrupoG.Prototipo.Pantallas
 
         private void BotonGenerarOS_Click(object sender, EventArgs e)
         {
-            // Diccionario para agrupar órdenes por número de cliente
-            Dictionary<int, List<Orden>> ordenesPorCliente = new Dictionary<int, List<Orden>>();
+            Dictionary<int, List<OrdenPreparacion2>> ordenesPorCliente = new Dictionary<int, List<OrdenPreparacion2>>();
 
             foreach (ListViewItem item in ListaOrdenSeleccion.SelectedItems)
             {
-                Orden orden = (Orden)item.Tag;
+                OrdenPreparacion2 orden = (OrdenPreparacion2)item.Tag;
 
-                // Agrupar órdenes por el número de cliente
-                if (!ordenesPorCliente.ContainsKey(orden.NroCliente))
+                if (!ordenesPorCliente.ContainsKey(orden.NumeroCliente))
                 {
-                    ordenesPorCliente[orden.NroCliente] = new List<Orden>();
+                    ordenesPorCliente[orden.NumeroCliente] = new List<OrdenPreparacion2>();
                 }
-                ordenesPorCliente[orden.NroCliente].Add(orden);
+                ordenesPorCliente[orden.NumeroCliente].Add(orden);
             }
 
             if (ordenesPorCliente.Count > 0)
             {
                 foreach (var grupo in ordenesPorCliente)
                 {
-                    //OrdenSeleccion nuevaSeleccion = modelo.GenerarOrdenDeSeleccion(grupo.Value);
-
-                    MessageBox.Show($"Se generó una orden de selección que incluye {grupo.Value.Count} órdenes para el cliente {grupo.Key}.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    OrdenSeleccion2 nuevaSeleccion = modelo.GenerarOrdenDeSeleccion(grupo.Value);
+                    MessageBox.Show($"Se generó una orden de selección con ID {nuevaSeleccion.numeroOrdenSeleccion} que incluye {grupo.Value.Count} órdenes para el cliente {grupo.Key}.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
                 CargarOrdenes();
@@ -70,10 +82,14 @@ namespace GrupoG.Prototipo.Pantallas
             }
         }
 
-
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            FiltrarOrdenesPorFecha(datetimeDespacho.Value);
         }
     }
 }

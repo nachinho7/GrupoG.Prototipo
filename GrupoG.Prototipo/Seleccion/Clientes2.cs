@@ -7,11 +7,11 @@ using System.Web;
 
 namespace GrupoG.Prototipo.Seleccion
 {
-    internal class Clientes
+    internal class Clientes2
     {
 
         public int NumeroCliente { get; set; }
-        public List<Mercaderias> Mercaderias { get; set; }
+        public List<Mercaderias2> Mercaderias { get; set; }
 
     }
 }

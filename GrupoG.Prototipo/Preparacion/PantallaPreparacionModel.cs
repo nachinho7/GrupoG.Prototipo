@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GrupoG.Prototipo.Seleccion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,8 +14,8 @@ namespace GrupoG.Prototipo.Preparacion
                 NumeroCliente = 2045,
                 Mercaderias = new List<Mercaderias>
                 {
-                    new Mercaderias { idMercaderia = 854, nombreMercaderia = "Botellas", ubicacionMercaderia = "52-45-10", cantidadMercaderia = 200 },
-                    new Mercaderias { idMercaderia = 9652, nombreMercaderia = "Vasos", ubicacionMercaderia = "52-33-5", cantidadMercaderia = 500 }
+                    new Mercaderias { idMercaderia = 854, nombreMercaderia = "Botellas", cantidadMercaderia = 200 },
+                    new Mercaderias { idMercaderia = 9652, nombreMercaderia = "Vasos", cantidadMercaderia = 500 }
                 }
             },
             new Clientes
@@ -22,7 +23,7 @@ namespace GrupoG.Prototipo.Preparacion
                 NumeroCliente = 3080,
                 Mercaderias = new List<Mercaderias>
                 {
-                    new Mercaderias { idMercaderia = 874, nombreMercaderia = "Pelotas", ubicacionMercaderia = "10-54-8", cantidadMercaderia = 100 }
+                    new Mercaderias { idMercaderia = 874, nombreMercaderia = "Pelotas", cantidadMercaderia = 100 }
                 }
             },
             new Clientes
@@ -30,7 +31,7 @@ namespace GrupoG.Prototipo.Preparacion
                 NumeroCliente = 1224,
                 Mercaderias = new List<Mercaderias>
                 {
-                    new Mercaderias { idMercaderia = 852, nombreMercaderia = "Aceites", ubicacionMercaderia = "40-10-8", cantidadMercaderia = 300 }
+                    new Mercaderias { idMercaderia = 852, nombreMercaderia = "Aceites", cantidadMercaderia = 300 }
                 }
             },
         };
@@ -43,7 +44,7 @@ namespace GrupoG.Prototipo.Preparacion
             return cliente?.Mercaderias ?? new List<Mercaderias>();
         }
 
-        public void AgregarMercaderiaAPreparacion(int numeroOrden, int idMercaderia, string nombreMercaderia, string ubicacionMercaderia, int cantidadSeleccionada)
+        public void AgregarMercaderiaAPreparacion(int numeroOrden, int idMercaderia, string nombreMercaderia, int cantidadSeleccionada)
         {
             var orden = ordenesPreparacion.FirstOrDefault(o => o.NumeroOrdenPreparacion == numeroOrden);
             if (orden == null)
@@ -51,7 +52,8 @@ namespace GrupoG.Prototipo.Preparacion
                 orden = new OrdenPreparacion
                 {
                     NumeroOrdenPreparacion = numeroOrden,
-                    FechaDespacho = DateTime.Now
+                    FechaDespacho = DateTime.Now,
+                    Mercaderias = new List<Mercaderias>() 
                 };
                 ordenesPreparacion.Add(orden);
             }
@@ -63,7 +65,6 @@ namespace GrupoG.Prototipo.Preparacion
                 {
                     idMercaderia = idMercaderia,
                     nombreMercaderia = nombreMercaderia,
-                    ubicacionMercaderia = ubicacionMercaderia,
                     cantidadMercaderia = cantidadSeleccionada
                 });
             }
@@ -71,7 +72,15 @@ namespace GrupoG.Prototipo.Preparacion
             {
                 mercaderia.cantidadMercaderia += cantidadSeleccionada;
             }
+
+            var cliente = Clientes.FirstOrDefault(c => c.Mercaderias.Any(m => m.idMercaderia == idMercaderia));
+            if (cliente != null)
+            {
+                var mercaderiaCliente = cliente.Mercaderias.First(m => m.idMercaderia == idMercaderia);
+                mercaderiaCliente.cantidadMercaderia -= cantidadSeleccionada;
+            }
         }
+
 
         public List<OrdenPreparacion> ObtenerOrdenPreparacion(int numeroOrden)
         {
@@ -86,32 +95,37 @@ namespace GrupoG.Prototipo.Preparacion
                 var mercaderia = orden.Mercaderias.Find(m => m.idMercaderia == idMercaderia);
                 if (mercaderia != null)
                 {
-                    if (cantidad < mercaderia.cantidadMercaderia)
-                    {
-                        mercaderia.cantidadMercaderia -= cantidad;
-                    }
-                    else
+                    int cantidadRemovida = Math.Min(cantidad, mercaderia.cantidadMercaderia);
+                    mercaderia.cantidadMercaderia -= cantidadRemovida;
+
+                    if (mercaderia.cantidadMercaderia <= 0)
                     {
                         orden.Mercaderias.Remove(mercaderia);
+                    }
+
+                    var cliente = Clientes.FirstOrDefault(c => c.Mercaderias.Any(m => m.idMercaderia == idMercaderia));
+                    if (cliente != null)
+                    {
+                        var mercaderiaCliente = cliente.Mercaderias.First(m => m.idMercaderia == idMercaderia);
+                        mercaderiaCliente.cantidadMercaderia += cantidadRemovida;
                     }
                 }
             }
         }
+
 
         public void LimpiarOrdenesPreparacion()
         {
             ordenesPreparacion.Clear();
         }
 
-
-        public bool GenerarOrdenPreparacion(int numeroOrden, DateTime fechaDespacho, int dniTransportista, string prioridad)
+        public bool GenerarOrdenPreparacion(int numeroOrden, DateTime fechaDespacho, int dniTransportista)
         {
             var orden = ordenesPreparacion.FirstOrDefault(o => o.NumeroOrdenPreparacion == numeroOrden);
             if (orden != null)
             {
                 orden.FechaDespacho = fechaDespacho;
                 orden.DNITransportista = dniTransportista;
-                orden.Prioridad = prioridad;
 
                 foreach (var cliente in Clientes)
                 {

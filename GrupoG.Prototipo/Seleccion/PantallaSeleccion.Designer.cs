@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem2 = new ListViewItem("");
+            ListViewItem listViewItem1 = new ListViewItem("");
             ListaOrdenSeleccion = new ListView();
             numeroOrden = new ColumnHeader();
             numeroCliente = new ColumnHeader();
-            Estado = new ColumnHeader();
+            prioridad = new ColumnHeader();
             BotonGenerarOS = new Button();
             VolverAlMenu = new Button();
             datetimeDespacho = new DateTimePicker();
@@ -41,8 +41,8 @@
             // 
             // ListaOrdenSeleccion
             // 
-            ListaOrdenSeleccion.Columns.AddRange(new ColumnHeader[] { numeroOrden, numeroCliente, Estado });
-            ListaOrdenSeleccion.Items.AddRange(new ListViewItem[] { listViewItem2 });
+            ListaOrdenSeleccion.Columns.AddRange(new ColumnHeader[] { numeroOrden, numeroCliente, prioridad });
+            ListaOrdenSeleccion.Items.AddRange(new ListViewItem[] { listViewItem1 });
             ListaOrdenSeleccion.Location = new Point(43, 106);
             ListaOrdenSeleccion.Name = "ListaOrdenSeleccion";
             ListaOrdenSeleccion.Size = new Size(457, 316);
@@ -60,10 +60,10 @@
             numeroCliente.Text = "Nº de Cliente";
             numeroCliente.Width = 150;
             // 
-            // Estado
+            // prioridad
             // 
-            Estado.Text = "Estado";
-            Estado.Width = 150;
+            prioridad.Text = "Prioridad";
+            prioridad.Width = 150;
             // 
             // BotonGenerarOS
             // 
@@ -91,6 +91,7 @@
             datetimeDespacho.Name = "datetimeDespacho";
             datetimeDespacho.Size = new Size(200, 23);
             datetimeDespacho.TabIndex = 6;
+            datetimeDespacho.ValueChanged += dateTimePicker_ValueChanged;
             // 
             // fechaDespacho
             // 
@@ -124,7 +125,7 @@
         private ColumnHeader numeroOrden;
         private ColumnHeader numeroCliente;
         private ColumnHeader FechaDespach;
-        private ColumnHeader Estado;
+        private ColumnHeader prioridad;
         private Button BotonGenerarOS;
         private Button VolverAlMenu;
         private DateTimePicker datetimeDespacho;

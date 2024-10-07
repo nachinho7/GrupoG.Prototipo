@@ -32,12 +32,10 @@
             Id = new ColumnHeader();
             Nombre = new ColumnHeader();
             Cantidad = new ColumnHeader();
-            ColumnaUbicacion = new ColumnHeader();
             ListaPrevisualizacionOrdenesPreparacion = new ListView();
             Id1 = new ColumnHeader();
             Nombre1 = new ColumnHeader();
             Cantidad1 = new ColumnHeader();
-            columnUbicacion = new ColumnHeader();
             TextBoxCantidad = new TextBox();
             numeroCliente = new TextBox();
             BotonObtenerDatos = new Button();
@@ -97,7 +95,7 @@
             // 
             // ListaDatosMercaderia
             // 
-            ListaDatosMercaderia.Columns.AddRange(new ColumnHeader[] { Id, Nombre, Cantidad, ColumnaUbicacion });
+            ListaDatosMercaderia.Columns.AddRange(new ColumnHeader[] { Id, Nombre, Cantidad });
             ListaDatosMercaderia.Location = new Point(6, 22);
             ListaDatosMercaderia.Name = "ListaDatosMercaderia";
             ListaDatosMercaderia.Size = new Size(561, 124);
@@ -121,14 +119,9 @@
             Cantidad.Text = "Cantidad";
             Cantidad.Width = 120;
             // 
-            // ColumnaUbicacion
-            // 
-            ColumnaUbicacion.Text = "Ubicacion";
-            ColumnaUbicacion.Width = 100;
-            // 
             // ListaPrevisualizacionOrdenesPreparacion
             // 
-            ListaPrevisualizacionOrdenesPreparacion.Columns.AddRange(new ColumnHeader[] { Id1, Nombre1, Cantidad1, columnUbicacion });
+            ListaPrevisualizacionOrdenesPreparacion.Columns.AddRange(new ColumnHeader[] { Id1, Nombre1, Cantidad1 });
             ListaPrevisualizacionOrdenesPreparacion.Location = new Point(16, 147);
             ListaPrevisualizacionOrdenesPreparacion.Name = "ListaPrevisualizacionOrdenesPreparacion";
             ListaPrevisualizacionOrdenesPreparacion.Size = new Size(551, 140);
@@ -149,11 +142,6 @@
             // 
             Cantidad1.Text = "Cantidad";
             Cantidad1.Width = 120;
-            // 
-            // columnUbicacion
-            // 
-            columnUbicacion.Text = "Ubicacion";
-            columnUbicacion.Width = 120;
             // 
             // TextBoxCantidad
             // 
@@ -240,12 +228,11 @@
             // 
             PickerFechaDespacho.Checked = false;
             PickerFechaDespacho.CustomFormat = " ";
-            PickerFechaDespacho.Format = DateTimePickerFormat.Custom;
+            PickerFechaDespacho.Format = DateTimePickerFormat.Short;
             PickerFechaDespacho.Location = new Point(122, 57);
             PickerFechaDespacho.Name = "PickerFechaDespacho";
             PickerFechaDespacho.Size = new Size(212, 23);
             PickerFechaDespacho.TabIndex = 36;
-            PickerFechaDespacho.ValueChanged += PickerFechaDespacho_ValueChanged;
             // 
             // labelTransportista
             // 
@@ -337,12 +324,10 @@
         private Button VolverAlMenu;
         private Button btnEliminar;
         private Button BotonLimpiarCliente;
-        private ColumnHeader ColumnaUbicacion;
         private Label labelNroOrden;
         private TextBox textBoxNroOdenPrevisualizacion;
         private Label labelFecha;
         private DateTimePicker PickerFechaDespacho;
-        private ColumnHeader columnUbicacion;
         private Label labelTransportista;
         private TextBox textBoxDNITransportista;
         private GroupBox GroupBoxPrevisualizacion;

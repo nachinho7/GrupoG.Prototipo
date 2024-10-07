@@ -14,44 +14,7 @@ namespace GrupoG.Prototipo
         {
             InitializeComponent();
             model = new PantallaPreparacionModel();
-        }
 
-        private void PickerFechaDespacho_ValueChanged(object sender, EventArgs e)
-        {
-            if (PickerFechaDespacho.Checked)
-            {
-                PickerFechaDespacho.Format = DateTimePickerFormat.Short;
-                DateTime fechaSeleccionada = PickerFechaDespacho.Value.Date;
-
-                // Obtener prioridad directamente
-                string prioridad = ObtenerPrioridad(fechaSeleccionada);
-
-                // Puedes usar 'prioridad' donde lo necesites aquí
-            }
-            else
-            {
-                PickerFechaDespacho.Format = DateTimePickerFormat.Custom;
-                PickerFechaDespacho.CustomFormat = " ";
-                // Puedes usar directamente un string como "No definida" aquí si lo necesitas
-            }
-        }
-
-        private string ObtenerPrioridad(DateTime fechaSeleccionada)
-        {
-            int diasDiferencia = (fechaSeleccionada - DateTime.Today).Days;
-
-            if (diasDiferencia <= 15)
-            {
-                return "Alta";
-            }
-            else if (diasDiferencia <= 31)
-            {
-                return "Media";
-            }
-            else
-            {
-                return "Baja";
-            }
         }
 
         private void BotonObtenerDatos_Click(object sender, EventArgs e)
@@ -65,11 +28,14 @@ namespace GrupoG.Prototipo
             var mercaderias = model.ObtenerMercaderiaPorCliente(clienteNumero);
             ActualizarListaMercaderias(mercaderias);
 
+            ListaPrevisualizacionOrdenesPreparacion.Items.Clear();
+
             if (mercaderias.Count > 0)
             {
                 numeroCliente.Enabled = false;
             }
         }
+
 
         private void ActualizarListaMercaderias(List<Mercaderias> mercaderias)
         {
@@ -80,7 +46,6 @@ namespace GrupoG.Prototipo
                 var item = new ListViewItem(mercaderia.idMercaderia.ToString());
                 item.SubItems.Add(mercaderia.nombreMercaderia.ToString());
                 item.SubItems.Add(mercaderia.cantidadMercaderia.ToString());
-                item.SubItems.Add(mercaderia.ubicacionMercaderia);
                 ListaDatosMercaderia.Items.Add(item);
             }
 
@@ -125,23 +90,50 @@ namespace GrupoG.Prototipo
 
                 var idMercaderia = int.Parse(selectedItem.SubItems[0].Text);
                 var nombreMercaderia = selectedItem.SubItems[1].Text;
-                var ubicacionMercaderia = selectedItem.SubItems[3].Text;
 
                 int numeroOrdenActual = int.Parse(textBoxNroOdenPrevisualizacion.Text);
-                model.AgregarMercaderiaAPreparacion(numeroOrdenActual, idMercaderia, nombreMercaderia, ubicacionMercaderia, cantidadSeleccionada);
+                model.AgregarMercaderiaAPreparacion(numeroOrdenActual, idMercaderia, nombreMercaderia, cantidadSeleccionada);
 
                 ActualizarListaPrevisualizacion();
 
                 cantidadDisponible -= cantidadSeleccionada;
                 selectedItem.SubItems[2].Text = cantidadDisponible.ToString();
 
-                MessageBox.Show($"Se agregaron {cantidadSeleccionada} unidades de {nombreMercaderia}.", "Unidades Agregadas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show($"Se agregaron {cantidadSeleccionada} unidades de {nombreMercaderia}.", "Unidades Agregadas", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 MessageBox.Show("Por favor, ingrese una cantidad válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (ListaPrevisualizacionOrdenesPreparacion.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Por favor, seleccione un elemento para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var selectedItem = ListaPrevisualizacionOrdenesPreparacion.SelectedItems[0];
+            int idMercaderia = int.Parse(selectedItem.SubItems[0].Text);
+            int cantidadEliminada = int.Parse(selectedItem.SubItems[2].Text); 
+
+            var confirmResult = MessageBox.Show("¿Desea eliminar el elemento seleccionado?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (confirmResult == DialogResult.Yes)
+            {
+                int numeroOrdenActual = int.Parse(textBoxNroOdenPrevisualizacion.Text);
+                model.EliminarMercaderiaDePreparacion(numeroOrdenActual, idMercaderia, cantidadEliminada);
+
+                ActualizarListaPrevisualizacion(); 
+
+                var clienteNumero = int.Parse(numeroCliente.Text);
+                var mercaderias = model.ObtenerMercaderiaPorCliente(clienteNumero);
+                ActualizarListaMercaderias(mercaderias);
+            }
+        }
+
+
 
         private void ActualizarListaPrevisualizacion()
         {
@@ -157,7 +149,6 @@ namespace GrupoG.Prototipo
                     var listItem = new ListViewItem(mercaderia.idMercaderia.ToString());
                     listItem.SubItems.Add(mercaderia.nombreMercaderia);
                     listItem.SubItems.Add(mercaderia.cantidadMercaderia.ToString());
-                    listItem.SubItems.Add(mercaderia.ubicacionMercaderia);
 
                     ListaPrevisualizacionOrdenesPreparacion.Items.Add(listItem);
                 }
@@ -197,15 +188,6 @@ namespace GrupoG.Prototipo
                 return;
             }
 
-            // Se obtiene la prioridad directamente en este momento
-            string prioridad = ObtenerPrioridad(fechaDespacho);
-
-            if (string.IsNullOrEmpty(prioridad) || prioridad == "No definida")
-            {
-                MessageBox.Show("Debe seleccionar una fecha de despacho para determinar la prioridad.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             if (ListaPrevisualizacionOrdenesPreparacion.Items.Count == 0)
             {
                 MessageBox.Show("No hay elementos en la lista de previsualización. Agrega mercadería antes de generar la orden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -217,8 +199,7 @@ namespace GrupoG.Prototipo
             {
                 detallesMercaderia += $"ID: {item.SubItems[0].Text}\n" +
                                       $"  Nombre: {item.SubItems[1].Text}\n" +
-                                      $"  Cantidad: {item.SubItems[2].Text}\n" +
-                                      $"  Ubicación: {item.SubItems[3].Text}\n";
+                                      $"  Cantidad: {item.SubItems[2].Text}\n";
             }
 
             string numeroClienteOrden = numeroCliente.Text;
@@ -227,12 +208,11 @@ namespace GrupoG.Prototipo
                              $"N° Cliente: {numeroClienteOrden}\n" +
                              $"Fecha de Despacho: {fechaDespacho.ToShortDateString()}\n" +
                              $"DNI Transportista: {dniTransportista}\n" +
-                             $"Prioridad: {prioridad}\n" +
                              $"Mercadería:\n{detallesMercaderia}";
 
             MessageBox.Show(mensaje, "Orden Generada", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            bool exito = model.GenerarOrdenPreparacion(numeroOrdenGenerar, fechaDespacho, dniTransportista, prioridad);
+            bool exito = model.GenerarOrdenPreparacion(numeroOrdenGenerar, fechaDespacho, dniTransportista);
 
             if (exito)
             {
@@ -246,30 +226,6 @@ namespace GrupoG.Prototipo
             }
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            if (ListaPrevisualizacionOrdenesPreparacion.SelectedItems.Count > 0)
-            {
-                var selectedItem = ListaPrevisualizacionOrdenesPreparacion.SelectedItems[0];
-                int cantidadEliminada = int.Parse(selectedItem.SubItems[2].Text);
-                int idMercaderia = int.Parse(selectedItem.SubItems[0].Text);
-
-                var confirmResult = MessageBox.Show("¿Desea eliminar el elemento seleccionado?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (confirmResult == DialogResult.Yes)
-                {
-                    int numeroOrdenActual = int.Parse(textBoxNroOdenPrevisualizacion.Text);
-                    model.EliminarMercaderiaDePreparacion(numeroOrdenActual, idMercaderia, cantidadEliminada);
-                    ActualizarListaPrevisualizacion();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Por favor, seleccione un elemento para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-
-
         private void LimpiarFormulario()
         {
             numeroCliente.Text = "";
@@ -281,9 +237,31 @@ namespace GrupoG.Prototipo
             TextBoxCantidad.Text = "";
             TextBoxCantidad.Enabled = false;
         }
+
         private void BotonLimpiarCliente_Click(object sender, EventArgs e)
         {
+            if (!int.TryParse(numeroCliente.Text, out int clienteNumero))
+            {
+                MessageBox.Show("El número de cliente ingresado no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var mercaderiasOriginales = model.ObtenerMercaderiaPorCliente(clienteNumero);
+
+            foreach (ListViewItem item in ListaPrevisualizacionOrdenesPreparacion.Items)
+            {
+                var idMercaderia = int.Parse(item.SubItems[0].Text);
+                var cantidadMercaderia = int.Parse(item.SubItems[2].Text);
+
+                var mercaderiaOriginal = mercaderiasOriginales.FirstOrDefault(m => m.idMercaderia == idMercaderia);
+                if (mercaderiaOriginal != null)
+                {
+                    mercaderiaOriginal.cantidadMercaderia += cantidadMercaderia;
+                }
+            }
+
             model.LimpiarOrdenesPreparacion();
+
             ActualizarListaPrevisualizacion();
             LimpiarFormulario();
         }

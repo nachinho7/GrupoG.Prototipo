@@ -1,78 +1,53 @@
-﻿using System;
+﻿using GrupoG.Prototipo.Preparacion;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GrupoG.Prototipo.Seleccion
 {
-    public class Orden
+    internal class PantallaSeleccionModel
     {
-        public int NroOrden { get; set; }
-        public int NroCliente { get; set; }
-        public string Estado { get; set; }
-        public DateTime FechaGeneracion { get; set; }
-
-        public Orden(int nroOrden, int nroCliente, string estado, DateTime fechaGeneracion)
+        public List<OrdenPreparacion2> OrdenPreparacion { get; private set; } = new List<OrdenPreparacion2>
         {
-            NroOrden = nroOrden;
-            NroCliente = nroCliente;
-            Estado = estado;
-            FechaGeneracion = fechaGeneracion;
-        }
-    }
+            new OrdenPreparacion2 { NumeroOrdenPreparacion = 1, NumeroCliente = 1001, FechaDespacho = DateTime.Now.AddDays(1) },
+            new OrdenPreparacion2 { NumeroOrdenPreparacion = 2, NumeroCliente = 1002, FechaDespacho = DateTime.Now.AddDays(2) },
+            new OrdenPreparacion2 { NumeroOrdenPreparacion = 3, NumeroCliente = 1002, FechaDespacho = DateTime.Now.AddDays(3) },
+        };
 
-    //public class OrdenSeleccion
-    //{
-    //    public int IdSeleccion { get; set; }
-    //    public List<Orden> Ordenes { get; set; }
-    //    public DateTime FechaCreacion { get; set; }
-
-    //    //public OrdenSeleccion(int idSeleccion, List<Orden> ordenes)
-    //    //{
-    //    //    IdSeleccion = idSeleccion;
-    //    //    Ordenes = ordenes;
-    //    //    FechaCreacion = DateTime.Now;
-    //    //}
-    //}
-
-    public class PantallaSeleccionModel
-    {
-        private List<Orden> ordenes;
-        private List<OrdenSeleccion> ordenesSeleccion;
-
+        private List<OrdenSeleccion2> ordenesSeleccion = new List<OrdenSeleccion2>();
         private int siguienteIdSeleccion = 1;
 
-        public PantallaSeleccionModel()
+        // Método para obtener órdenes de preparación
+        public List<OrdenPreparacion2> ObtenerOrdenes()
         {
-            ordenes = new List<Orden>
+            return OrdenPreparacion;
+        }
+
+        // Método para filtrar órdenes por fecha
+        public List<OrdenPreparacion2> FiltrarOrdenesPorFecha(DateTime fecha)
+        {
+            return OrdenPreparacion.Where(o => o.FechaDespacho.Date == fecha.Date).ToList();
+        }
+
+        // Método para generar una nueva orden de selección
+        public OrdenSeleccion2 GenerarOrdenDeSeleccion(List<OrdenPreparacion2> ordenesSeleccionadas)
+        {
+            if (ordenesSeleccionadas == null || !ordenesSeleccionadas.Any())
             {
-                new Orden(1, 1001, "Pendiente", DateTime.Now),
-                new Orden(2, 1002, "Completado", DateTime.Now.AddDays(-1)),
-                new Orden(4, 1002, "Pendiente", DateTime.Now.AddDays(-1)),
+                throw new ArgumentException("Debes seleccionar al menos una orden de preparación.");
+            }
+
+            OrdenSeleccion2 nuevaSeleccion = new OrdenSeleccion2
+            {
+                numeroOrdenSeleccion = siguienteIdSeleccion++,
+                FechaCreacion = DateTime.Now
             };
 
-            ordenesSeleccion = new List<OrdenSeleccion>();
+            ordenesSeleccion.Add(nuevaSeleccion);
+
+            // Aquí puedes agregar lógica para asociar las órdenes de preparación a la nueva selección si es necesario
+
+            return nuevaSeleccion;
         }
-
-        public List<Orden> ObtenerOrdenes()
-        {
-            return ordenes;
-        }
-
-        //public List<OrdenSeleccion> ObtenerOrdenesSeleccion()
-        //{
-        //    return ordenesSeleccion;
-        //}
-
-        //public OrdenSeleccion GenerarOrdenDeSeleccion(List<Orden> ordenesSeleccionadas)
-        //{
-        //    OrdenSeleccion nuevaSeleccion = new OrdenSeleccion(siguienteIdSeleccion++, ordenesSeleccionadas);
-        //    ordenesSeleccion.Add(nuevaSeleccion);
-
-        //    foreach (var orden in ordenesSeleccionadas)
-        //    {
-        //        ordenes.Remove(orden);
-        //    }
-
-        //    return nuevaSeleccion;
-        //}
     }
 }
