@@ -108,6 +108,7 @@
             Controls.Add(BotonSeleccion);
             Controls.Add(BotonPreparacion);
             Name = "PantallaMenu";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Menú";
             ResumeLayout(false);
         }

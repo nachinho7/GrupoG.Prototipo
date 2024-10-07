@@ -115,6 +115,7 @@
             Controls.Add(labelOrdenSeleccion);
             Controls.Add(comboBox1);
             Name = "PantallaRetiroStock";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "PantallaRetiroStock";
             ResumeLayout(false);
             PerformLayout();

@@ -33,9 +33,9 @@
             datetimeDespacho = new DateTimePicker();
             fechaDespacho = new Label();
             groupBoxOrdenes = new GroupBox();
+            mostrartTodasOrdenes = new Button();
             listView1 = new ListView();
             numeroOrdenPreparacion = new ColumnHeader();
-            mostrartTodasOrdenes = new Button();
             groupBoxOrdenes.SuspendLayout();
             SuspendLayout();
             // 
@@ -90,6 +90,16 @@
             groupBoxOrdenes.TabStop = false;
             groupBoxOrdenes.Text = "Ordenes de Preparación a seleccionar:";
             // 
+            // mostrartTodasOrdenes
+            // 
+            mostrartTodasOrdenes.Location = new Point(37, 52);
+            mostrartTodasOrdenes.Name = "mostrartTodasOrdenes";
+            mostrartTodasOrdenes.Size = new Size(190, 24);
+            mostrartTodasOrdenes.TabIndex = 9;
+            mostrartTodasOrdenes.Text = "Mostrar todas las ordenes";
+            mostrartTodasOrdenes.UseVisualStyleBackColor = true;
+            mostrartTodasOrdenes.Click += BotonMostrarTodas_Click;
+            // 
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { numeroOrdenPreparacion });
@@ -105,16 +115,6 @@
             numeroOrdenPreparacion.Text = "N° Orden";
             numeroOrdenPreparacion.Width = 210;
             // 
-            // mostrartTodasOrdenes
-            // 
-            mostrartTodasOrdenes.Location = new Point(37, 52);
-            mostrartTodasOrdenes.Name = "mostrartTodasOrdenes";
-            mostrartTodasOrdenes.Size = new Size(190, 24);
-            mostrartTodasOrdenes.TabIndex = 9;
-            mostrartTodasOrdenes.Text = "Mostrar todas las ordenes";
-            mostrartTodasOrdenes.UseVisualStyleBackColor = true;
-            mostrartTodasOrdenes.Click += BotonMostrarTodas_Click;
-            // 
             // PantallaSeleccion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -124,6 +124,7 @@
             Controls.Add(VolverAlMenu);
             Controls.Add(BotonGenerarOS);
             Name = "PantallaSeleccion";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Orden de Seleccion";
             Load += PantallaSeleccion_Load;
             groupBoxOrdenes.ResumeLayout(false);

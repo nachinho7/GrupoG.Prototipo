@@ -284,7 +284,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(659, 801);
+            ClientSize = new Size(658, 802);
             Controls.Add(groupBoxDatosMercaderia);
             Controls.Add(GroupBoxPrevisualizacion);
             Controls.Add(BotonLimpiarCliente);
@@ -294,6 +294,7 @@
             Controls.Add(btnGenerar);
             Controls.Add(LabelNumeroCliente);
             Name = "PantallaPreparacion";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Orden de Preparación";
             Load += PantallaPreparacion_Load;
             GroupBoxPrevisualizacion.ResumeLayout(false);

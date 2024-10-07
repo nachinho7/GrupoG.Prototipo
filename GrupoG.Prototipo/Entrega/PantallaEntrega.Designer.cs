@@ -81,6 +81,7 @@
             Controls.Add(btnEntregar);
             Margin = new Padding(3, 2, 3, 2);
             Name = "PantallaEntrega";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Orden de Entrega";
             ResumeLayout(false);
         }

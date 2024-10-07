@@ -224,6 +224,7 @@
             Controls.Add(numeroCliente);
             Controls.Add(label1);
             Name = "PantallaDespacho";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Orden de Despacho";
             Load += PantallaDespacho_Load;
             ResumeLayout(false);
