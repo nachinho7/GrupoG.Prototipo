@@ -26,14 +26,12 @@
             ListaOrdenesEmpaquetar = new ListView();
             ColumnaNumeroOrden = new ColumnHeader();
             ColumnaNumeroCliente = new ColumnHeader();
-            ColumnaCodigo = new ColumnHeader();
-            ColumnaTipo = new ColumnHeader();
             BotonVolverAlMenu = new Button();
             SuspendLayout();
             // 
             // BotonEmpaquetar
             // 
-            BotonEmpaquetar.Location = new Point(516, 274);
+            BotonEmpaquetar.Location = new Point(119, 297);
             BotonEmpaquetar.Margin = new Padding(3, 2, 3, 2);
             BotonEmpaquetar.Name = "BotonEmpaquetar";
             BotonEmpaquetar.Size = new Size(107, 38);
@@ -44,11 +42,11 @@
             // 
             // ListaOrdenesEmpaquetar
             // 
-            ListaOrdenesEmpaquetar.Columns.AddRange(new ColumnHeader[] { ColumnaNumeroOrden, ColumnaNumeroCliente, ColumnaCodigo, ColumnaTipo });
-            ListaOrdenesEmpaquetar.Location = new Point(53, 35);
+            ListaOrdenesEmpaquetar.Columns.AddRange(new ColumnHeader[] { ColumnaNumeroOrden, ColumnaNumeroCliente });
+            ListaOrdenesEmpaquetar.Location = new Point(23, 53);
             ListaOrdenesEmpaquetar.Margin = new Padding(3, 2, 3, 2);
             ListaOrdenesEmpaquetar.Name = "ListaOrdenesEmpaquetar";
-            ListaOrdenesEmpaquetar.Size = new Size(606, 210);
+            ListaOrdenesEmpaquetar.Size = new Size(326, 210);
             ListaOrdenesEmpaquetar.TabIndex = 9;
             ListaOrdenesEmpaquetar.UseCompatibleStateImageBehavior = false;
             ListaOrdenesEmpaquetar.View = View.Details;
@@ -63,19 +61,9 @@
             ColumnaNumeroCliente.Text = "Nº Cliente";
             ColumnaNumeroCliente.Width = 150;
             // 
-            // ColumnaCodigo
-            // 
-            ColumnaCodigo.Text = "Código";
-            ColumnaCodigo.Width = 150;
-            // 
-            // ColumnaTipo
-            // 
-            ColumnaTipo.Text = "Tipo";
-            ColumnaTipo.Width = 150;
-            // 
             // BotonVolverAlMenu
             // 
-            BotonVolverAlMenu.Location = new Point(87, 274);
+            BotonVolverAlMenu.Location = new Point(242, 297);
             BotonVolverAlMenu.Name = "BotonVolverAlMenu";
             BotonVolverAlMenu.Size = new Size(107, 38);
             BotonVolverAlMenu.TabIndex = 10;
@@ -87,7 +75,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(711, 336);
+            ClientSize = new Size(381, 357);
             Controls.Add(BotonVolverAlMenu);
             Controls.Add(ListaOrdenesEmpaquetar);
             Controls.Add(BotonEmpaquetar);
@@ -101,8 +89,6 @@
         private Button BotonEmpaquetar;
         private ListView ListaOrdenesEmpaquetar;
         private ColumnHeader ColumnaNumeroCliente;
-        private ColumnHeader ColumnaCodigo;
-        private ColumnHeader ColumnaTipo;
         private Button BotonVolverMenu;
         private Button BotonVolverAlMenu;
         private ColumnHeader ColumnaNumeroOrden;
