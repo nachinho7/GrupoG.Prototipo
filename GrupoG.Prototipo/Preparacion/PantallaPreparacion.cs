@@ -18,21 +18,7 @@ namespace GrupoG.Prototipo
             model = new PantallaPreparacionModel();
             numeroOrden = 1;
 
-
             textBoxNroOdenPrevisualizacion.Text = numeroOrden.ToString();
-            textBoxNroOdenPrevisualizacion.ReadOnly = true;
-
-
-            //textBoxDNITransportista.Text = string.Empty;
-
-
-            //PickerFechaDespacho.Format = DateTimePickerFormat.Custom;
-            //PickerFechaDespacho.CustomFormat = " "; // Aparece vacío
-            //PickerFechaDespacho.Checked = false;
-            //PickerFechaDespacho.ShowCheckBox = true;
-
-
-            //PickerFechaDespacho.ValueChanged += PickerFechaDespacho_ValueChanged;
         }
 
         private void PickerFechaDespacho_ValueChanged(object sender, EventArgs e)
