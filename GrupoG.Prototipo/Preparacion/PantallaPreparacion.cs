@@ -120,13 +120,10 @@ namespace GrupoG.Prototipo
                 var nombreMercaderia = ListaDatosMercaderia.SelectedItems[0].SubItems[1].Text;
                 var ubicacionMercaderia = ListaDatosMercaderia.SelectedItems[0].SubItems[3].Text;
 
-                // Agregar mercadería al modelo
                 model.AgregarMercaderiaAPreparacion(numeroOrden, idMercaderia, nombreMercaderia, ubicacionMercaderia, cantidadSeleccionada);
 
-                // Actualizar la lista de previsualización
                 ActualizarListaPrevisualizacion();
 
-                // Actualizar la cantidad disponible en la lista de mercaderías
                 cantidadDisponible -= cantidadSeleccionada;
                 ListaDatosMercaderia.SelectedItems[0].SubItems[2].Text = cantidadDisponible.ToString();
 
@@ -158,21 +155,18 @@ namespace GrupoG.Prototipo
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-            // Validar número de orden
             if (!int.TryParse(textBoxNroOdenPrevisualizacion.Text, out int numeroOrdenGenerar))
             {
                 MessageBox.Show("El número de orden ingresado no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Validar DNI del transportista
             if (!int.TryParse(textBoxDNITransportista.Text, out int dniTransportista))
             {
                 MessageBox.Show("El DNI del transportista ingresado no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // **Modificación 2: Validar que se haya seleccionado una fecha de despacho**
             if (!PickerFechaDespacho.Checked)
             {
                 MessageBox.Show("Debe seleccionar una fecha de despacho.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -181,21 +175,18 @@ namespace GrupoG.Prototipo
 
             var fechaDespacho = PickerFechaDespacho.Value.Date;
 
-            // **Modificación 3: Validar que la fecha de despacho no sea menor a la fecha actual**
             if (fechaDespacho < DateTime.Today)
             {
                 MessageBox.Show("La fecha de despacho no puede ser menor a la fecha actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Verificar si hay elementos en la lista de previsualización
             if (ListaPrevisualizacionOrdenesPreparacion.Items.Count == 0)
             {
                 MessageBox.Show("No hay elementos en la lista de previsualización. Agrega mercadería antes de generar la orden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // **Obtener detalles de la orden para el MessageBox**
             string detallesMercaderia = "";
             foreach (ListViewItem item in ListaPrevisualizacionOrdenesPreparacion.Items)
             {
@@ -205,20 +196,16 @@ namespace GrupoG.Prototipo
                                       $"Ubicación: {item.SubItems[4].Text}\n";
             }
 
-            // Obtener el número de cliente
             string numeroClienteOrden = numeroCliente.Text;
 
-            // Construir el mensaje
             string mensaje = $"N° Orden: {numeroOrdenGenerar}\n" +
                              $"N° Cliente: {numeroClienteOrden}\n" +
                              $"Fecha de Despacho: {fechaDespacho.ToShortDateString()}\n" +
                              $"DNI Transportista: {dniTransportista}\n" +
                              $"Mercadería:\n{detallesMercaderia}";
 
-            // Mostrar el MessageBox con los detalles de la orden
             MessageBox.Show(mensaje, "Orden Generada", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Generar la orden en el modelo
             bool exito = model.GenerarOrdenPreparacion(numeroOrdenGenerar, fechaDespacho, dniTransportista);
 
             if (exito)
@@ -239,17 +226,15 @@ namespace GrupoG.Prototipo
             TextBoxCantidad.Enabled = false;
             numeroCliente.Enabled = true;
             numeroCliente.Text = string.Empty;
-            textBoxNroOdenPrevisualizacion.Text = numeroOrden.ToString(); // Actualizar el TextBox con el número de orden actual
+            textBoxNroOdenPrevisualizacion.Text = numeroOrden.ToString();
             textBoxDNITransportista.Text = string.Empty;
 
-            // **Modificación 4: Resetear el DateTimePicker a vacío**
-            PickerFechaDespacho.CustomFormat = " "; // Vuelve a aparecer vacío
+            PickerFechaDespacho.CustomFormat = " ";
             PickerFechaDespacho.Format = DateTimePickerFormat.Custom;
             PickerFechaDespacho.Checked = false;
 
-            // Incrementar el número de orden
             numeroOrden++;
-            textBoxNroOdenPrevisualizacion.Text = numeroOrden.ToString(); // Actualizar el TextBox con el nuevo número de orden
+            textBoxNroOdenPrevisualizacion.Text = numeroOrden.ToString();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -264,13 +249,10 @@ namespace GrupoG.Prototipo
                 var confirmResult = MessageBox.Show("¿Desea eliminar el elemento seleccionado?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (confirmResult == DialogResult.Yes)
                 {
-                    // Eliminar mercadería de la orden en el modelo
                     model.EliminarMercaderiaDePreparacion(numeroOrden, idMercaderia, cantidadEliminada);
 
-                    // Actualizar la lista de previsualización
                     ActualizarListaPrevisualizacion();
 
-                    // Restaurar la cantidad disponible en la lista de mercaderías
                     foreach (ListViewItem item in ListaDatosMercaderia.Items)
                     {
                         if (item.Text == idMercaderia.ToString())
@@ -302,7 +284,6 @@ namespace GrupoG.Prototipo
 
         private void PantallaPreparacion_Load(object sender, EventArgs e)
         {
-            // Inicializaciones adicionales si es necesario
         }
     }
 }

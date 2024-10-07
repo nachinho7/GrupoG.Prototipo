@@ -51,7 +51,7 @@ namespace GrupoG.Prototipo.Preparacion
                 orden = new OrdenPreparacion
                 {
                     NumeroOrdenPreparacion = numeroOrden,
-                    FechaDespacho = DateTime.Now // Puedes ajustar esto según sea necesario
+                    FechaDespacho = DateTime.Now
                 };
                 ordenesPreparacion.Add(orden);
             }
@@ -93,7 +93,6 @@ namespace GrupoG.Prototipo.Preparacion
                     }
                 }
 
-                // Si la orden no tiene más mercaderías, eliminar la orden
                 if (!orden.Mercaderias.Any())
                 {
                     ordenesPreparacion.Remove(orden);
@@ -106,11 +105,9 @@ namespace GrupoG.Prototipo.Preparacion
             var orden = ordenesPreparacion.FirstOrDefault(o => o.NumeroOrdenPreparacion == numeroOrden);
             if (orden != null)
             {
-                // Asignar fecha y transportista
                 orden.FechaDespacho = fechaDespacho;
                 orden.DNITransportista = dniTransportista;
 
-                // Actualizar las cantidades disponibles en los clientes
                 foreach (var cliente in Clientes)
                 {
                     foreach (var mercaderia in cliente.Mercaderias)
@@ -121,16 +118,12 @@ namespace GrupoG.Prototipo.Preparacion
                             mercaderia.cantidadMercaderia -= ordenMercaderia.cantidadMercaderia;
                             if (mercaderia.cantidadMercaderia < 0)
                             {
-                                // Manejar el caso de cantidades negativas si es necesario
                                 mercaderia.cantidadMercaderia = 0;
                             }
                         }
                     }
                 }
 
-                // Aquí podrías agregar lógica adicional para guardar la orden en una base de datos o realizar otras acciones necesarias.
-
-                // Eliminar la orden de la lista de preparación después de generarla
                 ordenesPreparacion.Remove(orden);
                 return true;
             }
