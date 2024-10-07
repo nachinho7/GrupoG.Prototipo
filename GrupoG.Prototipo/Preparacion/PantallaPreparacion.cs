@@ -145,7 +145,7 @@ namespace GrupoG.Prototipo
         {
             if (!int.TryParse(textBoxNroOdenPrevisualizacion.Text, out int numeroOrdenGenerar))
             {
-                MessageBox.Show("El número de orden ingresado no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El número de orden no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -153,6 +153,12 @@ namespace GrupoG.Prototipo
             {
                 MessageBox.Show("El DNI del transportista ingresado no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+            if (textBoxDNITransportista.Text.Length < 7 || textBoxDNITransportista.Text.Length > 8)
+            {
+                MessageBox.Show("El DNI del transportista debe ser un número de entre 7 u 8 dígitos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
             }
 
             if (!PickerFechaDespacho.Checked)
