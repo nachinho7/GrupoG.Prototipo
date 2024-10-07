@@ -13,8 +13,8 @@ namespace GrupoG.Prototipo.Preparacion
                 NumeroCliente = 2045,
                 Mercaderias = new List<Mercaderias>
                 {
-                    new Mercaderias { idMercaderia = 1, nombreMercaderia = "Botellas", ubicacionMercaderia = "Almacén A", cantidadMercaderia = 2 },
-                    new Mercaderias { idMercaderia = 2, nombreMercaderia = "Vasos", ubicacionMercaderia = "Almacén B", cantidadMercaderia = 500 }
+                    new Mercaderias { idMercaderia = 854, nombreMercaderia = "Botellas", ubicacionMercaderia = "52-45-10", cantidadMercaderia = 200 },
+                    new Mercaderias { idMercaderia = 9652, nombreMercaderia = "Vasos", ubicacionMercaderia = "52-33-5", cantidadMercaderia = 500 }
                 }
             },
             new Clientes
@@ -22,7 +22,7 @@ namespace GrupoG.Prototipo.Preparacion
                 NumeroCliente = 3080,
                 Mercaderias = new List<Mercaderias>
                 {
-                    new Mercaderias { idMercaderia = 2, nombreMercaderia = "Pelotas", ubicacionMercaderia = "Almacén C", cantidadMercaderia = 10 }
+                    new Mercaderias { idMercaderia = 874, nombreMercaderia = "Pelotas", ubicacionMercaderia = "10-54-8", cantidadMercaderia = 100 }
                 }
             },
             new Clientes
@@ -30,7 +30,7 @@ namespace GrupoG.Prototipo.Preparacion
                 NumeroCliente = 1224,
                 Mercaderias = new List<Mercaderias>
                 {
-                    new Mercaderias { idMercaderia = 3, nombreMercaderia = "Aceites", ubicacionMercaderia = "Almacén D", cantidadMercaderia = 30 }
+                    new Mercaderias { idMercaderia = 852, nombreMercaderia = "Aceites", ubicacionMercaderia = "40-10-8", cantidadMercaderia = 300 }
                 }
             },
         };
