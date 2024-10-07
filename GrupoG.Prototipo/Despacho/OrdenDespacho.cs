@@ -9,12 +9,5 @@ namespace GrupoG.Prototipo.Despacho
         public int NroCliente { get; set; }
         public string Estado { get; set; }
 
-        // Creamos el constructor
-        public OrdenDespacho(int idDespacho, int nroCliente, string estado)
-        {
-            IdDespacho = idDespacho;
-            Estado = estado;
-            NroCliente = nroCliente;
-        }
     }
 }

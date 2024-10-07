@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace GrupoG.Prototipo.Seleccion
+namespace GrupoG.Prototipo.Empaquetar
 {
-    internal class Clientes2
+    public class Clientes
     {
 
         public int NumeroCliente { get; set; }
-        public List<Mercaderias2> Mercaderias { get; set; }
 
     }
 }
+

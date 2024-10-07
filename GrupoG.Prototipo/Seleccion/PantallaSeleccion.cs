@@ -51,7 +51,7 @@ namespace GrupoG.Prototipo.Pantallas
         {
             var ordenesSeleccionadas = listView1.SelectedItems
                 .Cast<ListViewItem>()
-                .Select(item => item.Tag as OrdenPreparacion2)
+                .Select(item => item.Tag as OrdenPreparacion)
                 .ToList();
 
             if (ordenesSeleccionadas.Count > 0)

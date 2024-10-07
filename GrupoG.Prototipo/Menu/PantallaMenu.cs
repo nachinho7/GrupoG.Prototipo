@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GrupoG.Prototipo.Empaquetar;
+using GrupoG.Prototipo.Stock;
+using System;
 using System.Windows.Forms;
 
 namespace GrupoG.Prototipo.Pantallas.Menu
@@ -11,7 +13,7 @@ namespace GrupoG.Prototipo.Pantallas.Menu
         }
         private void BotonPreparacion_Click(object sender, EventArgs e)
         {
-            PantallaPreparacion form = new(); 
+            PantallaPreparacion form = new();
             form.ShowDialog();
         }
 
@@ -21,21 +23,34 @@ namespace GrupoG.Prototipo.Pantallas.Menu
             form.ShowDialog();
         }
 
+        private void BotonRetiroStock_Click(object sender, EventArgs e)
+        {
+            PantallaRetiroStock form = new();
+            form.ShowDialog();
+        }
+
         private void BotonEntrega_Click(object sender, EventArgs e)
         {
             PantallaEntrega form = new();
-            form.ShowDialog(); 
+            form.ShowDialog();
+        }
+        private void BotonEmpaquetar_Click(object sender, EventArgs e)
+        {
+            PantallaEmpaquetar form = new();
+            form.ShowDialog();
         }
 
         private void BotonDespacho_Click(object sender, EventArgs e)
         {
-            PantallaDespacho form = new(); 
-            form.ShowDialog(); 
+            PantallaDespacho form = new();
+            form.ShowDialog();
         }
 
         private void PantallaMenu_Load(object sender, EventArgs e)
         {
 
         }
+
+        
     }
 }

@@ -31,12 +31,12 @@
             // 
             // btnEntregar
             // 
-            btnEntregar.Location = new Point(119, 297);
+            btnEntregar.Location = new Point(88, 297);
             btnEntregar.Margin = new Padding(3, 2, 3, 2);
             btnEntregar.Name = "btnEntregar";
             btnEntregar.Size = new Size(107, 38);
             btnEntregar.TabIndex = 7;
-            btnEntregar.Text = "Entregar";
+            btnEntregar.Text = "Generar Orden de Entrega";
             btnEntregar.UseVisualStyleBackColor = true;
             btnEntregar.Click += BotonEmpaquetar_Click;
             // 
@@ -46,7 +46,7 @@
             ListaOrdenesEmpaquetar.Location = new Point(23, 53);
             ListaOrdenesEmpaquetar.Margin = new Padding(3, 2, 3, 2);
             ListaOrdenesEmpaquetar.Name = "ListaOrdenesEmpaquetar";
-            ListaOrdenesEmpaquetar.Size = new Size(326, 210);
+            ListaOrdenesEmpaquetar.Size = new Size(307, 222);
             ListaOrdenesEmpaquetar.TabIndex = 9;
             ListaOrdenesEmpaquetar.UseCompatibleStateImageBehavior = false;
             ListaOrdenesEmpaquetar.View = View.Details;
@@ -63,7 +63,7 @@
             // 
             // BotonVolverAlMenu
             // 
-            BotonVolverAlMenu.Location = new Point(242, 297);
+            BotonVolverAlMenu.Location = new Point(223, 297);
             BotonVolverAlMenu.Name = "BotonVolverAlMenu";
             BotonVolverAlMenu.Size = new Size(107, 38);
             BotonVolverAlMenu.TabIndex = 10;

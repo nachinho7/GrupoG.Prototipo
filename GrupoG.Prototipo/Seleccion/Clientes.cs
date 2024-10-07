@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace GrupoG.Prototipo.Preparacion
+namespace GrupoG.Prototipo.Seleccion
 {
-    public class Clientes
+    public class Clientes2
     {
 
         public int NumeroCliente { get; set; }
@@ -15,4 +15,3 @@ namespace GrupoG.Prototipo.Preparacion
 
     }
 }
-

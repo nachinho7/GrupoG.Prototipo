@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GrupoG.Prototipo.Seleccion
+namespace GrupoG.Prototipo.Empaquetar
 {
-    internal class Mercaderias2
+    public class Mercaderias
     {
         public int idMercaderia { get; set; }
         public string nombreMercaderia { get; set; }

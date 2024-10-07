@@ -6,24 +6,19 @@ namespace GrupoG.Prototipo.Despacho
 {
     internal class PantallaDespachoModel
     {
-        // Lista de órdenes de despacho
-        private List<OrdenDespacho> ordenesDespacho;
-        // Lista de transportistas
-        public List<Transportistas> Transportistas { get; private set; }
-
-        public PantallaDespachoModel()
-        {
-            ordenesDespacho = new List<OrdenDespacho>
+            public List<OrdenDespacho> OrdenDespacho { get; private set; } = new List<OrdenDespacho>
             {
-                new OrdenDespacho(1, 1234, "Empaquetado"),
-                new OrdenDespacho(2, 1234, "Empaquetado"),
-                new OrdenDespacho(3, 1234, "Empaquetado"),
-                new OrdenDespacho(4, 4567, "Empaquetado"),
-                new OrdenDespacho(5, 5555, "Empaquetado"),
-                new OrdenDespacho(6, 5555, "Empaquetado")
+                new OrdenDespacho{ IdDespacho = 1, NroCliente = 1234, Estado = "Empaquetado" },
+                new OrdenDespacho{ IdDespacho = 2, NroCliente = 1234, Estado = "Empaquetado" },
+                new OrdenDespacho{ IdDespacho = 3, NroCliente = 5678, Estado = "Empaquetado" },
+                new OrdenDespacho{ IdDespacho = 4, NroCliente = 2045, Estado = "Empaquetado" },
+                new OrdenDespacho{ IdDespacho = 5, NroCliente = 2045, Estado = "Empaquetado" },
+                new OrdenDespacho{ IdDespacho = 6, NroCliente = 1224, Estado = "Empaquetado" },
+
+
             };
 
-            Transportistas = new List<Transportistas>
+            public List<Transportistas> Transportistas { get; private set; } = new List<Transportistas>
             {
                 new Transportistas
                 {
@@ -46,12 +41,11 @@ namespace GrupoG.Prototipo.Despacho
                     patente = "AA000BB"
                 }
             };
-        }
 
         public List<OrdenDespacho> ObtenerOrdenesPorCliente(int numeroCliente)
         {
             // Filtrar y devolver las órdenes de despacho relacionadas al cliente
-            var ordenesFiltradas = ordenesDespacho.Where(o => o.NroCliente == numeroCliente).ToList();
+            var ordenesFiltradas = OrdenDespacho.Where(o => o.NroCliente == numeroCliente).ToList();
 
             Console.WriteLine($"Se encontraron {ordenesFiltradas.Count} ordenes para el cliente {numeroCliente}", "Ordenes Encontradas", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -76,11 +70,11 @@ namespace GrupoG.Prototipo.Despacho
 
         public void EliminarOrdenPorId(int idDespacho)
         {
-            var ordenAEliminar = ordenesDespacho.FirstOrDefault(o => o.IdDespacho == idDespacho);
+            var ordenAEliminar = OrdenDespacho.FirstOrDefault(o => o.IdDespacho == idDespacho);
 
             if (ordenAEliminar != null)
             {
-                ordenesDespacho.Remove(ordenAEliminar);
+                OrdenDespacho.Remove(ordenAEliminar);
             }
         }
 
