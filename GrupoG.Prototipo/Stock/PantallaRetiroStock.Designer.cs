@@ -28,18 +28,108 @@
         /// </summary>
         private void InitializeComponent()
         {
+            comboBox1 = new ComboBox();
+            labelOrdenSeleccion = new Label();
+            listView1 = new ListView();
+            idMercaderia = new ColumnHeader();
+            nombreMercaderia = new ColumnHeader();
+            cantidadMercaderia = new ColumnHeader();
+            ubicacionMercaderia = new ColumnHeader();
+            VolverAlMenu = new Button();
+            btnRetirarStock = new Button();
             SuspendLayout();
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(162, 48);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 0;
+            // 
+            // labelOrdenSeleccion
+            // 
+            labelOrdenSeleccion.AutoSize = true;
+            labelOrdenSeleccion.Location = new Point(23, 51);
+            labelOrdenSeleccion.Name = "labelOrdenSeleccion";
+            labelOrdenSeleccion.Size = new Size(112, 15);
+            labelOrdenSeleccion.TabIndex = 1;
+            labelOrdenSeleccion.Text = "Orden de Selección:";
+            // 
+            // listView1
+            // 
+            listView1.Columns.AddRange(new ColumnHeader[] { idMercaderia, nombreMercaderia, cantidadMercaderia, ubicacionMercaderia });
+            listView1.Location = new Point(23, 89);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(357, 194);
+            listView1.TabIndex = 2;
+            listView1.UseCompatibleStateImageBehavior = false;
+            listView1.View = View.Details;
+            // 
+            // idMercaderia
+            // 
+            idMercaderia.Text = "ID";
+            idMercaderia.Width = 50;
+            // 
+            // nombreMercaderia
+            // 
+            nombreMercaderia.Text = "Nombre";
+            nombreMercaderia.Width = 110;
+            // 
+            // cantidadMercaderia
+            // 
+            cantidadMercaderia.Text = "Cantidad";
+            cantidadMercaderia.Width = 90;
+            // 
+            // ubicacionMercaderia
+            // 
+            ubicacionMercaderia.Text = "Ubicacion";
+            ubicacionMercaderia.Width = 110;
+            // 
+            // VolverAlMenu
+            // 
+            VolverAlMenu.Location = new Point(267, 310);
+            VolverAlMenu.Name = "VolverAlMenu";
+            VolverAlMenu.Size = new Size(113, 38);
+            VolverAlMenu.TabIndex = 6;
+            VolverAlMenu.Text = "Volver al Menú";
+            VolverAlMenu.UseVisualStyleBackColor = true;
+            // 
+            // btnRetirarStock
+            // 
+            btnRetirarStock.Location = new Point(150, 310);
+            btnRetirarStock.Name = "btnRetirarStock";
+            btnRetirarStock.Size = new Size(98, 38);
+            btnRetirarStock.TabIndex = 7;
+            btnRetirarStock.Text = "Retirar Stock";
+            btnRetirarStock.UseVisualStyleBackColor = true;
             // 
             // PantallaRetiroStock
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(429, 448);
+            ClientSize = new Size(408, 372);
+            Controls.Add(btnRetirarStock);
+            Controls.Add(VolverAlMenu);
+            Controls.Add(listView1);
+            Controls.Add(labelOrdenSeleccion);
+            Controls.Add(comboBox1);
             Name = "PantallaRetiroStock";
             Text = "PantallaRetiroStock";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private ComboBox comboBox1;
+        private Label labelOrdenSeleccion;
+        private ListView listView1;
+        private ColumnHeader idMercaderia;
+        private ColumnHeader nombreMercaderia;
+        private ColumnHeader cantidadMercaderia;
+        private ColumnHeader ubicacionMercaderia;
+        private Button VolverAlMenu;
+        private Button btnRetirarStock;
     }
 }

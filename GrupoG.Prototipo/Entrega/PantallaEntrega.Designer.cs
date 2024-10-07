@@ -22,23 +22,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            BotonEmpaquetar = new Button();
+            btnEntregar = new Button();
             ListaOrdenesEmpaquetar = new ListView();
             ColumnaNumeroOrden = new ColumnHeader();
             ColumnaNumeroCliente = new ColumnHeader();
             BotonVolverAlMenu = new Button();
             SuspendLayout();
             // 
-            // BotonEmpaquetar
+            // btnEntregar
             // 
-            BotonEmpaquetar.Location = new Point(119, 297);
-            BotonEmpaquetar.Margin = new Padding(3, 2, 3, 2);
-            BotonEmpaquetar.Name = "BotonEmpaquetar";
-            BotonEmpaquetar.Size = new Size(107, 38);
-            BotonEmpaquetar.TabIndex = 7;
-            BotonEmpaquetar.Text = "Empaquetar\r\n";
-            BotonEmpaquetar.UseVisualStyleBackColor = true;
-            BotonEmpaquetar.Click += BotonEmpaquetar_Click;
+            btnEntregar.Location = new Point(119, 297);
+            btnEntregar.Margin = new Padding(3, 2, 3, 2);
+            btnEntregar.Name = "btnEntregar";
+            btnEntregar.Size = new Size(107, 38);
+            btnEntregar.TabIndex = 7;
+            btnEntregar.Text = "Entregar";
+            btnEntregar.UseVisualStyleBackColor = true;
+            btnEntregar.Click += BotonEmpaquetar_Click;
             // 
             // ListaOrdenesEmpaquetar
             // 
@@ -78,7 +78,7 @@
             ClientSize = new Size(381, 357);
             Controls.Add(BotonVolverAlMenu);
             Controls.Add(ListaOrdenesEmpaquetar);
-            Controls.Add(BotonEmpaquetar);
+            Controls.Add(btnEntregar);
             Margin = new Padding(3, 2, 3, 2);
             Name = "PantallaEntrega";
             Text = "Orden de Entrega";
@@ -86,7 +86,7 @@
         }
 
         #endregion
-        private Button BotonEmpaquetar;
+        private Button btnEntregar;
         private ListView ListaOrdenesEmpaquetar;
         private ColumnHeader ColumnaNumeroCliente;
         private Button BotonVolverMenu;
