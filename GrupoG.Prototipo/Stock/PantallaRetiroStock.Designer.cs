@@ -103,6 +103,8 @@
             btnRetirarStock.TabIndex = 7;
             btnRetirarStock.Text = "Retirar Stock";
             btnRetirarStock.UseVisualStyleBackColor = true;
+            btnRetirarStock.Click += btnRetirarStock_Click;
+
             // 
             // PantallaRetiroStock
             // 
@@ -119,6 +121,8 @@
             Text = "PantallaRetiroStock";
             ResumeLayout(false);
             PerformLayout();
+            //Load += PantallaRetiroStock_Load; // NAZAAAAAAAAAAAAAAAAAAAAA
+
         }
 
         #endregion
