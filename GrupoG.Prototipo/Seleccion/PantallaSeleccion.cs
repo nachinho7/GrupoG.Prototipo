@@ -29,8 +29,8 @@ namespace GrupoG.Prototipo.Pantallas
             {
                 // Crear un nuevo ListViewItem
                 var item = new ListViewItem($"Orden N° {orden.NumeroOrdenPreparacion}");
-                item.Tag = orden; // Almacenar la referencia a la orden en el Tag
-                listView1.Items.Add(item); // Agregar el item al ListView
+                item.Tag = orden;
+                listView1.Items.Add(item); 
             }
         }
 
@@ -42,7 +42,7 @@ namespace GrupoG.Prototipo.Pantallas
             foreach (var orden in ordenesFiltradas)
             {
                 var item = new ListViewItem($"Orden N° {orden.NumeroOrdenPreparacion}");
-                item.Tag = orden; // Almacenar la referencia a la orden en el Tag
+                item.Tag = orden;
                 listView1.Items.Add(item);
             }
         }
@@ -57,7 +57,8 @@ namespace GrupoG.Prototipo.Pantallas
             if (ordenesSeleccionadas.Count > 0)
             {
                 var nuevaSeleccion = modelo.GenerarOrdenDeSeleccion(ordenesSeleccionadas);
-                MessageBox.Show($"Se generó una orden de selección con ID {nuevaSeleccion.numeroOrdenSeleccion} que incluye {ordenesSeleccionadas.Count} órdenes.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Orden de Selección N°{nuevaSeleccion.numeroOrdenSeleccion} generada!\n" +
+                                $"Incluye {ordenesSeleccionadas.Count} ordenes de preparación.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarOrdenes();
             }
             else
