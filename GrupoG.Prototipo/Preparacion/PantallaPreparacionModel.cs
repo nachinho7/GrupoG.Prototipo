@@ -104,13 +104,14 @@ namespace GrupoG.Prototipo.Preparacion
         }
 
 
-        public bool GenerarOrdenPreparacion(int numeroOrden, DateTime fechaDespacho, int dniTransportista)
+        public bool GenerarOrdenPreparacion(int numeroOrden, DateTime fechaDespacho, int dniTransportista, string prioridad)
         {
             var orden = ordenesPreparacion.FirstOrDefault(o => o.NumeroOrdenPreparacion == numeroOrden);
             if (orden != null)
             {
                 orden.FechaDespacho = fechaDespacho;
                 orden.DNITransportista = dniTransportista;
+                orden.Prioridad = prioridad;
 
                 foreach (var cliente in Clientes)
                 {

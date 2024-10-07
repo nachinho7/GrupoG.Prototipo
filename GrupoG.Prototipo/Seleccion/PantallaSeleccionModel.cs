@@ -57,10 +57,10 @@ namespace GrupoG.Prototipo.Seleccion
             return ordenes;
         }
 
-        public List<OrdenSeleccion> ObtenerOrdenesSeleccion()
-        {
-            return ordenesSeleccion;
-        }
+        //public List<OrdenSeleccion> ObtenerOrdenesSeleccion()
+        //{
+        //    return ordenesSeleccion;
+        //}
 
         //public OrdenSeleccion GenerarOrdenDeSeleccion(List<Orden> ordenesSeleccionadas)
         //{

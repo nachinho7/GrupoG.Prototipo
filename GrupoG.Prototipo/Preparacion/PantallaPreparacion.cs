@@ -14,8 +14,6 @@ namespace GrupoG.Prototipo
         {
             InitializeComponent();
             model = new PantallaPreparacionModel();
-
-
         }
 
         private void PickerFechaDespacho_ValueChanged(object sender, EventArgs e)
@@ -23,11 +21,36 @@ namespace GrupoG.Prototipo
             if (PickerFechaDespacho.Checked)
             {
                 PickerFechaDespacho.Format = DateTimePickerFormat.Short;
+                DateTime fechaSeleccionada = PickerFechaDespacho.Value.Date;
+
+                // Obtener prioridad directamente
+                string prioridad = ObtenerPrioridad(fechaSeleccionada);
+
+                // Puedes usar 'prioridad' donde lo necesites aquí
             }
             else
             {
                 PickerFechaDespacho.Format = DateTimePickerFormat.Custom;
                 PickerFechaDespacho.CustomFormat = " ";
+                // Puedes usar directamente un string como "No definida" aquí si lo necesitas
+            }
+        }
+
+        private string ObtenerPrioridad(DateTime fechaSeleccionada)
+        {
+            int diasDiferencia = (fechaSeleccionada - DateTime.Today).Days;
+
+            if (diasDiferencia <= 15)
+            {
+                return "Alta";
+            }
+            else if (diasDiferencia <= 31)
+            {
+                return "Media";
+            }
+            else
+            {
+                return "Baja";
             }
         }
 
@@ -158,7 +181,6 @@ namespace GrupoG.Prototipo
             {
                 MessageBox.Show("El DNI del transportista debe ser un número de entre 7 u 8 dígitos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-
             }
 
             if (!PickerFechaDespacho.Checked)
@@ -172,6 +194,15 @@ namespace GrupoG.Prototipo
             if (fechaDespacho < DateTime.Today)
             {
                 MessageBox.Show("La fecha de despacho no puede ser menor a la fecha actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Se obtiene la prioridad directamente en este momento
+            string prioridad = ObtenerPrioridad(fechaDespacho);
+
+            if (string.IsNullOrEmpty(prioridad) || prioridad == "No definida")
+            {
+                MessageBox.Show("Debe seleccionar una fecha de despacho para determinar la prioridad.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -196,11 +227,12 @@ namespace GrupoG.Prototipo
                              $"N° Cliente: {numeroClienteOrden}\n" +
                              $"Fecha de Despacho: {fechaDespacho.ToShortDateString()}\n" +
                              $"DNI Transportista: {dniTransportista}\n" +
+                             $"Prioridad: {prioridad}\n" +
                              $"Mercadería:\n{detallesMercaderia}";
 
             MessageBox.Show(mensaje, "Orden Generada", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            bool exito = model.GenerarOrdenPreparacion(numeroOrdenGenerar, fechaDespacho, dniTransportista);
+            bool exito = model.GenerarOrdenPreparacion(numeroOrdenGenerar, fechaDespacho, dniTransportista, prioridad);
 
             if (exito)
             {

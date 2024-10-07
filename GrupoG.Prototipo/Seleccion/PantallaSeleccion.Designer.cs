@@ -28,50 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem1 = new ListViewItem("");
+            ListViewItem listViewItem2 = new ListViewItem("");
             ListaOrdenSeleccion = new ListView();
-            OrdenColumna = new ColumnHeader();
-            ClienteColumna = new ColumnHeader();
-            EstadoColumna = new ColumnHeader();
-            FechaColumna = new ColumnHeader();
+            numeroOrden = new ColumnHeader();
+            numeroCliente = new ColumnHeader();
+            Estado = new ColumnHeader();
             BotonGenerarOS = new Button();
             VolverAlMenu = new Button();
+            datetimeDespacho = new DateTimePicker();
+            fechaDespacho = new Label();
             SuspendLayout();
             // 
             // ListaOrdenSeleccion
             // 
-            ListaOrdenSeleccion.Columns.AddRange(new ColumnHeader[] { OrdenColumna, ClienteColumna, EstadoColumna, FechaColumna });
-            ListaOrdenSeleccion.Items.AddRange(new ListViewItem[] { listViewItem1 });
-            ListaOrdenSeleccion.Location = new Point(14, 12);
+            ListaOrdenSeleccion.Columns.AddRange(new ColumnHeader[] { numeroOrden, numeroCliente, Estado });
+            ListaOrdenSeleccion.Items.AddRange(new ListViewItem[] { listViewItem2 });
+            ListaOrdenSeleccion.Location = new Point(43, 106);
             ListaOrdenSeleccion.Name = "ListaOrdenSeleccion";
-            ListaOrdenSeleccion.Size = new Size(604, 207);
+            ListaOrdenSeleccion.Size = new Size(457, 316);
             ListaOrdenSeleccion.TabIndex = 0;
             ListaOrdenSeleccion.UseCompatibleStateImageBehavior = false;
             ListaOrdenSeleccion.View = View.Details;
             // 
-            // OrdenColumna
+            // numeroOrden
             // 
-            OrdenColumna.Text = "Nº de Orden";
-            OrdenColumna.Width = 150;
+            numeroOrden.Text = "Nº Orden";
+            numeroOrden.Width = 150;
             // 
-            // ClienteColumna
+            // numeroCliente
             // 
-            ClienteColumna.Text = "Nº de Cliente";
-            ClienteColumna.Width = 150;
+            numeroCliente.Text = "Nº de Cliente";
+            numeroCliente.Width = 150;
             // 
-            // EstadoColumna
+            // Estado
             // 
-            EstadoColumna.Text = "Estado";
-            EstadoColumna.Width = 150;
-            // 
-            // FechaColumna
-            // 
-            FechaColumna.Text = "Fecha de Generación";
-            FechaColumna.Width = 150;
+            Estado.Text = "Estado";
+            Estado.Width = 150;
             // 
             // BotonGenerarOS
             // 
-            BotonGenerarOS.Location = new Point(477, 257);
+            BotonGenerarOS.Location = new Point(264, 475);
             BotonGenerarOS.Name = "BotonGenerarOS";
             BotonGenerarOS.Size = new Size(107, 38);
             BotonGenerarOS.TabIndex = 1;
@@ -81,7 +77,7 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(54, 257);
+            VolverAlMenu.Location = new Point(393, 475);
             VolverAlMenu.Name = "VolverAlMenu";
             VolverAlMenu.Size = new Size(107, 38);
             VolverAlMenu.TabIndex = 5;
@@ -89,11 +85,29 @@
             VolverAlMenu.UseVisualStyleBackColor = true;
             VolverAlMenu.Click += VolverAlMenu_Click;
             // 
+            // datetimeDespacho
+            // 
+            datetimeDespacho.Location = new Point(157, 54);
+            datetimeDespacho.Name = "datetimeDespacho";
+            datetimeDespacho.Size = new Size(200, 23);
+            datetimeDespacho.TabIndex = 6;
+            // 
+            // fechaDespacho
+            // 
+            fechaDespacho.AutoSize = true;
+            fechaDespacho.Location = new Point(43, 60);
+            fechaDespacho.Name = "fechaDespacho";
+            fechaDespacho.Size = new Size(109, 15);
+            fechaDespacho.TabIndex = 7;
+            fechaDespacho.Text = "Fecha de Despacho";
+            // 
             // PantallaSeleccion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(630, 308);
+            ClientSize = new Size(542, 537);
+            Controls.Add(fechaDespacho);
+            Controls.Add(datetimeDespacho);
             Controls.Add(VolverAlMenu);
             Controls.Add(BotonGenerarOS);
             Controls.Add(ListaOrdenSeleccion);
@@ -101,16 +115,19 @@
             Text = "Orden de Seleccion";
             Load += PantallaSeleccion_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private ListView ListaOrdenSeleccion;
-        private ColumnHeader OrdenColumna;
-        private ColumnHeader ClienteColumna;
-        private ColumnHeader EstadoColumna;
-        private ColumnHeader FechaColumna;
+        private ColumnHeader numeroOrden;
+        private ColumnHeader numeroCliente;
+        private ColumnHeader FechaDespach;
+        private ColumnHeader Estado;
         private Button BotonGenerarOS;
         private Button VolverAlMenu;
+        private DateTimePicker datetimeDespacho;
+        private Label fechaDespacho;
     }
 }

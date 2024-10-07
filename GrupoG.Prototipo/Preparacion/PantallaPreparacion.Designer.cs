@@ -55,8 +55,9 @@
             GroupBoxPrevisualizacion.SuspendLayout();
             groupBoxDatosMercaderia.SuspendLayout();
             SuspendLayout();
-
-
+            // 
+            // LabelNumeroCliente
+            // 
             LabelNumeroCliente.AutoSize = true;
             LabelNumeroCliente.Location = new Point(40, 32);
             LabelNumeroCliente.Name = "LabelNumeroCliente";
@@ -64,16 +65,18 @@
             LabelNumeroCliente.TabIndex = 0;
             LabelNumeroCliente.Text = "N° Cliente: ";
             LabelNumeroCliente.UseWaitCursor = true;
-
-
+            // 
+            // labelCantidadAgregar
+            // 
             labelCantidadAgregar.AutoSize = true;
             labelCantidadAgregar.Location = new Point(6, 173);
             labelCantidadAgregar.Name = "labelCantidadAgregar";
             labelCantidadAgregar.Size = new Size(110, 15);
             labelCantidadAgregar.TabIndex = 6;
             labelCantidadAgregar.Text = "Cantidad a agregar:";
-
- 
+            // 
+            // btnAgregar
+            // 
             btnAgregar.Location = new Point(311, 161);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(126, 38);
@@ -81,9 +84,10 @@
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
             btnAgregar.Click += btnAgregar_Click;
-
-
-            btnGenerar.Location = new Point(400, 740);
+            // 
+            // btnGenerar
+            // 
+            btnGenerar.Location = new Point(402, 751);
             btnGenerar.Name = "btnGenerar";
             btnGenerar.Size = new Size(107, 38);
             btnGenerar.TabIndex = 14;
@@ -125,7 +129,7 @@
             // ListaPrevisualizacionOrdenesPreparacion
             // 
             ListaPrevisualizacionOrdenesPreparacion.Columns.AddRange(new ColumnHeader[] { Id1, Nombre1, Cantidad1, columnUbicacion });
-            ListaPrevisualizacionOrdenesPreparacion.Location = new Point(16, 144);
+            ListaPrevisualizacionOrdenesPreparacion.Location = new Point(16, 147);
             ListaPrevisualizacionOrdenesPreparacion.Name = "ListaPrevisualizacionOrdenesPreparacion";
             ListaPrevisualizacionOrdenesPreparacion.Size = new Size(551, 140);
             ListaPrevisualizacionOrdenesPreparacion.TabIndex = 16;
@@ -177,7 +181,7 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(513, 740);
+            VolverAlMenu.Location = new Point(515, 751);
             VolverAlMenu.Name = "VolverAlMenu";
             VolverAlMenu.Size = new Size(107, 38);
             VolverAlMenu.TabIndex = 30;
@@ -187,7 +191,7 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(360, 304);
+            btnEliminar.Location = new Point(368, 318);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(199, 38);
             btnEliminar.TabIndex = 31;
@@ -218,9 +222,9 @@
             // 
             textBoxNroOdenPrevisualizacion.Location = new Point(122, 25);
             textBoxNroOdenPrevisualizacion.Name = "textBoxNroOdenPrevisualizacion";
+            textBoxNroOdenPrevisualizacion.ReadOnly = true;
             textBoxNroOdenPrevisualizacion.Size = new Size(212, 23);
             textBoxNroOdenPrevisualizacion.TabIndex = 34;
-            textBoxNroOdenPrevisualizacion.ReadOnly = true;
             textBoxNroOdenPrevisualizacion.Text = "1";
             // 
             // labelFecha
@@ -234,19 +238,19 @@
             // 
             // PickerFechaDespacho
             // 
+            PickerFechaDespacho.Checked = false;
+            PickerFechaDespacho.CustomFormat = " ";
+            PickerFechaDespacho.Format = DateTimePickerFormat.Custom;
             PickerFechaDespacho.Location = new Point(122, 57);
             PickerFechaDespacho.Name = "PickerFechaDespacho";
             PickerFechaDespacho.Size = new Size(212, 23);
             PickerFechaDespacho.TabIndex = 36;
-            PickerFechaDespacho.Format = DateTimePickerFormat.Custom;
-            PickerFechaDespacho.CustomFormat = " "; // Aparece vacío
-            PickerFechaDespacho.Checked = false;
             PickerFechaDespacho.ValueChanged += PickerFechaDespacho_ValueChanged;
             // 
             // labelTransportista
             // 
             labelTransportista.AutoSize = true;
-            labelTransportista.Location = new Point(6, 101);
+            labelTransportista.Location = new Point(6, 98);
             labelTransportista.Name = "labelTransportista";
             labelTransportista.Size = new Size(97, 15);
             labelTransportista.TabIndex = 37;
@@ -254,11 +258,10 @@
             // 
             // textBoxDNITransportista
             // 
-            textBoxDNITransportista.Location = new Point(122, 98);
+            textBoxDNITransportista.Location = new Point(122, 95);
             textBoxDNITransportista.Name = "textBoxDNITransportista";
             textBoxDNITransportista.Size = new Size(212, 23);
             textBoxDNITransportista.TabIndex = 38;
-            textBoxDNITransportista.Text = string.Empty;
             // 
             // GroupBoxPrevisualizacion
             // 
@@ -272,7 +275,7 @@
             GroupBoxPrevisualizacion.Controls.Add(textBoxNroOdenPrevisualizacion);
             GroupBoxPrevisualizacion.Location = new Point(40, 344);
             GroupBoxPrevisualizacion.Name = "GroupBoxPrevisualizacion";
-            GroupBoxPrevisualizacion.Size = new Size(579, 377);
+            GroupBoxPrevisualizacion.Size = new Size(579, 380);
             GroupBoxPrevisualizacion.TabIndex = 39;
             GroupBoxPrevisualizacion.TabStop = false;
             GroupBoxPrevisualizacion.Text = "Previsualización Orden de Preparación";
@@ -294,7 +297,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(659, 794);
+            ClientSize = new Size(659, 801);
             Controls.Add(groupBoxDatosMercaderia);
             Controls.Add(GroupBoxPrevisualizacion);
             Controls.Add(BotonLimpiarCliente);
