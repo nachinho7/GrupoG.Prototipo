@@ -9,7 +9,6 @@ namespace GrupoG.Prototipo
     public partial class PantallaPreparacion : Form
     {
         PantallaPreparacionModel model;
-        private int cantidadDisponible;
         private int numeroOrden;
 
         public PantallaPreparacion()
@@ -75,7 +74,6 @@ namespace GrupoG.Prototipo
             if (ListaDatosMercaderia.SelectedItems.Count > 0)
             {
                 var selectedItem = ListaDatosMercaderia.SelectedItems[0];
-                cantidadDisponible = int.Parse(selectedItem.SubItems[2].Text);
                 TextBoxCantidad.Text = "";
                 TextBoxCantidad.Enabled = true;
             }
@@ -89,6 +87,8 @@ namespace GrupoG.Prototipo
                 return;
             }
 
+            var selectedItem = ListaDatosMercaderia.SelectedItems[0];
+            int cantidadDisponible = int.Parse(selectedItem.SubItems[2].Text); // Obtener la cantidad disponible directamente
             if (int.TryParse(TextBoxCantidad.Text, out int cantidadSeleccionada))
             {
                 if (cantidadSeleccionada > cantidadDisponible)
@@ -102,16 +102,16 @@ namespace GrupoG.Prototipo
                     return;
                 }
 
-                var idMercaderia = int.Parse(ListaDatosMercaderia.SelectedItems[0].SubItems[0].Text);
-                var nombreMercaderia = ListaDatosMercaderia.SelectedItems[0].SubItems[1].Text;
-                var ubicacionMercaderia = ListaDatosMercaderia.SelectedItems[0].SubItems[3].Text;
+                var idMercaderia = int.Parse(selectedItem.SubItems[0].Text);
+                var nombreMercaderia = selectedItem.SubItems[1].Text;
+                var ubicacionMercaderia = selectedItem.SubItems[3].Text;
 
                 model.AgregarMercaderiaAPreparacion(numeroOrden, idMercaderia, nombreMercaderia, ubicacionMercaderia, cantidadSeleccionada);
 
                 ActualizarListaPrevisualizacion();
 
-                cantidadDisponible -= cantidadSeleccionada;
-                ListaDatosMercaderia.SelectedItems[0].SubItems[2].Text = cantidadDisponible.ToString();
+                cantidadDisponible -= cantidadSeleccionada; // Actualizar cantidad disponible
+                selectedItem.SubItems[2].Text = cantidadDisponible.ToString(); // Actualizar en la lista
 
                 MessageBox.Show($"Se agregaron {cantidadSeleccionada} unidades de {nombreMercaderia}.", "Unidades Agregadas", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -201,14 +201,12 @@ namespace GrupoG.Prototipo
                 LimpiarFormulario();
                 numeroOrden++;
                 textBoxNroOdenPrevisualizacion.Text = numeroOrden.ToString();
-
             }
             else
             {
                 MessageBox.Show("Error al generar la orden de preparación.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -222,16 +220,17 @@ namespace GrupoG.Prototipo
                 if (confirmResult == DialogResult.Yes)
                 {
                     model.EliminarMercaderiaDePreparacion(numeroOrden, idMercaderia, cantidadEliminada);
-
                     ListaPrevisualizacionOrdenesPreparacion.Items.Remove(selectedItem);
-                    MessageBox.Show("Elemento eliminado.", "Elemento Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Se eliminó {cantidadEliminada} unidades de la lista.", "Elemento Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    // Actualizar la lista de mercaderías para reflejar la cantidad
                     foreach (ListViewItem item in ListaDatosMercaderia.Items)
                     {
-                        if (item.Text == selectedItem.SubItems[0].Text)
+                        if (item.Text == idMercaderia.ToString())
                         {
-                            int cantidadDisponibleActual = int.Parse(item.SubItems[2].Text);
-                            item.SubItems[2].Text = (cantidadDisponibleActual + cantidadEliminada).ToString();
+                            int cantidadDisponible = int.Parse(item.SubItems[2].Text);
+                            cantidadDisponible += cantidadEliminada; // Incrementar cantidad disponible
+                            item.SubItems[2].Text = cantidadDisponible.ToString(); // Actualizar en la lista
                             break;
                         }
                     }
@@ -239,13 +238,9 @@ namespace GrupoG.Prototipo
             }
             else
             {
-                MessageBox.Show("Por favor, seleccione un elemento para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, seleccione un elemento de la lista de previsualización para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
-
         private void LimpiarFormulario()
         {
             ListaPrevisualizacionOrdenesPreparacion.Items.Clear();
