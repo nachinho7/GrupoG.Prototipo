@@ -220,6 +220,7 @@
             textBoxNroOdenPrevisualizacion.Name = "textBoxNroOdenPrevisualizacion";
             textBoxNroOdenPrevisualizacion.Size = new Size(212, 23);
             textBoxNroOdenPrevisualizacion.TabIndex = 34;
+            
             // 
             // labelFecha
             // 
@@ -236,6 +237,10 @@
             PickerFechaDespacho.Name = "PickerFechaDespacho";
             PickerFechaDespacho.Size = new Size(212, 23);
             PickerFechaDespacho.TabIndex = 36;
+            PickerFechaDespacho.Format = DateTimePickerFormat.Custom;
+            PickerFechaDespacho.CustomFormat = " "; // Aparece vacío
+            PickerFechaDespacho.Checked = false;
+            PickerFechaDespacho.ValueChanged += PickerFechaDespacho_ValueChanged;
             // 
             // labelTransportista
             // 
@@ -252,6 +257,7 @@
             textBoxDNITransportista.Name = "textBoxDNITransportista";
             textBoxDNITransportista.Size = new Size(212, 23);
             textBoxDNITransportista.TabIndex = 38;
+            textBoxDNITransportista.Text = string.Empty;
             // 
             // GroupBoxPrevisualizacion
             // 
