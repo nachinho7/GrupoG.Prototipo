@@ -23,11 +23,10 @@ namespace GrupoG.Prototipo.Stock
         private void CargarOrdenes()
         {
             var ordenes = modelo.ObtenerOrdenesSeleccionadas();
-            comboBox1.Items.Clear(); // Limpio elementos
+            comboBox1.Items.Clear(); 
 
             foreach (var orden in ordenes)
             {
-                // Agregar ordenes
                 comboBox1.Items.Add($"Orden N° {orden.numeroOrdenSeleccion}");
             }
 
@@ -40,7 +39,6 @@ namespace GrupoG.Prototipo.Stock
             
             comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
 
-            // Cargar el ListView con la primera orden
             if (comboBox1.Items.Count > 0)
             {
                 ComboBox1_SelectedIndexChanged(this, EventArgs.Empty);
@@ -49,7 +47,7 @@ namespace GrupoG.Prototipo.Stock
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listView1.Items.Clear(); // Limpiar ListView
+            listView1.Items.Clear();
 
            
             if (comboBox1.SelectedIndex == -1) return;
