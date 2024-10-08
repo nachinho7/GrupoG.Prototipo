@@ -113,6 +113,7 @@
             Controls.Add(btnEmpaquetar);
             Controls.Add(listView1);
             Controls.Add(numeroOrdenPreparacion);
+            Load += PantallaEmpaquetar_Load;
             Name = "PantallaEmpaquetar";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Pantalla Empaquetar";

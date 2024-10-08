@@ -13,7 +13,6 @@ namespace GrupoG.Prototipo.Empaquetar
             InitializeComponent();
             modelo = new PantallaEmpaquetarModel();
 
-            Load += PantallaEmpaquetar_Load;
         }
 
         private void PantallaEmpaquetar_Load(object sender, EventArgs e)

@@ -19,6 +19,10 @@ namespace GrupoG.Prototipo.Pantallas
         {
             InitializeComponent();
             model = new PantallaEntregaModel();
+        }
+
+        private void PantallaEntrega_Load(object sender, EventArgs e)
+        {
             CargarOrdenes();
         }
 
@@ -30,12 +34,10 @@ namespace GrupoG.Prototipo.Pantallas
 
             foreach (var orden in ordenes)
             {
-                var item = new ListViewItem(orden.NroOrden.ToString());
+                var item = new ListViewItem(orden.NumeroOrdenPreparacion.ToString());
 
-                // subitems
-                item.SubItems.Add(orden.NroCliente.ToString());
-                item.SubItems.Add(orden.Codigo.ToString());
-                item.SubItems.Add(orden.Tipo.ToString());
+                item.SubItems.Add(orden.NumeroCliente.ToString());
+                item.SubItems.Add(orden.FechaDespacho.ToString());
 
               
                 ListaOrdenesEmpaquetar.Items.Add(item);
@@ -61,7 +63,7 @@ namespace GrupoG.Prototipo.Pantallas
 
             // nro orden
             int nroOrden = int.Parse(selectedItem.Text);
-            var orden = model.ObtenerOrdenes().FirstOrDefault(o => o.NroOrden == nroOrden);
+            var orden = model.ObtenerOrdenes().FirstOrDefault(o => o.NumeroOrdenPreparacion == nroOrden);
 
             if (orden != null)
             {
