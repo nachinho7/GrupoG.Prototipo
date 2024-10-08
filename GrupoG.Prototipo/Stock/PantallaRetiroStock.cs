@@ -98,7 +98,7 @@ namespace GrupoG.Prototipo.Stock
                         // Resta todo el stock
                         int cantidadRetirada = mercaderia.cantidadMercaderia;
                         mercaderia.cantidadMercaderia = 0; // Restar todo el stock
-                        MessageBox.Show($"Se han retirado {cantidadRetirada} unidades de {mercaderia.nombreMercaderia}.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
                     }
                     else
                     {
