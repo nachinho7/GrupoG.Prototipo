@@ -9,11 +9,11 @@ using System.Text;
 
 using System.Threading.Tasks;
 
-namespace GrupoG.Prototipo
+namespace GrupoG.Prototipo.Despacho
 
 {
 
-    internal class Transportistas
+    public class Transportistas
 
     {
 
