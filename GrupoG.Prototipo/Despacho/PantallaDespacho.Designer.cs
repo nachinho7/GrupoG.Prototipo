@@ -66,7 +66,7 @@
             // 
             // btnGenerarRemito
             // 
-            btnGenerarRemito.Location = new Point(86, 588);
+            btnGenerarRemito.Location = new Point(96, 590);
             btnGenerarRemito.Name = "btnGenerarRemito";
             btnGenerarRemito.Size = new Size(107, 38);
             btnGenerarRemito.TabIndex = 5;
@@ -110,7 +110,7 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(211, 588);
+            VolverAlMenu.Location = new Point(219, 590);
             VolverAlMenu.Name = "VolverAlMenu";
             VolverAlMenu.Size = new Size(107, 38);
             VolverAlMenu.TabIndex = 25;
@@ -204,7 +204,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(372, 683);
+            ClientSize = new Size(365, 646);
             Controls.Add(groupBox1);
             Controls.Add(btnLimpiarCliente);
             Controls.Add(BotonObtenerDatos);
