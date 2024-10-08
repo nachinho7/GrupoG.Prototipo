@@ -74,72 +74,54 @@ namespace GrupoG.Prototipo.Stock
 
         private void btnRetirarStock_Click(object sender, EventArgs e)
         {
-            
             if (listView1.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Por favor, selecciona al menos una mercadería para retirar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            
             int indiceOrdenSeleccionada = comboBox1.SelectedIndex;
-
-            
             var ordenSeleccionada = modelo.ObtenerOrdenesSeleccionadas()[indiceOrdenSeleccionada];
 
             foreach (ListViewItem selectedItem in listView1.SelectedItems)
             {
-                int idMercaderia = int.Parse(selectedItem.Text); 
+                int idMercaderia = int.Parse(selectedItem.Text);
                 var mercaderia = ordenSeleccionada.Mercaderias.FirstOrDefault(m => m.idMercaderia == idMercaderia);
 
                 if (mercaderia != null)
                 {
-                    
-                    if (mercaderia.cantidadMercaderia > 0)
-                    {
-                        
-                        int cantidadRetirada = mercaderia.cantidadMercaderia;
-                        mercaderia.cantidadMercaderia = 0; 
-                    }
-                    else
-                    {
-                        MessageBox.Show($"No hay stock disponible para {mercaderia.nombreMercaderia}.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    ordenSeleccionada.Mercaderias.Remove(mercaderia);
                 }
             }
 
-            
-            if (ordenSeleccionada.Mercaderias.All(m => m.cantidadMercaderia == 0))
+            if (ordenSeleccionada.Mercaderias.Count == 0)
             {
-                modelo.RemoverOrdenSeleccionada(ordenSeleccionada); 
+                modelo.RemoverOrdenSeleccionada(ordenSeleccionada);
                 MessageBox.Show("La orden seleccionada ha sido completamente retirada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-           
             CargarOrdenes();
 
-            
             if (modelo.ObtenerOrdenesSeleccionadas().Count == 0)
             {
                 MessageBox.Show("No quedan órdenes de selección.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close(); 
+                this.Close();
             }
             else
             {
-               
                 if (indiceOrdenSeleccionada < comboBox1.Items.Count)
                 {
                     comboBox1.SelectedIndex = indiceOrdenSeleccionada;
                 }
                 else
                 {
-                    
                     comboBox1.SelectedIndex = 0;
                 }
 
-                ComboBox1_SelectedIndexChanged(this, EventArgs.Empty); 
+                ComboBox1_SelectedIndexChanged(this, EventArgs.Empty);
             }
         }
+
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {
