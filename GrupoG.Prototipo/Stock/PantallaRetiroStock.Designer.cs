@@ -94,6 +94,8 @@
             VolverAlMenu.TabIndex = 6;
             VolverAlMenu.Text = "Volver al Menú";
             VolverAlMenu.UseVisualStyleBackColor = true;
+            VolverAlMenu.Click += VolverAlMenu_Click;
+
             // 
             // btnRetirarStock
             // 
