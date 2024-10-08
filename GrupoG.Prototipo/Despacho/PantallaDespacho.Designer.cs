@@ -67,7 +67,7 @@
             // 
             // btnGenerarRemito
             // 
-            btnGenerarRemito.Location = new Point(337, 559);
+            btnGenerarRemito.Location = new Point(211, 561);
             btnGenerarRemito.Name = "btnGenerarRemito";
             btnGenerarRemito.Size = new Size(107, 38);
             btnGenerarRemito.TabIndex = 5;
@@ -78,6 +78,8 @@
             // listviewOrdenEntrega
             // 
             listviewOrdenEntrega.Columns.AddRange(new ColumnHeader[] { OrdenEntrega, Estado });
+            listviewOrdenEntrega.FullRowSelect = true;
+            listviewOrdenEntrega.GridLines = true;
             listviewOrdenEntrega.Location = new Point(36, 92);
             listviewOrdenEntrega.Name = "listviewOrdenEntrega";
             listviewOrdenEntrega.Size = new Size(412, 115);
@@ -115,15 +117,15 @@
             // 
             // textboxDatosAdicionales
             // 
-            textboxDatosAdicionales.Location = new Point(43, 235);
+            textboxDatosAdicionales.Location = new Point(36, 227);
             textboxDatosAdicionales.Name = "textboxDatosAdicionales";
-            textboxDatosAdicionales.Size = new Size(405, 75);
+            textboxDatosAdicionales.Size = new Size(412, 75);
             textboxDatosAdicionales.TabIndex = 23;
             textboxDatosAdicionales.Text = "";
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(36, 559);
+            VolverAlMenu.Location = new Point(341, 561);
             VolverAlMenu.Name = "VolverAlMenu";
             VolverAlMenu.Size = new Size(107, 38);
             VolverAlMenu.TabIndex = 25;
@@ -134,9 +136,11 @@
             // listviewTransportista
             // 
             listviewTransportista.Columns.AddRange(new ColumnHeader[] { ClienteTransportista, EstadoTransportista, Patente });
-            listviewTransportista.Location = new Point(36, 404);
+            listviewTransportista.FullRowSelect = true;
+            listviewTransportista.GridLines = true;
+            listviewTransportista.Location = new Point(36, 407);
             listviewTransportista.Name = "listviewTransportista";
-            listviewTransportista.Size = new Size(404, 117);
+            listviewTransportista.Size = new Size(412, 117);
             listviewTransportista.TabIndex = 29;
             listviewTransportista.UseCompatibleStateImageBehavior = false;
             listviewTransportista.View = View.Details;
@@ -149,7 +153,7 @@
             // EstadoTransportista
             // 
             EstadoTransportista.Text = "Estado Transportista";
-            EstadoTransportista.Width = 230;
+            EstadoTransportista.Width = 150;
             // 
             // Patente
             // 

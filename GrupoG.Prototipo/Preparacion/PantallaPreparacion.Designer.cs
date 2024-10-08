@@ -57,7 +57,7 @@
             // LabelNumeroCliente
             // 
             LabelNumeroCliente.AutoSize = true;
-            LabelNumeroCliente.Location = new Point(40, 32);
+            LabelNumeroCliente.Location = new Point(40, 38);
             LabelNumeroCliente.Name = "LabelNumeroCliente";
             LabelNumeroCliente.Size = new Size(67, 15);
             LabelNumeroCliente.TabIndex = 0;
@@ -85,7 +85,7 @@
             // 
             // btnGenerar
             // 
-            btnGenerar.Location = new Point(402, 751);
+            btnGenerar.Location = new Point(267, 741);
             btnGenerar.Name = "btnGenerar";
             btnGenerar.Size = new Size(107, 38);
             btnGenerar.TabIndex = 14;
@@ -96,9 +96,11 @@
             // ListaDatosMercaderia
             // 
             ListaDatosMercaderia.Columns.AddRange(new ColumnHeader[] { Id, Nombre, Cantidad });
+            ListaDatosMercaderia.FullRowSelect = true;
+            ListaDatosMercaderia.GridLines = true;
             ListaDatosMercaderia.Location = new Point(6, 22);
             ListaDatosMercaderia.Name = "ListaDatosMercaderia";
-            ListaDatosMercaderia.Size = new Size(561, 124);
+            ListaDatosMercaderia.Size = new Size(448, 124);
             ListaDatosMercaderia.TabIndex = 15;
             ListaDatosMercaderia.UseCompatibleStateImageBehavior = false;
             ListaDatosMercaderia.View = View.Details;
@@ -122,9 +124,11 @@
             // ListaPrevisualizacionOrdenesPreparacion
             // 
             ListaPrevisualizacionOrdenesPreparacion.Columns.AddRange(new ColumnHeader[] { Id1, Nombre1, Cantidad1 });
+            ListaPrevisualizacionOrdenesPreparacion.FullRowSelect = true;
+            ListaPrevisualizacionOrdenesPreparacion.GridLines = true;
             ListaPrevisualizacionOrdenesPreparacion.Location = new Point(16, 147);
             ListaPrevisualizacionOrdenesPreparacion.Name = "ListaPrevisualizacionOrdenesPreparacion";
-            ListaPrevisualizacionOrdenesPreparacion.Size = new Size(551, 140);
+            ListaPrevisualizacionOrdenesPreparacion.Size = new Size(438, 140);
             ListaPrevisualizacionOrdenesPreparacion.TabIndex = 16;
             ListaPrevisualizacionOrdenesPreparacion.UseCompatibleStateImageBehavior = false;
             ListaPrevisualizacionOrdenesPreparacion.View = View.Details;
@@ -152,16 +156,16 @@
             // 
             // numeroCliente
             // 
-            numeroCliente.Location = new Point(118, 29);
+            numeroCliente.Location = new Point(118, 35);
             numeroCliente.Name = "numeroCliente";
-            numeroCliente.Size = new Size(221, 23);
+            numeroCliente.Size = new Size(131, 23);
             numeroCliente.TabIndex = 28;
             // 
             // BotonObtenerDatos
             // 
-            BotonObtenerDatos.Location = new Point(351, 20);
+            BotonObtenerDatos.Location = new Point(267, 26);
             BotonObtenerDatos.Name = "BotonObtenerDatos";
-            BotonObtenerDatos.Size = new Size(128, 38);
+            BotonObtenerDatos.Size = new Size(107, 38);
             BotonObtenerDatos.TabIndex = 29;
             BotonObtenerDatos.Text = "Obtener Datos";
             BotonObtenerDatos.UseVisualStyleBackColor = true;
@@ -169,7 +173,7 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(515, 751);
+            VolverAlMenu.Location = new Point(396, 741);
             VolverAlMenu.Name = "VolverAlMenu";
             VolverAlMenu.Size = new Size(107, 38);
             VolverAlMenu.TabIndex = 30;
@@ -179,7 +183,7 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(368, 318);
+            btnEliminar.Location = new Point(198, 316);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(199, 38);
             btnEliminar.TabIndex = 31;
@@ -189,9 +193,9 @@
             // 
             // BotonLimpiarCliente
             // 
-            BotonLimpiarCliente.Location = new Point(494, 20);
+            BotonLimpiarCliente.Location = new Point(387, 26);
             BotonLimpiarCliente.Name = "BotonLimpiarCliente";
-            BotonLimpiarCliente.Size = new Size(128, 38);
+            BotonLimpiarCliente.Size = new Size(107, 38);
             BotonLimpiarCliente.TabIndex = 32;
             BotonLimpiarCliente.Text = "Nueva Busqueda";
             BotonLimpiarCliente.UseVisualStyleBackColor = true;
@@ -262,7 +266,7 @@
             GroupBoxPrevisualizacion.Controls.Add(textBoxNroOdenPrevisualizacion);
             GroupBoxPrevisualizacion.Location = new Point(40, 344);
             GroupBoxPrevisualizacion.Name = "GroupBoxPrevisualizacion";
-            GroupBoxPrevisualizacion.Size = new Size(579, 380);
+            GroupBoxPrevisualizacion.Size = new Size(463, 380);
             GroupBoxPrevisualizacion.TabIndex = 39;
             GroupBoxPrevisualizacion.TabStop = false;
             GroupBoxPrevisualizacion.Text = "Previsualización Orden de Preparación";
@@ -275,7 +279,7 @@
             groupBoxDatosMercaderia.Controls.Add(TextBoxCantidad);
             groupBoxDatosMercaderia.Location = new Point(40, 86);
             groupBoxDatosMercaderia.Name = "groupBoxDatosMercaderia";
-            groupBoxDatosMercaderia.Size = new Size(579, 237);
+            groupBoxDatosMercaderia.Size = new Size(463, 237);
             groupBoxDatosMercaderia.TabIndex = 40;
             groupBoxDatosMercaderia.TabStop = false;
             groupBoxDatosMercaderia.Text = "Datos de Mercadería";
@@ -284,7 +288,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(658, 802);
+            ClientSize = new Size(539, 802);
             Controls.Add(groupBoxDatosMercaderia);
             Controls.Add(GroupBoxPrevisualizacion);
             Controls.Add(BotonLimpiarCliente);

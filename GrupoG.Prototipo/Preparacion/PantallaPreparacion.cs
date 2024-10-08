@@ -242,7 +242,7 @@ namespace GrupoG.Prototipo
         {
             if (!int.TryParse(numeroCliente.Text, out int clienteNumero))
             {
-                MessageBox.Show("El número de cliente ingresado no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Tenes que buscar un cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

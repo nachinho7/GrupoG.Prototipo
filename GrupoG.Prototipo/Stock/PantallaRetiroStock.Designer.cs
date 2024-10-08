@@ -59,9 +59,11 @@
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { idMercaderia, nombreMercaderia, cantidadMercaderia, ubicacionMercaderia });
+            listView1.FullRowSelect = true;
+            listView1.GridLines = true;
             listView1.Location = new Point(23, 89);
             listView1.Name = "listView1";
-            listView1.Size = new Size(357, 194);
+            listView1.Size = new Size(366, 194);
             listView1.TabIndex = 2;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -88,31 +90,29 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(267, 310);
+            VolverAlMenu.Location = new Point(276, 310);
             VolverAlMenu.Name = "VolverAlMenu";
             VolverAlMenu.Size = new Size(113, 38);
             VolverAlMenu.TabIndex = 6;
             VolverAlMenu.Text = "Volver al Menú";
             VolverAlMenu.UseVisualStyleBackColor = true;
             VolverAlMenu.Click += VolverAlMenu_Click;
-
             // 
             // btnRetirarStock
             // 
-            btnRetirarStock.Location = new Point(150, 310);
+            btnRetirarStock.Location = new Point(162, 310);
             btnRetirarStock.Name = "btnRetirarStock";
             btnRetirarStock.Size = new Size(98, 38);
             btnRetirarStock.TabIndex = 7;
             btnRetirarStock.Text = "Retirar Stock";
             btnRetirarStock.UseVisualStyleBackColor = true;
             btnRetirarStock.Click += btnRetirarStock_Click;
-
             // 
             // PantallaRetiroStock
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(408, 372);
+            ClientSize = new Size(430, 372);
             Controls.Add(btnRetirarStock);
             Controls.Add(VolverAlMenu);
             Controls.Add(listView1);
@@ -123,8 +123,6 @@
             Text = "PantallaRetiroStock";
             ResumeLayout(false);
             PerformLayout();
-            //Load += PantallaRetiroStock_Load; // NAZAAAAAAAAAAAAAAAAAAAAA
-
         }
 
         #endregion

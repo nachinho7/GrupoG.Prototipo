@@ -43,6 +43,8 @@
             // ListaOrdenesEmpaquetar
             // 
             ListaOrdenesEmpaquetar.Columns.AddRange(new ColumnHeader[] { ColumnaNumeroOrden, ColumnaNumeroCliente });
+            ListaOrdenesEmpaquetar.FullRowSelect = true;
+            ListaOrdenesEmpaquetar.GridLines = true;
             ListaOrdenesEmpaquetar.Location = new Point(23, 53);
             ListaOrdenesEmpaquetar.Margin = new Padding(3, 2, 3, 2);
             ListaOrdenesEmpaquetar.Name = "ListaOrdenesEmpaquetar";

@@ -103,6 +103,8 @@
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { numeroOrdenPreparacion });
+            listView1.FullRowSelect = true;
+            listView1.GridLines = true;
             listView1.Location = new Point(15, 82);
             listView1.Name = "listView1";
             listView1.Size = new Size(240, 287);
