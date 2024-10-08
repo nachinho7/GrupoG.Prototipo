@@ -12,7 +12,7 @@ namespace GrupoG.Prototipo.Stock
         {
             InitializeComponent();
             modelo = new PantallaRetiroStockModel();
-            Load += PantallaRetiroStock_Load; // Agregado en el constructor
+            Load += PantallaRetiroStock_Load; 
         }
 
         private void PantallaRetiroStock_Load(object sender, EventArgs e)
@@ -23,21 +23,21 @@ namespace GrupoG.Prototipo.Stock
         private void CargarOrdenes()
         {
             var ordenes = modelo.ObtenerOrdenesSeleccionadas();
-            comboBox1.Items.Clear(); // Limpiar elementos existentes
+            comboBox1.Items.Clear(); // Limpio elementos
 
             foreach (var orden in ordenes)
             {
-                // Agregar ordenes al comboBox
+                // Agregar ordenes
                 comboBox1.Items.Add($"Orden N° {orden.numeroOrdenSeleccion}");
             }
 
-            // Si hay elementos, seleccionamos el primero
+            
             if (comboBox1.Items.Count > 0)
             {
-                comboBox1.SelectedIndex = 0; // Selecciona el primer elemento
+                comboBox1.SelectedIndex = 0; 
             }
 
-            // Evento para manejar la selección en el comboBox
+            
             comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
 
             // Cargar el ListView con la primera orden
@@ -51,13 +51,12 @@ namespace GrupoG.Prototipo.Stock
         {
             listView1.Items.Clear(); // Limpiar ListView
 
-            // Verificar que haya una selección
+           
             if (comboBox1.SelectedIndex == -1) return;
 
-            // Obtener la orden seleccionada utilizando el índice
-            int numeroOrdenSeleccion = comboBox1.SelectedIndex; // Mantener base 0
+            int numeroOrdenSeleccion = comboBox1.SelectedIndex; 
 
-            // Obtener la orden seleccionada directamente del modelo
+            
             var ordenSeleccionada = modelo.ObtenerOrdenesSeleccionadas()[numeroOrdenSeleccion];
 
             if (ordenSeleccionada != null)
@@ -75,30 +74,32 @@ namespace GrupoG.Prototipo.Stock
 
         private void btnRetirarStock_Click(object sender, EventArgs e)
         {
-            // Verificar que haya ítems seleccionados en el ListView
+            
             if (listView1.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Por favor, selecciona al menos una mercadería para retirar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Obtener la orden seleccionada
-            var ordenSeleccionada = modelo.ObtenerOrdenesSeleccionadas()[comboBox1.SelectedIndex];
+            
+            int indiceOrdenSeleccionada = comboBox1.SelectedIndex;
+
+            
+            var ordenSeleccionada = modelo.ObtenerOrdenesSeleccionadas()[indiceOrdenSeleccionada];
 
             foreach (ListViewItem selectedItem in listView1.SelectedItems)
             {
-                int idMercaderia = int.Parse(selectedItem.Text); // ID de la mercadería
+                int idMercaderia = int.Parse(selectedItem.Text); 
                 var mercaderia = ordenSeleccionada.Mercaderias.FirstOrDefault(m => m.idMercaderia == idMercaderia);
 
                 if (mercaderia != null)
                 {
-                    // Verificar si la cantidad es mayor que cero
+                    
                     if (mercaderia.cantidadMercaderia > 0)
                     {
-                        // Resta todo el stock
-                        int cantidadRetirada = mercaderia.cantidadMercaderia;
-                        mercaderia.cantidadMercaderia = 0; // Restar todo el stock
                         
+                        int cantidadRetirada = mercaderia.cantidadMercaderia;
+                        mercaderia.cantidadMercaderia = 0; 
                     }
                     else
                     {
@@ -107,33 +108,36 @@ namespace GrupoG.Prototipo.Stock
                 }
             }
 
-            // Comprobar si la orden está vacía después de retirar
+            
             if (ordenSeleccionada.Mercaderias.All(m => m.cantidadMercaderia == 0))
             {
-                modelo.RemoverOrdenSeleccionada(ordenSeleccionada); // Eliminar la orden
+                modelo.RemoverOrdenSeleccionada(ordenSeleccionada); 
                 MessageBox.Show("La orden seleccionada ha sido completamente retirada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-            // Volver a cargar la lista de órdenes
+           
             CargarOrdenes();
 
-            // Si no quedan más órdenes, mostrar mensaje y volver al menú
+            
             if (modelo.ObtenerOrdenesSeleccionadas().Count == 0)
             {
                 MessageBox.Show("No quedan órdenes de selección.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close(); // Cierra el formulario y vuelve al menú
+                this.Close(); 
             }
             else
             {
-                // Volver a cargar la orden seleccionada si sigue disponible
-                if (comboBox1.SelectedIndex == -1 && comboBox1.Items.Count > 0)
+               
+                if (indiceOrdenSeleccionada < comboBox1.Items.Count)
                 {
-                    comboBox1.SelectedIndex = 0; // Selecciona la primera orden disponible
+                    comboBox1.SelectedIndex = indiceOrdenSeleccionada;
                 }
                 else
                 {
-                    ComboBox1_SelectedIndexChanged(this, EventArgs.Empty);
+                    
+                    comboBox1.SelectedIndex = 0;
                 }
+
+                ComboBox1_SelectedIndexChanged(this, EventArgs.Empty); 
             }
         }
 
