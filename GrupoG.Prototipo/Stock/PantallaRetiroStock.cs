@@ -12,44 +12,43 @@ namespace GrupoG.Prototipo.Stock
         {
             InitializeComponent();
             modelo = new PantallaRetiroStockModel();
-            Load += PantallaRetiroStock_Load;
         }
 
-       
-        private void PantallaRetiroStock_Load(object sender, EventArgs e)
+
+        private void PantallaRetiroStock_Load_1(object sender, EventArgs e)
         {
             CargarOrdenes();
         }
 
-        
+
         private void CargarOrdenes()
         {
             var ordenes = modelo.ObtenerOrdenesSeleccionadas();
-            comboBox1.Items.Clear(); 
+            comboBox1.Items.Clear();
 
-            
+
             foreach (var orden in ordenes)
             {
-                comboBox1.Items.Add($"Orden N° {orden.numeroOrdenSeleccion}"); 
+                comboBox1.Items.Add($"Orden N° {orden.numeroOrdenSeleccion}");
             }
 
-            
+
             if (comboBox1.Items.Count > 0)
             {
                 comboBox1.SelectedIndex = 0;
             }
 
-            
+
             comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
 
-            
+
             if (comboBox1.Items.Count > 0)
             {
                 ComboBox1_SelectedIndexChanged(this, EventArgs.Empty);
             }
         }
 
-        
+
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             listView1.Items.Clear();
@@ -59,21 +58,21 @@ namespace GrupoG.Prototipo.Stock
             int indiceOrdenSeleccionada = comboBox1.SelectedIndex;
             var ordenSeleccionada = modelo.ObtenerOrdenesSeleccionadas()[indiceOrdenSeleccionada];
 
-            
+
             if (ordenSeleccionada != null)
             {
                 foreach (var mercaderia in ordenSeleccionada.Mercaderias)
                 {
-                    var item = new ListViewItem(mercaderia.idMercaderia.ToString()); 
-                    item.SubItems.Add(mercaderia.nombreMercaderia); 
-                    item.SubItems.Add(mercaderia.cantidadMercaderia.ToString()); 
-                    item.SubItems.Add(mercaderia.ubicacionMercaderia.ToString()); 
+                    var item = new ListViewItem(mercaderia.idMercaderia.ToString());
+                    item.SubItems.Add(mercaderia.nombreMercaderia);
+                    item.SubItems.Add(mercaderia.cantidadMercaderia.ToString());
+                    item.SubItems.Add(mercaderia.ubicacionMercaderia.ToString());
                     listView1.Items.Add(item);
                 }
             }
         }
 
-        
+
         private void btnRetirarStock_Click(object sender, EventArgs e)
         {
             if (listView1.SelectedItems.Count == 0)
@@ -85,7 +84,7 @@ namespace GrupoG.Prototipo.Stock
             int indiceOrdenSeleccionada = comboBox1.SelectedIndex;
             var ordenSeleccionada = modelo.ObtenerOrdenesSeleccionadas()[indiceOrdenSeleccionada];
 
-            
+
             foreach (ListViewItem selectedItem in listView1.SelectedItems)
             {
                 int idMercaderia = int.Parse(selectedItem.Text);
@@ -97,17 +96,17 @@ namespace GrupoG.Prototipo.Stock
                 }
             }
 
-            
+
             if (ordenSeleccionada.Mercaderias.Count == 0)
             {
                 modelo.RemoverOrdenSeleccionada(ordenSeleccionada);
                 MessageBox.Show("La orden seleccionada ha sido completamente retirada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-            
+
             CargarOrdenes();
 
-            
+
             if (modelo.ObtenerOrdenesSeleccionadas().Count == 0)
             {
                 MessageBox.Show("No quedan órdenes de selección.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -115,7 +114,7 @@ namespace GrupoG.Prototipo.Stock
             }
             else
             {
-               
+
                 if (indiceOrdenSeleccionada < comboBox1.Items.Count)
                 {
                     comboBox1.SelectedIndex = indiceOrdenSeleccionada;
@@ -133,5 +132,7 @@ namespace GrupoG.Prototipo.Stock
         {
             this.Close();
         }
+
+       
     }
 }

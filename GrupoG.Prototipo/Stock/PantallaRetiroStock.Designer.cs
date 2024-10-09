@@ -42,17 +42,18 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(162, 48);
+            comboBox1.Location = new Point(185, 64);
+            comboBox1.Margin = new Padding(3, 4, 3, 4);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
+            comboBox1.Size = new Size(138, 28);
             comboBox1.TabIndex = 0;
             // 
             // labelOrdenSeleccion
             // 
             labelOrdenSeleccion.AutoSize = true;
-            labelOrdenSeleccion.Location = new Point(23, 51);
+            labelOrdenSeleccion.Location = new Point(26, 68);
             labelOrdenSeleccion.Name = "labelOrdenSeleccion";
-            labelOrdenSeleccion.Size = new Size(112, 15);
+            labelOrdenSeleccion.Size = new Size(141, 20);
             labelOrdenSeleccion.TabIndex = 1;
             labelOrdenSeleccion.Text = "Orden de Selección:";
             // 
@@ -61,9 +62,10 @@
             listView1.Columns.AddRange(new ColumnHeader[] { idMercaderia, nombreMercaderia, cantidadMercaderia, ubicacionMercaderia });
             listView1.FullRowSelect = true;
             listView1.GridLines = true;
-            listView1.Location = new Point(23, 89);
+            listView1.Location = new Point(26, 119);
+            listView1.Margin = new Padding(3, 4, 3, 4);
             listView1.Name = "listView1";
-            listView1.Size = new Size(366, 194);
+            listView1.Size = new Size(418, 257);
             listView1.TabIndex = 2;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -90,9 +92,10 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(276, 310);
+            VolverAlMenu.Location = new Point(315, 413);
+            VolverAlMenu.Margin = new Padding(3, 4, 3, 4);
             VolverAlMenu.Name = "VolverAlMenu";
-            VolverAlMenu.Size = new Size(113, 38);
+            VolverAlMenu.Size = new Size(129, 51);
             VolverAlMenu.TabIndex = 6;
             VolverAlMenu.Text = "Volver al Menú";
             VolverAlMenu.UseVisualStyleBackColor = true;
@@ -100,9 +103,10 @@
             // 
             // btnRetirarStock
             // 
-            btnRetirarStock.Location = new Point(162, 310);
+            btnRetirarStock.Location = new Point(185, 413);
+            btnRetirarStock.Margin = new Padding(3, 4, 3, 4);
             btnRetirarStock.Name = "btnRetirarStock";
-            btnRetirarStock.Size = new Size(98, 38);
+            btnRetirarStock.Size = new Size(112, 51);
             btnRetirarStock.TabIndex = 7;
             btnRetirarStock.Text = "Retirar Stock";
             btnRetirarStock.UseVisualStyleBackColor = true;
@@ -110,17 +114,19 @@
             // 
             // PantallaRetiroStock
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(430, 372);
+            ClientSize = new Size(491, 496);
             Controls.Add(btnRetirarStock);
             Controls.Add(VolverAlMenu);
             Controls.Add(listView1);
             Controls.Add(labelOrdenSeleccion);
             Controls.Add(comboBox1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "PantallaRetiroStock";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "PantallaRetiroStock";
+            Load += PantallaRetiroStock_Load_1;
             ResumeLayout(false);
             PerformLayout();
         }
