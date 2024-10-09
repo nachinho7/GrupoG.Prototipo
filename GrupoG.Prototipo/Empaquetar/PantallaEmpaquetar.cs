@@ -12,7 +12,6 @@ namespace GrupoG.Prototipo.Empaquetar
         {
             InitializeComponent();
             modelo = new PantallaEmpaquetarModel();
-
         }
 
         private void PantallaEmpaquetar_Load(object sender, EventArgs e)
@@ -24,23 +23,17 @@ namespace GrupoG.Prototipo.Empaquetar
         {
             var ordenesPreparacion = modelo.ObtenerOrdenesPreparacion();
 
-            ComboBoxOrdenesPreparacion.Items.Clear(); 
+            ComboBoxOrdenesPreparacion.Items.Clear();
 
             if (ordenesPreparacion.Count > 0)
             {
-                
                 foreach (var orden in ordenesPreparacion)
                 {
                     ComboBoxOrdenesPreparacion.Items.Add($"Orden N° {orden.NumeroOrdenPreparacion}");
                 }
 
-                
                 ComboBoxOrdenesPreparacion.SelectedIndex = 0;
-
-                
                 ComboBoxOrdenesPreparacion.SelectedIndexChanged += ComboBoxOrdenesPreparacion_SelectedIndexChanged;
-
-               
                 ComboBoxOrdenesPreparacion_SelectedIndexChanged(this, EventArgs.Empty);
             }
             else
@@ -51,21 +44,17 @@ namespace GrupoG.Prototipo.Empaquetar
 
         private void ComboBoxOrdenesPreparacion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listView1.Items.Clear(); 
+            listView1.Items.Clear();
 
-            
             if (ComboBoxOrdenesPreparacion.SelectedIndex == -1) return;
 
-            
             int indiceOrdenSeleccionada = ComboBoxOrdenesPreparacion.SelectedIndex;
 
-            
-            var ordenSeleccionada = modelo.ObtenerOrdenesPreparacion()[indiceOrdenSeleccionada];
+            var mercaderias = modelo.ObtenerMercaderiasPorOrden(indiceOrdenSeleccionada);
 
-            if (ordenSeleccionada != null)
+            if (mercaderias != null)
             {
-                
-                foreach (var mercaderia in ordenSeleccionada.Mercaderias)
+                foreach (var mercaderia in mercaderias)
                 {
                     var item = new ListViewItem(mercaderia.idMercaderia.ToString());
                     item.SubItems.Add(mercaderia.nombreMercaderia);
@@ -77,37 +66,27 @@ namespace GrupoG.Prototipo.Empaquetar
 
         private void btnEmpaquetar_Click(object sender, EventArgs e)
         {
-           
             if (listView1.Items.Count == 0)
             {
                 MessageBox.Show("No hay mercaderías para empaquetar en esta orden.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            
             var ordenSeleccionada = modelo.ObtenerOrdenesPreparacion()[ComboBoxOrdenesPreparacion.SelectedIndex];
 
             MessageBox.Show($"La orden de preparación N° {ordenSeleccionada.NumeroOrdenPreparacion} ha sido empaquetada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            
             modelo.RemoverOrdenPreparacion(ordenSeleccionada);
-
-            
             CargarOrdenesPreparacion();
 
-            
             if (ComboBoxOrdenesPreparacion.Items.Count > 0)
             {
-                ComboBoxOrdenesPreparacion.SelectedIndex = 0; 
-                ComboBoxOrdenesPreparacion_SelectedIndexChanged(this, EventArgs.Empty); 
+                ComboBoxOrdenesPreparacion.SelectedIndex = 0;
+                ComboBoxOrdenesPreparacion_SelectedIndexChanged(this, EventArgs.Empty);
             }
             else
             {
-                
                 listView1.Items.Clear();
-                MessageBox.Show("No quedan más órdenes de preparación disponibles.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-              
                 this.Close();
             }
         }
