@@ -9,11 +9,12 @@ namespace GrupoG.Prototipo.Stock
 
         public PantallaRetiroStockModel()
         {
+            // Aquí están los datos hardcodeados
             OrdenesSeleccionadas = new List<OrdenSeleccion>
             {
                 new OrdenSeleccion
                 {
-                    numeroOrdenSeleccion = 1,
+                    numeroOrdenSeleccion = 1, // Corregido en minúscula
                     FechaCreacion = DateTime.Now,
                     Mercaderias = new List<Mercaderias>
                     {
@@ -23,7 +24,7 @@ namespace GrupoG.Prototipo.Stock
                 },
                 new OrdenSeleccion
                 {
-                    numeroOrdenSeleccion = 2,
+                    numeroOrdenSeleccion = 2, // Corregido en minúscula
                     FechaCreacion = DateTime.Now,
                     Mercaderias = new List<Mercaderias>
                     {
@@ -34,14 +35,22 @@ namespace GrupoG.Prototipo.Stock
             };
         }
 
+        // Método para obtener las órdenes
         public List<OrdenSeleccion> ObtenerOrdenesSeleccionadas()
         {
             return OrdenesSeleccionadas;
         }
 
+        // Método para remover una orden
         public void RemoverOrdenSeleccionada(OrdenSeleccion orden)
         {
             OrdenesSeleccionadas.Remove(orden);
+        }
+
+        // Método para remover una mercadería específica de una orden
+        public void RemoverMercaderiaDeOrden(OrdenSeleccion orden, Mercaderias mercaderia)
+        {
+            orden.Mercaderias.Remove(mercaderia);
         }
     }
 }
