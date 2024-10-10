@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-
+using GrupoG.Prototipo.Menu;
 
 namespace GrupoG.Prototipo.Despacho
 {
@@ -22,7 +22,11 @@ namespace GrupoG.Prototipo.Despacho
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {
-            this.Close();
+            PantallaMenu menu = new PantallaMenu();
+            this.Hide();
+            menu.StartPosition = FormStartPosition.CenterScreen;
+            menu.Location = this.Location;
+            menu.Show();
         }
 
         private void BotonObtenerDatos_Click(object sender, EventArgs e)

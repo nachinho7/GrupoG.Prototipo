@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using GrupoG.Prototipo.Menu;
 
 namespace GrupoG.Prototipo.Stock
 {
@@ -130,7 +131,11 @@ namespace GrupoG.Prototipo.Stock
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {
-            this.Close();
+            PantallaMenu menu = new PantallaMenu();
+            this.Hide();
+            menu.StartPosition = FormStartPosition.CenterScreen;
+            menu.Location = this.Location;
+            menu.Show();
         }
 
        

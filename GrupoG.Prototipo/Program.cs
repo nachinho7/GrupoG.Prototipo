@@ -1,5 +1,5 @@
-using GrupoG.Prototipo.Pantallas;
-using GrupoG.Prototipo.Pantallas.Menu;
+using GrupoG.Prototipo;
+using GrupoG.Prototipo.Menu;
 
 namespace GrupoG.Prototipo
 {

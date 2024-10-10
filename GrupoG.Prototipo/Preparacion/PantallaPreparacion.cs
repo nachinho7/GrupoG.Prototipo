@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using GrupoG.Prototipo.Menu;
 
 namespace GrupoG.Prototipo.Preparacion
 {
@@ -268,7 +269,11 @@ namespace GrupoG.Prototipo.Preparacion
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {
-            this.Close();
+            PantallaMenu menu = new PantallaMenu();
+            this.Hide();
+            menu.StartPosition = FormStartPosition.CenterScreen;
+            menu.Location = this.Location;
+            menu.Show();
         }
 
         private void PantallaPreparacion_Load(object sender, EventArgs e)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using GrupoG.Prototipo.Menu;
 
 namespace GrupoG.Prototipo.Seleccion
 {
@@ -68,7 +69,11 @@ namespace GrupoG.Prototipo.Seleccion
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {
-            this.Close();
+            PantallaMenu menu = new PantallaMenu();
+            this.Hide();
+            menu.StartPosition = FormStartPosition.CenterScreen;
+            menu.Location = this.Location;
+            menu.Show();
         }
 
         private void dateTimePicker_ValueChanged(object sender, EventArgs e)

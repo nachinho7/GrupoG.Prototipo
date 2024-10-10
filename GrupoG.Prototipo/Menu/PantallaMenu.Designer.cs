@@ -1,4 +1,4 @@
-﻿namespace GrupoG.Prototipo.Pantallas.Menu
+﻿namespace GrupoG.Prototipo.Menu
 {
     partial class PantallaMenu
     {
