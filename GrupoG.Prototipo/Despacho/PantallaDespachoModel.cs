@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using GrupoG.Prototipo.Preparacion;
 
 namespace GrupoG.Prototipo.Despacho
 {
