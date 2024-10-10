@@ -41,9 +41,10 @@
             // 
             // BotonGenerarOS
             // 
-            BotonGenerarOS.Location = new Point(28, 420);
+            BotonGenerarOS.Location = new Point(32, 560);
+            BotonGenerarOS.Margin = new Padding(3, 4, 3, 4);
             BotonGenerarOS.Name = "BotonGenerarOS";
-            BotonGenerarOS.Size = new Size(110, 38);
+            BotonGenerarOS.Size = new Size(126, 51);
             BotonGenerarOS.TabIndex = 1;
             BotonGenerarOS.Text = "Generar Orden de Seleccion";
             BotonGenerarOS.UseVisualStyleBackColor = true;
@@ -51,9 +52,10 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(155, 420);
+            VolverAlMenu.Location = new Point(177, 560);
+            VolverAlMenu.Margin = new Padding(3, 4, 3, 4);
             VolverAlMenu.Name = "VolverAlMenu";
-            VolverAlMenu.Size = new Size(113, 38);
+            VolverAlMenu.Size = new Size(129, 51);
             VolverAlMenu.TabIndex = 5;
             VolverAlMenu.Text = "Volver al Menú";
             VolverAlMenu.UseVisualStyleBackColor = true;
@@ -62,18 +64,19 @@
             // datetimeDespacho
             // 
             datetimeDespacho.Format = DateTimePickerFormat.Short;
-            datetimeDespacho.Location = new Point(144, 23);
+            datetimeDespacho.Location = new Point(165, 31);
+            datetimeDespacho.Margin = new Padding(3, 4, 3, 4);
             datetimeDespacho.Name = "datetimeDespacho";
-            datetimeDespacho.Size = new Size(111, 23);
+            datetimeDespacho.Size = new Size(126, 27);
             datetimeDespacho.TabIndex = 6;
             datetimeDespacho.ValueChanged += dateTimePicker_ValueChanged;
             // 
             // fechaDespacho
             // 
             fechaDespacho.AutoSize = true;
-            fechaDespacho.Location = new Point(16, 29);
+            fechaDespacho.Location = new Point(18, 39);
             fechaDespacho.Name = "fechaDespacho";
-            fechaDespacho.Size = new Size(109, 15);
+            fechaDespacho.Size = new Size(138, 20);
             fechaDespacho.TabIndex = 7;
             fechaDespacho.Text = "Fecha de Despacho";
             // 
@@ -83,18 +86,21 @@
             groupBoxOrdenes.Controls.Add(listView1);
             groupBoxOrdenes.Controls.Add(fechaDespacho);
             groupBoxOrdenes.Controls.Add(datetimeDespacho);
-            groupBoxOrdenes.Location = new Point(12, 12);
+            groupBoxOrdenes.Location = new Point(14, 16);
+            groupBoxOrdenes.Margin = new Padding(3, 4, 3, 4);
             groupBoxOrdenes.Name = "groupBoxOrdenes";
-            groupBoxOrdenes.Size = new Size(275, 392);
+            groupBoxOrdenes.Padding = new Padding(3, 4, 3, 4);
+            groupBoxOrdenes.Size = new Size(314, 523);
             groupBoxOrdenes.TabIndex = 8;
             groupBoxOrdenes.TabStop = false;
             groupBoxOrdenes.Text = "Ordenes de Preparación a seleccionar:";
             // 
             // mostrartTodasOrdenes
             // 
-            mostrartTodasOrdenes.Location = new Point(37, 52);
+            mostrartTodasOrdenes.Location = new Point(42, 69);
+            mostrartTodasOrdenes.Margin = new Padding(3, 4, 3, 4);
             mostrartTodasOrdenes.Name = "mostrartTodasOrdenes";
-            mostrartTodasOrdenes.Size = new Size(190, 24);
+            mostrartTodasOrdenes.Size = new Size(217, 32);
             mostrartTodasOrdenes.TabIndex = 9;
             mostrartTodasOrdenes.Text = "Mostrar todas las ordenes";
             mostrartTodasOrdenes.UseVisualStyleBackColor = true;
@@ -105,9 +111,10 @@
             listView1.Columns.AddRange(new ColumnHeader[] { numeroOrdenPreparacion });
             listView1.FullRowSelect = true;
             listView1.GridLines = true;
-            listView1.Location = new Point(15, 82);
+            listView1.Location = new Point(17, 109);
+            listView1.Margin = new Padding(3, 4, 3, 4);
             listView1.Name = "listView1";
-            listView1.Size = new Size(240, 287);
+            listView1.Size = new Size(274, 381);
             listView1.TabIndex = 8;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -119,12 +126,14 @@
             // 
             // PantallaSeleccion
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(305, 486);
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ClientSize = new Size(349, 648);
             Controls.Add(groupBoxOrdenes);
             Controls.Add(VolverAlMenu);
             Controls.Add(BotonGenerarOS);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "PantallaSeleccion";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Orden de Seleccion";

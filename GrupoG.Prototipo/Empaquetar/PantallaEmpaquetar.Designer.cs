@@ -41,9 +41,9 @@
             // numeroOrdenPreparacion
             // 
             numeroOrdenPreparacion.AutoSize = true;
-            numeroOrdenPreparacion.Location = new Point(12, 36);
+            numeroOrdenPreparacion.Location = new Point(14, 48);
             numeroOrdenPreparacion.Name = "numeroOrdenPreparacion";
-            numeroOrdenPreparacion.Size = new Size(142, 15);
+            numeroOrdenPreparacion.Size = new Size(178, 20);
             numeroOrdenPreparacion.TabIndex = 0;
             numeroOrdenPreparacion.Text = "N° Orden de Preparación:";
             // 
@@ -52,9 +52,10 @@
             listView1.Columns.AddRange(new ColumnHeader[] { idMercaderia, nombreMercaderia, cantidadMercaderia });
             listView1.FullRowSelect = true;
             listView1.GridLines = true;
-            listView1.Location = new Point(12, 66);
+            listView1.Location = new Point(14, 88);
+            listView1.Margin = new Padding(3, 4, 3, 4);
             listView1.Name = "listView1";
-            listView1.Size = new Size(307, 161);
+            listView1.Size = new Size(350, 213);
             listView1.TabIndex = 1;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -76,9 +77,10 @@
             // 
             // btnEmpaquetar
             // 
-            btnEmpaquetar.Location = new Point(100, 255);
+            btnEmpaquetar.Location = new Point(114, 340);
+            btnEmpaquetar.Margin = new Padding(3, 4, 3, 4);
             btnEmpaquetar.Name = "btnEmpaquetar";
-            btnEmpaquetar.Size = new Size(106, 38);
+            btnEmpaquetar.Size = new Size(121, 51);
             btnEmpaquetar.TabIndex = 2;
             btnEmpaquetar.Text = "Empaquetar";
             btnEmpaquetar.UseVisualStyleBackColor = true;
@@ -86,9 +88,10 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(212, 255);
+            VolverAlMenu.Location = new Point(242, 340);
+            VolverAlMenu.Margin = new Padding(3, 4, 3, 4);
             VolverAlMenu.Name = "VolverAlMenu";
-            VolverAlMenu.Size = new Size(107, 38);
+            VolverAlMenu.Size = new Size(122, 51);
             VolverAlMenu.TabIndex = 31;
             VolverAlMenu.Text = "Volver al Menú";
             VolverAlMenu.UseVisualStyleBackColor = true;
@@ -97,26 +100,27 @@
             // ComboBoxOrdenesPreparacion
             // 
             ComboBoxOrdenesPreparacion.FormattingEnabled = true;
-            ComboBoxOrdenesPreparacion.Location = new Point(173, 34);
-            ComboBoxOrdenesPreparacion.Margin = new Padding(3, 2, 3, 2);
+            ComboBoxOrdenesPreparacion.Location = new Point(198, 45);
             ComboBoxOrdenesPreparacion.Name = "ComboBoxOrdenesPreparacion";
-            ComboBoxOrdenesPreparacion.Size = new Size(133, 23);
+            ComboBoxOrdenesPreparacion.Size = new Size(151, 28);
             ComboBoxOrdenesPreparacion.TabIndex = 32;
             // 
             // PantallaEmpaquetar
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(340, 312);
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ClientSize = new Size(389, 416);
             Controls.Add(ComboBoxOrdenesPreparacion);
             Controls.Add(VolverAlMenu);
             Controls.Add(btnEmpaquetar);
             Controls.Add(listView1);
             Controls.Add(numeroOrdenPreparacion);
-            Load += PantallaEmpaquetar_Load;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "PantallaEmpaquetar";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Pantalla Empaquetar";
+            Load += PantallaEmpaquetar_Load;
             ResumeLayout(false);
             PerformLayout();
         }

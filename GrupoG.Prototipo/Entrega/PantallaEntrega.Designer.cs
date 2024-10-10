@@ -30,10 +30,9 @@
             // 
             // btnEntregar
             // 
-            btnEntregar.Location = new Point(23, 297);
-            btnEntregar.Margin = new Padding(3, 2, 3, 2);
+            btnEntregar.Location = new Point(26, 396);
             btnEntregar.Name = "btnEntregar";
-            btnEntregar.Size = new Size(107, 38);
+            btnEntregar.Size = new Size(122, 51);
             btnEntregar.TabIndex = 7;
             btnEntregar.Text = "Generar Orden de Entrega";
             btnEntregar.UseVisualStyleBackColor = true;
@@ -44,10 +43,9 @@
             ListaOrdenesEmpaquetar.Columns.AddRange(new ColumnHeader[] { ColumnaNumeroOrden });
             ListaOrdenesEmpaquetar.FullRowSelect = true;
             ListaOrdenesEmpaquetar.GridLines = true;
-            ListaOrdenesEmpaquetar.Location = new Point(23, 53);
-            ListaOrdenesEmpaquetar.Margin = new Padding(3, 2, 3, 2);
+            ListaOrdenesEmpaquetar.Location = new Point(26, 71);
             ListaOrdenesEmpaquetar.Name = "ListaOrdenesEmpaquetar";
-            ListaOrdenesEmpaquetar.Size = new Size(220, 222);
+            ListaOrdenesEmpaquetar.Size = new Size(251, 295);
             ListaOrdenesEmpaquetar.TabIndex = 9;
             ListaOrdenesEmpaquetar.UseCompatibleStateImageBehavior = false;
             ListaOrdenesEmpaquetar.View = View.Details;
@@ -59,9 +57,10 @@
             // 
             // BotonVolverAlMenu
             // 
-            BotonVolverAlMenu.Location = new Point(136, 297);
+            BotonVolverAlMenu.Location = new Point(155, 396);
+            BotonVolverAlMenu.Margin = new Padding(3, 4, 3, 4);
             BotonVolverAlMenu.Name = "BotonVolverAlMenu";
-            BotonVolverAlMenu.Size = new Size(107, 38);
+            BotonVolverAlMenu.Size = new Size(122, 51);
             BotonVolverAlMenu.TabIndex = 10;
             BotonVolverAlMenu.Text = "Volver al Menú";
             BotonVolverAlMenu.UseVisualStyleBackColor = true;
@@ -69,13 +68,13 @@
             // 
             // PantallaEntrega
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(268, 357);
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ClientSize = new Size(306, 476);
             Controls.Add(BotonVolverAlMenu);
             Controls.Add(ListaOrdenesEmpaquetar);
             Controls.Add(btnEntregar);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "PantallaEntrega";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Orden de Entrega";

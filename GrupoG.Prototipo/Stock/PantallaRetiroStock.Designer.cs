@@ -116,6 +116,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(491, 496);
             Controls.Add(btnRetirarStock);
             Controls.Add(VolverAlMenu);
