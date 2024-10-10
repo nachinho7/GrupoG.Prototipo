@@ -1,4 +1,4 @@
-﻿namespace GrupoG.Prototipo.Pantallas
+﻿namespace GrupoG.Prototipo.Entrega
 {
     partial class PantallaEntrega
     {

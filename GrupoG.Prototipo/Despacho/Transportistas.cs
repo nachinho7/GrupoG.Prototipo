@@ -1,4 +1,4 @@
-﻿using GrupoG.Prototipo.Preparacion;
+﻿
 using System;
 
 using System.Collections.Generic;

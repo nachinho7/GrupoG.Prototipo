@@ -1,4 +1,4 @@
-﻿namespace GrupoG.Prototipo
+﻿namespace GrupoG.Prototipo.Preparacion
 {
     partial class PantallaPreparacion
     {

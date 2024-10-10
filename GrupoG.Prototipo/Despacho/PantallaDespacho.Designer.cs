@@ -1,4 +1,4 @@
-﻿namespace GrupoG.Prototipo.Pantallas
+﻿namespace GrupoG.Prototipo.Despacho
 {
     partial class PantallaDespacho
     {

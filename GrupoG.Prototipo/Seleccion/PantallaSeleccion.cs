@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using GrupoG.Prototipo.Seleccion;
 
-namespace GrupoG.Prototipo.Pantallas
+namespace GrupoG.Prototipo.Seleccion
 {
     public partial class PantallaSeleccion : Form
     {

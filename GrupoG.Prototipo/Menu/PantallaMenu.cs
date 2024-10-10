@@ -1,5 +1,10 @@
-﻿using GrupoG.Prototipo.Empaquetar;
+﻿using GrupoG.Prototipo.Preparacion;
+using GrupoG.Prototipo.Seleccion;
 using GrupoG.Prototipo.Stock;
+using GrupoG.Prototipo.Entrega;
+using GrupoG.Prototipo.Empaquetar;
+using GrupoG.Prototipo.Despacho;
+
 using System;
 using System.Windows.Forms;
 

@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using GrupoG.Prototipo.Despacho;
-using GrupoG.Prototipo.Preparacion;
 
-namespace GrupoG.Prototipo.Pantallas
+
+namespace GrupoG.Prototipo.Despacho
 {
     public partial class PantallaDespacho : Form
     {
