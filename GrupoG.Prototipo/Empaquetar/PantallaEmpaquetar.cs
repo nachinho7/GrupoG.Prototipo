@@ -88,7 +88,11 @@ namespace GrupoG.Prototipo.Empaquetar
             else
             {
                 listView1.Items.Clear();
-                this.Close();
+                PantallaMenu menu = new PantallaMenu();
+                this.Hide();
+                menu.StartPosition = FormStartPosition.CenterScreen;
+                menu.Location = this.Location;
+                menu.Show();
             }
         }
 

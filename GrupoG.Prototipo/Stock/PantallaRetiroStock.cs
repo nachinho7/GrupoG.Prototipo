@@ -111,7 +111,11 @@ namespace GrupoG.Prototipo.Stock
             if (modelo.ObtenerOrdenesSeleccionadas().Count == 0)
             {
                 MessageBox.Show("No quedan órdenes de selección.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                PantallaMenu menu = new PantallaMenu();
+                this.Hide();
+                menu.StartPosition = FormStartPosition.CenterScreen;
+                menu.Location = this.Location;
+                menu.Show();
             }
             else
             {
