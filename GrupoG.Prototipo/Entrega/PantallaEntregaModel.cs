@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GrupoG.Prototipo.Entrega
 {
-
     internal class PantallaEntregaModel
     {
         public List<OrdenPreparacion> OrdenesPreparacion { get; private set; } = new List<OrdenPreparacion>
@@ -15,15 +11,25 @@ namespace GrupoG.Prototipo.Entrega
             {
                 NumeroOrdenPreparacion = 1,
                 NumeroCliente = 101,
-                FechaDespacho = DateTime.Now.AddDays(2),
+                Mercaderias = new List<Mercaderias>
+                {
+                    new Mercaderias { cantidadMercaderia = 15 },
+                },
                 DNITransportista = 12345678,
+                FechaDespacho = DateTime.Now
+                
             },
             new OrdenPreparacion
             {
                 NumeroOrdenPreparacion = 2,
                 NumeroCliente = 102,
-                FechaDespacho = DateTime.Now.AddDays(3),
+                 Mercaderias = new List<Mercaderias>
+                {
+                    new Mercaderias { cantidadMercaderia = 20 },       
+                },
                 DNITransportista = 87654321,
+                FechaDespacho = DateTime.Now
+                  
             }
         };
 

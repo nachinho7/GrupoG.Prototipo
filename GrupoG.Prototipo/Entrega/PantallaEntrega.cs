@@ -36,26 +36,30 @@ namespace GrupoG.Prototipo.Entrega
             foreach (var orden in ordenes)
             {
                 var item = new ListViewItem(orden.NumeroOrdenPreparacion.ToString());
-
                 item.SubItems.Add(orden.NumeroCliente.ToString());
+                item.SubItems.Add(orden.Mercaderias[0].cantidadMercaderia.ToString());
+                item.SubItems.Add(orden.DNITransportista.ToString());
                 item.SubItems.Add(orden.FechaDespacho.ToString());
 
-              
+
+
                 ListaOrdenesEmpaquetar.Items.Add(item);
             }
         }
 
+        //cambiar, no es boton Empaquetar
         private void BotonEmpaquetar_Click(object sender, EventArgs e)
         {
+            /*
             if (ListaOrdenesEmpaquetar.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Por favor, seleccione una orden para empaquetar.", "Sin selección", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor, seleccione una orden para entregar.", "Sin selección", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (ListaOrdenesEmpaquetar.SelectedItems.Count > 1)
             {
-                MessageBox.Show("No se puede seleccionar más de una orden seguida para empaquetar.", "Selección inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No se puede seleccionar más de una orden seguida para entregar.", "Selección inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -72,8 +76,20 @@ namespace GrupoG.Prototipo.Entrega
                 orden.Empaquetada = true;
                 ListaOrdenesEmpaquetar.Items.Remove(selectedItem);
 
-                MessageBox.Show($"La orden {nroOrden} ha sido empaquetada.", "Orden Empaquetada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"La orden {nroOrden} ha sido Generada.", "Orden Entrega pasa a despacho", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            */
+            // Verificamos si hay órdenes en la lista
+            if (ListaOrdenesEmpaquetar.Items.Count == 0)
+            {
+                MessageBox.Show("No hay órdenes para generar.", "Sin órdenes", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Limpiar todas las órdenes
+            ListaOrdenesEmpaquetar.Items.Clear();
+
+            MessageBox.Show("Todas las órdenes han sido generadas y trasladadas a despacho.", "Orden de Entrega Generada", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
