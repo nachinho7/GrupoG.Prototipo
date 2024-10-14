@@ -55,7 +55,7 @@
             listView1.Location = new Point(14, 88);
             listView1.Margin = new Padding(3, 4, 3, 4);
             listView1.Name = "listView1";
-            listView1.Size = new Size(350, 213);
+            listView1.Size = new Size(806, 323);
             listView1.TabIndex = 1;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -63,21 +63,21 @@
             // idMercaderia
             // 
             idMercaderia.Text = "ID Mercadería";
-            idMercaderia.Width = 100;
+            idMercaderia.Width = 200;
             // 
             // nombreMercaderia
             // 
             nombreMercaderia.Text = "Nombre";
-            nombreMercaderia.Width = 100;
+            nombreMercaderia.Width = 300;
             // 
             // cantidadMercaderia
             // 
             cantidadMercaderia.Text = "Cantidad";
-            cantidadMercaderia.Width = 100;
+            cantidadMercaderia.Width = 300;
             // 
             // btnEmpaquetar
             // 
-            btnEmpaquetar.Location = new Point(114, 340);
+            btnEmpaquetar.Location = new Point(71, 429);
             btnEmpaquetar.Margin = new Padding(3, 4, 3, 4);
             btnEmpaquetar.Name = "btnEmpaquetar";
             btnEmpaquetar.Size = new Size(121, 51);
@@ -88,7 +88,7 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(242, 340);
+            VolverAlMenu.Location = new Point(227, 429);
             VolverAlMenu.Margin = new Padding(3, 4, 3, 4);
             VolverAlMenu.Name = "VolverAlMenu";
             VolverAlMenu.Size = new Size(122, 51);
@@ -102,7 +102,7 @@
             ComboBoxOrdenesPreparacion.FormattingEnabled = true;
             ComboBoxOrdenesPreparacion.Location = new Point(198, 45);
             ComboBoxOrdenesPreparacion.Name = "ComboBoxOrdenesPreparacion";
-            ComboBoxOrdenesPreparacion.Size = new Size(151, 28);
+            ComboBoxOrdenesPreparacion.Size = new Size(317, 28);
             ComboBoxOrdenesPreparacion.TabIndex = 32;
             // 
             // PantallaEmpaquetar
@@ -110,7 +110,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(389, 416);
+            ClientSize = new Size(832, 511);
             Controls.Add(ComboBoxOrdenesPreparacion);
             Controls.Add(VolverAlMenu);
             Controls.Add(btnEmpaquetar);
