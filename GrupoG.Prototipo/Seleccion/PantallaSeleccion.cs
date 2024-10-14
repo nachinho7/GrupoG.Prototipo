@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using GrupoG.Prototipo.Menu;
 
+
 namespace GrupoG.Prototipo.Seleccion
 {
     public partial class PantallaSeleccion : Form
@@ -18,33 +19,75 @@ namespace GrupoG.Prototipo.Seleccion
         private void PantallaSeleccion_Load(object sender, EventArgs e)
         {
             CargarOrdenes();
+            CargarClientes();
         }
 
         private void CargarOrdenes()
         {
-            listView1.Items.Clear(); // Limpiar elementos existentes
+            listView1.Items.Clear();
+
             var ordenes = modelo.ObtenerOrdenes();
 
             foreach (var orden in ordenes)
             {
-                // Crear un nuevo ListViewItem
-                var item = new ListViewItem($"Orden N° {orden.NumeroOrdenPreparacion}");
-                item.Tag = orden;
-                listView1.Items.Add(item); 
-            }
-        }
-
-        private void FiltrarOrdenesPorFecha(DateTime fecha)
-        {
-            listView1.Items.Clear();
-            var ordenesFiltradas = modelo.FiltrarOrdenesPorFecha(fecha);
-
-            foreach (var orden in ordenesFiltradas)
-            {
-                var item = new ListViewItem($"Orden N° {orden.NumeroOrdenPreparacion}");
+                var item = new ListViewItem(orden.NumeroOrdenPreparacion.ToString());
+                item.SubItems.Add(orden.NumeroCliente.ToString());
+                item.SubItems.Add(orden.FechaDespacho.ToShortDateString());
+                item.SubItems.Add(orden.DNITransportista.ToString());
                 item.Tag = orden;
                 listView1.Items.Add(item);
             }
+        }
+
+
+
+        private void CargarClientes()
+        {
+
+            var clientes = modelo.ObtenerClientesDisponibles();
+
+            comboBoxCliente.Items.Clear();
+            comboBoxCliente.Items.Add("Todos");
+            foreach (var cliente in clientes)
+            {
+                comboBoxCliente.Items.Add(cliente);
+            }
+            comboBoxCliente.SelectedIndex = 0;
+            comboBoxCliente.SelectedIndexChanged += ComboBoxCliente_SelectedIndexChanged;
+        }
+
+        private void ComboBoxCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FiltrarOrdenes();
+        }
+
+        private void FiltrarOrdenes()
+        {
+            listView1.Items.Clear();
+
+
+            DateTime fechaSeleccionada = datetimeDespacho.Value.Date;
+            var clienteSeleccionado = comboBoxCliente.SelectedItem.ToString();
+            int? numeroCliente = clienteSeleccionado == "Todos" ? (int?)null : int.Parse(clienteSeleccionado);
+
+
+            var ordenesFiltradas = modelo.FiltrarOrdenesPorClienteYFecha(numeroCliente, fechaSeleccionada);
+
+
+            foreach (var orden in ordenesFiltradas)
+            {
+                var item = new ListViewItem(orden.NumeroOrdenPreparacion.ToString());
+                item.SubItems.Add(orden.NumeroCliente.ToString());
+                item.SubItems.Add(orden.FechaDespacho.ToShortDateString());
+                item.SubItems.Add(orden.DNITransportista.ToString());
+                item.Tag = orden;
+                listView1.Items.Add(item);
+            }
+        }
+
+        private void dateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            FiltrarOrdenes();
         }
 
         private void BotonGenerarOS_Click(object sender, EventArgs e)
@@ -58,7 +101,7 @@ namespace GrupoG.Prototipo.Seleccion
             {
                 var nuevaSeleccion = modelo.GenerarOrdenDeSeleccion(ordenesSeleccionadas);
                 MessageBox.Show($"Orden de Selección N°{nuevaSeleccion.numeroOrdenSeleccion} generada!\n" +
-                                $"Incluye {ordenesSeleccionadas.Count} ordenes de preparación.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                $"Incluye {ordenesSeleccionadas.Count} órdenes de preparación.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarOrdenes();
             }
             else
@@ -76,22 +119,10 @@ namespace GrupoG.Prototipo.Seleccion
             menu.Show();
         }
 
-        private void dateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            if (datetimeDespacho.Value.Date == DateTime.Now.Date)
-            {
-                CargarOrdenes(); 
-            }
-            else
-            {
-                FiltrarOrdenesPorFecha(datetimeDespacho.Value); 
-            }
-        }
-
         private void BotonMostrarTodas_Click(object sender, EventArgs e)
         {
-            datetimeDespacho.Value = DateTime.Now.Date; 
-            CargarOrdenes(); 
+            datetimeDespacho.Value = DateTime.Now.Date;
+            CargarOrdenes();
         }
     }
 }
