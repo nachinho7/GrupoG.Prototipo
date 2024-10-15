@@ -20,6 +20,8 @@ namespace GrupoG.Prototipo.Seleccion
         {
             CargarOrdenes();
             CargarClientes();
+            CargarTransportistas();
+
         }
 
         private void CargarOrdenes()
@@ -55,24 +57,45 @@ namespace GrupoG.Prototipo.Seleccion
             comboBoxCliente.SelectedIndex = 0;
             comboBoxCliente.SelectedIndexChanged += ComboBoxCliente_SelectedIndexChanged;
         }
+        private void CargarTransportistas()
+        {
+            var transportistas = modelo.ObtenerTransportistasDisponibles();
 
+            comboBoxTransportista.Items.Clear();
+            comboBoxTransportista.Items.Add("Todos");
+            foreach (var transportista in transportistas)
+            {
+                comboBoxTransportista.Items.Add(transportista);
+            }
+            comboBoxTransportista.SelectedIndex = 0;
+            comboBoxTransportista.SelectedIndexChanged += ComboBoxTransportista_SelectedIndexChanged;
+        }
+        private void dateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            FiltrarOrdenes();
+        }
         private void ComboBoxCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
             FiltrarOrdenes();
         }
+        private void ComboBoxTransportista_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FiltrarOrdenes();
+        }
+
 
         private void FiltrarOrdenes()
         {
             listView1.Items.Clear();
 
-
             DateTime fechaSeleccionada = datetimeDespacho.Value.Date;
             var clienteSeleccionado = comboBoxCliente.SelectedItem.ToString();
             int? numeroCliente = clienteSeleccionado == "Todos" ? (int?)null : int.Parse(clienteSeleccionado);
 
+            var transportistaSeleccionado = comboBoxTransportista.SelectedItem.ToString();
+            int? dniTransportista = transportistaSeleccionado == "Todos" ? (int?)null : int.Parse(transportistaSeleccionado);
 
-            var ordenesFiltradas = modelo.FiltrarOrdenesPorClienteYFecha(numeroCliente, fechaSeleccionada);
-
+            var ordenesFiltradas = modelo.FiltrarOrdenesPorClienteYFechaYTransportista(numeroCliente, fechaSeleccionada, dniTransportista);
 
             foreach (var orden in ordenesFiltradas)
             {
@@ -84,11 +107,7 @@ namespace GrupoG.Prototipo.Seleccion
                 listView1.Items.Add(item);
             }
         }
-
-        private void dateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            FiltrarOrdenes();
-        }
+  
 
         private void BotonGenerarOS_Click(object sender, EventArgs e)
         {

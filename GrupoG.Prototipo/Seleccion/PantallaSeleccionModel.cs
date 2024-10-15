@@ -58,9 +58,21 @@ namespace GrupoG.Prototipo.Seleccion
                 .OrderBy(c => c)
                 .ToList();
         }
+        public List<int> ObtenerTransportistasDisponibles()
+        {
+            var ordenesSeleccionadasActuales = ordenesSeleccionadas
+                .SelectMany(os => os.ordenes);
+
+            return OrdenPreparacion
+                .Where(o => !ordenesSeleccionadasActuales.Select(sel => sel.NumeroOrdenPreparacion).Contains(o.NumeroOrdenPreparacion))
+                .Select(o => o.DNITransportista)
+                .Distinct()
+                .OrderBy(dni => dni)
+                .ToList();
+        }
 
 
-        public List<OrdenPreparacion> FiltrarOrdenesPorClienteYFecha(int? numeroCliente, DateTime fecha)
+        public List<OrdenPreparacion> FiltrarOrdenesPorClienteYFechaYTransportista(int? numeroCliente, DateTime fecha, int? dniTransportista)
         {
             var ordenesEnSeleccion = ordenesSeleccionadas
                 .SelectMany(os => os.ordenes)
@@ -70,6 +82,7 @@ namespace GrupoG.Prototipo.Seleccion
             return OrdenPreparacion
                 .Where(o => (!numeroCliente.HasValue || o.NumeroCliente == numeroCliente.Value)
                              && o.FechaDespacho.Date == fecha.Date
+                             && (!dniTransportista.HasValue || o.DNITransportista == dniTransportista.Value)
                              && !ordenesEnSeleccion.Contains(o.NumeroOrdenPreparacion))
                 .ToList();
         }

@@ -33,14 +33,16 @@
             datetimeDespacho = new DateTimePicker();
             fechaDespacho = new Label();
             groupBoxOrdenes = new GroupBox();
+            labelCliente = new Label();
+            comboBoxCliente = new ComboBox();
             mostrartTodasOrdenes = new Button();
             listView1 = new ListView();
             numeroOrdenPreparacion = new ColumnHeader();
             columnaCliente = new ColumnHeader();
             columnaFecha = new ColumnHeader();
             columnaTransportista = new ColumnHeader();
-            comboBoxCliente = new ComboBox();
-            labelCliente = new Label();
+            labelTransportista = new Label();
+            comboBoxTransportista = new ComboBox();
             groupBoxOrdenes.SuspendLayout();
             SuspendLayout();
             // 
@@ -69,7 +71,7 @@
             // datetimeDespacho
             // 
             datetimeDespacho.Format = DateTimePickerFormat.Short;
-            datetimeDespacho.Location = new Point(162, 34);
+            datetimeDespacho.Location = new Point(163, 33);
             datetimeDespacho.Margin = new Padding(3, 4, 3, 4);
             datetimeDespacho.Name = "datetimeDespacho";
             datetimeDespacho.Size = new Size(160, 27);
@@ -79,7 +81,7 @@
             // fechaDespacho
             // 
             fechaDespacho.AutoSize = true;
-            fechaDespacho.Location = new Point(18, 39);
+            fechaDespacho.Location = new Point(18, 36);
             fechaDespacho.Name = "fechaDespacho";
             fechaDespacho.Size = new Size(138, 20);
             fechaDespacho.TabIndex = 7;
@@ -87,6 +89,8 @@
             // 
             // groupBoxOrdenes
             // 
+            groupBoxOrdenes.Controls.Add(comboBoxTransportista);
+            groupBoxOrdenes.Controls.Add(labelTransportista);
             groupBoxOrdenes.Controls.Add(labelCliente);
             groupBoxOrdenes.Controls.Add(comboBoxCliente);
             groupBoxOrdenes.Controls.Add(mostrartTodasOrdenes);
@@ -97,14 +101,31 @@
             groupBoxOrdenes.Margin = new Padding(3, 4, 3, 4);
             groupBoxOrdenes.Name = "groupBoxOrdenes";
             groupBoxOrdenes.Padding = new Padding(3, 4, 3, 4);
-            groupBoxOrdenes.Size = new Size(943, 523);
+            groupBoxOrdenes.Size = new Size(1262, 523);
             groupBoxOrdenes.TabIndex = 8;
             groupBoxOrdenes.TabStop = false;
             groupBoxOrdenes.Text = "Ordenes de Preparación a seleccionar:";
             // 
+            // labelCliente
+            // 
+            labelCliente.AutoSize = true;
+            labelCliente.Location = new Point(379, 36);
+            labelCliente.Name = "labelCliente";
+            labelCliente.Size = new Size(79, 20);
+            labelCliente.TabIndex = 11;
+            labelCliente.Text = "N° Cliente:";
+            // 
+            // comboBoxCliente
+            // 
+            comboBoxCliente.FormattingEnabled = true;
+            comboBoxCliente.Location = new Point(464, 32);
+            comboBoxCliente.Name = "comboBoxCliente";
+            comboBoxCliente.Size = new Size(160, 28);
+            comboBoxCliente.TabIndex = 10;
+            // 
             // mostrartTodasOrdenes
             // 
-            mostrartTodasOrdenes.Location = new Point(679, 29);
+            mostrartTodasOrdenes.Location = new Point(1008, 28);
             mostrartTodasOrdenes.Margin = new Padding(3, 4, 3, 4);
             mostrartTodasOrdenes.Name = "mostrartTodasOrdenes";
             mostrartTodasOrdenes.Size = new Size(217, 32);
@@ -121,7 +142,7 @@
             listView1.Location = new Point(18, 86);
             listView1.Margin = new Padding(3, 4, 3, 4);
             listView1.Name = "listView1";
-            listView1.Size = new Size(919, 417);
+            listView1.Size = new Size(930, 417);
             listView1.TabIndex = 8;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -146,29 +167,30 @@
             columnaTransportista.Text = "Dni Transportista";
             columnaTransportista.Width = 240;
             // 
-            // comboBoxCliente
+            // labelTransportista
             // 
-            comboBoxCliente.FormattingEnabled = true;
-            comboBoxCliente.Location = new Point(430, 34);
-            comboBoxCliente.Name = "comboBoxCliente";
-            comboBoxCliente.Size = new Size(179, 28);
-            comboBoxCliente.TabIndex = 10;
+            labelTransportista.AutoSize = true;
+            labelTransportista.Location = new Point(658, 36);
+            labelTransportista.Name = "labelTransportista";
+            labelTransportista.Size = new Size(124, 20);
+            labelTransportista.TabIndex = 12;
+            labelTransportista.Text = "Dni Transportista:";
             // 
-            // labelCliente
+            // comboBoxTransportista
             // 
-            labelCliente.AutoSize = true;
-            labelCliente.Location = new Point(345, 39);
-            labelCliente.Name = "labelCliente";
-            labelCliente.Size = new Size(79, 20);
-            labelCliente.TabIndex = 11;
-            labelCliente.Text = "N° Cliente:";
+            comboBoxTransportista.ForeColor = SystemColors.WindowText;
+            comboBoxTransportista.FormattingEnabled = true;
+            comboBoxTransportista.Location = new Point(788, 32);
+            comboBoxTransportista.Name = "comboBoxTransportista";
+            comboBoxTransportista.Size = new Size(160, 28);
+            comboBoxTransportista.TabIndex = 13;
             // 
             // PantallaSeleccion
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(971, 648);
+            ClientSize = new Size(1288, 648);
             Controls.Add(groupBoxOrdenes);
             Controls.Add(VolverAlMenu);
             Controls.Add(BotonGenerarOS);
@@ -197,5 +219,7 @@
         private ColumnHeader columnaTransportista;
         private Label labelCliente;
         private ComboBox comboBoxCliente;
+        private ComboBox comboBoxTransportista;
+        private Label labelTransportista;
     }
 }
