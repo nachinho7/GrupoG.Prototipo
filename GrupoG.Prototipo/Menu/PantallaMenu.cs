@@ -19,54 +19,48 @@ namespace GrupoG.Prototipo.Menu
         private void BotonPreparacion_Click(object sender, EventArgs e)
         {
             PantallaPreparacion ordenpreparacion = new PantallaPreparacion();
-            this.Hide();
             ordenpreparacion.StartPosition = FormStartPosition.CenterScreen;
             ordenpreparacion.Location = this.Location;
-            ordenpreparacion.Show();
+            ordenpreparacion.ShowDialog();
         }
 
         private void BotonSeleccion_Click(object sender, EventArgs e)
         {
             PantallaSeleccion ordenseleccion = new PantallaSeleccion();
-            this.Hide();
             ordenseleccion.StartPosition = FormStartPosition.CenterScreen;
             ordenseleccion.Location = this.Location;
-            ordenseleccion.Show();
+            ordenseleccion.ShowDialog();
         }
 
         private void BotonRetiroStock_Click(object sender, EventArgs e)
         {
             PantallaRetiroStock retirostock = new PantallaRetiroStock();
-            this.Hide();
             retirostock.StartPosition = FormStartPosition.CenterScreen;
             retirostock.Location = this.Location;
-            retirostock.Show();
+            retirostock.ShowDialog();
         }
 
         private void BotonEntrega_Click(object sender, EventArgs e)
         {
             PantallaEntrega ordenentrega = new PantallaEntrega();
-            this.Hide();
             ordenentrega.StartPosition = FormStartPosition.CenterScreen;
             ordenentrega.Location = this.Location;
-            ordenentrega.Show();
+            ordenentrega.ShowDialog();
         }
         private void BotonEmpaquetar_Click(object sender, EventArgs e)
         {
             PantallaEmpaquetar empaquetar = new PantallaEmpaquetar();
-            this.Hide();
             empaquetar.StartPosition = FormStartPosition.CenterScreen;
             empaquetar.Location = this.Location;
-            empaquetar.Show();
+            empaquetar.ShowDialog();
         }
 
         private void BotonDespacho_Click(object sender, EventArgs e)
         {
             PantallaDespacho ordendespacho = new PantallaDespacho();
-            this.Hide();
             ordendespacho.StartPosition = FormStartPosition.CenterScreen;
             ordendespacho.Location = this.Location;
-            ordendespacho.Show();
+            ordendespacho.ShowDialog();
         }
 
         private void PantallaMenu_Load(object sender, EventArgs e)
