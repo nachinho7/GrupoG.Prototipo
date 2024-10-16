@@ -17,9 +17,6 @@ namespace GrupoG.Prototipo.Despacho
 
     {
 
-        public string nombreTransportista { get; set; }
-
-        public string apellidoTransportista { get; set; }
 
         public string patente { get; set; }
 
