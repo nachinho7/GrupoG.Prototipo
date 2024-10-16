@@ -75,31 +75,25 @@ namespace GrupoG.Prototipo.Preparacion
 
             var selectedItem = ListaDatosMercaderia.SelectedItems[0];
 
-            // Validar si se ha ingresado un valor numérico en la cantidad seleccionada
             if (int.TryParse(TextBoxCantidad.Text, out int cantidadSeleccionada))
             {
                 var idMercaderia = int.Parse(selectedItem.SubItems[0].Text);
                 var nombreMercaderia = selectedItem.SubItems[1].Text;
 
-                // Verificar la cantidad disponible en los datos de mercadería
                 int cantidadDisponible = int.Parse(selectedItem.SubItems[2].Text);
 
-                // Verificar si la mercadería tiene cantidad 0
                 if (cantidadDisponible == 0)
                 {
-                    // Agregar la mercadería con cantidad 0 en la previsualización
                     int numeroOrdenActual = int.Parse(textBoxNroOdenPrevisualizacion.Text);
-                    model.AgregarMercaderiaAPreparacion(numeroOrdenActual, idMercaderia, nombreMercaderia, 0); // Añadir 0 en vez de cantidadSeleccionada
+                    model.AgregarMercaderiaAPreparacion(numeroOrdenActual, idMercaderia, nombreMercaderia, 0);
                 }
                 else
                 {
-                    // Si la cantidad disponible es mayor a 0, actualizar la cantidad en la previsualización y restar en la lista de mercaderías
                     if (cantidadSeleccionada <= cantidadDisponible)
                     {
                         int numeroOrdenActual = int.Parse(textBoxNroOdenPrevisualizacion.Text);
                         model.AgregarMercaderiaAPreparacion(numeroOrdenActual, idMercaderia, nombreMercaderia, cantidadSeleccionada);
 
-                        // Actualizar la cantidad disponible después de agregar a la previsualización
                         selectedItem.SubItems[2].Text = (cantidadDisponible - cantidadSeleccionada).ToString();
                     }
                     else
@@ -185,7 +179,6 @@ namespace GrupoG.Prototipo.Preparacion
                 return;
             }
 
-            // Validación para cantidades 0 en la previsualización
             foreach (ListViewItem item in ListaPrevisualizacionOrdenesPreparacion.Items)
             {
                 int cantidad = int.Parse(item.SubItems[2].Text);
@@ -196,7 +189,6 @@ namespace GrupoG.Prototipo.Preparacion
                 }
             }
 
-            // Generación de la orden de preparación
             var fechaDespacho = PickerFechaDespacho.Value.Date;
             bool exito = model.GenerarOrdenPreparacion(numeroOrdenGenerar, fechaDespacho, dniTransportista);
 
