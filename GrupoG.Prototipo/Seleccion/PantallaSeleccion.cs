@@ -3,7 +3,6 @@ using System.Linq;
 using System.Windows.Forms;
 using GrupoG.Prototipo.Menu;
 
-
 namespace GrupoG.Prototipo.Seleccion
 {
     public partial class PantallaSeleccion : Form
@@ -18,10 +17,12 @@ namespace GrupoG.Prototipo.Seleccion
 
         private void PantallaSeleccion_Load(object sender, EventArgs e)
         {
+            datetimeDespacho.CustomFormat = " "; 
+            datetimeDespacho.Format = DateTimePickerFormat.Custom; 
+
             CargarOrdenes();
             CargarClientes();
             CargarTransportistas();
-
         }
 
         private void CargarOrdenes()
@@ -41,11 +42,8 @@ namespace GrupoG.Prototipo.Seleccion
             }
         }
 
-
-
         private void CargarClientes()
         {
-
             var clientes = modelo.ObtenerClientesDisponibles();
 
             comboBoxCliente.Items.Clear();
@@ -57,6 +55,7 @@ namespace GrupoG.Prototipo.Seleccion
             comboBoxCliente.SelectedIndex = 0;
             comboBoxCliente.SelectedIndexChanged += ComboBoxCliente_SelectedIndexChanged;
         }
+
         private void CargarTransportistas()
         {
             var transportistas = modelo.ObtenerTransportistasDisponibles();
@@ -70,32 +69,37 @@ namespace GrupoG.Prototipo.Seleccion
             comboBoxTransportista.SelectedIndex = 0;
             comboBoxTransportista.SelectedIndexChanged += ComboBoxTransportista_SelectedIndexChanged;
         }
+
         private void dateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            FiltrarOrdenes();
+            
+            datetimeDespacho.CustomFormat = "dd/MM/yyyy"; 
+            FiltrarOrdenes(); 
         }
+
         private void ComboBoxCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
             FiltrarOrdenes();
         }
+
         private void ComboBoxTransportista_SelectedIndexChanged(object sender, EventArgs e)
         {
             FiltrarOrdenes();
         }
 
-
         private void FiltrarOrdenes()
         {
             listView1.Items.Clear();
 
-            DateTime fechaSeleccionada = datetimeDespacho.Value.Date;
+            
+            DateTime fechaSeleccionada = datetimeDespacho.CustomFormat == " " ? DateTime.MinValue : datetimeDespacho.Value.Date;
             var clienteSeleccionado = comboBoxCliente.SelectedItem.ToString();
             int? numeroCliente = clienteSeleccionado == "Todos" ? (int?)null : int.Parse(clienteSeleccionado);
 
             var transportistaSeleccionado = comboBoxTransportista.SelectedItem.ToString();
             int? dniTransportista = transportistaSeleccionado == "Todos" ? (int?)null : int.Parse(transportistaSeleccionado);
 
-            var ordenesFiltradas = modelo.FiltrarOrdenesPorClienteYFechaYTransportista(numeroCliente, fechaSeleccionada, dniTransportista);
+            var ordenesFiltradas = modelo.FiltrarOrdenesPorClienteYFechaYTransportista(numeroCliente, fechaSeleccionada == DateTime.MinValue ? (DateTime?)null : fechaSeleccionada, dniTransportista);
 
             foreach (var orden in ordenesFiltradas)
             {
@@ -107,7 +111,6 @@ namespace GrupoG.Prototipo.Seleccion
                 listView1.Items.Add(item);
             }
         }
-  
 
         private void BotonGenerarOS_Click(object sender, EventArgs e)
         {
@@ -140,7 +143,7 @@ namespace GrupoG.Prototipo.Seleccion
 
         private void BotonMostrarTodas_Click(object sender, EventArgs e)
         {
-            datetimeDespacho.Value = DateTime.Now.Date;
+            datetimeDespacho.CustomFormat = " ";
             CargarOrdenes();
         }
     }

@@ -6,7 +6,7 @@ namespace GrupoG.Prototipo.Seleccion
 {
     internal class PantallaSeleccionModel
     {
-        // Inicializamos la lista de órdenes de preparación
+        
         public List<OrdenPreparacion> OrdenPreparacion { get; private set; } = new List<OrdenPreparacion>
         {
             new OrdenPreparacion { NumeroOrdenPreparacion = 1, NumeroCliente = 1001, FechaDespacho = DateTime.Now.AddDays(1), DNITransportista = 1238128 },
@@ -38,7 +38,7 @@ namespace GrupoG.Prototipo.Seleccion
         public List<OrdenPreparacion> ObtenerOrdenes()
         {
             var ordenesEnSeleccion = ordenesSeleccionadas
-                .SelectMany(os => os.ordenes) 
+                .SelectMany(os => os.ordenes)
                 .Select(o => o.NumeroOrdenPreparacion)
                 .ToList();
 
@@ -58,6 +58,7 @@ namespace GrupoG.Prototipo.Seleccion
                 .OrderBy(c => c)
                 .ToList();
         }
+
         public List<int> ObtenerTransportistasDisponibles()
         {
             var ordenesSeleccionadasActuales = ordenesSeleccionadas
@@ -71,8 +72,7 @@ namespace GrupoG.Prototipo.Seleccion
                 .ToList();
         }
 
-
-        public List<OrdenPreparacion> FiltrarOrdenesPorClienteYFechaYTransportista(int? numeroCliente, DateTime fecha, int? dniTransportista)
+        public List<OrdenPreparacion> FiltrarOrdenesPorClienteYFechaYTransportista(int? numeroCliente, DateTime? fecha, int? dniTransportista)
         {
             var ordenesEnSeleccion = ordenesSeleccionadas
                 .SelectMany(os => os.ordenes)
@@ -81,7 +81,7 @@ namespace GrupoG.Prototipo.Seleccion
 
             return OrdenPreparacion
                 .Where(o => (!numeroCliente.HasValue || o.NumeroCliente == numeroCliente.Value)
-                             && o.FechaDespacho.Date == fecha.Date
+                             && (!fecha.HasValue || o.FechaDespacho.Date == fecha.Value.Date)
                              && (!dniTransportista.HasValue || o.DNITransportista == dniTransportista.Value)
                              && !ordenesEnSeleccion.Contains(o.NumeroOrdenPreparacion))
                 .ToList();
@@ -93,7 +93,7 @@ namespace GrupoG.Prototipo.Seleccion
             {
                 numeroOrdenSeleccion = siguienteIdSeleccion++,
                 FechaCreacion = DateTime.Now,
-                ordenes = ordenes 
+                ordenes = ordenes
             };
             ordenesSeleccionadas.Add(nuevaSeleccion);
             return nuevaSeleccion;
