@@ -14,7 +14,8 @@ namespace GrupoG.Prototipo.Preparacion
                 Mercaderias = new List<Mercaderias>
                 {
                     new Mercaderias { idMercaderia = 854, nombreMercaderia = "Botellas", cantidadMercaderia = 200 },
-                    new Mercaderias { idMercaderia = 9652, nombreMercaderia = "Vasos", cantidadMercaderia = 500 }
+                    new Mercaderias { idMercaderia = 9652, nombreMercaderia = "Vasos", cantidadMercaderia = 500 },
+                    new Mercaderias { idMercaderia = 1111, nombreMercaderia = "Calabazas", cantidadMercaderia = 0 }
                 }
             },
             new Clientes

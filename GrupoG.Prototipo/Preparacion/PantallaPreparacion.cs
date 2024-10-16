@@ -74,38 +74,48 @@ namespace GrupoG.Prototipo.Preparacion
             }
 
             var selectedItem = ListaDatosMercaderia.SelectedItems[0];
-            int cantidadDisponible = int.Parse(selectedItem.SubItems[2].Text);
+
+            // Validar si se ha ingresado un valor numérico en la cantidad seleccionada
             if (int.TryParse(TextBoxCantidad.Text, out int cantidadSeleccionada))
             {
-                if (cantidadSeleccionada > cantidadDisponible)
-                {
-                    MessageBox.Show("La cantidad seleccionada no puede exceder la cantidad disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                if (cantidadSeleccionada <= 0)
-                {
-                    MessageBox.Show("La cantidad seleccionada debe ser mayor que cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
                 var idMercaderia = int.Parse(selectedItem.SubItems[0].Text);
                 var nombreMercaderia = selectedItem.SubItems[1].Text;
 
-                int numeroOrdenActual = int.Parse(textBoxNroOdenPrevisualizacion.Text);
-                model.AgregarMercaderiaAPreparacion(numeroOrdenActual, idMercaderia, nombreMercaderia, cantidadSeleccionada);
+                // Verificar la cantidad disponible en los datos de mercadería
+                int cantidadDisponible = int.Parse(selectedItem.SubItems[2].Text);
+
+                // Verificar si la mercadería tiene cantidad 0
+                if (cantidadDisponible == 0)
+                {
+                    // Agregar la mercadería con cantidad 0 en la previsualización
+                    int numeroOrdenActual = int.Parse(textBoxNroOdenPrevisualizacion.Text);
+                    model.AgregarMercaderiaAPreparacion(numeroOrdenActual, idMercaderia, nombreMercaderia, 0); // Añadir 0 en vez de cantidadSeleccionada
+                }
+                else
+                {
+                    // Si la cantidad disponible es mayor a 0, actualizar la cantidad en la previsualización y restar en la lista de mercaderías
+                    if (cantidadSeleccionada <= cantidadDisponible)
+                    {
+                        int numeroOrdenActual = int.Parse(textBoxNroOdenPrevisualizacion.Text);
+                        model.AgregarMercaderiaAPreparacion(numeroOrdenActual, idMercaderia, nombreMercaderia, cantidadSeleccionada);
+
+                        // Actualizar la cantidad disponible después de agregar a la previsualización
+                        selectedItem.SubItems[2].Text = (cantidadDisponible - cantidadSeleccionada).ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("La cantidad seleccionada es mayor a la cantidad disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
 
                 ActualizarListaPrevisualizacion();
-
-                cantidadDisponible -= cantidadSeleccionada;
-                selectedItem.SubItems[2].Text = cantidadDisponible.ToString();
-
-                //MessageBox.Show($"Se agregaron {cantidadSeleccionada} unidades de {nombreMercaderia}.", "Unidades Agregadas", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 MessageBox.Show("Por favor, ingrese una cantidad válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -168,56 +178,31 @@ namespace GrupoG.Prototipo.Preparacion
                 MessageBox.Show("El DNI del transportista ingresado no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (textBoxDNITransportista.Text.Length < 7 || textBoxDNITransportista.Text.Length > 8)
-            {
-                MessageBox.Show("El DNI del transportista debe ser un número de entre 7 u 8 dígitos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
 
-            if (!PickerFechaDespacho.Checked)
-            {
-                MessageBox.Show("Debe seleccionar una fecha de despacho.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            var fechaDespacho = PickerFechaDespacho.Value.Date;
-
-            if (fechaDespacho < DateTime.Today)
+            if (PickerFechaDespacho.Value.Date < DateTime.Today)
             {
                 MessageBox.Show("La fecha de despacho no puede ser menor a la fecha actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (ListaPrevisualizacionOrdenesPreparacion.Items.Count == 0)
-            {
-                MessageBox.Show("No hay elementos en la lista de previsualización. Agrega mercadería antes de generar la orden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            string detallesMercaderia = "";
+            // Validación para cantidades 0 en la previsualización
             foreach (ListViewItem item in ListaPrevisualizacionOrdenesPreparacion.Items)
             {
-                detallesMercaderia += $"ID: {item.SubItems[0].Text}\n" +
-                                      $"  Nombre: {item.SubItems[1].Text}\n" +
-                                      $"  Cantidad: {item.SubItems[2].Text}\n";
+                int cantidad = int.Parse(item.SubItems[2].Text);
+                if (cantidad == 0)
+                {
+                    MessageBox.Show("No se puede generar la orden. Hay mercaderías con cantidad 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
 
-            string numeroClienteOrden = numeroCliente.Text;
-
-            string mensaje = $"N° Orden: {numeroOrdenGenerar}\n" +
-                             $"N° Cliente: {numeroClienteOrden}\n" +
-                             $"Fecha de Despacho: {fechaDespacho.ToShortDateString()}\n" +
-                             $"DNI Transportista: {dniTransportista}\n" +
-                             $"Mercadería:\n{detallesMercaderia}";
-
-            MessageBox.Show(mensaje, "Orden Generada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+            // Generación de la orden de preparación
+            var fechaDespacho = PickerFechaDespacho.Value.Date;
             bool exito = model.GenerarOrdenPreparacion(numeroOrdenGenerar, fechaDespacho, dniTransportista);
 
             if (exito)
             {
                 LimpiarFormulario();
-
                 textBoxNroOdenPrevisualizacion.Text = (numeroOrdenGenerar + 1).ToString();
             }
             else
@@ -225,6 +210,7 @@ namespace GrupoG.Prototipo.Preparacion
                 MessageBox.Show("Error al generar la orden de preparación.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void LimpiarFormulario()
         {
