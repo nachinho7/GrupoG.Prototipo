@@ -59,7 +59,6 @@ namespace GrupoG.Prototipo.Stock
             int indiceOrdenSeleccionada = comboBox1.SelectedIndex;
             var ordenSeleccionada = modelo.ObtenerOrdenesSeleccionadas()[indiceOrdenSeleccionada];
 
-
             if (ordenSeleccionada != null)
             {
                 foreach (var mercaderia in ordenSeleccionada.Mercaderias)
@@ -67,12 +66,14 @@ namespace GrupoG.Prototipo.Stock
                     var item = new ListViewItem(mercaderia.idMercaderia.ToString());
                     item.SubItems.Add(mercaderia.nombreMercaderia);
                     item.SubItems.Add(mercaderia.cantidadMercaderia.ToString());
-                    item.SubItems.Add(mercaderia.ubicacionMercaderia.ToString());
+
+                    string ubicaciones = string.Join(", ", mercaderia.ubicacionesMercaderia);  // Join the x-y-z formatted locations
+                    item.SubItems.Add(ubicaciones);
+
                     listView1.Items.Add(item);
                 }
             }
         }
-
 
         private void btnRetirarStock_Click(object sender, EventArgs e)
         {
