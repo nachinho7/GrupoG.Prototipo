@@ -28,15 +28,16 @@
             ColumnaNCliente = new ColumnHeader();
             ColumnaProductos = new ColumnHeader();
             ColumnaDniTransportista = new ColumnHeader();
-            BotonVolverMenu = new Button();
             ColumnaFecha = new ColumnHeader();
+            BotonVolverMenu = new Button();
             SuspendLayout();
             // 
             // btnEntregar
             // 
-            btnEntregar.Location = new Point(26, 434);
+            btnEntregar.Location = new Point(820, 346);
+            btnEntregar.Margin = new Padding(3, 2, 3, 2);
             btnEntregar.Name = "btnEntregar";
-            btnEntregar.Size = new Size(122, 51);
+            btnEntregar.Size = new Size(107, 38);
             btnEntregar.TabIndex = 7;
             btnEntregar.Text = "Generar Orden de Entrega";
             btnEntregar.UseVisualStyleBackColor = true;
@@ -47,9 +48,10 @@
             ListaOrdenesEmpaquetar.Columns.AddRange(new ColumnHeader[] { ColumnaNumeroOrden, ColumnaNCliente, ColumnaProductos, ColumnaDniTransportista, ColumnaFecha });
             ListaOrdenesEmpaquetar.FullRowSelect = true;
             ListaOrdenesEmpaquetar.GridLines = true;
-            ListaOrdenesEmpaquetar.Location = new Point(26, 71);
+            ListaOrdenesEmpaquetar.Location = new Point(23, 53);
+            ListaOrdenesEmpaquetar.Margin = new Padding(3, 2, 3, 2);
             ListaOrdenesEmpaquetar.Name = "ListaOrdenesEmpaquetar";
-            ListaOrdenesEmpaquetar.Size = new Size(885, 343);
+            ListaOrdenesEmpaquetar.Size = new Size(904, 258);
             ListaOrdenesEmpaquetar.TabIndex = 9;
             ListaOrdenesEmpaquetar.UseCompatibleStateImageBehavior = false;
             ListaOrdenesEmpaquetar.View = View.Details;
@@ -74,31 +76,32 @@
             ColumnaDniTransportista.Text = "Dni Transportista";
             ColumnaDniTransportista.Width = 140;
             // 
-            // BotonVolverMenu
-            // 
-            BotonVolverMenu.Location = new Point(154, 434);
-            BotonVolverMenu.Margin = new Padding(3, 4, 3, 4);
-            BotonVolverMenu.Name = "BotonVolverMenu";
-            BotonVolverMenu.Size = new Size(122, 51);
-            BotonVolverMenu.TabIndex = 10;
-            BotonVolverMenu.Text = "Volver al Menú";
-            BotonVolverMenu.UseVisualStyleBackColor = true;
-            BotonVolverMenu.Click += VolverAlMenu_Click;
-            // 
             // ColumnaFecha
             // 
             ColumnaFecha.Text = "Fecha Despacho";
             ColumnaFecha.Width = 260;
             // 
+            // BotonVolverMenu
+            // 
+            BotonVolverMenu.Location = new Point(938, 346);
+            BotonVolverMenu.Name = "BotonVolverMenu";
+            BotonVolverMenu.Size = new Size(107, 38);
+            BotonVolverMenu.TabIndex = 10;
+            BotonVolverMenu.Text = "Volver al Menú";
+            BotonVolverMenu.UseVisualStyleBackColor = true;
+            BotonVolverMenu.Click += VolverAlMenu_Click;
+            // 
             // PantallaEntrega
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(937, 516);
+            ClientSize = new Size(1057, 408);
             Controls.Add(BotonVolverMenu);
             Controls.Add(ListaOrdenesEmpaquetar);
             Controls.Add(btnEntregar);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "PantallaEntrega";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Orden de Entrega";

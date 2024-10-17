@@ -57,9 +57,9 @@
             // LabelNumeroCliente
             // 
             LabelNumeroCliente.AutoSize = true;
-            LabelNumeroCliente.Location = new Point(46, 51);
+            LabelNumeroCliente.Location = new Point(40, 38);
             LabelNumeroCliente.Name = "LabelNumeroCliente";
-            LabelNumeroCliente.Size = new Size(83, 20);
+            LabelNumeroCliente.Size = new Size(67, 15);
             LabelNumeroCliente.TabIndex = 0;
             LabelNumeroCliente.Text = "N° Cliente: ";
             LabelNumeroCliente.UseWaitCursor = true;
@@ -67,18 +67,17 @@
             // labelCantidadAgregar
             // 
             labelCantidadAgregar.AutoSize = true;
-            labelCantidadAgregar.Location = new Point(7, 231);
+            labelCantidadAgregar.Location = new Point(0, 204);
             labelCantidadAgregar.Name = "labelCantidadAgregar";
-            labelCantidadAgregar.Size = new Size(140, 20);
+            labelCantidadAgregar.Size = new Size(110, 15);
             labelCantidadAgregar.TabIndex = 6;
             labelCantidadAgregar.Text = "Cantidad a agregar:";
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(355, 215);
-            btnAgregar.Margin = new Padding(3, 4, 3, 4);
+            btnAgregar.Location = new Point(502, 192);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(144, 51);
+            btnAgregar.Size = new Size(126, 38);
             btnAgregar.TabIndex = 7;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
@@ -86,10 +85,9 @@
             // 
             // btnGenerar
             // 
-            btnGenerar.Location = new Point(305, 988);
-            btnGenerar.Margin = new Padding(3, 4, 3, 4);
+            btnGenerar.Location = new Point(542, 741);
             btnGenerar.Name = "btnGenerar";
-            btnGenerar.Size = new Size(122, 51);
+            btnGenerar.Size = new Size(107, 38);
             btnGenerar.TabIndex = 14;
             btnGenerar.Text = "Generar Orden";
             btnGenerar.UseVisualStyleBackColor = true;
@@ -100,10 +98,9 @@
             ListaDatosMercaderia.Columns.AddRange(new ColumnHeader[] { Id, Nombre, Cantidad });
             ListaDatosMercaderia.FullRowSelect = true;
             ListaDatosMercaderia.GridLines = true;
-            ListaDatosMercaderia.Location = new Point(7, 29);
-            ListaDatosMercaderia.Margin = new Padding(3, 4, 3, 4);
+            ListaDatosMercaderia.Location = new Point(6, 22);
             ListaDatosMercaderia.Name = "ListaDatosMercaderia";
-            ListaDatosMercaderia.Size = new Size(511, 164);
+            ListaDatosMercaderia.Size = new Size(545, 147);
             ListaDatosMercaderia.TabIndex = 15;
             ListaDatosMercaderia.UseCompatibleStateImageBehavior = false;
             ListaDatosMercaderia.View = View.Details;
@@ -129,10 +126,9 @@
             ListaPrevisualizacionOrdenesPreparacion.Columns.AddRange(new ColumnHeader[] { Id1, Nombre1, Cantidad1 });
             ListaPrevisualizacionOrdenesPreparacion.FullRowSelect = true;
             ListaPrevisualizacionOrdenesPreparacion.GridLines = true;
-            ListaPrevisualizacionOrdenesPreparacion.Location = new Point(18, 196);
-            ListaPrevisualizacionOrdenesPreparacion.Margin = new Padding(3, 4, 3, 4);
+            ListaPrevisualizacionOrdenesPreparacion.Location = new Point(16, 147);
             ListaPrevisualizacionOrdenesPreparacion.Name = "ListaPrevisualizacionOrdenesPreparacion";
-            ListaPrevisualizacionOrdenesPreparacion.Size = new Size(500, 185);
+            ListaPrevisualizacionOrdenesPreparacion.Size = new Size(535, 169);
             ListaPrevisualizacionOrdenesPreparacion.TabIndex = 16;
             ListaPrevisualizacionOrdenesPreparacion.UseCompatibleStateImageBehavior = false;
             ListaPrevisualizacionOrdenesPreparacion.View = View.Details;
@@ -153,26 +149,23 @@
             // 
             // TextBoxCantidad
             // 
-            TextBoxCantidad.Location = new Point(139, 227);
-            TextBoxCantidad.Margin = new Padding(3, 4, 3, 4);
+            TextBoxCantidad.Location = new Point(122, 201);
             TextBoxCantidad.Name = "TextBoxCantidad";
-            TextBoxCantidad.Size = new Size(191, 27);
+            TextBoxCantidad.Size = new Size(354, 23);
             TextBoxCantidad.TabIndex = 18;
             // 
             // numeroCliente
             // 
-            numeroCliente.Location = new Point(135, 47);
-            numeroCliente.Margin = new Padding(3, 4, 3, 4);
+            numeroCliente.Location = new Point(118, 35);
             numeroCliente.Name = "numeroCliente";
-            numeroCliente.Size = new Size(149, 27);
+            numeroCliente.Size = new Size(183, 23);
             numeroCliente.TabIndex = 28;
             // 
             // BotonObtenerDatos
             // 
-            BotonObtenerDatos.Location = new Point(305, 35);
-            BotonObtenerDatos.Margin = new Padding(3, 4, 3, 4);
+            BotonObtenerDatos.Location = new Point(334, 26);
             BotonObtenerDatos.Name = "BotonObtenerDatos";
-            BotonObtenerDatos.Size = new Size(122, 51);
+            BotonObtenerDatos.Size = new Size(169, 38);
             BotonObtenerDatos.TabIndex = 29;
             BotonObtenerDatos.Text = "Obtener Datos";
             BotonObtenerDatos.UseVisualStyleBackColor = true;
@@ -180,10 +173,9 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(453, 988);
-            VolverAlMenu.Margin = new Padding(3, 4, 3, 4);
+            VolverAlMenu.Location = new Point(660, 741);
             VolverAlMenu.Name = "VolverAlMenu";
-            VolverAlMenu.Size = new Size(122, 51);
+            VolverAlMenu.Size = new Size(107, 38);
             VolverAlMenu.TabIndex = 30;
             VolverAlMenu.Text = "Volver al Menú";
             VolverAlMenu.UseVisualStyleBackColor = true;
@@ -191,10 +183,9 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(226, 421);
-            btnEliminar.Margin = new Padding(3, 4, 3, 4);
+            btnEliminar.Location = new Point(429, 322);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(227, 51);
+            btnEliminar.Size = new Size(199, 38);
             btnEliminar.TabIndex = 31;
             btnEliminar.Text = "Limpiar Dato Seleccionado";
             btnEliminar.UseVisualStyleBackColor = true;
@@ -202,10 +193,9 @@
             // 
             // BotonLimpiarCliente
             // 
-            BotonLimpiarCliente.Location = new Point(442, 35);
-            BotonLimpiarCliente.Margin = new Padding(3, 4, 3, 4);
+            BotonLimpiarCliente.Location = new Point(524, 26);
             BotonLimpiarCliente.Name = "BotonLimpiarCliente";
-            BotonLimpiarCliente.Size = new Size(122, 51);
+            BotonLimpiarCliente.Size = new Size(177, 38);
             BotonLimpiarCliente.TabIndex = 32;
             BotonLimpiarCliente.Text = "Nueva Busqueda";
             BotonLimpiarCliente.UseVisualStyleBackColor = true;
@@ -214,28 +204,27 @@
             // labelNroOrden
             // 
             labelNroOrden.AutoSize = true;
-            labelNroOrden.Location = new Point(7, 37);
+            labelNroOrden.Location = new Point(6, 28);
             labelNroOrden.Name = "labelNroOrden";
-            labelNroOrden.Size = new Size(92, 20);
+            labelNroOrden.Size = new Size(73, 15);
             labelNroOrden.TabIndex = 33;
             labelNroOrden.Text = "N° de Orden";
             // 
             // textBoxNroOdenPrevisualizacion
             // 
-            textBoxNroOdenPrevisualizacion.Location = new Point(139, 33);
-            textBoxNroOdenPrevisualizacion.Margin = new Padding(3, 4, 3, 4);
+            textBoxNroOdenPrevisualizacion.Location = new Point(122, 25);
             textBoxNroOdenPrevisualizacion.Name = "textBoxNroOdenPrevisualizacion";
             textBoxNroOdenPrevisualizacion.ReadOnly = true;
-            textBoxNroOdenPrevisualizacion.Size = new Size(242, 27);
+            textBoxNroOdenPrevisualizacion.Size = new Size(298, 23);
             textBoxNroOdenPrevisualizacion.TabIndex = 34;
             textBoxNroOdenPrevisualizacion.Text = "1";
             // 
             // labelFecha
             // 
             labelFecha.AutoSize = true;
-            labelFecha.Location = new Point(7, 84);
+            labelFecha.Location = new Point(6, 63);
             labelFecha.Name = "labelFecha";
-            labelFecha.Size = new Size(138, 20);
+            labelFecha.Size = new Size(109, 15);
             labelFecha.TabIndex = 35;
             labelFecha.Text = "Fecha de Despacho";
             // 
@@ -244,27 +233,25 @@
             PickerFechaDespacho.Checked = false;
             PickerFechaDespacho.CustomFormat = " ";
             PickerFechaDespacho.Format = DateTimePickerFormat.Short;
-            PickerFechaDespacho.Location = new Point(139, 76);
-            PickerFechaDespacho.Margin = new Padding(3, 4, 3, 4);
+            PickerFechaDespacho.Location = new Point(122, 57);
             PickerFechaDespacho.Name = "PickerFechaDespacho";
-            PickerFechaDespacho.Size = new Size(242, 27);
+            PickerFechaDespacho.Size = new Size(298, 23);
             PickerFechaDespacho.TabIndex = 36;
             // 
             // labelTransportista
             // 
             labelTransportista.AutoSize = true;
-            labelTransportista.Location = new Point(7, 131);
+            labelTransportista.Location = new Point(6, 98);
             labelTransportista.Name = "labelTransportista";
-            labelTransportista.Size = new Size(124, 20);
+            labelTransportista.Size = new Size(97, 15);
             labelTransportista.TabIndex = 37;
             labelTransportista.Text = "DNI Transportista";
             // 
             // textBoxDNITransportista
             // 
-            textBoxDNITransportista.Location = new Point(139, 127);
-            textBoxDNITransportista.Margin = new Padding(3, 4, 3, 4);
+            textBoxDNITransportista.Location = new Point(122, 95);
             textBoxDNITransportista.Name = "textBoxDNITransportista";
-            textBoxDNITransportista.Size = new Size(242, 27);
+            textBoxDNITransportista.Size = new Size(298, 23);
             textBoxDNITransportista.TabIndex = 38;
             // 
             // GroupBoxPrevisualizacion
@@ -277,11 +264,9 @@
             GroupBoxPrevisualizacion.Controls.Add(btnEliminar);
             GroupBoxPrevisualizacion.Controls.Add(labelFecha);
             GroupBoxPrevisualizacion.Controls.Add(textBoxNroOdenPrevisualizacion);
-            GroupBoxPrevisualizacion.Location = new Point(46, 459);
-            GroupBoxPrevisualizacion.Margin = new Padding(3, 4, 3, 4);
+            GroupBoxPrevisualizacion.Location = new Point(40, 344);
             GroupBoxPrevisualizacion.Name = "GroupBoxPrevisualizacion";
-            GroupBoxPrevisualizacion.Padding = new Padding(3, 4, 3, 4);
-            GroupBoxPrevisualizacion.Size = new Size(529, 507);
+            GroupBoxPrevisualizacion.Size = new Size(649, 380);
             GroupBoxPrevisualizacion.TabIndex = 39;
             GroupBoxPrevisualizacion.TabStop = false;
             GroupBoxPrevisualizacion.Text = "Previsualización Orden de Preparación";
@@ -292,21 +277,20 @@
             groupBoxDatosMercaderia.Controls.Add(labelCantidadAgregar);
             groupBoxDatosMercaderia.Controls.Add(btnAgregar);
             groupBoxDatosMercaderia.Controls.Add(TextBoxCantidad);
-            groupBoxDatosMercaderia.Location = new Point(46, 115);
-            groupBoxDatosMercaderia.Margin = new Padding(3, 4, 3, 4);
+            groupBoxDatosMercaderia.Location = new Point(40, 86);
             groupBoxDatosMercaderia.Name = "groupBoxDatosMercaderia";
-            groupBoxDatosMercaderia.Padding = new Padding(3, 4, 3, 4);
-            groupBoxDatosMercaderia.Size = new Size(529, 316);
+            groupBoxDatosMercaderia.Size = new Size(649, 252);
             groupBoxDatosMercaderia.TabIndex = 40;
             groupBoxDatosMercaderia.TabStop = false;
             groupBoxDatosMercaderia.Text = "Datos de Mercadería";
+            groupBoxDatosMercaderia.Enter += groupBoxDatosMercaderia_Enter;
             // 
             // PantallaPreparacion
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(616, 1055);
+            ClientSize = new Size(790, 791);
             Controls.Add(groupBoxDatosMercaderia);
             Controls.Add(GroupBoxPrevisualizacion);
             Controls.Add(BotonLimpiarCliente);
@@ -315,7 +299,7 @@
             Controls.Add(numeroCliente);
             Controls.Add(btnGenerar);
             Controls.Add(LabelNumeroCliente);
-            Margin = new Padding(3, 4, 3, 4);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "PantallaPreparacion";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Orden de Preparación";

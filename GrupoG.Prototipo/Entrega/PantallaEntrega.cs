@@ -79,14 +79,13 @@ namespace GrupoG.Prototipo.Entrega
                 MessageBox.Show($"La orden {nroOrden} ha sido Generada.", "Orden Entrega pasa a despacho", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             */
-            // Verificamos si hay órdenes en la lista
+
             if (ListaOrdenesEmpaquetar.Items.Count == 0)
             {
                 MessageBox.Show("No hay órdenes para generar.", "Sin órdenes", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Limpiar todas las órdenes
             ListaOrdenesEmpaquetar.Items.Clear();
 
             MessageBox.Show("Todas las órdenes han sido generadas y trasladadas a despacho.", "Orden de Entrega Generada", MessageBoxButtons.OK, MessageBoxIcon.Information);

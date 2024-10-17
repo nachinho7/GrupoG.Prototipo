@@ -5,7 +5,6 @@ namespace GrupoG.Prototipo.Empaquetar
 {
     internal class PantallaEmpaquetarModel
     {
-        // Hardcode de órdenes de preparación
         public List<OrdenPreparacion> OrdenesPreparacion { get; private set; } = new List<OrdenPreparacion>
         {
             new OrdenPreparacion
@@ -34,19 +33,16 @@ namespace GrupoG.Prototipo.Empaquetar
             }
         };
 
-        // Obtener las órdenes de preparación
         public List<OrdenPreparacion> ObtenerOrdenesPreparacion()
         {
             return OrdenesPreparacion;
         }
 
-        // Remover la orden empaquetada
         public void RemoverOrdenPreparacion(OrdenPreparacion orden)
         {
             OrdenesPreparacion.Remove(orden);
         }
 
-        // Método para obtener las mercaderías de una orden seleccionada
         public List<Mercaderias> ObtenerMercaderiasPorOrden(int index)
         {
             if (index >= 0 && index < OrdenesPreparacion.Count)

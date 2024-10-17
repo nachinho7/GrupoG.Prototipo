@@ -121,7 +121,7 @@ namespace GrupoG.Prototipo.Preparacion
 
             var selectedItem = ListaPrevisualizacionOrdenesPreparacion.SelectedItems[0];
             int idMercaderia = int.Parse(selectedItem.SubItems[0].Text);
-            int cantidadEliminada = int.Parse(selectedItem.SubItems[2].Text); 
+            int cantidadEliminada = int.Parse(selectedItem.SubItems[2].Text);
 
             var confirmResult = MessageBox.Show("¿Desea eliminar el elemento seleccionado?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (confirmResult == DialogResult.Yes)
@@ -129,7 +129,7 @@ namespace GrupoG.Prototipo.Preparacion
                 int numeroOrdenActual = int.Parse(textBoxNroOdenPrevisualizacion.Text);
                 model.EliminarMercaderiaDePreparacion(numeroOrdenActual, idMercaderia, cantidadEliminada);
 
-                ActualizarListaPrevisualizacion(); 
+                ActualizarListaPrevisualizacion();
 
                 var clienteNumero = int.Parse(numeroCliente.Text);
                 var mercaderias = model.ObtenerMercaderiaPorCliente(clienteNumero);
@@ -256,6 +256,11 @@ namespace GrupoG.Prototipo.Preparacion
 
         private void PantallaPreparacion_Load(object sender, EventArgs e)
         {
+        }
+
+        private void groupBoxDatosMercaderia_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
