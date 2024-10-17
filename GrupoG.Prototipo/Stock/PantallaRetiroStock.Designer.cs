@@ -63,7 +63,7 @@
             listView1.GridLines = true;
             listView1.Location = new Point(23, 74);
             listView1.Name = "listView1";
-            listView1.Size = new Size(440, 301);
+            listView1.Size = new Size(480, 301);
             listView1.TabIndex = 2;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -76,7 +76,7 @@
             // nombreMercaderia
             // 
             nombreMercaderia.Text = "Nombre";
-            nombreMercaderia.Width = 110;
+            nombreMercaderia.Width = 160;
             // 
             // cantidadMercaderia
             // 
