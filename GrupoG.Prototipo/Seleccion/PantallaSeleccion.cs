@@ -144,6 +144,8 @@ namespace GrupoG.Prototipo.Seleccion
         private void BotonMostrarTodas_Click(object sender, EventArgs e)
         {
             datetimeDespacho.CustomFormat = " ";
+            comboBoxTransportista.SelectedIndex = 0;
+            comboBoxCliente.SelectedIndex = 0;
             CargarOrdenes();
         }
     }
