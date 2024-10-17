@@ -47,38 +47,8 @@ namespace GrupoG.Prototipo.Entrega
             }
         }
 
-        //cambiar, no es boton Empaquetar
-        private void BotonEmpaquetar_Click(object sender, EventArgs e)
+        private void BotonEntregar_Click(object sender, EventArgs e)
         {
-            /*
-            if (ListaOrdenesEmpaquetar.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Por favor, seleccione una orden para entregar.", "Sin selección", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (ListaOrdenesEmpaquetar.SelectedItems.Count > 1)
-            {
-                MessageBox.Show("No se puede seleccionar más de una orden seguida para entregar.", "Selección inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            
-            var selectedItem = ListaOrdenesEmpaquetar.SelectedItems[0];
-
-            // nro orden
-            int nroOrden = int.Parse(selectedItem.Text);
-            var orden = model.ObtenerOrdenes().FirstOrDefault(o => o.NumeroOrdenPreparacion == nroOrden);
-
-            if (orden != null)
-            {
-                
-                orden.Empaquetada = true;
-                ListaOrdenesEmpaquetar.Items.Remove(selectedItem);
-
-                MessageBox.Show($"La orden {nroOrden} ha sido Generada.", "Orden Entrega pasa a despacho", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            */
 
             if (ListaOrdenesEmpaquetar.Items.Count == 0)
             {

@@ -41,7 +41,7 @@
             btnEntregar.TabIndex = 7;
             btnEntregar.Text = "Generar Orden de Entrega";
             btnEntregar.UseVisualStyleBackColor = true;
-            btnEntregar.Click += BotonEmpaquetar_Click;
+            btnEntregar.Click += BotonEntregar_Click;
             // 
             // ListaOrdenesEmpaquetar
             // 
