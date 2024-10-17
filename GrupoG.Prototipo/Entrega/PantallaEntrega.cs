@@ -85,10 +85,20 @@ namespace GrupoG.Prototipo.Entrega
                 MessageBox.Show("No hay órdenes para generar.", "Sin órdenes", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            
 
-            ListaOrdenesEmpaquetar.Items.Clear();
+            else
+            {
+                ListaOrdenesEmpaquetar.Items.Clear();
+                MessageBox.Show("Todas las órdenes de entrega han sido generadas.", "Orden de Entrega Generada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                PantallaMenu menu = new PantallaMenu();
+                this.Hide();
+                menu.StartPosition = FormStartPosition.CenterScreen;
+                menu.Location = this.Location;
+                menu.Show();
+            }
+           
 
-            MessageBox.Show("Todas las órdenes han sido generadas y trasladadas a despacho.", "Orden de Entrega Generada", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
