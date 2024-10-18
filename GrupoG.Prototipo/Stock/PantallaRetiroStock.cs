@@ -63,13 +63,10 @@ namespace GrupoG.Prototipo.Stock
             {
                 foreach (var mercaderia in ordenSeleccionada.Mercaderias)
                 {
-                    var item = new ListViewItem(mercaderia.idMercaderia.ToString());
+                    var item = new ListViewItem(mercaderia.ubicacionMercaderia);
+                    item.SubItems.Add(mercaderia.idMercaderia.ToString());
                     item.SubItems.Add(mercaderia.nombreMercaderia);
-                    item.SubItems.Add(mercaderia.cantidadMercaderia.ToString());
-
-                    string ubicaciones = string.Join(", ", mercaderia.ubicacionesMercaderia);  // Join the x-y-z formatted locations
-                    item.SubItems.Add(ubicaciones);
-
+                    item.SubItems.Add(mercaderia.cantidadMercaderia.ToString());                                        
                     listView1.Items.Add(item);
                 }
             }

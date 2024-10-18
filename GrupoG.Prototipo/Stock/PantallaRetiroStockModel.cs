@@ -17,8 +17,12 @@ namespace GrupoG.Prototipo.Stock
                     FechaCreacion = DateTime.Now,
                     Mercaderias = new List<Mercaderias>
                     {
-                        new Mercaderias { idMercaderia = 1, nombreMercaderia = "Producto A", cantidadMercaderia = 10, ubicacionesMercaderia = new List<string> { "3-6-6", "200-3-4" } },
-                        new Mercaderias { idMercaderia = 2, nombreMercaderia = "Producto B", cantidadMercaderia = 5, ubicacionesMercaderia = new List<string> { "12-1-2", "400-30-100" } }
+                        new Mercaderias { idMercaderia = 1, nombreMercaderia = "Producto A", cantidadMercaderia = 10, ubicacionMercaderia = "3-6-6" },
+                        new Mercaderias { idMercaderia = 1, nombreMercaderia = "Producto A", cantidadMercaderia = 2, ubicacionMercaderia = "4-8-6" },
+                        new Mercaderias { idMercaderia = 1, nombreMercaderia = "Producto A", cantidadMercaderia = 9, ubicacionMercaderia = "1-2-3" },
+                        new Mercaderias { idMercaderia = 2, nombreMercaderia = "Producto B", cantidadMercaderia = 5, ubicacionMercaderia = "12-1-2" },
+                        new Mercaderias { idMercaderia = 2, nombreMercaderia = "Producto B", cantidadMercaderia = 5, ubicacionMercaderia = "12-1-3" },
+                        new Mercaderias { idMercaderia = 2, nombreMercaderia = "Producto C", cantidadMercaderia = 5, ubicacionMercaderia = "12-2-2" }
                     }
                 },
                 new OrdenSeleccion
@@ -27,8 +31,8 @@ namespace GrupoG.Prototipo.Stock
                     FechaCreacion = DateTime.Now,
                     Mercaderias = new List<Mercaderias>
                     {
-                        new Mercaderias { idMercaderia = 3, nombreMercaderia = "Producto C", cantidadMercaderia = 8, ubicacionesMercaderia = new List<string> { "103-43-23" } },
-                        new Mercaderias { idMercaderia = 4, nombreMercaderia = "Producto D", cantidadMercaderia = 12, ubicacionesMercaderia = new List<string> { "2-5-6", "300-45-3", "1-100-2" } }
+                        new Mercaderias { idMercaderia = 3, nombreMercaderia = "Producto C", cantidadMercaderia = 8, ubicacionMercaderia = "103-43-23" },
+                        new Mercaderias { idMercaderia = 4, nombreMercaderia = "Producto D", cantidadMercaderia = 12, ubicacionMercaderia = "2-5-6" } 
                     }
                 }
             };
