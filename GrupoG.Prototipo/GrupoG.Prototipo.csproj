@@ -8,4 +8,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Almacenes\Deposito\" />
+    <Folder Include="Almacenes\Contrato\" />
+    <Folder Include="Almacenes\Remito\" />
+    <Folder Include="Almacenes\Stock\" />
+  </ItemGroup>
+
 </Project>
