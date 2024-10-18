@@ -13,7 +13,7 @@ namespace GrupoG.Prototipo.Seleccion
             new OrdenPreparacion { NumeroOrdenPreparacion = 2, NumeroCliente = 1002, FechaDespacho = DateTime.Now.AddDays(2), DNITransportista = 1238128 },
             new OrdenPreparacion { NumeroOrdenPreparacion = 3, NumeroCliente = 1002, FechaDespacho = DateTime.Now.AddDays(3), DNITransportista = 1238513 },
             new OrdenPreparacion { NumeroOrdenPreparacion = 4, NumeroCliente = 1001, FechaDespacho = DateTime.Now.AddDays(1), DNITransportista = 2421411 },
-            new OrdenPreparacion { NumeroOrdenPreparacion = 5, NumeroCliente = 1002, FechaDespacho = DateTime.Now.AddDays(2), DNITransportista = 46364364 },
+            new OrdenPreparacion { NumeroOrdenPreparacion = 5, NumeroCliente = 1002, FechaDespacho = DateTime.Now.AddDays(2), DNITransportista = 4636436 },
             new OrdenPreparacion { NumeroOrdenPreparacion = 6, NumeroCliente = 1003, FechaDespacho = DateTime.Now.AddDays(3), DNITransportista = 4643636 },
             new OrdenPreparacion { NumeroOrdenPreparacion = 7, NumeroCliente = 1004, FechaDespacho = DateTime.Now.AddDays(2), DNITransportista = 1238128 },
             new OrdenPreparacion { NumeroOrdenPreparacion = 8, NumeroCliente = 1005, FechaDespacho = DateTime.Now.AddDays(2), DNITransportista = 1238128 },
