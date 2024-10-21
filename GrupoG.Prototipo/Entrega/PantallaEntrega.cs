@@ -1,12 +1,6 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using GrupoG.Prototipo.Menu;
 
@@ -41,34 +35,36 @@ namespace GrupoG.Prototipo.Entrega
                 item.SubItems.Add(orden.DNITransportista.ToString());
                 item.SubItems.Add(orden.FechaDespacho.ToString());
 
-
-
                 ListaOrdenesEmpaquetar.Items.Add(item);
             }
         }
 
         private void BotonEntregar_Click(object sender, EventArgs e)
         {
-
-            if (ListaOrdenesEmpaquetar.Items.Count == 0)
-            {
-                MessageBox.Show("No hay órdenes para generar.", "Sin órdenes", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
             
 
-            else
+            var ordenesSeleccionadas = new List<OrdenPreparacion>();
+            foreach (ListViewItem selectedItem in ListaOrdenesEmpaquetar.SelectedItems)
             {
-                ListaOrdenesEmpaquetar.Items.Clear();
-                MessageBox.Show("Todas las órdenes de entrega han sido generadas.", "Orden de Entrega Generada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                PantallaMenu menu = new PantallaMenu();
-                this.Hide();
-                menu.StartPosition = FormStartPosition.CenterScreen;
-                menu.Location = this.Location;
-                menu.Show();
-            }
-           
+                var numeroOrdenPreparacion = int.Parse(selectedItem.Text);
+                var ordenPreparacion = model.ObtenerOrdenes().FirstOrDefault(o => o.NumeroOrdenPreparacion == numeroOrdenPreparacion);
 
+                if (ordenPreparacion != null)
+                {
+                    ordenesSeleccionadas.Add(ordenPreparacion);
+                }
+            }
+
+            var ordenesEntregas = model.GenerarOrdenEntrega(ordenesSeleccionadas);
+
+            ListaOrdenesEmpaquetar.Items.Clear();
+
+            MessageBox.Show("Las órdenes de entrega han sido generadas.", "Órdenes de Entrega Generadas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            PantallaMenu menu = new PantallaMenu();
+            this.Hide();
+            menu.StartPosition = FormStartPosition.CenterScreen;
+            menu.Location = this.Location;
+            menu.Show();
         }
 
         private void VolverAlMenu_Click(object sender, EventArgs e)

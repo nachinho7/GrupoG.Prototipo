@@ -10,7 +10,7 @@ namespace GrupoG.Prototipo.Entrega
     {
         public int NumeroOrdenEntrega { get; set; }
         public int NroCliente { get; set; }
-        public int cantidadMercaderia { get; set; }
+        public int sumaMercaderia { get; set; }
         public int DNITransportista { get; set; }
         public DateTime FechaDespacho { get; set; }
     }

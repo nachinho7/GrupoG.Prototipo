@@ -37,5 +37,26 @@ namespace GrupoG.Prototipo.Entrega
         {
             return OrdenesPreparacion;
         }
+
+        public List<OrdenEntrega> GenerarOrdenEntrega(List<OrdenPreparacion> seleccionadas)
+        {
+            List<OrdenEntrega> ordenesEntregas = new List<OrdenEntrega>();
+
+            foreach (var orden in seleccionadas)
+            {
+                var nuevaOrdenEntrega = new OrdenEntrega
+                {
+                    NumeroOrdenEntrega = ordenesEntregas.Count + 1, 
+                    NroCliente = orden.NumeroCliente,
+                    sumaMercaderia = orden.Mercaderias.Sum(m => m.cantidadMercaderia),
+                    DNITransportista = orden.DNITransportista,
+                    FechaDespacho = orden.FechaDespacho
+                };
+
+                ordenesEntregas.Add(nuevaOrdenEntrega);
+            }
+
+            return ordenesEntregas;
+        }
     }
 }

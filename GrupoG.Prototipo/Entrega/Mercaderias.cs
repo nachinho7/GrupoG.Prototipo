@@ -9,7 +9,6 @@ namespace GrupoG.Prototipo.Entrega
     public class Mercaderias
     {
         public int idMercaderia { get; set; }
-        public string nombreMercaderia { get; set; }
         public int cantidadMercaderia { get; set; }
 
 
