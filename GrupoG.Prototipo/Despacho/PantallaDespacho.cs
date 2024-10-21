@@ -20,7 +20,6 @@ namespace GrupoG.Prototipo.Despacho
 
         private void PantallaDespacho_Load(object sender, EventArgs e)
         {
-            // Inicializar la pantalla
         }
 
         private void VolverAlMenu_Click(object sender, EventArgs e)

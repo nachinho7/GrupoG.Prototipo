@@ -42,7 +42,6 @@ namespace GrupoG.Prototipo.Seleccion
                 .Select(o => o.NumeroOrdenPreparacion)
                 .ToList();
 
-            // Filtrar las órdenes que no están seleccionadas
             return OrdenPreparacion.Where(o => !ordenesEnSeleccion.Contains(o.NumeroOrdenPreparacion)).ToList();
         }
 
