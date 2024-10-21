@@ -20,7 +20,7 @@ namespace GrupoG.Prototipo.Despacho
 
         private void PantallaDespacho_Load(object sender, EventArgs e)
         {
-
+            // Inicializar la pantalla
         }
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
@@ -40,39 +40,29 @@ namespace GrupoG.Prototipo.Despacho
                 return;
             }
 
-            var transportista = model.ObtenerTransportistaPorDni(dniInt);
+            var ordenes = model.ObtenerOrdenesPorDni(dniInt);
 
-            if (transportista != null)
+            if (ordenes != null && ordenes.Count > 0)
             {
-                if (transportista.habilitadoTransportista)
-                {
-                    MostrarTransportista(transportista);
-                    MessageBox.Show("Transportista válido.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("El transportista no está habilitado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MostrarOrdenes(ordenes, true);
+                MessageBox.Show("Transportista válido y con órdenes encontradas.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("No se encontró el transportista con ese DNI.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No se encontraron órdenes para el transportista con ese DNI.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void MostrarTransportista(Transportistas transportista)
+        private void MostrarOrdenes(System.Collections.Generic.List<OrdenPreparacion> ordenes, bool habilitadoTransportista)
         {
             listviewTransportista.Items.Clear();
-            string estadoTransportista = transportista.habilitadoTransportista ? "Habilitado" : "No habilitado";
-
-            var ordenes = model.ObtenerOrdenesPorCliente(transportista.Clientes[0].NumeroCliente);
+            string estadoTransportista = habilitadoTransportista ? "Habilitado" : "No habilitado";
 
             foreach (var orden in ordenes)
             {
-                var ordenItem = new ListViewItem(estadoTransportista);
-                ordenItem.SubItems.Add(transportista.patente);
-                ordenItem.SubItems.Add(orden.IdDespacho.ToString());
-                ordenItem.SubItems.Add(transportista.Clientes[0].NumeroCliente.ToString());
+                var ordenItem = new ListViewItem(orden.NumeroOrdenPreparacion.ToString());
+                ordenItem.SubItems.Add(orden.NroCliente.ToString());
+                ordenItem.SubItems.Add(estadoTransportista);
                 listviewTransportista.Items.Add(ordenItem);
             }
         }
@@ -85,18 +75,26 @@ namespace GrupoG.Prototipo.Despacho
                 return;
             }
 
-            var transportista = model.ObtenerTransportistaPorDni(dniTransportistaInt);
+            var transportista = model.ObtenerOrdenesPorDni(dniTransportistaInt);
 
-            if (transportista == null || !transportista.habilitadoTransportista)
+            if (transportista == null || transportista.Count == 0)
             {
                 MessageBox.Show("No se puede generar remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            Remito nuevoRemito = model.GenerarRemito(dniTransportistaInt, transportista);
+
             string mensaje = $"El remito ha sido generado.\n" +
-                             $"DNI Transportista: {dniTransportistaInt}\n";
+                             $"DNI Transportista: {dniTransportistaInt}\n" +
+                             $"Número de Remito: {nuevoRemito.NumeroRemito}";
 
             MessageBox.Show(mensaje, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            foreach (var orden in transportista)
+            {
+                model.EliminarOrdenPorId(orden.NumeroOrdenPreparacion);
+            }
 
             dniTransportista.Text = string.Empty;
             listviewTransportista.Items.Clear();

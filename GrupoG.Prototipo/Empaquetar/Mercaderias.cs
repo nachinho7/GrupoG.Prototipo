@@ -11,6 +11,5 @@ namespace GrupoG.Prototipo.Empaquetar
         public int idMercaderia { get; set; }
         public string nombreMercaderia { get; set; }
         public int cantidadMercaderia { get; set; }
-
     }
 }

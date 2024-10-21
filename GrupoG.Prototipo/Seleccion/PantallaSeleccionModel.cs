@@ -38,7 +38,7 @@ namespace GrupoG.Prototipo.Seleccion
         public List<OrdenPreparacion> ObtenerOrdenes()
         {
             var ordenesEnSeleccion = ordenesSeleccionadas
-                .SelectMany(os => os.ordenes)
+                .SelectMany(os => os.OrdenPreparacion)
                 .Select(o => o.NumeroOrdenPreparacion)
                 .ToList();
 
@@ -49,7 +49,7 @@ namespace GrupoG.Prototipo.Seleccion
         public List<int> ObtenerClientesDisponibles()
         {
             var ordenesSeleccionadasActuales = ordenesSeleccionadas
-                .SelectMany(os => os.ordenes);
+                .SelectMany(os => os.OrdenPreparacion);
 
             return OrdenPreparacion
                 .Where(o => !ordenesSeleccionadasActuales.Select(sel => sel.NumeroOrdenPreparacion).Contains(o.NumeroOrdenPreparacion))
@@ -62,7 +62,7 @@ namespace GrupoG.Prototipo.Seleccion
         public List<int> ObtenerTransportistasDisponibles()
         {
             var ordenesSeleccionadasActuales = ordenesSeleccionadas
-                .SelectMany(os => os.ordenes);
+                .SelectMany(os => os.OrdenPreparacion);
 
             return OrdenPreparacion
                 .Where(o => !ordenesSeleccionadasActuales.Select(sel => sel.NumeroOrdenPreparacion).Contains(o.NumeroOrdenPreparacion))
@@ -75,7 +75,7 @@ namespace GrupoG.Prototipo.Seleccion
         public List<OrdenPreparacion> FiltrarOrdenesPorClienteYFechaYTransportista(int? numeroCliente, DateTime? fecha, int? dniTransportista)
         {
             var ordenesEnSeleccion = ordenesSeleccionadas
-                .SelectMany(os => os.ordenes)
+                .SelectMany(os => os.OrdenPreparacion)
                 .Select(o => o.NumeroOrdenPreparacion)
                 .ToList();
 
@@ -87,13 +87,13 @@ namespace GrupoG.Prototipo.Seleccion
                 .ToList();
         }
 
-        public OrdenSeleccion GenerarOrdenDeSeleccion(List<OrdenPreparacion> ordenes)
+        public OrdenSeleccion GenerarOrdenDeSeleccion(List<OrdenPreparacion> OrdenPreparacion)
         {
             var nuevaSeleccion = new OrdenSeleccion
             {
                 numeroOrdenSeleccion = siguienteIdSeleccion++,
                 FechaCreacion = DateTime.Now,
-                ordenes = ordenes
+                OrdenPreparacion = OrdenPreparacion
             };
             ordenesSeleccionadas.Add(nuevaSeleccion);
             return nuevaSeleccion;

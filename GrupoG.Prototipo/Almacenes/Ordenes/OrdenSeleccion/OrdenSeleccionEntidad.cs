@@ -12,5 +12,6 @@ namespace GrupoG.Prototipo.Almacenes.Ordenes.OrdenSeleccion
         public DateTime FechaCreacion { get; set; }
         
         //public List<OrdenPreparacion> ordenes { get; set; }
+        //public List<Mercaderias> Mercaderias { get; set; }
     }
 }

@@ -11,8 +11,6 @@ namespace GrupoG.Prototipo.Seleccion
     {
         public int numeroOrdenSeleccion { get; set; }
         public DateTime FechaCreacion { get; set; }
-
-        public List<OrdenPreparacion> ordenes { get; set; }
-
+        public List<OrdenPreparacion> OrdenPreparacion { get; set; }
     }
 }

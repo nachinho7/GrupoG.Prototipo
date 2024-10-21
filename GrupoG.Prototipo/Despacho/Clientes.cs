@@ -10,7 +10,7 @@ namespace GrupoG.Prototipo.Despacho
     public class Clientes
     {
         public int NumeroCliente { get; set; }
-        public List<Transportistas> Transportistas { get; set; }
+        public List<int> DNITransportista { get; set; }
     }
 }
 

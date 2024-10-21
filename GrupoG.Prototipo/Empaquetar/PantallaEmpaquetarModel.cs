@@ -10,9 +10,6 @@ namespace GrupoG.Prototipo.Empaquetar
             new OrdenPreparacion
             {
                 NumeroOrdenPreparacion = 1,
-                NumeroCliente = 101,
-                FechaDespacho = DateTime.Now.AddDays(2),
-                DNITransportista = 12345678,
                 Mercaderias = new List<Mercaderias>
                 {
                     new Mercaderias { idMercaderia = 1, nombreMercaderia = "Producto X", cantidadMercaderia = 15 },
@@ -22,9 +19,6 @@ namespace GrupoG.Prototipo.Empaquetar
             new OrdenPreparacion
             {
                 NumeroOrdenPreparacion = 2,
-                NumeroCliente = 102,
-                FechaDespacho = DateTime.Now.AddDays(3),
-                DNITransportista = 87654321,
                 Mercaderias = new List<Mercaderias>
                 {
                     new Mercaderias { idMercaderia = 3, nombreMercaderia = "Producto Z", cantidadMercaderia = 10 },

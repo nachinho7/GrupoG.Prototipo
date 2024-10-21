@@ -11,6 +11,6 @@ namespace GrupoG.Prototipo.Almacenes.Mercaderias
         public int idMercaderia { get; set; }
         public string nombreMercaderia { get; set; }
         public int cantidadMercaderia { get; set; }
-        public List<string> ubicacionesMercaderia { get; set; }
+        public string ubicacionMercaderia { get; set; }
     }
 }

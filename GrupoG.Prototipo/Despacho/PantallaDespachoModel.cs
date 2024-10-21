@@ -5,59 +5,42 @@ namespace GrupoG.Prototipo.Despacho
 {
     internal class PantallaDespachoModel
     {
-        public List<OrdenDespacho> OrdenDespacho { get; private set; } = new List<OrdenDespacho>
+        public List<OrdenPreparacion> OrdenPreparacion { get; private set; } = new List<OrdenPreparacion>
         {
-            new OrdenDespacho{ IdDespacho = 1, NroCliente = 1234, Estado = "Empaquetado" },
-            new OrdenDespacho{ IdDespacho = 2, NroCliente = 1234, Estado = "Empaquetado" },
-            new OrdenDespacho{ IdDespacho = 3, NroCliente = 5678, Estado = "Empaquetado" },
-            new OrdenDespacho{ IdDespacho = 4, NroCliente = 2045, Estado = "Empaquetado" },
-            new OrdenDespacho{ IdDespacho = 5, NroCliente = 2045, Estado = "Empaquetado" },
-            new OrdenDespacho{ IdDespacho = 6, NroCliente = 1224, Estado = "Empaquetado" },
+            new OrdenPreparacion{ NumeroOrdenPreparacion = 1, NroCliente = 1234, DNITransportista = 12345678},
+            new OrdenPreparacion{ NumeroOrdenPreparacion = 2, NroCliente = 1234, DNITransportista = 12345678},
+            new OrdenPreparacion{ NumeroOrdenPreparacion = 3, NroCliente = 5678, DNITransportista = 1234567},
+            new OrdenPreparacion{ NumeroOrdenPreparacion = 4, NroCliente = 2045, DNITransportista = 12345679},
+            new OrdenPreparacion{ NumeroOrdenPreparacion = 5, NroCliente = 2045, DNITransportista = 12345679},
+            new OrdenPreparacion{ NumeroOrdenPreparacion = 6, NroCliente = 1224, DNITransportista = 12345671},
         };
 
-        public List<Transportistas> Transportistas { get; private set; } = new List<Transportistas>
+        public List<OrdenPreparacion> ObtenerOrdenesPorDni(int dniTransportista)
         {
-            new Transportistas
-            {
-                dniTransportista = 45013352,
-                Clientes = new List<Clientes>
-                {
-                    new Clientes { NumeroCliente = 1234 }
-                },
-                habilitadoTransportista = true,
-                patente = "AB098CC"
-            },
-            new Transportistas
-            {
-                dniTransportista = 45013353,
-                Clientes = new List<Clientes>
-                {
-                    new Clientes { NumeroCliente = 4567 }
-                },
-                habilitadoTransportista = true,
-                patente = "AA000BB"
-            }
-        };
-
-        public List<OrdenDespacho> ObtenerOrdenesPorCliente(int numeroCliente)
-        {
-            var ordenesFiltradas = OrdenDespacho.Where(o => o.NroCliente == numeroCliente).ToList();
+            var ordenesFiltradas = OrdenPreparacion.Where(o => o.DNITransportista == dniTransportista).ToList();
             return ordenesFiltradas;
         }
 
-        public Transportistas ObtenerTransportistaPorDni(int dniTransportista)
+        public Remito GenerarRemito(int dniTransportista, List<OrdenPreparacion> ordenes)
         {
-            var transportista = Transportistas.FirstOrDefault(t => t.dniTransportista == dniTransportista);
-            return transportista;
+            Remito nuevoRemito = new Remito
+            {
+                NumeroRemito = OrdenPreparacion.Count + 1,
+                NroCliente = ordenes.First().NroCliente,
+                DNITransportista = dniTransportista
+            };
+
+            return nuevoRemito;
         }
 
-        public void EliminarOrdenPorId(int idDespacho)
+        public void EliminarOrdenPorId(int NroOrdenPreparacion)
         {
-            var ordenAEliminar = OrdenDespacho.FirstOrDefault(o => o.IdDespacho == idDespacho);
+            var ordenAEliminar = OrdenPreparacion.FirstOrDefault(o => o.NumeroOrdenPreparacion == NroOrdenPreparacion);
             if (ordenAEliminar != null)
             {
-                OrdenDespacho.Remove(ordenAEliminar);
+                OrdenPreparacion.Remove(ordenAEliminar);
             }
         }
+        
     }
 }

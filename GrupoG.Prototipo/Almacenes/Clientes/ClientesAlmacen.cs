@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace GrupoG.Prototipo.Almacenes.Cliente
+namespace GrupoG.Prototipo.Almacenes.Clientes
 {
     internal class ClientesAlmacen
     {

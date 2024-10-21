@@ -10,7 +10,6 @@ namespace GrupoG.Prototipo.Stock
     public class OrdenSeleccion
     {
         public int numeroOrdenSeleccion { get; set; }
-        public DateTime FechaCreacion { get; set; }
         public List<Mercaderias> Mercaderias { get; set; } = new List<Mercaderias>();
 
     }

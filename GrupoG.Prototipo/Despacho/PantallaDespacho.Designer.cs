@@ -32,7 +32,6 @@
             VolverAlMenu = new Button();
             listviewTransportista = new ListView();
             EstadoTransportista = new ColumnHeader();
-            Patente = new ColumnHeader();
             ColumnaIdOrden = new ColumnHeader();
             ColumnaCliente = new ColumnHeader();
             btnBuscarTransportista = new Button();
@@ -62,7 +61,7 @@
             // 
             // listviewTransportista
             // 
-            listviewTransportista.Columns.AddRange(new ColumnHeader[] { EstadoTransportista, Patente, ColumnaIdOrden, ColumnaCliente });
+            listviewTransportista.Columns.AddRange(new ColumnHeader[] { ColumnaIdOrden, ColumnaCliente, EstadoTransportista });
             listviewTransportista.FullRowSelect = true;
             listviewTransportista.GridLines = true;
             listviewTransportista.Location = new Point(12, 106);
@@ -74,25 +73,16 @@
             // 
             // EstadoTransportista
             // 
-            EstadoTransportista.DisplayIndex = 2;
             EstadoTransportista.Text = "Estado Transportista";
             EstadoTransportista.Width = 150;
             // 
-            // Patente
-            // 
-            Patente.DisplayIndex = 3;
-            Patente.Text = "Patente";
-            Patente.Width = 120;
-            // 
             // ColumnaIdOrden
             // 
-            ColumnaIdOrden.DisplayIndex = 0;
             ColumnaIdOrden.Text = "Nro de Orden";
             ColumnaIdOrden.Width = 120;
             // 
             // ColumnaCliente
             // 
-            ColumnaCliente.DisplayIndex = 1;
             ColumnaCliente.Text = "Nro de Cliente";
             ColumnaCliente.Width = 120;
             // 
@@ -150,7 +140,6 @@
         private Button VolverAlMenu;
         private ListView listviewTransportista;
         private ColumnHeader EstadoTransportista;
-        private ColumnHeader Patente;
         private Button btnBuscarTransportista;
         private TextBox dniTransportista;
         private Label labelTransportista;

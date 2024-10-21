@@ -12,10 +12,6 @@ namespace GrupoG.Prototipo.Entrega
         public int NumeroCliente { get; set; }
         public DateTime FechaDespacho { get; set; }
         public int DNITransportista { get; set; }
-        public bool Empaquetada { get; set; }
         public List<Mercaderias> Mercaderias { get; set; } = new List<Mercaderias>();
-
-
-
     }
 }

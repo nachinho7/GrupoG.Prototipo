@@ -14,7 +14,6 @@ namespace GrupoG.Prototipo.Stock
                 new OrdenSeleccion
                 {
                     numeroOrdenSeleccion = 1,
-                    FechaCreacion = DateTime.Now,
                     Mercaderias = new List<Mercaderias>
                     {
                         new Mercaderias { idMercaderia = 1, nombreMercaderia = "Producto A", cantidadMercaderia = 10, ubicacionMercaderia = "3-6-6" },
@@ -28,7 +27,6 @@ namespace GrupoG.Prototipo.Stock
                 new OrdenSeleccion
                 {
                     numeroOrdenSeleccion = 2,
-                    FechaCreacion = DateTime.Now,
                     Mercaderias = new List<Mercaderias>
                     {
                         new Mercaderias { idMercaderia = 3, nombreMercaderia = "Producto C", cantidadMercaderia = 8, ubicacionMercaderia = "103-43-23" },

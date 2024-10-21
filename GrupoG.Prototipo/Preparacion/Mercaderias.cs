@@ -12,6 +12,5 @@ namespace GrupoG.Prototipo.Preparacion
         public string nombreMercaderia { get; set; }
         public int cantidadMercaderia { get; set; }
 
-
     }
 }
