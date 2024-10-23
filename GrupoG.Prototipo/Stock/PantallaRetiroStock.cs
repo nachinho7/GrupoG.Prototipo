@@ -63,7 +63,7 @@ namespace GrupoG.Prototipo.Stock
             {
                 foreach (var mercaderia in ordenSeleccionada.Mercaderias)
                 {
-                    var item = new ListViewItem(mercaderia.ubicacionMercaderia);
+                    var item = new ListViewItem(mercaderia.ubicacionMercaderia.ToString());
                     item.SubItems.Add(mercaderia.idMercaderia.ToString());
                     item.SubItems.Add(mercaderia.nombreMercaderia);
                     item.SubItems.Add(mercaderia.cantidadMercaderia.ToString());                                        
