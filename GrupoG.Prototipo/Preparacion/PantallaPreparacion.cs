@@ -77,6 +77,12 @@ namespace GrupoG.Prototipo.Preparacion
 
             if (int.TryParse(TextBoxCantidad.Text, out int cantidadSeleccionada))
             {
+                if (cantidadSeleccionada < 0)
+                {
+                    MessageBox.Show("No se pueden agregar cantidades negativas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 var idMercaderia = int.Parse(selectedItem.SubItems[0].Text);
                 var nombreMercaderia = selectedItem.SubItems[1].Text;
 
@@ -109,6 +115,7 @@ namespace GrupoG.Prototipo.Preparacion
                 MessageBox.Show("Por favor, ingrese una cantidad válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
         private void btnEliminar_Click(object sender, EventArgs e)
