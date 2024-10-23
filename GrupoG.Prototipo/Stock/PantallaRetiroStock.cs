@@ -63,7 +63,7 @@ namespace GrupoG.Prototipo.Stock
             {
                 foreach (var mercaderia in ordenSeleccionada.Mercaderias)
                 {
-                    var item = new ListViewItem(mercaderia.ubicacionMercaderia.ToString());
+                    var item = new ListViewItem(mercaderia.ubicacionMercaderia);
                     item.SubItems.Add(mercaderia.idMercaderia.ToString());
                     item.SubItems.Add(mercaderia.nombreMercaderia);
                     item.SubItems.Add(mercaderia.cantidadMercaderia.ToString());                                        
@@ -86,7 +86,8 @@ namespace GrupoG.Prototipo.Stock
 
             foreach (ListViewItem selectedItem in listView1.SelectedItems)
             {
-                int idMercaderia = int.Parse(selectedItem.Text);
+                int idMercaderia = int.Parse(selectedItem.SubItems[1].Text); 
+
                 var mercaderia = ordenSeleccionada.Mercaderias.FirstOrDefault(m => m.idMercaderia == idMercaderia);
 
                 if (mercaderia != null)
