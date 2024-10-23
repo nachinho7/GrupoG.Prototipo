@@ -75,6 +75,41 @@ namespace GrupoG.Prototipo.Empaquetar
 
             var ordenSeleccionada = modelo.ObtenerOrdenesPreparacion()[ComboBoxOrdenesPreparacion.SelectedIndex];
 
+           
+            if (ordenSeleccionada == null)
+            {
+                MessageBox.Show("La orden de preparación es nula.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (ordenSeleccionada.Mercaderias == null || ordenSeleccionada.Mercaderias.Count == 0)
+            {
+                MessageBox.Show("La orden de preparación no tiene mercaderías.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            foreach (var mercaderia in ordenSeleccionada.Mercaderias)
+            {
+                if (mercaderia.idMercaderia <= 0)
+                {
+                    MessageBox.Show($"La mercadería '{mercaderia.nombreMercaderia}' tiene un ID no válido ({mercaderia.idMercaderia}).", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(mercaderia.nombreMercaderia))
+                {
+                    MessageBox.Show($"La mercadería con ID {mercaderia.idMercaderia} no tiene un nombre válido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (mercaderia.cantidadMercaderia <= 0)
+                {
+                    MessageBox.Show($"La mercadería '{mercaderia.nombreMercaderia}' tiene una cantidad de {mercaderia.cantidadMercaderia}.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            //aca terminan todas las validaciones :D
+
             MessageBox.Show($"La orden de preparación N° {ordenSeleccionada.NumeroOrdenPreparacion} ha sido empaquetada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             modelo.RemoverOrdenPreparacion(ordenSeleccionada);

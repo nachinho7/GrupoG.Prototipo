@@ -12,8 +12,8 @@ namespace GrupoG.Prototipo.Empaquetar
                 NumeroOrdenPreparacion = 1,
                 Mercaderias = new List<Mercaderias>
                 {
-                    new Mercaderias { idMercaderia = 1, nombreMercaderia = "Producto X", cantidadMercaderia = 15 },
-                    new Mercaderias { idMercaderia = 2, nombreMercaderia = "Producto Y", cantidadMercaderia = 20 }
+                    new Mercaderias { idMercaderia = 1, nombreMercaderia = "Producto A", cantidadMercaderia =20},
+                    new Mercaderias {  idMercaderia = 2, nombreMercaderia = "Producto B", cantidadMercaderia = 1}
                 }
             },
             new OrdenPreparacion
@@ -31,6 +31,7 @@ namespace GrupoG.Prototipo.Empaquetar
         {
             return OrdenesPreparacion;
         }
+
 
         public void RemoverOrdenPreparacion(OrdenPreparacion orden)
         {
