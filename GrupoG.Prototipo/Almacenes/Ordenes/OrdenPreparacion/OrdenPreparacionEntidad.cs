@@ -12,7 +12,9 @@ namespace GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion
         public int NumeroCliente { get; set; }
         public DateTime FechaDespacho { get; set; }
         public int DNITransportista { get; set; }
-        public bool Empaquetada { get; set; }
+        public string Estado {  get; set; }
+        public int NroDeposito { get; set; }
+        public List<OrdenPreparacionDetalle> Detalle { get; } = new();
         //public List<Mercaderias> Mercaderias { get; set; }
     }
 }
