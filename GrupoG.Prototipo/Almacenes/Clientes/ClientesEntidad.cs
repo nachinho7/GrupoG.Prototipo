@@ -9,7 +9,7 @@ namespace GrupoG.Prototipo.Almacenes.Clientes
 {
     internal class ClientesEntidad
     {
-        public int NumeroCliente { get; set; }
+        public int NroCliente { get; set; }
         public List<ClientesTransportista> Transportistas { get; } = new();
 
     }

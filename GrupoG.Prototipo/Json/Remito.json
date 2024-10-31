@@ -1,0 +1,78 @@
+[
+  {
+    "NroCliente": 1013,
+    "NroRemito": 4001,
+    "DNITransportista": 45678912,
+    "NroDeposito": 201,
+    "Detalle": [
+      {
+        "IDMercaderia": 301,
+        "Cantidad": 50
+      },
+      {
+        "IDMercaderia": 302,
+        "Cantidad": 30
+      }
+    ]
+  },
+  {
+    "NroCliente": 1022,
+    "NroRemito": 4002,
+    "DNITransportista": 12345678,
+    "NroDeposito": 202,
+    "Detalle": [
+      {
+        "IDMercaderia": 303,
+        "Cantidad": 20
+      },
+      {
+        "IDMercaderia": 304,
+        "Cantidad": 10
+      }
+    ]
+  },
+  {
+    "NroCliente": 1034,
+    "NroRemito": 4003,
+    "DNITransportista": 23456789,
+    "NroDeposito": 203,
+    "Detalle": [
+      {
+        "IDMercaderia": 305,
+        "Cantidad": 25
+      }
+    ]
+  },
+  {
+    "NroCliente": 1045,
+    "NroRemito": 4004,
+    "DNITransportista": 54321678,
+    "NroDeposito": 204,
+    "Detalle": [
+      {
+        "IDMercaderia": 301,
+        "Cantidad": 15
+      },
+      {
+        "IDMercaderia": 302,
+        "Cantidad": 45
+      }
+    ]
+  },
+  {
+    "NroCliente": 1056,
+    "NroRemito": 4005,
+    "DNITransportista": 32165498,
+    "NroDeposito": 201,
+    "Detalle": [
+      {
+        "IDMercaderia": 303,
+        "Cantidad": 100
+      },
+      {
+        "IDMercaderia": 305,
+        "Cantidad": 50
+      }
+    ]
+  }
+]

@@ -1,0 +1,71 @@
+[
+  {
+    "NroCliente": 1013,
+    "Transportistas": [
+      {
+        "DNITransportista": 45678912,
+        "NombreTransportista": "Juan Pérez"
+      },
+      {
+        "DNITransportista": 78965432,
+        "NombreTransportista": "Carlos López"
+      }
+    ]
+  },
+  {
+    "NroCliente": 1022,
+    "Transportistas": [
+      {
+        "DNITransportista": 12345678,
+        "NombreTransportista": "Ana Rodríguez"
+      },
+      {
+        "DNITransportista": 87654321,
+        "NombreTransportista": "María Gómez"
+      }
+    ]
+  },
+  {
+    "NroCliente": 1034,
+    "Transportistas": [
+      {
+        "DNITransportista": 23456789,
+        "NombreTransportista": "Pedro Sánchez"
+      },
+      {
+        "DNITransportista": 98765432,
+        "NombreTransportista": "Lucía Ramírez"
+      },
+      {
+        "DNITransportista": 45612378,
+        "NombreTransportista": "Miguel Torres"
+      }
+    ]
+  },
+  {
+    "NroCliente": 1045,
+    "Transportistas": [
+      {
+        "DNITransportista": 54321678,
+        "NombreTransportista": "Sofía Jiménez"
+      }
+    ]
+  },
+  {
+    "NroCliente": 1056,
+    "Transportistas": [
+      {
+        "DNITransportista": 32165498,
+        "NombreTransportista": "Diego Méndez"
+      },
+      {
+        "DNITransportista": 65498732,
+        "NombreTransportista": "Elena Ruiz"
+      },
+      {
+        "DNITransportista": 78932145,
+        "NombreTransportista": "Ricardo Ortiz"
+      }
+    ]
+  }
+]

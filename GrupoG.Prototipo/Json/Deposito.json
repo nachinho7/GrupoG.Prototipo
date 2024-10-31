@@ -1,0 +1,22 @@
+[
+  {
+    "NroDeposito": 201,
+    "NombreDeposito": "Deposito Central"
+  },
+  {
+    "NroDeposito": 202,
+    "NombreDeposito": "Deposito Norte"
+  },
+  {
+    "NroDeposito": 203,
+    "NombreDeposito": "Deposito Sur"
+  },
+  {
+    "NroDeposito": 204,
+    "NombreDeposito": "Deposito Este"
+  },
+  {
+    "NroDeposito": 205,
+    "NombreDeposito": "Deposito Oeste"
+  }
+]

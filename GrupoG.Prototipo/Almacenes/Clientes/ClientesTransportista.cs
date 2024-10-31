@@ -10,7 +10,6 @@ namespace GrupoG.Prototipo.Almacenes.Clientes
     {
         public int DNITransportista { get; set; }
         public string NombreTransportista { get; set; }
-        public bool habilitadoTransportista { get; set; }
         
     }
 }

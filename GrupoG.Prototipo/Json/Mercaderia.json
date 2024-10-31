@@ -1,0 +1,77 @@
+[
+  {
+    "idMercaderia": 301,
+    "nombreMercaderia": "Latas de Tomate",
+    "Ubicacion": [
+      {
+        "NombreUbicacion": 101,
+        "Cantidad": 500,
+        "NroDeposito": 201
+      },
+      {
+        "NombreUbicacion": 102,
+        "Cantidad": 200,
+        "NroDeposito": 202
+      }
+    ],
+    "NroCliente": 1015
+  },
+  {
+    "idMercaderia": 302,
+    "nombreMercaderia": "Paquetes de Arroz",
+    "Ubicacion": [
+      {
+        "NombreUbicacion": 103,
+        "Cantidad": 300,
+        "NroDeposito": 203
+      }
+    ],
+    "NroCliente": 102
+  },
+  {
+    "idMercaderia": 303,
+    "nombreMercaderia": "Botellas de Aceite",
+    "Ubicacion": [
+      {
+        "NombreUbicacion": 104,
+        "Cantidad": 150,
+        "NroDeposito": 204
+      },
+      {
+        "NombreUbicacion": 105,
+        "Cantidad": 100,
+        "NroDeposito": 202
+      }
+    ],
+    "NroCliente": 103
+  },
+  {
+    "idMercaderia": 304,
+    "nombreMercaderia": "Cajas de Galletas",
+    "Ubicacion": [
+      {
+        "NombreUbicacion": 106,
+        "Cantidad": 600,
+        "NroDeposito": 201
+      }
+    ],
+    "NroCliente": 104
+  },
+  {
+    "idMercaderia": 305,
+    "nombreMercaderia": "Sacos de Azúcar",
+    "Ubicacion": [
+      {
+        "NombreUbicacion": 107,
+        "Cantidad": 250,
+        "NroDeposito": 203
+      },
+      {
+        "NombreUbicacion": 108,
+        "Cantidad": 300,
+        "NroDeposito": 204
+      }
+    ],
+    "NroCliente": 105
+  }
+]
