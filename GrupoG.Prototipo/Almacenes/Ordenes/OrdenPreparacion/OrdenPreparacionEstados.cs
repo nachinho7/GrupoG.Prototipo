@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion
 {
-    public enum EstadosOrdenPreparacion
+    public enum OrdenPreparacionEstados
     {
         Pendiente,
-        EnSeleccion,
+        ASeleccionar,
         Seleccionada,
-        Preparada,
-        EnDespacho,
+        Cumplida,
+        Empaquetada,
+        ADespacho,
         Despachada
     }
 }

@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 namespace GrupoG.Prototipo.Almacenes.Ordenes.OrdenSeleccion
 {
 
-    internal enum EstadosOrdenSeleccion
+    internal enum OrdenSeleccionEstados
     {
-        EnSeleccion,
-        Seleccionada
+        
+        Seleccionada,
+        Cumplida
     }
 }
 

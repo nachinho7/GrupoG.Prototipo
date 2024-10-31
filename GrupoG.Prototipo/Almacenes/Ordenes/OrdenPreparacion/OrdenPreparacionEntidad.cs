@@ -9,10 +9,10 @@ namespace GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion
     internal class OrdenPreparacionEntidad
     {
         public int NumeroOrdenPreparacion { get; set; }
-        public int NumeroCliente { get; set; }
+        public int NroCliente { get; set; }
         public DateTime FechaDespacho { get; set; }
         public int DNITransportista { get; set; }
-        public string Estado {  get; set; }
+        public OrdenPreparacionEstados Estado {  get; set; }
         public int NroDeposito { get; set; }
         public List<OrdenPreparacionDetalle> Detalle { get; } = new();
         //public List<Mercaderias> Mercaderias { get; set; }
