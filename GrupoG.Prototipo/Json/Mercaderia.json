@@ -4,12 +4,12 @@
     "nombreMercaderia": "Latas de Tomate",
     "Ubicacion": [
       {
-        "NombreUbicacion": 101,
+        "NombreUbicacion": "10-20-4",
         "Cantidad": 500,
         "NroDeposito": 201
       },
       {
-        "NombreUbicacion": 102,
+        "NombreUbicacion": "10-20-5",
         "Cantidad": 200,
         "NroDeposito": 202
       }
@@ -21,7 +21,7 @@
     "nombreMercaderia": "Paquetes de Arroz",
     "Ubicacion": [
       {
-        "NombreUbicacion": 103,
+        "NombreUbicacion": "5-5-3",
         "Cantidad": 300,
         "NroDeposito": 203
       }
@@ -33,12 +33,12 @@
     "nombreMercaderia": "Botellas de Aceite",
     "Ubicacion": [
       {
-        "NombreUbicacion": 104,
+        "NombreUbicacion": "10-5-1",
         "Cantidad": 150,
         "NroDeposito": 204
       },
       {
-        "NombreUbicacion": 105,
+        "NombreUbicacion": "10-5-2",
         "Cantidad": 100,
         "NroDeposito": 202
       }
@@ -50,7 +50,7 @@
     "nombreMercaderia": "Cajas de Galletas",
     "Ubicacion": [
       {
-        "NombreUbicacion": 106,
+        "NombreUbicacion": "12-2-7",
         "Cantidad": 600,
         "NroDeposito": 201
       }
@@ -62,12 +62,12 @@
     "nombreMercaderia": "Sacos de Azúcar",
     "Ubicacion": [
       {
-        "NombreUbicacion": 107,
+        "NombreUbicacion": "8-6-8",
         "Cantidad": 250,
         "NroDeposito": 203
       },
       {
-        "NombreUbicacion": 108,
+        "NombreUbicacion": "8-6-9",
         "Cantidad": 300,
         "NroDeposito": 204
       }
