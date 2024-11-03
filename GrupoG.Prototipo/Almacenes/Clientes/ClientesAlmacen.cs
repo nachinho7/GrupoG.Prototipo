@@ -11,6 +11,7 @@ namespace GrupoG.Prototipo.Almacenes.Clientes
     internal class ClientesAlmacen
     {
         private static List<ClientesEntidad> clientes = new List<ClientesEntidad>();
+
         public static IReadOnlyCollection<ClientesEntidad> Clientes => clientes.AsReadOnly();
 
         public static void Grabar()
@@ -33,13 +34,10 @@ namespace GrupoG.Prototipo.Almacenes.Clientes
         }
 
 
-
-        /*
-        public static string BuscarDni(string dni)
+        public static int BuscarNroCliente(string numeroCliente)
         {
-            var razonsocial = Clientes.FirstOrDefault(c => c.NumeroCliente == dni);
-            return razonsocial.RazonSocial;
+            var nrocliente = Clientes.FirstOrDefault(c => c.NroCliente.ToString() == numeroCliente);
+            return nrocliente?.NroCliente ?? -1;
         }
-        */
     }
 }

@@ -31,5 +31,14 @@ namespace GrupoG.Prototipo.Almacenes.Ordenes.OrdenSeleccion
 
             ordenSeleccion = JsonSerializer.Deserialize<List<OrdenSeleccionEntidad>>(datos)!;
         }
+
+        public static void AgregarOrdenSeleccion(OrdenSeleccionEntidad ordenseleccion)
+        {
+            ordenSeleccion.Add(ordenseleccion);
+        }
+        public static void ModificarEstado(OrdenSeleccionEntidad orden, OrdenSeleccionEstados estado)
+        {
+            orden.Estado = estado;
+        }
     }
 }

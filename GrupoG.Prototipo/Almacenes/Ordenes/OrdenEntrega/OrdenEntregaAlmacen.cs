@@ -1,4 +1,5 @@
 ﻿using GrupoG.Prototipo.Almacenes.Mercaderias;
+using GrupoG.Prototipo.Entrega;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,11 @@ namespace GrupoG.Prototipo.Almacenes.Ordenes.OrdenEntrega
             var datos = File.ReadAllText("OrdenEntrega.json");
 
             ordenEntrega = JsonSerializer.Deserialize<List<OrdenEntregaEntidad>>(datos)!;
+        }
+
+        public static void AgregarOrdenEntrega(OrdenEntregaEntidad ordenpreparacion)
+        {
+            ordenEntrega.Add(ordenpreparacion);
         }
     }
 }

@@ -31,5 +31,31 @@ namespace GrupoG.Prototipo.Almacenes.Deposito
 
             depositos = JsonSerializer.Deserialize<List<DepositoEntidad>>(datos)!;
         }
+
+        public static int BuscarNroDeposito(string nombreDeposito)
+        {
+            var deposito = Depositos.FirstOrDefault(d => d.NombreDeposito == nombreDeposito);
+            if (deposito != null)
+            {
+                return deposito.NroDeposito;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+        public static string BuscarNombreDeposito(int nroDeposito)
+        {
+            var deposito = Depositos.FirstOrDefault(d => d.NroDeposito == nroDeposito);
+            if (deposito != null)
+            {
+                return deposito.NombreDeposito;
+            }
+            else
+            {
+                return "Depósito no encontrado";
+            }
+        }
     }
 }

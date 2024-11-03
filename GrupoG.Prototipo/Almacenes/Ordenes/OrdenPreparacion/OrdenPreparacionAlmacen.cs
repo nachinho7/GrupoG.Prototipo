@@ -31,5 +31,26 @@ namespace GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion
 
             ordenPreparacion = JsonSerializer.Deserialize<List<OrdenPreparacionEntidad>>(datos)!;
         }
+
+        public static void AgregarOrdenPreparacion(OrdenPreparacionEntidad ordenpreparacion)
+        {
+            ordenPreparacion.Add(ordenpreparacion);
+        }
+
+        public static void ModificarEstado(OrdenPreparacionEntidad orden, OrdenPreparacionEstados estado)
+        {
+            orden.Estado = estado;
+        }
+
+        public static List<OrdenPreparacionEntidad> ObtenerOrdenesPreparacionPorNumero(List<int> nroOrdenesPrepList)
+        {
+            return ordenPreparacion
+                .Where(op => nroOrdenesPrepList.Contains(op.NumeroOrdenPreparacion))
+                .ToList();
+        }
+        public static OrdenPreparacionEntidad ObtenerOrdenPreparacionPorNumero(int nroOrdenPrep)
+        {
+            return ordenPreparacion.FirstOrDefault(op => op.NumeroOrdenPreparacion == nroOrdenPrep);
+        }
     }
 }

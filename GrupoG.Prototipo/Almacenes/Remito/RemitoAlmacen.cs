@@ -31,5 +31,10 @@ namespace GrupoG.Prototipo.Almacenes.Remito
 
             remitos = JsonSerializer.Deserialize<List<RemitoEntidad>>(datos)!;
         }
+
+        public static void AgregarRemito(RemitoEntidad remito)
+        {
+            remitos.Add(remito);
+        }
     }
 }

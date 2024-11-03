@@ -30,5 +30,33 @@ namespace GrupoG.Prototipo.Almacenes.Mercaderias
 
             mercaderias = JsonSerializer.Deserialize<List<MercaderiasEntidad>>(datos)!;
         }
+
+        public static int BuscaridMercaderia(string nombre)
+        {
+            var mercaderia = Mercaderias.FirstOrDefault(m => m.nombreMercaderia == nombre);
+            return mercaderia.idMercaderia;
+        }
+
+        public static string BuscarNombreMercaderia(int id)
+        {
+            var mercaderia = Mercaderias.FirstOrDefault(m => m.idMercaderia == id);
+            return mercaderia.nombreMercaderia;
+        }
+
+        //public static void AgregarStock(MercaderiasEntidad mercaderia)
+        //{
+        //    mercaderia.Add(mercaderia);
+        //}
+
+        //public static void EliminarPosicion(MercaderiasEntidad mercaderia)
+        //{
+        //    mercaderia.Ubicacion = null;
+        //}
+
+        //public static void CambiarCantidad(MercaderiasEntidad mercaderia, int mercaderiaretirada)
+        //{
+        //    mercaderia.Cantidad -= mercaderiaretirada;
+        //}
+
     }
 }
