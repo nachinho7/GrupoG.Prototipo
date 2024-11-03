@@ -138,7 +138,6 @@ namespace GrupoG.Prototipo.Seleccion
             this.Hide();
             menu.StartPosition = FormStartPosition.CenterScreen;
             menu.Location = this.Location;
-            menu.Show();
         }
 
         private void BotonMostrarTodas_Click(object sender, EventArgs e)

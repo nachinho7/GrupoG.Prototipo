@@ -137,7 +137,6 @@ namespace GrupoG.Prototipo.Empaquetar
             this.Hide();
             menu.StartPosition = FormStartPosition.CenterScreen;
             menu.Location = this.Location;
-            menu.Show();
         }
     }
 }

@@ -28,7 +28,6 @@ namespace GrupoG.Prototipo.Despacho
             this.Hide();
             menu.StartPosition = FormStartPosition.CenterScreen;
             menu.Location = this.Location;
-            menu.Show();
         }
 
         private void btnBuscarTransportista_Click(object sender, EventArgs e)

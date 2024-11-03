@@ -258,7 +258,6 @@ namespace GrupoG.Prototipo.Preparacion
             this.Hide();
             menu.StartPosition = FormStartPosition.CenterScreen;
             menu.Location = this.Location;
-            menu.Show();
         }
 
         private void PantallaPreparacion_Load(object sender, EventArgs e)
