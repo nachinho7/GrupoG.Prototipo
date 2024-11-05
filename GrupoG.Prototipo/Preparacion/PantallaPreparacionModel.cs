@@ -1,4 +1,9 @@
-﻿using System;
+﻿using GrupoG.Prototipo.Almacenes;
+using GrupoG.Prototipo.Almacenes.Clientes;
+using GrupoG.Prototipo.Almacenes.Deposito;
+using GrupoG.Prototipo.Almacenes.Mercaderias;
+using GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,83 +11,187 @@ namespace GrupoG.Prototipo.Preparacion
 {
     internal class PantallaPreparacionModel
     {
-        public List<Clientes> Clientes { get; private set; } = new List<Clientes>
+        public Clientes BuscarCliente(int nroCliente)
         {
-            new Clientes
+            foreach (ClientesEntidad clientesEntidad in ClientesAlmacen.Clientes)
             {
-                NumeroCliente = 2045,
-                Mercaderias = new List<Mercaderias>
+                if (clientesEntidad.NroCliente == nroCliente)
                 {
-                    new Mercaderias { idMercaderia = 854, nombreMercaderia = "Botellas", cantidadMercaderia = 200 },
-                    new Mercaderias { idMercaderia = 9652, nombreMercaderia = "Vasos", cantidadMercaderia = 500 },
-                    new Mercaderias { idMercaderia = 1111, nombreMercaderia = "Calabazas", cantidadMercaderia = 0 }
+                    return new Clientes { NroCliente = clientesEntidad.NroCliente };
                 }
-            },
-            new Clientes
-            {
-                NumeroCliente = 3080,
-                Mercaderias = new List<Mercaderias>
-                {
-                    new Mercaderias { idMercaderia = 874, nombreMercaderia = "Pelotas", cantidadMercaderia = 100 }
-                }
-            },
-            new Clientes
-            {
-                NumeroCliente = 1224,
-                Mercaderias = new List<Mercaderias>
-                {
-                    new Mercaderias { idMercaderia = 852, nombreMercaderia = "Aceites", cantidadMercaderia = 300 }
-                }
-            },
-        };
-
-        private List<OrdenPreparacion> ordenesPreparacion = new List<OrdenPreparacion>();
-
-        public List<Mercaderias> ObtenerMercaderiaPorCliente(int numeroCliente)
-        {
-            var cliente = Clientes.FirstOrDefault(c => c.NumeroCliente == numeroCliente);
-            return cliente?.Mercaderias ?? new List<Mercaderias>();
-        }
-
-        public void AgregarMercaderiaAPreparacion(int numeroOrden, int idMercaderia, string nombreMercaderia, int cantidadSeleccionada)
-        {
-            var orden = ordenesPreparacion.FirstOrDefault(o => o.NumeroOrdenPreparacion == numeroOrden);
-            if (orden == null)
-            {
-                orden = new OrdenPreparacion
-                {
-                    NumeroOrdenPreparacion = numeroOrden,
-                    FechaDespacho = DateTime.Now,
-                    Mercaderias = new List<Mercaderias>() 
-                };
-                ordenesPreparacion.Add(orden);
             }
 
-            var mercaderia = orden.Mercaderias.FirstOrDefault(m => m.idMercaderia == idMercaderia);
-            if (mercaderia == null)
+            return null;
+        }
+
+        public List<DepositoEntidad> Depositos
+        {
+            get
             {
-                orden.Mercaderias.Add(new Mercaderias
+                var depositos = new List<DepositoEntidad>();
+                foreach (var depositoEntidad in DepositoAlmacen.Depositos)
+                {
+                    var deposito = new DepositoEntidad();
+                    deposito.NroDeposito = depositoEntidad.NroDeposito;
+                    deposito.NombreDeposito = depositoEntidad.NombreDeposito;
+
+                    depositos.Add(deposito);
+                }
+                return depositos;
+            }
+        }
+
+
+
+        public int SumaNumOrden()
+        {
+            int sumaNumOrden = (OrdenPreparacionAlmacen.OrdenPreparacion.Any() ? OrdenPreparacionAlmacen.OrdenPreparacion.Max(o => o.NumeroOrdenPreparacion) : 0) + 1;
+            return sumaNumOrden;
+        }
+
+
+        public List<(int CantidadTotal, int idMercaderia, string nombre)> ObtenerMercaderia(int nroCliente)
+        {
+            var mercaderiaPorCliente = MercaderiasAlmacen.Mercaderias
+                .Where(m => m.NroCliente == nroCliente)
+                .GroupBy(m => m.idMercaderia)
+                .Select(g => (
+                    CantidadTotal: g.Sum(m => m.Ubicacion.Sum(u => u.Cantidad)),
+                    idMercaderia: g.Key,
+                    nombre: MercaderiasAlmacen.BuscarNombreMercaderia(g.Key)
+                ))
+                .ToList();
+
+            return mercaderiaPorCliente;
+        }
+
+        public void CrearOrdenPreparacion(int nrocliente, DateTime fechadespacho, int dni, string nombredeposito, ListBox ListaPrevisualizacionOrdenesPreparacion)
+        {
+            int nroOrdenPreparacion = SumaNumOrden();
+            var estadoOrdenPreparacion = OrdenPreparacionEstados.Pendiente;
+            var ordenPreparacionDetalle = new List<OrdenPreparacionDetalle>();
+
+            foreach (ListViewItem item in ListaPrevisualizacionOrdenesPreparacion.Items)
+            {
+                int idMercaderia = int.Parse(item.SubItems[0].Text);
+                int cantidad = int.Parse(item.SubItems[2].Text);
+
+                var detalle = new OrdenPreparacionDetalle
                 {
                     idMercaderia = idMercaderia,
-                    nombreMercaderia = nombreMercaderia,
-                    cantidadMercaderia = cantidadSeleccionada
-                });
+                    Cantidad = cantidad
+                };
+
+                ordenPreparacionDetalle.Add(detalle);
             }
-            else
+
+            var nuevaorden = new OrdenPreparacionEntidad
             {
-                mercaderia.cantidadMercaderia += cantidadSeleccionada;
-            }
+                NumeroOrdenPreparacion = nroOrdenPreparacion,
+                NroCliente = nrocliente,
+                Estado = estadoOrdenPreparacion,
+                FechaDespacho = fechadespacho,
+                DNITransportista = dni,
+                NroDeposito = DepositoAlmacen.BuscarNroDeposito(nombredeposito),
+                Detalle = ordenPreparacionDetalle,
+            };
 
-            var cliente = Clientes.FirstOrDefault(c => c.Mercaderias.Any(m => m.idMercaderia == idMercaderia));
-            if (cliente != null)
+            OrdenPreparacionAlmacen.AgregarOrdenPreparacion(nuevaorden);
+            foreach (var item in nuevaorden.Detalle)
             {
-                var mercaderiaCliente = cliente.Mercaderias.First(m => m.idMercaderia == idMercaderia);
-                mercaderiaCliente.cantidadMercaderia -= cantidadSeleccionada;
+                // Encuentra la mercadería específica
+                var mercaderiaItem = MercaderiasAlmacen.Mercaderias.First(s => s.idMercaderia == item.idMercaderia
+                && s.NroCliente == nuevaorden.NroCliente);
+
+                // Busca la ubicación específica que coincida con el depósito
+                var ubicacion = mercaderiaItem.Ubicacion.FirstOrDefault(u => u.NroDeposito == nuevaorden.NroDeposito);
+
+                if (ubicacion != null) // Asegúrate de que se encontró una ubicación
+                {
+                    if (ubicacion.Cantidad >= item.Cantidad)
+                    {
+                        int cantidadRetirada = item.Cantidad;
+
+                        // Actualiza la cantidad en la ubicación
+                        ubicacion.Cantidad -= cantidadRetirada; // Restar la cantidad retirada
+
+                        // Crea una nueva entidad para el stock retirado
+                        var mercaderiaRetirada = new MercaderiasEntidad
+                        {
+                            idMercaderia = mercaderiaItem.idMercaderia,
+                            NroCliente = mercaderiaItem.NroCliente,
+                            // Asegúrate de incluir la lista de ubicaciones si es necesario
+                            Ubicacion = new List<MercaderiasUbicacion> {
+                                    new MercaderiasUbicacion {
+                                        NroDeposito = ubicacion.NroDeposito,
+                                        Cantidad = cantidadRetirada,
+                                        NombreUbicacion = ubicacion.NombreUbicacion
+                                    }
+                                }
+                            };
+                        MercaderiasAlmacen.AgregarStock(mercaderiaRetirada); 
+
+                    }
+                    else
+                    {
+                        MessageBox.Show($"No hay suficiente cantidad en la ubicación para la mercadería ID: {item.idMercaderia}");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show($"No se encontró la ubicación para el depósito: {nuevaorden.NroDeposito} en la mercadería ID: {item.idMercaderia}");
+                }
             }
-        }
 
 
-        public List<OrdenPreparacion> ObtenerOrdenPreparacion(int numeroOrden)
+
+            /*public List<Mercaderias> ObtenerMercaderiaPorCliente(int numeroCliente)
+            {
+                var cliente = Clientes.FirstOrDefault(c => c.NumeroCliente == numeroCliente);
+                return cliente?.Mercaderias ?? new List<Mercaderias>();
+            }
+            */
+
+            /*public void AgregarMercaderiaAPreparacion(int numeroOrden, int idMercaderia, string nombreMercaderia, int cantidadSeleccionada)
+            {
+                var orden = OrdenPreparacionEntidad.FirstOrDefault(o => o.NumeroOrdenPreparacion == numeroOrden);
+                if (orden == null)
+                {
+                    orden = new OrdenPreparacion
+                    {
+                        NumeroOrdenPreparacion = numeroOrden,
+                        FechaDespacho = DateTime.Now,
+                        Mercaderias = new List<Mercaderias>() 
+                    };
+                    ordenesPreparacion.Add(orden);
+                }
+
+
+                var mercaderia = orden.Mercaderias.FirstOrDefault(m => m.idMercaderia == idMercaderia);
+                if (mercaderia == null)
+                {
+                    orden.Mercaderias.Add(new Mercaderias
+                    {
+                        idMercaderia = idMercaderia,
+                        nombreMercaderia = nombreMercaderia,
+                        cantidadMercaderia = cantidadSeleccionada
+                    });
+                }
+                else
+                {
+                    mercaderia.cantidadMercaderia += cantidadSeleccionada;
+                }
+
+                var cliente = Clientes.FirstOrDefault(c => c.Mercaderias.Any(m => m.idMercaderia == idMercaderia));
+                if (cliente != null)
+                {
+                    var mercaderiaCliente = cliente.Mercaderias.First(m => m.idMercaderia == idMercaderia);
+                    mercaderiaCliente.cantidadMercaderia -= cantidadSeleccionada;
+                }
+            }
+            */
+
+            public List<OrdenPreparacion> ObtenerOrdenPreparacion(int numeroOrden)
         {
             return ordenesPreparacion.Where(o => o.NumeroOrdenPreparacion == numeroOrden).ToList();
         }

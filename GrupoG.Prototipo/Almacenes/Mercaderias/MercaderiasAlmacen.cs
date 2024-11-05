@@ -9,7 +9,7 @@ namespace GrupoG.Prototipo.Almacenes.Mercaderias
 {
     internal class MercaderiasAlmacen
     {
-        private static List<MercaderiasEntidad> mercaderias = new List<MercaderiasEntidad>();
+        private static List<MercaderiasEntidad> mercaderias;
         public static IReadOnlyCollection<MercaderiasEntidad> Mercaderias => mercaderias.AsReadOnly();
 
         public static void Grabar()
@@ -43,20 +43,20 @@ namespace GrupoG.Prototipo.Almacenes.Mercaderias
             return mercaderia.nombreMercaderia;
         }
 
-        //public static void AgregarStock(MercaderiasEntidad mercaderia)
-        //{
-        //    mercaderia.Add(mercaderia);
-        //}
+        public static void AgregarStock(MercaderiasEntidad mercaderia)
+        {
+            mercaderias.Add(mercaderia);
+        }
 
-        //public static void EliminarPosicion(MercaderiasEntidad mercaderia)
-        //{
-        //    mercaderia.Ubicacion = null;
-        //}
+        public static void EliminarPosicion(MercaderiasEntidad mercaderia)
+        {
+            mercaderia.Ubicacion = null;
+        }
 
-        //public static void CambiarCantidad(MercaderiasEntidad mercaderia, int mercaderiaretirada)
-        //{
-        //    mercaderia.Cantidad -= mercaderiaretirada;
-        //}
+        public static void CambiarCantidad(MercaderiasUbicacion mercaderia, int mercaderiaretirada)
+        {
+            mercaderia.Cantidad -= mercaderiaretirada;
+        }
 
     }
 }

@@ -10,7 +10,7 @@ namespace GrupoG.Prototipo.Preparacion
     public class Clientes
     {
 
-        public int NumeroCliente { get; set; }
+        public int NroCliente { get; set; }
         public List<Mercaderias> Mercaderias { get; set; }
 
     }

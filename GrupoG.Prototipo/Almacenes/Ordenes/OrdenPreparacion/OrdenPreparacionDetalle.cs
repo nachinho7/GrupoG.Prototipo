@@ -8,7 +8,7 @@ namespace GrupoG.Prototipo.Almacenes
 {
     internal class OrdenPreparacionDetalle
     {
-        public int IDMercaderia { get; set; }
+        public int idMercaderia { get; set; }
         public int Cantidad { get; set; }
 
     }
