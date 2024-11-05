@@ -12,6 +12,6 @@ namespace GrupoG.Prototipo.Almacenes.Mercaderias
         public string nombreMercaderia { get; set; }
         public List<MercaderiasUbicacion> Ubicacion { get; set; } = new List<MercaderiasUbicacion>();
         public int NroCliente { get; set; }
-
+        public int CalcularTotalStock(int id) => Ubicacion.Where(s => s.idMercaderia == id).Sum(s => s.Cantidad);
     }
 }

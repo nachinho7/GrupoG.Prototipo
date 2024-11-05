@@ -26,7 +26,7 @@
         "NroDeposito": 203
       }
     ],
-    "NroCliente": 102
+    "NroCliente": 1012
   },
   {
     "idMercaderia": 303,
@@ -43,7 +43,7 @@
         "NroDeposito": 202
       }
     ],
-    "NroCliente": 103
+    "NroCliente": 1013
   },
   {
     "idMercaderia": 304,
@@ -55,7 +55,7 @@
         "NroDeposito": 201
       }
     ],
-    "NroCliente": 104
+    "NroCliente": 1014
   },
   {
     "idMercaderia": 305,
@@ -72,6 +72,6 @@
         "NroDeposito": 204
       }
     ],
-    "NroCliente": 105
+    "NroCliente": 1015
   }
 ]

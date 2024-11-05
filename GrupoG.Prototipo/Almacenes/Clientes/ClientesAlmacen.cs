@@ -33,11 +33,9 @@ namespace GrupoG.Prototipo.Almacenes.Clientes
             clientes = JsonSerializer.Deserialize<List<ClientesEntidad>>(datos)!;
         }
 
-
-        public static int BuscarNroCliente(string numeroCliente)
-        {
-            var nrocliente = Clientes.FirstOrDefault(c => c.NroCliente.ToString() == numeroCliente);
-            return nrocliente?.NroCliente ?? -1;
+        public static ClientesEntidad? ObtenerNroCliente(int numero)
+        { 
+            return clientes.FirstOrDefault(c => c.NroCliente == numero);
         }
     }
 }

@@ -18,20 +18,30 @@ namespace GrupoG.Prototipo.Preparacion
 
         private void BotonObtenerDatos_Click(object sender, EventArgs e)
         {
-            if (!int.TryParse(numeroCliente.Text, out int clienteNumero))
+            int nroCliente;
+            try
             {
-                MessageBox.Show("El número de cliente ingresado no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                if (int.TryParse(numeroCliente.Text, out nroCliente))
+                {
+                    var cliente = PantallaPreparacionModel.BuscarCliente(nroCliente); // Asegúrate de que llamas al método correcto
+                    if (cliente != null)
+                    {
+                        model.ObtenerMercaderia(cliente.NroCliente);
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, ingrese un número de cliente válido.", "Error de Entrada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-
-            var mercaderias = model.ObtenerMercaderia(clienteNumero);
-            ActualizarListaMercaderias(mercaderias);
-
-            ListaPrevisualizacionOrdenesPreparacion.Items.Clear();
-
-            if (mercaderias.Count > 0)
+            catch (Exception ex)
             {
-                numeroCliente.Enabled = false;
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
@@ -225,8 +235,6 @@ namespace GrupoG.Prototipo.Preparacion
             // Crear la orden
             model.CrearOrdenPreparacion(numerocliente, fechaDespacho, dniTransportista, nombreDeposito, mercaderias);
         }
-
-
 
 
         private void LimpiarFormulario()

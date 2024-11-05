@@ -11,17 +11,19 @@ namespace GrupoG.Prototipo.Preparacion
 {
     internal class PantallaPreparacionModel
     {
-        public Clientes BuscarCliente(int nroCliente)
+        public static Clientes? BuscarCliente(int nroCliente)
         {
-            foreach (ClientesEntidad clientesEntidad in ClientesAlmacen.Clientes)
+            var cliente = ClientesAlmacen.ObtenerNroCliente(nroCliente);
+
+            if (cliente == null)
             {
-                if (clientesEntidad.NroCliente == nroCliente)
-                {
-                    return new Clientes { NroCliente = clientesEntidad.NroCliente };
-                }
+                throw new Exception("Cliente no encontrado.");
             }
 
-            return null;
+            return new Clientes
+            {
+                NroCliente = cliente.NroCliente,
+            };
         }
 
         public List<DepositoEntidad> Depositos
@@ -57,29 +59,41 @@ namespace GrupoG.Prototipo.Preparacion
 
         public List<(int idMercaderia, string nombre, int CantidadTotal)> ObtenerMercaderia(int nroCliente)
         {
-            var mercaderiaPorCliente = MercaderiasAlmacen.Mercaderias
+            if (MercaderiasAlmacen.Mercaderias == null || !MercaderiasAlmacen.Mercaderias.Any())
+            {
+                throw new Exception("No hay mercaderías disponibles para buscar.");
+            }
+
+            var mercaderias = MercaderiasAlmacen.Mercaderias
                 .Where(m => m.NroCliente == nroCliente)
-                .GroupBy(m => m.idMercaderia)
-                .Select(g => (
-                    idMercaderia: g.Key,
-                    nombre: MercaderiasAlmacen.BuscarNombreMercaderia(g.Key),
-                    CantidadTotal: g.Sum(m => m.Ubicacion.Sum(u => u.Cantidad))
+                .Select(m => (
+                    idMercaderia: m.idMercaderia,
+                    nombre: m.nombreMercaderia,
+                    CantidadTotal: m.CalcularTotalStock(m.idMercaderia)
                 ))
                 .ToList();
 
-            return mercaderiaPorCliente;
+            if (!mercaderias.Any())
+            {
+                throw new Exception("No se encontraron mercaderías para el cliente.");
+            }
+
+            return mercaderias;
         }
 
-        public void CrearOrdenPreparacion(int nrocliente, DateTime fechadespacho, int dni, string nombredeposito, ListBox ListaPrevisualizacionOrdenesPreparacion)
+
+
+
+        public void CrearOrdenPreparacion(int nrocliente, DateTime fechadespacho, int dni, string nombredeposito, List<(int idMercaderia, int cantidad)> listaMercaderias)
         {
             int nroOrdenPreparacion = SumaNumOrden();
             var estadoOrdenPreparacion = OrdenPreparacionEstados.Pendiente;
             var ordenPreparacionDetalle = new List<OrdenPreparacionDetalle>();
 
-            foreach (ListViewItem item in ListaPrevisualizacionOrdenesPreparacion.Items)
+            foreach (var item in listaMercaderias)
             {
-                int idMercaderia = int.Parse(item.SubItems[0].Text);
-                int cantidad = int.Parse(item.SubItems[2].Text);
+                int idMercaderia = item.idMercaderia;
+                int cantidad = item.cantidad;
 
                 var detalle = new OrdenPreparacionDetalle
                 {
@@ -102,6 +116,7 @@ namespace GrupoG.Prototipo.Preparacion
             };
 
             OrdenPreparacionAlmacen.AgregarOrdenPreparacion(nuevaorden);
+
             foreach (var item in nuevaorden.Detalle)
             {
                 // Encuentra la mercadería específica
@@ -125,17 +140,15 @@ namespace GrupoG.Prototipo.Preparacion
                         {
                             idMercaderia = mercaderiaItem.idMercaderia,
                             NroCliente = mercaderiaItem.NroCliente,
-                            // Asegúrate de incluir la lista de ubicaciones si es necesario
                             Ubicacion = new List<MercaderiasUbicacion> {
-                                    new MercaderiasUbicacion {
-                                        NroDeposito = ubicacion.NroDeposito,
-                                        Cantidad = cantidadRetirada,
-                                        NombreUbicacion = ubicacion.NombreUbicacion
-                                    }
-                                }
+                        new MercaderiasUbicacion {
+                            NroDeposito = ubicacion.NroDeposito,
+                            Cantidad = cantidadRetirada,
+                            NombreUbicacion = ubicacion.NombreUbicacion
+                        }
+                    }
                         };
                         MercaderiasAlmacen.AgregarStock(mercaderiaRetirada);
-
                     }
                     else
                     {
