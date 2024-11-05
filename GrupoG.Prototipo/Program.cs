@@ -1,4 +1,12 @@
 using GrupoG.Prototipo;
+using GrupoG.Prototipo.Almacenes.Clientes;
+using GrupoG.Prototipo.Almacenes.Deposito;
+using GrupoG.Prototipo.Almacenes.Mercaderias;
+using GrupoG.Prototipo.Almacenes.Ordenes.OrdenEntrega;
+using GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion;
+using GrupoG.Prototipo.Almacenes.Ordenes.OrdenSeleccion;
+using GrupoG.Prototipo.Almacenes.Remito;
+using GrupoG.Prototipo.Despacho;
 using GrupoG.Prototipo.Menu;
 
 namespace GrupoG.Prototipo
@@ -15,6 +23,14 @@ namespace GrupoG.Prototipo
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new PantallaMenu());
+
+            ClientesAlmacen.Grabar();
+            DepositoAlmacen.Grabar();
+            MercaderiasAlmacen.Grabar();
+            OrdenPreparacionAlmacen.Grabar();
+            OrdenSeleccionAlmacen.Grabar();
+            OrdenEntregaAlmacen.Grabar();
+            RemitoAlmacen.Grabar();
         }
     }
 }

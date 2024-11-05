@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using GrupoG.Prototipo.Menu;
 
@@ -18,29 +19,17 @@ namespace GrupoG.Prototipo.Preparacion
 
         private void BotonObtenerDatos_Click(object sender, EventArgs e)
         {
-            int nroCliente;
-            try
+            if (int.TryParse(numeroCliente.Text, out int nroCliente))
             {
-                if (int.TryParse(numeroCliente.Text, out nroCliente))
+                var cliente = model.BuscarCliente(nroCliente);
+
+                if (cliente == null)
                 {
-                    var cliente = PantallaPreparacionModel.BuscarCliente(nroCliente); // Asegúrate de que llamas al método correcto
-                    if (cliente != null)
-                    {
-                        model.ObtenerMercaderia(cliente.NroCliente);
-                    }
-                    else
-                    {
-                        return;
-                    }
+                    MessageBox.Show("Cliente no encontrado");
+                    return;
                 }
-                else
-                {
-                    MessageBox.Show("Por favor, ingrese un número de cliente válido.", "Error de Entrada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                model.ObtenerMercaderia(cliente.NroCliente);
 
             }
         }

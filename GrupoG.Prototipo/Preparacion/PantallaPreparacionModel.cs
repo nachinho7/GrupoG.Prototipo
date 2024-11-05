@@ -3,6 +3,7 @@ using GrupoG.Prototipo.Almacenes.Clientes;
 using GrupoG.Prototipo.Almacenes.Deposito;
 using GrupoG.Prototipo.Almacenes.Mercaderias;
 using GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion;
+using GrupoG.Prototipo.Despacho;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,19 +12,40 @@ namespace GrupoG.Prototipo.Preparacion
 {
     internal class PantallaPreparacionModel
     {
-        public static Clientes? BuscarCliente(int nroCliente)
+        public Clientes BuscarCliente(int numerocliente)
         {
-            var cliente = ClientesAlmacen.ObtenerNroCliente(nroCliente);
-
-            if (cliente == null)
+            foreach (ClientesEntidad clienteEntidad in ClientesAlmacen.Clientes)
             {
-                throw new Exception("Cliente no encontrado.");
+                if (clienteEntidad.NroCliente == numerocliente)
+                {
+                    return new Clientes { NroCliente = clienteEntidad.NroCliente};
+                }
+            }
+            return null;
+        }
+
+        public List<(int idMercaderia, string nombre, int CantidadTotal)> ObtenerMercaderia(int nroCliente)
+        {
+            if (MercaderiasAlmacen.Mercaderias == null || !MercaderiasAlmacen.Mercaderias.Any())
+            {
+                throw new Exception("No hay mercaderías disponibles para buscar.");
             }
 
-            return new Clientes
+            var mercaderias = MercaderiasAlmacen.Mercaderias
+                .Where(m => m.NroCliente == nroCliente)
+                .Select(m => (
+                    idMercaderia: m.idMercaderia,
+                    nombre: m.nombreMercaderia,
+                    CantidadTotal: m.CalcularTotalStock(m.idMercaderia)
+                ))
+                .ToList();
+
+            if (!mercaderias.Any())
             {
-                NroCliente = cliente.NroCliente,
-            };
+                throw new Exception("No se encontraron mercaderías para el cliente.");
+            }
+
+            return mercaderias;
         }
 
         public List<DepositoEntidad> Depositos
@@ -56,33 +78,6 @@ namespace GrupoG.Prototipo.Preparacion
             int sumaNumOrden = (OrdenPreparacionAlmacen.OrdenPreparacion.Any() ? OrdenPreparacionAlmacen.OrdenPreparacion.Max(o => o.NumeroOrdenPreparacion) : 0) + 1;
             return sumaNumOrden;
         }
-
-        public List<(int idMercaderia, string nombre, int CantidadTotal)> ObtenerMercaderia(int nroCliente)
-        {
-            if (MercaderiasAlmacen.Mercaderias == null || !MercaderiasAlmacen.Mercaderias.Any())
-            {
-                throw new Exception("No hay mercaderías disponibles para buscar.");
-            }
-
-            var mercaderias = MercaderiasAlmacen.Mercaderias
-                .Where(m => m.NroCliente == nroCliente)
-                .Select(m => (
-                    idMercaderia: m.idMercaderia,
-                    nombre: m.nombreMercaderia,
-                    CantidadTotal: m.CalcularTotalStock(m.idMercaderia)
-                ))
-                .ToList();
-
-            if (!mercaderias.Any())
-            {
-                throw new Exception("No se encontraron mercaderías para el cliente.");
-            }
-
-            return mercaderias;
-        }
-
-
-
 
         public void CrearOrdenPreparacion(int nrocliente, DateTime fechadespacho, int dni, string nombredeposito, List<(int idMercaderia, int cantidad)> listaMercaderias)
         {

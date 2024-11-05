@@ -12,30 +12,36 @@ namespace GrupoG.Prototipo.Almacenes.Clientes
     {
         private static List<ClientesEntidad> clientes = new List<ClientesEntidad>();
 
+        static ClientesAlmacen()
+        {
+            Leer();
+        }
+
         public static IReadOnlyCollection<ClientesEntidad> Clientes => clientes.AsReadOnly();
 
         public static void Grabar()
         {
-            
             var datos = JsonSerializer.Serialize(clientes);
-            File.WriteAllText("Clientes.json", datos);
+            File.WriteAllText(@"Json\Clientes.json", datos);
         }
 
         public static void Leer()
         {
-            if (!File.Exists("Clientes.json")) 
+
+            if (!File.Exists(@"Json\Clientes.json"))
             {
                 return;
             }
 
-            var datos = File.ReadAllText("Clientes.json");
+            var datos = File.ReadAllText(@"Json\Clientes.json");
 
             clientes = JsonSerializer.Deserialize<List<ClientesEntidad>>(datos)!;
         }
 
-        public static ClientesEntidad? ObtenerNroCliente(int numero)
+        public static int ObtenerNroCliente(int numero)
         { 
-            return clientes.FirstOrDefault(c => c.NroCliente == numero);
+            var numeroCliente = Clientes.FirstOrDefault(c => c.NroCliente == numero);
+            return numeroCliente.NroCliente;
         }
     }
 }
