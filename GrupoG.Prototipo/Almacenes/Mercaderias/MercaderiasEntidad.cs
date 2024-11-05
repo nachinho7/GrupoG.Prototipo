@@ -10,8 +10,8 @@ namespace GrupoG.Prototipo.Almacenes.Mercaderias
     {
         public int idMercaderia { get; set; }
         public string nombreMercaderia { get; set; }
-        public List <MercaderiasUbicacion> Ubicacion { get; set; } = new List<MercaderiasUbicacion>();
+        public List<MercaderiasUbicacion> Ubicacion { get; set; } = new List<MercaderiasUbicacion>();
         public int NroCliente { get; set; }
-        
+
     }
 }

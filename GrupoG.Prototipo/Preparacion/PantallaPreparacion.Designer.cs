@@ -283,7 +283,6 @@
             groupBoxDatosMercaderia.TabIndex = 40;
             groupBoxDatosMercaderia.TabStop = false;
             groupBoxDatosMercaderia.Text = "Datos de Mercadería";
-            groupBoxDatosMercaderia.Enter += groupBoxDatosMercaderia_Enter;
             // 
             // PantallaPreparacion
             // 
@@ -303,7 +302,6 @@
             Name = "PantallaPreparacion";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Orden de Preparación";
-            Load += PantallaPreparacion_Load;
             GroupBoxPrevisualizacion.ResumeLayout(false);
             GroupBoxPrevisualizacion.PerformLayout();
             groupBoxDatosMercaderia.ResumeLayout(false);
