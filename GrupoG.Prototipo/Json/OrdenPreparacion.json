@@ -1,14 +1,14 @@
 [
   {
     "NumeroOrdenPreparacion": 2001,
-    "NroCliente": 1013,
-    "FechaDespacho": "2023-11-05T08:30:00",
+    "NroCliente": 1,
+    "FechaDespacho": "2024-11-05T08:30:00",
     "DNITransportista": 45678912,
     "Estado": 0,
-    "NroDeposito": 201,
+    "NroDeposito": 1,
     "Detalle": [
       {
-        "IDMercaderia": 301,
+        "IDMercaderia": 1,
         "Cantidad": 50
       },
       {
@@ -19,66 +19,17 @@
   },
   {
     "NumeroOrdenPreparacion": 2002,
-    "NroCliente": 1022,
-    "FechaDespacho": "2023-11-06T10:00:00",
+    "NroCliente": 2,
+    "FechaDespacho": "2024-11-06T10:00:00",
     "DNITransportista": 12345678,
     "Estado": 1,
-    "NroDeposito": 202,
+    "NroDeposito": 2,
     "Detalle": [
       {
-        "IDMercaderia": 302,
+        "IDMercaderia": 2,
         "Cantidad": 100
       }
     ]
-  },
-  {
-    "NumeroOrdenPreparacion": 2003,
-    "NroCliente": 1034,
-    "FechaDespacho": "2023-11-07T12:00:00",
-    "DNITransportista": 23456789,
-    "Estado": 2,
-    "NroDeposito": 203,
-    "Detalle": [
-      {
-        "IDMercaderia": 304,
-        "Cantidad": 75
-      },
-      {
-        "IDMercaderia": 305,
-        "Cantidad": 40
-      }
-    ]
-  },
-  {
-    "NumeroOrdenPreparacion": 2004,
-    "NroCliente": 1045,
-    "FechaDespacho": "2023-11-08T14:30:00",
-    "DNITransportista": 54321678,
-    "Estado": 4,
-    "NroDeposito": 204,
-    "Detalle": [
-      {
-        "IDMercaderia": 303,
-        "Cantidad": 20
-      }
-    ]
-  },
-  {
-    "NumeroOrdenPreparacion": 2005,
-    "NroCliente": 1056,
-    "FechaDespacho": "2023-11-09T16:45:00",
-    "DNITransportista": 32165498,
-    "Estado": 5,
-    "NroDeposito": 201,
-    "Detalle": [
-      {
-        "IDMercaderia": 301,
-        "Cantidad": 60
-      },
-      {
-        "IDMercaderia": 304,
-        "Cantidad": 25
-      }
-    ]
   }
+ 
 ]

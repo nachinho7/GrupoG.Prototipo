@@ -1,6 +1,6 @@
 [
   {
-    "NroCliente": 1013,
+    "NroCliente": 1,
     "NroDeposito":  1,
     "Transportistas": [
       {
@@ -14,7 +14,7 @@
     ]
   },
   {
-    "NroCliente": 1022,
+    "NroCliente": 2,
     "NroDeposito": 1,
     "Transportistas": [
       {
@@ -26,51 +26,6 @@
         "NombreTransportista": "María Gómez"
       }
     ]
-  },
-  {
-    "NroCliente": 1015,
-    "NroDeposito": 3,
-    "Transportistas": [
-      {
-        "DNITransportista": 23456789,
-        "NombreTransportista": "Pedro Sánchez"
-      },
-      {
-        "DNITransportista": 98765432,
-        "NombreTransportista": "Lucía Ramírez"
-      },
-      {
-        "DNITransportista": 45612378,
-        "NombreTransportista": "Miguel Torres"
-      }
-    ]
-  },
-  {
-    "NroCliente": 1014,
-    "NroDeposito": 4,
-    "Transportistas": [
-      {
-        "DNITransportista": 54321678,
-        "NombreTransportista": "Sofía Jiménez"
-      }
-    ]
-  },
-  {
-    "NroCliente": 1012,
-    "NroDeposito": 5,
-    "Transportistas": [
-      {
-        "DNITransportista": 32165498,
-        "NombreTransportista": "Diego Méndez"
-      },
-      {
-        "DNITransportista": 65498732,
-        "NombreTransportista": "Elena Ruiz"
-      },
-      {
-        "DNITransportista": 78932145,
-        "NombreTransportista": "Ricardo Ortiz"
-      }
-    ]
   }
+  
 ]

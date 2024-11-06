@@ -1,77 +1,32 @@
 [
   {
-    "idMercaderia": 301,
+    "idMercaderia": 1,
     "nombreMercaderia": "Latas de Tomate",
     "Ubicacion": [
       {
         "NombreUbicacion": "10-20-4",
         "Cantidad": 500,
-        "NroDeposito": 201
+        "NroDeposito": 1
       },
       {
         "NombreUbicacion": "10-20-5",
         "Cantidad": 200,
-        "NroDeposito": 202
+        "NroDeposito": 2
       }
     ],
-    "NroCliente": 1015
+    "NroCliente": 1
   },
   {
-    "idMercaderia": 302,
+    "idMercaderia": 2,
     "nombreMercaderia": "Paquetes de Arroz",
     "Ubicacion": [
       {
         "NombreUbicacion": "5-5-3",
         "Cantidad": 300,
-        "NroDeposito": 203
+        "NroDeposito": 1
       }
     ],
-    "NroCliente": 1013
-  },
-  {
-    "idMercaderia": 303,
-    "nombreMercaderia": "Botellas de Aceite",
-    "Ubicacion": [
-      {
-        "NombreUbicacion": "10-5-1",
-        "Cantidad": 150,
-        "NroDeposito": 204
-      },
-      {
-        "NombreUbicacion": "10-5-2",
-        "Cantidad": 100,
-        "NroDeposito": 202
-      }
-    ],
-    "NroCliente": 1013
-  },
-  {
-    "idMercaderia": 304,
-    "nombreMercaderia": "Cajas de Galletas",
-    "Ubicacion": [
-      {
-        "NombreUbicacion": "12-2-7",
-        "Cantidad": 600,
-        "NroDeposito": 201
-      }
-    ],
-    "NroCliente": 1014
-  },
-  {
-    "idMercaderia": 305,
-    "nombreMercaderia": "Sacos de Azúcar",
-    "Ubicacion": [
-      {
-        "NombreUbicacion": "8-6-8",
-        "Cantidad": 250,
-        "NroDeposito": 203
-      },
-      {
-        "NombreUbicacion": "8-6-9",
-        "Cantidad": 300,
-        "NroDeposito": 204
-      }
-    ],
-    "NroCliente": 1015
+    "NroCliente": 2
   }
+  
 ]
