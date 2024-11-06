@@ -117,34 +117,10 @@ namespace GrupoG.Prototipo.Preparacion
         }
 
 
-        public List<DepositoEntidad> Depositos
-        {
-            get
-            {
-                var depositos = new List<DepositoEntidad>();
-                foreach (var depositoEntidad in DepositoAlmacen.Depositos)
-                {
-                    var deposito = new DepositoEntidad();
-                    deposito.NroDeposito = depositoEntidad.NroDeposito;
-                    deposito.NombreDeposito = depositoEntidad.NombreDeposito;
-
-                    depositos.Add(deposito);
-                }
-                return depositos;
-            }
-        }
-
-        public string ObtenerNombreDepositoPorCliente(int clienteNumero)
-        {
-            var deposito = Depositos.FirstOrDefault(d => d.NroCliente == clienteNumero);
-
-            return deposito != null ? deposito.NombreDeposito : "Depósito no encontrado";
-        }
-
-
-        public void CrearOrdenPreparacion(int nrocliente, DateTime fechadespacho, int dni, string nombredeposito, List<(int idMercaderia, int cantidad)> listaMercaderias)
+        public void CrearOrdenPreparacion(int nrocliente, DateTime fechadespacho, int dni, List<(int idMercaderia, int cantidad)> listaMercaderias)
         {
             int nroOrdenPreparacion = SumaNumOrden();
+            int numeroDeposito = ClientesAlmacen.ObtenerNroDeposito(nrocliente);
             var estadoOrdenPreparacion = OrdenPreparacionEstados.Pendiente;
             var ordenPreparacionDetalle = new List<OrdenPreparacionDetalle>();
 
@@ -169,7 +145,7 @@ namespace GrupoG.Prototipo.Preparacion
                 Estado = estadoOrdenPreparacion,
                 FechaDespacho = fechadespacho,
                 DNITransportista = dni,
-                NroDeposito = DepositoAlmacen.BuscarNroDeposito(nombredeposito),
+                NroDeposito = numeroDeposito,
                 Detalle = ordenPreparacionDetalle,
             };
 
@@ -180,47 +156,8 @@ namespace GrupoG.Prototipo.Preparacion
                 
                 var mercaderiaItem = MercaderiasAlmacen.Mercaderias.First(s => s.idMercaderia == item.idMercaderia
                 && s.NroCliente == nuevaorden.NroCliente);
-
-                
-                var ubicacion = mercaderiaItem.Ubicacion.FirstOrDefault(u => u.NroDeposito == nuevaorden.NroDeposito);
-
-                if (ubicacion != null)
-                {
-                    if (ubicacion.Cantidad >= item.Cantidad)
-                    {
-                        int cantidadRetirada = item.Cantidad;
-
-                        
-                        ubicacion.Cantidad -= cantidadRetirada; 
-
-                        
-                        var mercaderiaRetirada = new MercaderiasEntidad
-                        {
-                            idMercaderia = mercaderiaItem.idMercaderia,
-                            NroCliente = mercaderiaItem.NroCliente,
-                            Ubicacion = new List<MercaderiasUbicacion> {
-                        new MercaderiasUbicacion {
-                            NroDeposito = ubicacion.NroDeposito,
-                            Cantidad = cantidadRetirada,
-                            NombreUbicacion = ubicacion.NombreUbicacion
-                        }
-                    }
-                        };
-                        MercaderiasAlmacen.AgregarStock(mercaderiaRetirada);
-                    }
-                    else
-                    {
-                        MessageBox.Show($"No hay suficiente cantidad en la ubicación para la mercadería ID: {item.idMercaderia}");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show($"No se encontró la ubicación para el depósito: {nuevaorden.NroDeposito} en la mercadería ID: {item.idMercaderia}");
-                }
+               
             }
         }
-
-        
-
     }
 }

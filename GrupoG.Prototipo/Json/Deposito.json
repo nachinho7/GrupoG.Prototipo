@@ -1,22 +1,22 @@
 [
   {
-    "NroDeposito": 201,
+    "NroDeposito": 1,
     "NombreDeposito": "Deposito GBA Norte"
   },
   {
-    "NroDeposito": 202,
+    "NroDeposito": 2,
     "NombreDeposito": "Deposito GBA Sur"
   },
   {
-    "NroDeposito": 203,
+    "NroDeposito": 3,
     "NombreDeposito": "Deposito Rosario"
   },
   {
-    "NroDeposito": 204,
+    "NroDeposito": 4,
     "NombreDeposito": "Deposito Cordoba"
   },
   {
-    "NroDeposito": 205,
+    "NroDeposito": 5,
     "NombreDeposito": "Deposito Mendoza"
   }
 ]

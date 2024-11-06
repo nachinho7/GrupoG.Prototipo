@@ -10,6 +10,7 @@ namespace GrupoG.Prototipo.Almacenes.Clientes
     internal class ClientesEntidad
     {
         public int NroCliente { get; set; }
+        public int NroDeposito { get; set; }
         public List<ClientesTransportista> Transportistas { get; } = new();
 
     }

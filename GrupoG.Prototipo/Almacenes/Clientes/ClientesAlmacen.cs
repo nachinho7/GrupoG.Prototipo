@@ -43,5 +43,11 @@ namespace GrupoG.Prototipo.Almacenes.Clientes
             var numeroCliente = Clientes.FirstOrDefault(c => c.NroCliente == numero);
             return numeroCliente;
         }
+
+        public static int ObtenerNroDeposito(int numeroCliente)
+        {
+            var numeroDeposito = Clientes.FirstOrDefault(c => c.NroCliente == numeroCliente);
+            return numeroDeposito.NroDeposito;
+        }
     }
 }

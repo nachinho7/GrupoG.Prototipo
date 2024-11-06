@@ -1,6 +1,7 @@
 [
   {
     "NroCliente": 1013,
+    "NroDeposito":  1,
     "Transportistas": [
       {
         "DNITransportista": 45678912,
@@ -14,6 +15,7 @@
   },
   {
     "NroCliente": 1022,
+    "NroDeposito": 1,
     "Transportistas": [
       {
         "DNITransportista": 12345678,
@@ -27,6 +29,7 @@
   },
   {
     "NroCliente": 1034,
+    "NroDeposito": 3,
     "Transportistas": [
       {
         "DNITransportista": 23456789,
@@ -44,6 +47,7 @@
   },
   {
     "NroCliente": 1045,
+    "NroDeposito": 4,
     "Transportistas": [
       {
         "DNITransportista": 54321678,
@@ -53,6 +57,7 @@
   },
   {
     "NroCliente": 1056,
+    "NroDeposito": 5,
     "Transportistas": [
       {
         "DNITransportista": 32165498,

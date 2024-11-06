@@ -179,14 +179,6 @@ namespace GrupoG.Prototipo.Preparacion
                 return;
             }
 
-            string nombreDeposito = model.ObtenerNombreDepositoPorCliente(numerocliente);
-
-            if (string.IsNullOrEmpty(nombreDeposito) || nombreDeposito == "Depósito no encontrado")
-            {
-                MessageBox.Show("No se encontró el depósito para el cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             var fechaDespacho = PickerFechaDespacho.Value.Date;
             var mercaderias = new List<(int idMercaderia, int cantidad)>();
 
@@ -199,7 +191,7 @@ namespace GrupoG.Prototipo.Preparacion
                 }
             }
 
-            model.CrearOrdenPreparacion(numerocliente, fechaDespacho, dniTransportista, nombreDeposito, mercaderias);
+            model.CrearOrdenPreparacion(numerocliente, fechaDespacho, dniTransportista, mercaderias);
         }
 
 
