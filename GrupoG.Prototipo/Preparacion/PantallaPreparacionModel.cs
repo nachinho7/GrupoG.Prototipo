@@ -151,13 +151,6 @@ namespace GrupoG.Prototipo.Preparacion
 
             OrdenPreparacionAlmacen.AgregarOrdenPreparacion(nuevaorden);
 
-            foreach (var item in nuevaorden.Detalle)
-            {
-                
-                var mercaderiaItem = MercaderiasAlmacen.Mercaderias.First(s => s.idMercaderia == item.idMercaderia
-                && s.NroCliente == nuevaorden.NroCliente);
-               
-            }
         }
     }
 }

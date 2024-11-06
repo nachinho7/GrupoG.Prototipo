@@ -192,6 +192,10 @@ namespace GrupoG.Prototipo.Preparacion
             }
 
             model.CrearOrdenPreparacion(numerocliente, fechaDespacho, dniTransportista, mercaderias);
+
+            MessageBox.Show("Orden de Preparacion creada correctamente!", "Exito", MessageBoxButtons.OK);
+
+            LimpiarFormulario();
         }
 
 
@@ -205,6 +209,7 @@ namespace GrupoG.Prototipo.Preparacion
             ListaPrevisualizacionOrdenesPreparacion.Items.Clear();
             TextBoxCantidad.Text = "";
             TextBoxCantidad.Enabled = false;
+            textBoxNroOdenPrevisualizacion.Text = model.SumaNumOrden().ToString();
         }
 
         
