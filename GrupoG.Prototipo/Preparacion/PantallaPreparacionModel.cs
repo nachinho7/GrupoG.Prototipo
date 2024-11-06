@@ -129,6 +129,9 @@ namespace GrupoG.Prototipo.Preparacion
                 int idMercaderia = item.idMercaderia;
                 int cantidad = item.cantidad;
 
+                // Resta el stock sin importar la ubicación
+                MercaderiasAlmacen.RestarStockGlobal(idMercaderia, cantidad);
+
                 var detalle = new OrdenPreparacionDetalle
                 {
                     idMercaderia = idMercaderia,
@@ -137,6 +140,7 @@ namespace GrupoG.Prototipo.Preparacion
 
                 ordenPreparacionDetalle.Add(detalle);
             }
+
 
             var nuevaorden = new OrdenPreparacionEntidad
             {

@@ -71,5 +71,39 @@ namespace GrupoG.Prototipo.Almacenes.Mercaderias
             mercaderia.Cantidad -= mercaderiaretirada;
         }
 
+        public static void RestarStockGlobal(int idMercaderia, int cantidadARestar)
+        {
+            var mercaderia = mercaderias.FirstOrDefault(m => m.idMercaderia == idMercaderia);
+            if (mercaderia != null)
+            {
+                int totalStock = mercaderia.CalcularTotalStock();
+
+                if (totalStock >= cantidadARestar)
+                {
+                    int cantidadRestante = cantidadARestar;
+
+                    // Resta el stock de cada ubicación en orden hasta alcanzar la cantidad solicitada
+                    foreach (var ubicacion in mercaderia.Ubicacion)
+                    {
+                        if (cantidadRestante <= 0) break;
+
+                        if (ubicacion.Cantidad >= cantidadRestante)
+                        {
+                            ubicacion.Cantidad -= cantidadRestante;
+                            cantidadRestante = 0;
+                        }
+                        else
+                        {
+                            cantidadRestante -= ubicacion.Cantidad;
+                            ubicacion.Cantidad = 0;
+                        }
+                    }
+
+                    Grabar(); 
+                }
+                
+            }
+        }
     }
 }
+
