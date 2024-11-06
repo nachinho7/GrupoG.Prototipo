@@ -157,6 +157,11 @@ namespace GrupoG.Prototipo.Preparacion
                 MessageBox.Show("El DNI del transportista ingresado no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (textBoxDNITransportista.Text.Length < 8 || textBoxDNITransportista.Text.Length > 9)
+            {
+                MessageBox.Show("El DNI del transportista debe tener entre 8 y 9 dígitos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (PickerFechaDespacho.Value.Date < DateTime.Today)
             {
@@ -171,6 +176,12 @@ namespace GrupoG.Prototipo.Preparacion
                     MessageBox.Show("No se puede generar la orden. Hay mercaderías con cantidad 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+
+            }
+            if (ListaPrevisualizacionOrdenesPreparacion.Items.Count == 0)
+            {
+                MessageBox.Show("No se puede generar la orden. No hay mercaderías en la lista.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             if (!int.TryParse(numeroCliente.Text, out int numerocliente))
