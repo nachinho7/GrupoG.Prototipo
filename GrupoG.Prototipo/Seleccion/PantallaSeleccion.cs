@@ -18,7 +18,7 @@ namespace GrupoG.Prototipo.Seleccion
         private void PantallaSeleccion_Load(object sender, EventArgs e)
         {
             datetimeDespacho.CustomFormat = " "; 
-            datetimeDespacho.Format = DateTimePickerFormat.Custom; 
+            datetimeDespacho.Format = DateTimePickerFormat.Custom;
 
             CargarOrdenes();
             CargarClientes();
@@ -29,12 +29,12 @@ namespace GrupoG.Prototipo.Seleccion
         {
             listView1.Items.Clear();
 
-            var ordenes = modelo.ObtenerOrdenes();
+            var ordenes = modelo.ObtenerOrdenPreparacion();
 
             foreach (var orden in ordenes)
             {
                 var item = new ListViewItem(orden.NumeroOrdenPreparacion.ToString());
-                item.SubItems.Add(orden.NumeroCliente.ToString());
+                item.SubItems.Add(orden.NroCliente.ToString());
                 item.SubItems.Add(orden.FechaDespacho.ToShortDateString());
                 item.SubItems.Add(orden.DNITransportista.ToString());
                 item.Tag = orden;
@@ -104,7 +104,7 @@ namespace GrupoG.Prototipo.Seleccion
             foreach (var orden in ordenesFiltradas)
             {
                 var item = new ListViewItem(orden.NumeroOrdenPreparacion.ToString());
-                item.SubItems.Add(orden.NumeroCliente.ToString());
+                item.SubItems.Add(orden.NroCliente.ToString());
                 item.SubItems.Add(orden.FechaDespacho.ToShortDateString());
                 item.SubItems.Add(orden.DNITransportista.ToString());
                 item.Tag = orden;
@@ -121,9 +121,9 @@ namespace GrupoG.Prototipo.Seleccion
 
             if (ordenesSeleccionadas.Count > 0)
             {
-                var nuevaSeleccion = modelo.GenerarOrdenDeSeleccion(ordenesSeleccionadas);
-                MessageBox.Show($"Orden de Selección N°{nuevaSeleccion.numeroOrdenSeleccion} generada!\n" +
-                                $"Incluye {ordenesSeleccionadas.Count} órdenes de preparación.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //var nuevaSeleccion = modelo.GenerarOrdenDeSeleccion(ordenesSeleccionadas);
+                //MessageBox.Show($"Orden de Selección N°{nuevaSeleccion.numeroOrdenSeleccion} generada!\n" +
+                //                $"Incluye {ordenesSeleccionadas.Count} órdenes de preparación.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarOrdenes();
             }
             else

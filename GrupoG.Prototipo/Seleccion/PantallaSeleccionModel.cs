@@ -1,101 +1,105 @@
-﻿using System;
+﻿using GrupoG.Prototipo.Almacenes;
+using GrupoG.Prototipo.Almacenes.Clientes;
+using GrupoG.Prototipo.Almacenes.Mercaderias;
+using GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 
 namespace GrupoG.Prototipo.Seleccion
 {
     internal class PantallaSeleccionModel
     {
-        
-        public List<OrdenPreparacion> OrdenPreparacion { get; private set; } = new List<OrdenPreparacion>
+
+
+        public List<OrdenPreparacion> ObtenerOrdenPreparacion()
         {
-            new OrdenPreparacion { NumeroOrdenPreparacion = 1, NumeroCliente = 1001, FechaDespacho = DateTime.Now.AddDays(1), DNITransportista = 1238128 },
-            new OrdenPreparacion { NumeroOrdenPreparacion = 2, NumeroCliente = 1002, FechaDespacho = DateTime.Now.AddDays(2), DNITransportista = 1238128 },
-            new OrdenPreparacion { NumeroOrdenPreparacion = 3, NumeroCliente = 1002, FechaDespacho = DateTime.Now.AddDays(3), DNITransportista = 1238513 },
-            new OrdenPreparacion { NumeroOrdenPreparacion = 4, NumeroCliente = 1001, FechaDespacho = DateTime.Now.AddDays(1), DNITransportista = 2421411 },
-            new OrdenPreparacion { NumeroOrdenPreparacion = 5, NumeroCliente = 1002, FechaDespacho = DateTime.Now.AddDays(2), DNITransportista = 4636436 },
-            new OrdenPreparacion { NumeroOrdenPreparacion = 6, NumeroCliente = 1003, FechaDespacho = DateTime.Now.AddDays(3), DNITransportista = 4643636 },
-            new OrdenPreparacion { NumeroOrdenPreparacion = 7, NumeroCliente = 1004, FechaDespacho = DateTime.Now.AddDays(2), DNITransportista = 1238128 },
-            new OrdenPreparacion { NumeroOrdenPreparacion = 8, NumeroCliente = 1005, FechaDespacho = DateTime.Now.AddDays(2), DNITransportista = 1238128 },
-            new OrdenPreparacion { NumeroOrdenPreparacion = 9, NumeroCliente = 1006, FechaDespacho = DateTime.Now.AddDays(2), DNITransportista = 1238128 },
-            new OrdenPreparacion { NumeroOrdenPreparacion = 10, NumeroCliente = 1007, FechaDespacho = DateTime.Now.AddDays(7), DNITransportista = 1238128 },
-            new OrdenPreparacion { NumeroOrdenPreparacion = 11, NumeroCliente = 1008, FechaDespacho = DateTime.Now.AddDays(8), DNITransportista = 1238128 },
-            new OrdenPreparacion { NumeroOrdenPreparacion = 12, NumeroCliente = 1009, FechaDespacho = DateTime.Now.AddDays(9), DNITransportista = 1238128 },
-            new OrdenPreparacion { NumeroOrdenPreparacion = 13, NumeroCliente = 1010, FechaDespacho = DateTime.Now.AddDays(10), DNITransportista = 1238128 },
-            new OrdenPreparacion { NumeroOrdenPreparacion = 14, NumeroCliente = 1011, FechaDespacho = DateTime.Now.AddDays(9), DNITransportista = 1238128 },
-            new OrdenPreparacion { NumeroOrdenPreparacion = 15, NumeroCliente = 1012, FechaDespacho = DateTime.Now.AddDays(12), DNITransportista = 1238128 },
-            new OrdenPreparacion { NumeroOrdenPreparacion = 16, NumeroCliente = 1013, FechaDespacho = DateTime.Now.AddDays(13), DNITransportista = 1238128 },
-            new OrdenPreparacion { NumeroOrdenPreparacion = 17, NumeroCliente = 1014, FechaDespacho = DateTime.Now.AddDays(10), DNITransportista = 1238128 },
-            new OrdenPreparacion { NumeroOrdenPreparacion = 18, NumeroCliente = 1015, FechaDespacho = DateTime.Now.AddDays(2), DNITransportista = 1238128 },
-            new OrdenPreparacion { NumeroOrdenPreparacion = 19, NumeroCliente = 1016, FechaDespacho = DateTime.Now.AddDays(2), DNITransportista = 1238128 },
-        };
+            if (OrdenPreparacionAlmacen.OrdenPreparacion == null || !OrdenPreparacionAlmacen.OrdenPreparacion.Any())
+            {
+                MessageBox.Show("No se encontraron ordenes de preparacion.");
+            }
 
-        private List<OrdenSeleccion> ordenesSeleccionadas = new List<OrdenSeleccion>();
-        private int siguienteIdSeleccion = 1;
-
-        public List<OrdenSeleccion> OrdenesSeleccionadas => ordenesSeleccionadas;
-
-        public List<OrdenPreparacion> ObtenerOrdenes()
-        {
-            var ordenesEnSeleccion = ordenesSeleccionadas
-                .SelectMany(os => os.OrdenPreparacion)
-                .Select(o => o.NumeroOrdenPreparacion)
+            var ordenesPreparacion = OrdenPreparacionAlmacen.OrdenPreparacion
+                .Select(op => new OrdenPreparacion
+                {
+                    NumeroOrdenPreparacion = op.NumeroOrdenPreparacion,
+                    NroCliente = op.NroCliente,
+                    FechaDespacho = op.FechaDespacho,
+                    DNITransportista = op.DNITransportista,
+                })
                 .ToList();
 
-            return OrdenPreparacion.Where(o => !ordenesEnSeleccion.Contains(o.NumeroOrdenPreparacion)).ToList();
+            if (!ordenesPreparacion.Any())
+            {
+                MessageBox.Show("No se encontraron mercaderías para el cliente.");
+            }
+
+            return ordenesPreparacion;
+
         }
 
         public List<int> ObtenerClientesDisponibles()
         {
-            var ordenesSeleccionadasActuales = ordenesSeleccionadas
-                .SelectMany(os => os.OrdenPreparacion);
+            if (OrdenPreparacionAlmacen.OrdenPreparacion == null || !OrdenPreparacionAlmacen.OrdenPreparacion.Any())
+            {
+                MessageBox.Show("No se encontraron ordenes de preparacion.");
+                return new List<int>();
+            }
 
-            return OrdenPreparacion
-                .Where(o => !ordenesSeleccionadasActuales.Select(sel => sel.NumeroOrdenPreparacion).Contains(o.NumeroOrdenPreparacion))
-                .Select(o => o.NumeroCliente)
+            var clientesDisponibles = OrdenPreparacionAlmacen.OrdenPreparacion
+                .Select(op => op.NroCliente)
                 .Distinct()
-                .OrderBy(c => c)
                 .ToList();
+
+            return clientesDisponibles;
         }
 
         public List<int> ObtenerTransportistasDisponibles()
         {
-            var ordenesSeleccionadasActuales = ordenesSeleccionadas
-                .SelectMany(os => os.OrdenPreparacion);
+            if (OrdenPreparacionAlmacen.OrdenPreparacion == null || !OrdenPreparacionAlmacen.OrdenPreparacion.Any())
+            {
+                MessageBox.Show("No se encontraron ordenes de preparacion.");
+                return new List<int>();
+            }
 
-            return OrdenPreparacion
-                .Where(o => !ordenesSeleccionadasActuales.Select(sel => sel.NumeroOrdenPreparacion).Contains(o.NumeroOrdenPreparacion))
-                .Select(o => o.DNITransportista)
+            var transportistasDisponibles = OrdenPreparacionAlmacen.OrdenPreparacion
+                .Select(op => op.DNITransportista)
                 .Distinct()
-                .OrderBy(dni => dni)
                 .ToList();
+
+            return transportistasDisponibles;
         }
 
         public List<OrdenPreparacion> FiltrarOrdenesPorClienteYFechaYTransportista(int? numeroCliente, DateTime? fecha, int? dniTransportista)
         {
-            var ordenesEnSeleccion = ordenesSeleccionadas
-                .SelectMany(os => os.OrdenPreparacion)
-                .Select(o => o.NumeroOrdenPreparacion)
-                .ToList();
+            var todasOrdenes = ObtenerOrdenPreparacion();
 
-            return OrdenPreparacion
-                .Where(o => (!numeroCliente.HasValue || o.NumeroCliente == numeroCliente.Value)
-                             && (!fecha.HasValue || o.FechaDespacho.Date == fecha.Value.Date)
-                             && (!dniTransportista.HasValue || o.DNITransportista == dniTransportista.Value)
-                             && !ordenesEnSeleccion.Contains(o.NumeroOrdenPreparacion))
-                .ToList();
-        }
-
-        public OrdenSeleccion GenerarOrdenDeSeleccion(List<OrdenPreparacion> OrdenPreparacion)
-        {
-            var nuevaSeleccion = new OrdenSeleccion
+            if (todasOrdenes == null || !todasOrdenes.Any())
             {
-                numeroOrdenSeleccion = siguienteIdSeleccion++,
-                FechaCreacion = DateTime.Now,
-                OrdenPreparacion = OrdenPreparacion
-            };
-            ordenesSeleccionadas.Add(nuevaSeleccion);
-            return nuevaSeleccion;
+                MessageBox.Show("No se encontraron órdenes de preparación.");
+                return new List<OrdenPreparacion>();
+            }
+
+            return todasOrdenes
+                .Where(o => (!numeroCliente.HasValue || o.NroCliente == numeroCliente.Value)
+                            && (!fecha.HasValue || o.FechaDespacho.Date == fecha.Value.Date)
+                            && (!dniTransportista.HasValue || o.DNITransportista == dniTransportista.Value))
+                .ToList();
         }
+
+        public List<OrdenSeleccion> OrdenesSeleccionAgregadas { get; private set; }
+
+        //public OrdenSeleccion GenerarOrdenDeSeleccion(List<OrdenPreparacion> OrdenPreparacion)
+        //{
+        //    var nuevaSeleccion = new OrdenSeleccion
+        //    {
+        //        numeroOrdenSeleccion = siguienteIdSeleccion++,
+        //        FechaCreacion = DateTime.Now,
+        //        OrdenPreparacion = OrdenPreparacion
+        //    };
+        //    orde.Add(nuevaSeleccion);
+        //    return nuevaSeleccion;
+        //}
     }
 }

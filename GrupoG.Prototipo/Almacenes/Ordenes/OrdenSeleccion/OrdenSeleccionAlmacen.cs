@@ -10,31 +10,37 @@ namespace GrupoG.Prototipo.Almacenes.Ordenes.OrdenSeleccion
 {
     internal class OrdenSeleccionAlmacen
     {
-        private static List<OrdenSeleccionEntidad> ordenSeleccion = new List<OrdenSeleccionEntidad>();
-        public static IReadOnlyCollection<OrdenSeleccionEntidad> OrdenSeleccion => ordenSeleccion.AsReadOnly();
+        private static List<OrdenSeleccionEntidad> ordenseleccion = new List<OrdenSeleccionEntidad>();
+
+        static OrdenSeleccionAlmacen()
+        {
+            Leer();
+        }
+
+        public static IReadOnlyCollection<OrdenSeleccionEntidad> OrdenSeleccion => ordenseleccion.AsReadOnly();
 
         public static void Grabar()
         {
-
-            var datos = JsonSerializer.Serialize(ordenSeleccion);
-            File.WriteAllText("OrdenSeleccion.json", datos);
+            var datos = JsonSerializer.Serialize(ordenseleccion);
+            File.WriteAllText(@"Json\OrdenSeleccion.json", datos);
         }
 
         public static void Leer()
         {
-            if (!File.Exists("OrdenSeleccion.json"))
+
+            if (!File.Exists(@"Json\OrdenSeleccion.json"))
             {
                 return;
             }
 
-            var datos = File.ReadAllText("OrdenSeleccion.json");
+            var datos = File.ReadAllText(@"Json\OrdenSeleccion.json");
 
-            ordenSeleccion = JsonSerializer.Deserialize<List<OrdenSeleccionEntidad>>(datos)!;
+            ordenseleccion = JsonSerializer.Deserialize<List<OrdenSeleccionEntidad>>(datos)!;
         }
 
-        public static void AgregarOrdenSeleccion(OrdenSeleccionEntidad ordenseleccion)
+        public static void AgregarOrdenSeleccion(OrdenSeleccionEntidad ordenSeleccion)
         {
-            ordenSeleccion.Add(ordenseleccion);
+            ordenseleccion.Add(ordenSeleccion);
         }
         public static void ModificarEstado(OrdenSeleccionEntidad orden, OrdenSeleccionEstados estado)
         {
