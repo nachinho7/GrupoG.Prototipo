@@ -21,7 +21,7 @@ namespace GrupoG.Prototipo.Preparacion
         {
             if (int.TryParse(numeroCliente.Text, out int nroCliente))
             {
-                var cliente = model.BuscarCliente(nroCliente);
+                var cliente = model.ObtenerCliente(nroCliente);
 
                 if (cliente == null)
                 {
@@ -29,26 +29,21 @@ namespace GrupoG.Prototipo.Preparacion
                     return;
                 }
 
-                model.ObtenerMercaderia(cliente.NroCliente);
-
+                var datosMercaderias = model.ObtenerMercaderiasPorCliente(nroCliente);
+                ActualizarListaMercaderias(datosMercaderias);
             }
         }
-
-        private void ActualizarListaMercaderias(List<(int idMercaderia, string nombre, int CantidadTotal)> mercaderias)
+        private void ActualizarListaMercaderias(List<Mercaderias> mercaderias)
         {
             ListaDatosMercaderia.Items.Clear();
 
             foreach (var mercaderia in mercaderias)
             {
-                var item = new ListViewItem(mercaderia.idMercaderia.ToString());
-                item.SubItems.Add(mercaderia.nombre);
-                item.SubItems.Add(mercaderia.CantidadTotal.ToString());
-                ListaDatosMercaderia.Items.Add(item);
-            }
 
-            if (mercaderias.Count == 0)
-            {
-                MessageBox.Show("El número de cliente ingresado no se encuentra registrado en el sistema.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                var item = new ListViewItem(mercaderia.idMercaderia.ToString());
+                item.SubItems.Add(mercaderia.nombreMercaderia);
+                item.SubItems.Add(mercaderia.cantidadMercaderia.ToString());
+                ListaDatosMercaderia.Items.Add(item);
             }
         }
 
@@ -133,9 +128,9 @@ namespace GrupoG.Prototipo.Preparacion
 
                 ActualizarListaPrevisualizacion();
 
-                var clienteNumero = int.Parse(numeroCliente.Text);
-                var mercaderias = model.ObtenerMercaderia(clienteNumero);
-                ActualizarListaMercaderias(mercaderias);
+                //var clienteNumero = int.Parse(numeroCliente.Text);
+                //var mercaderias = model.ObtenerMercaderiasPorCliente(clienteNumero);
+                //ActualizarListaMercaderias(mercaderias);
             }
         }
 
@@ -144,15 +139,15 @@ namespace GrupoG.Prototipo.Preparacion
             ListaPrevisualizacionOrdenesPreparacion.Items.Clear();
 
             int numeroOrdenActual = int.Parse(textBoxNroOdenPrevisualizacion.Text);
-            var ordenesPreparacion = model.ObtenerMercaderia(numeroOrdenActual);
+            var ordenesPreparacion = model.ObtenerMercaderiasPorCliente(numeroOrdenActual);
 
             foreach (var mercaderia in ordenesPreparacion)
             {
-                var listItem = new ListViewItem(mercaderia.idMercaderia.ToString());
-                listItem.SubItems.Add(mercaderia.nombre);
-                listItem.SubItems.Add(mercaderia.CantidadTotal.ToString());
+                ////var listItem = new ListViewItem(mercaderia.idMercaderia.ToString());
+                ////listItem.SubItems.Add(mercaderia.nombre);
+                ////listItem.SubItems.Add(mercaderia.CantidadTotal.ToString());
 
-                ListaPrevisualizacionOrdenesPreparacion.Items.Add(listItem);
+                //ListaPrevisualizacionOrdenesPreparacion.Items.Add(listItem);
             }
         }
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GrupoG.Prototipo.Almacenes.Clientes
 {
-    internal class ClientesAlmacen
+    internal static class ClientesAlmacen
     {
         private static List<ClientesEntidad> clientes = new List<ClientesEntidad>();
 
@@ -38,10 +38,10 @@ namespace GrupoG.Prototipo.Almacenes.Clientes
             clientes = JsonSerializer.Deserialize<List<ClientesEntidad>>(datos)!;
         }
 
-        public static int ObtenerNroCliente(int numero)
+        public static ClientesEntidad ObtenerNroCliente(int numero)
         { 
             var numeroCliente = Clientes.FirstOrDefault(c => c.NroCliente == numero);
-            return numeroCliente.NroCliente;
+            return numeroCliente;
         }
     }
 }

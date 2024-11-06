@@ -12,19 +12,32 @@ namespace GrupoG.Prototipo.Preparacion
 {
     internal class PantallaPreparacionModel
     {
-        public Clientes BuscarCliente(int numerocliente)
+
+        public List<Clientes> ObtenerCliente(int numeroCliente)
         {
-            foreach (ClientesEntidad clienteEntidad in ClientesAlmacen.Clientes)
+            
+            var clienteEntidad = ClientesAlmacen.ObtenerNroCliente(numeroCliente);
+
+            if (clienteEntidad == null)
             {
-                if (clienteEntidad.NroCliente == numerocliente)
-                {
-                    return new Clientes { NroCliente = clienteEntidad.NroCliente};
-                }
+                
+                MessageBox.Show("Cliente no encontrado.");
+                return new List<Clientes>();
             }
-            return null;
+
+            
+            var cliente = new Clientes
+            {
+                NroCliente = clienteEntidad.NroCliente
+            };
+
+            
+            MessageBox.Show($"Cliente encontrado: NroCliente = {cliente.NroCliente}");
+
+            return new List<Clientes> { cliente };
         }
 
-        public List<(int idMercaderia, string nombre, int CantidadTotal)> ObtenerMercaderia(int nroCliente)
+        public List<Mercaderias> ObtenerMercaderiasPorCliente(int nroCliente)
         {
             if (MercaderiasAlmacen.Mercaderias == null || !MercaderiasAlmacen.Mercaderias.Any())
             {
@@ -33,20 +46,28 @@ namespace GrupoG.Prototipo.Preparacion
 
             var mercaderias = MercaderiasAlmacen.Mercaderias
                 .Where(m => m.NroCliente == nroCliente)
-                .Select(m => (
-                    idMercaderia: m.idMercaderia,
-                    nombre: m.nombreMercaderia,
-                    CantidadTotal: m.CalcularTotalStock(m.idMercaderia)
-                ))
+                .Select(m => new Mercaderias
+                {
+                    idMercaderia = m.idMercaderia,
+                    nombreMercaderia = m.nombreMercaderia,
+                    cantidadMercaderia = m.CalcularTotalStock() 
+                })
                 .ToList();
 
             if (!mercaderias.Any())
             {
-                throw new Exception("No se encontraron mercaderías para el cliente.");
+                MessageBox.Show("No se encontraron mercaderías para el cliente.");
+            }
+            else
+            {
+                MessageBox.Show($"Se encontraron {mercaderias.Count} mercaderías para el cliente.");
             }
 
             return mercaderias;
         }
+
+
+
 
         public List<DepositoEntidad> Depositos
         {
