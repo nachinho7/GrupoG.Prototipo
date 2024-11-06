@@ -62,6 +62,19 @@ namespace GrupoG.Prototipo.Preparacion
             }
         }
 
+        public void ActualizarListaPrevisualizacion()
+        {
+            ListaPrevisualizacionOrdenesPreparacion.Items.Clear();
+
+            foreach (var mercaderia in model.MercaderiasAgregadas)
+            {
+                ListViewItem item = new ListViewItem(mercaderia.idMercaderia.ToString());
+                item.SubItems.Add(mercaderia.nombreMercaderia);
+                item.SubItems.Add(mercaderia.cantidadMercaderia.ToString());
+
+                ListaPrevisualizacionOrdenesPreparacion.Items.Add(item);
+            }
+        }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -87,13 +100,17 @@ namespace GrupoG.Prototipo.Preparacion
 
                 if (cantidadDisponible == 0)
                 {
-                    int numeroOrdenActual = int.Parse(textBoxNroOdenPrevisualizacion.Text);
+                    MessageBox.Show("No hay stock disponible para agregar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
                 else
                 {
                     if (cantidadSeleccionada <= cantidadDisponible)
                     {
                         selectedItem.SubItems[2].Text = (cantidadDisponible - cantidadSeleccionada).ToString();
+
+                        // Agregar el producto a la lista de mercaderías agregadas
+                        model.AgregarProducto(idMercaderia, nombreMercaderia, cantidadSeleccionada);
                     }
                     else
                     {
@@ -101,27 +118,12 @@ namespace GrupoG.Prototipo.Preparacion
                     }
                 }
 
-                ActualizarListaPrevisualizacion();
+                ActualizarListaPrevisualizacion();  // Actualizar la lista de previsualización con los productos agregados
             }
             else
             {
                 MessageBox.Show("Por favor, ingrese una cantidad válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void ActualizarListaPrevisualizacion()
-        {
-            //ListaPrevisualizacionOrdenesPreparacion.Items.Clear();
-
-
-            //foreach (var mercaderia in ListaPrevisualizacionOrdenesPreparacion)
-            //{
-            //    var listItem = new ListViewItem(mercaderia.idMercaderia.ToString());
-            //    listItem.SubItems.Add(mercaderia.nombre);
-            //    listItem.SubItems.Add(mercaderia.CantidadTotal.ToString());
-
-            //    ListaPrevisualizacionOrdenesPreparacion.Items.Add(listItem);
-            //}
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -134,22 +136,14 @@ namespace GrupoG.Prototipo.Preparacion
 
             var selectedItem = ListaPrevisualizacionOrdenesPreparacion.SelectedItems[0];
             int idMercaderia = int.Parse(selectedItem.SubItems[0].Text);
-            int cantidadEliminada = int.Parse(selectedItem.SubItems[2].Text);
 
-            var confirmResult = MessageBox.Show("¿Desea eliminar el elemento seleccionado?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (confirmResult == DialogResult.Yes)
-            {
-                int numeroOrdenActual = int.Parse(textBoxNroOdenPrevisualizacion.Text);
+            // Eliminar del modelo
+            model.EliminarProducto(idMercaderia);
 
-                ActualizarListaPrevisualizacion();
-
-                //var clienteNumero = int.Parse(numeroCliente.Text);
-                //var mercaderias = model.ObtenerMercaderiasPorCliente(clienteNumero);
-                //ActualizarListaMercaderias(mercaderias);
-            }
+            // Actualizar la lista de previsualización
+            ActualizarListaPrevisualizacion();
         }
 
-        
 
 
         private void btnGenerar_Click(object sender, EventArgs e)

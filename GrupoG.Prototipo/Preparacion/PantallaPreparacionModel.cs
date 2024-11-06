@@ -68,8 +68,7 @@ namespace GrupoG.Prototipo.Preparacion
             return mercaderias;
         }
 
-        private List<Mercaderias> MercaderiasAgregadas = new List<Mercaderias>();
-
+        public List<Mercaderias> MercaderiasAgregadas = new List<Mercaderias>();
 
         public void AgregarProducto(int idMercaderia, string nombreMercaderia, int cantidadMercaderia)
         {
@@ -80,10 +79,22 @@ namespace GrupoG.Prototipo.Preparacion
                 cantidadMercaderia = cantidadMercaderia
             };
 
+            // Agregar la mercadería a la lista
             MercaderiasAgregadas.Add(mercaderiaAGrabar);
 
             MessageBox.Show($"Mercadería {mercaderiaAGrabar.nombreMercaderia} agregada correctamente.");
         }
+
+        public void EliminarProducto(int idMercaderia)
+        {
+            var mercaderia = MercaderiasAgregadas.FirstOrDefault(m => m.idMercaderia == idMercaderia);
+            if (mercaderia != null)
+            {
+                MercaderiasAgregadas.Remove(mercaderia);
+                MessageBox.Show($"Mercadería {mercaderia.nombreMercaderia} eliminada correctamente.");
+            }
+        }
+
 
         public void CrearOrdenPreparacion(int nrocliente, DateTime fechadespacho, int dni, string nombredeposito, List<(int idMercaderia, int cantidad)> listaMercaderias)
         {
@@ -120,23 +131,23 @@ namespace GrupoG.Prototipo.Preparacion
 
             foreach (var item in nuevaorden.Detalle)
             {
-                // Encuentra la mercadería específica
+                
                 var mercaderiaItem = MercaderiasAlmacen.Mercaderias.First(s => s.idMercaderia == item.idMercaderia
                 && s.NroCliente == nuevaorden.NroCliente);
 
-                // Busca la ubicación específica que coincida con el depósito
+                
                 var ubicacion = mercaderiaItem.Ubicacion.FirstOrDefault(u => u.NroDeposito == nuevaorden.NroDeposito);
 
-                if (ubicacion != null) // Asegúrate de que se encontró una ubicación
+                if (ubicacion != null)
                 {
                     if (ubicacion.Cantidad >= item.Cantidad)
                     {
                         int cantidadRetirada = item.Cantidad;
 
-                        // Actualiza la cantidad en la ubicación
-                        ubicacion.Cantidad -= cantidadRetirada; // Restar la cantidad retirada
+                        
+                        ubicacion.Cantidad -= cantidadRetirada; 
 
-                        // Crea una nueva entidad para el stock retirado
+                        
                         var mercaderiaRetirada = new MercaderiasEntidad
                         {
                             idMercaderia = mercaderiaItem.idMercaderia,
