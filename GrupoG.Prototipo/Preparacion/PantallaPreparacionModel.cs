@@ -13,6 +13,12 @@ namespace GrupoG.Prototipo.Preparacion
     internal class PantallaPreparacionModel
     {
 
+        public int SumaNumOrden()
+        {
+            int sumaNumOrden = (OrdenPreparacionAlmacen.OrdenPreparacion.Any() ? OrdenPreparacionAlmacen.OrdenPreparacion.Max(o => o.NumeroOrdenPreparacion) : 0) + 1;
+            return sumaNumOrden;
+        }
+
         public List<Clientes> ObtenerCliente(int numeroCliente)
         {
             
@@ -62,36 +68,21 @@ namespace GrupoG.Prototipo.Preparacion
             return mercaderias;
         }
 
+        private List<Mercaderias> MercaderiasAgregadas = new List<Mercaderias>();
 
-        public List<DepositoEntidad> Depositos
+
+        public void AgregarProducto(int idMercaderia, string nombreMercaderia, int cantidadMercaderia)
         {
-            get
+            var mercaderiaAGrabar = new Mercaderias
             {
-                var depositos = new List<DepositoEntidad>();
-                foreach (var depositoEntidad in DepositoAlmacen.Depositos)
-                {
-                    var deposito = new DepositoEntidad();
-                    deposito.NroDeposito = depositoEntidad.NroDeposito;
-                    deposito.NombreDeposito = depositoEntidad.NombreDeposito;
+                idMercaderia = idMercaderia,
+                nombreMercaderia = nombreMercaderia,
+                cantidadMercaderia = cantidadMercaderia
+            };
 
-                    depositos.Add(deposito);
-                }
-                return depositos;
-            }
-        }
+            MercaderiasAgregadas.Add(mercaderiaAGrabar);
 
-        public string ObtenerNombreDepositoPorCliente(int clienteNumero)
-        {
-            var deposito = Depositos.FirstOrDefault(d => d.NroCliente == clienteNumero);
-
-            return deposito != null ? deposito.NombreDeposito : "Depósito no encontrado";
-        }
-
-
-        public int SumaNumOrden()
-        {
-            int sumaNumOrden = (OrdenPreparacionAlmacen.OrdenPreparacion.Any() ? OrdenPreparacionAlmacen.OrdenPreparacion.Max(o => o.NumeroOrdenPreparacion) : 0) + 1;
-            return sumaNumOrden;
+            MessageBox.Show($"Mercadería {mercaderiaAGrabar.nombreMercaderia} agregada correctamente.");
         }
 
         public void CrearOrdenPreparacion(int nrocliente, DateTime fechadespacho, int dni, string nombredeposito, List<(int idMercaderia, int cantidad)> listaMercaderias)
@@ -171,5 +162,30 @@ namespace GrupoG.Prototipo.Preparacion
                 }
             }
         }
+
+        public List<DepositoEntidad> Depositos
+        {
+            get
+            {
+                var depositos = new List<DepositoEntidad>();
+                foreach (var depositoEntidad in DepositoAlmacen.Depositos)
+                {
+                    var deposito = new DepositoEntidad();
+                    deposito.NroDeposito = depositoEntidad.NroDeposito;
+                    deposito.NombreDeposito = depositoEntidad.NombreDeposito;
+
+                    depositos.Add(deposito);
+                }
+                return depositos;
+            }
+        }
+
+        public string ObtenerNombreDepositoPorCliente(int clienteNumero)
+        {
+            var deposito = Depositos.FirstOrDefault(d => d.NroCliente == clienteNumero);
+
+            return deposito != null ? deposito.NombreDeposito : "Depósito no encontrado";
+        }
+
     }
 }

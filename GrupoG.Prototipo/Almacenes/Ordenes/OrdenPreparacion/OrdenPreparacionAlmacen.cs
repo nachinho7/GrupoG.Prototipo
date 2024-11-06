@@ -1,4 +1,5 @@
-﻿using GrupoG.Prototipo.Almacenes.Ordenes.OrdenEntrega;
+﻿using GrupoG.Prototipo.Almacenes.Mercaderias;
+using GrupoG.Prototipo.Almacenes.Ordenes.OrdenEntrega;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,31 +11,36 @@ namespace GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion
 {
     internal class OrdenPreparacionAlmacen
     {
-        private static List<OrdenPreparacionEntidad> ordenPreparacion = new List<OrdenPreparacionEntidad>();
-        public static IReadOnlyCollection<OrdenPreparacionEntidad> OrdenPreparacion => ordenPreparacion.AsReadOnly();
+        private static List<OrdenPreparacionEntidad> ordenpreparacion = new List<OrdenPreparacionEntidad>();
+
+        static OrdenPreparacionAlmacen()
+        {
+            Leer();
+        }
+
+        public static IReadOnlyCollection<OrdenPreparacionEntidad> OrdenPreparacion => ordenpreparacion.AsReadOnly();
 
         public static void Grabar()
         {
-
-            var datos = JsonSerializer.Serialize(ordenPreparacion);
-            File.WriteAllText("OrdenPreparacion.json", datos);
+            var datos = JsonSerializer.Serialize(ordenpreparacion);
+            File.WriteAllText(@"Json\OrdenPreparacion.json", datos);
         }
 
         public static void Leer()
         {
-            if (!File.Exists("OrdenPreparacion.json"))
+
+            if (!File.Exists(@"Json\OrdenPreparacion.json"))
             {
                 return;
             }
 
-            var datos = File.ReadAllText("OrdenPreparacion.json");
+            var datos = File.ReadAllText(@"Json\OrdenPreparacion.json");
 
-            ordenPreparacion = JsonSerializer.Deserialize<List<OrdenPreparacionEntidad>>(datos)!;
+            ordenpreparacion = JsonSerializer.Deserialize<List<OrdenPreparacionEntidad>>(datos)!;
         }
-
-        public static void AgregarOrdenPreparacion(OrdenPreparacionEntidad ordenpreparacion)
+        public static void AgregarOrdenPreparacion(OrdenPreparacionEntidad ordenPreparacion)
         {
-            ordenPreparacion.Add(ordenpreparacion);
+            ordenpreparacion.Add(ordenPreparacion);
         }
 
         public static void ModificarEstado(OrdenPreparacionEntidad orden, OrdenPreparacionEstados estado)
@@ -44,13 +50,13 @@ namespace GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion
 
         public static List<OrdenPreparacionEntidad> ObtenerOrdenesPreparacionPorNumero(List<int> nroOrdenesPrepList)
         {
-            return ordenPreparacion
+            return ordenpreparacion
                 .Where(op => nroOrdenesPrepList.Contains(op.NumeroOrdenPreparacion))
                 .ToList();
         }
         public static OrdenPreparacionEntidad ObtenerOrdenPreparacionPorNumero(int nroOrdenPrep)
         {
-            return ordenPreparacion.FirstOrDefault(op => op.NumeroOrdenPreparacion == nroOrdenPrep);
+            return ordenpreparacion.FirstOrDefault(op => op.NumeroOrdenPreparacion == nroOrdenPrep);
         }
     }
 }

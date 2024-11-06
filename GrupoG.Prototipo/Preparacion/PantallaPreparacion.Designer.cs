@@ -217,7 +217,7 @@
             textBoxNroOdenPrevisualizacion.ReadOnly = true;
             textBoxNroOdenPrevisualizacion.Size = new Size(298, 23);
             textBoxNroOdenPrevisualizacion.TabIndex = 34;
-            textBoxNroOdenPrevisualizacion.Text = "1";
+            textBoxNroOdenPrevisualizacion.Text = "" ;
             // 
             // labelFecha
             // 

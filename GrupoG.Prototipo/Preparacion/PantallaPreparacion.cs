@@ -15,6 +15,7 @@ namespace GrupoG.Prototipo.Preparacion
         {
             InitializeComponent();
             model = new PantallaPreparacionModel();
+            textBoxNroOdenPrevisualizacion.Text = model.SumaNumOrden().ToString();
         }
 
         private void BotonObtenerDatos_Click(object sender, EventArgs e)
@@ -51,14 +52,13 @@ namespace GrupoG.Prototipo.Preparacion
             LimpiarFormulario();
         }
 
-
         private void ListaDatosMercaderia_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ListaDatosMercaderia.SelectedItems.Count > 0)
             {
                 var selectedItem = ListaDatosMercaderia.SelectedItems[0];
-                TextBoxCantidad.Text = "";  // Limpiar el campo
-                TextBoxCantidad.Enabled = true;  // Habilitar el TextBox
+                TextBoxCantidad.Text = ""; 
+                TextBoxCantidad.Enabled = true;
             }
         }
 
@@ -83,21 +83,16 @@ namespace GrupoG.Prototipo.Preparacion
 
                 var idMercaderia = int.Parse(selectedItem.SubItems[0].Text);
                 var nombreMercaderia = selectedItem.SubItems[1].Text;
-
                 int cantidadDisponible = int.Parse(selectedItem.SubItems[2].Text);
 
                 if (cantidadDisponible == 0)
                 {
                     int numeroOrdenActual = int.Parse(textBoxNroOdenPrevisualizacion.Text);
-                   
                 }
                 else
                 {
                     if (cantidadSeleccionada <= cantidadDisponible)
                     {
-                        int numeroOrdenActual = int.Parse(textBoxNroOdenPrevisualizacion.Text);
-                        
-
                         selectedItem.SubItems[2].Text = (cantidadDisponible - cantidadSeleccionada).ToString();
                     }
                     else
@@ -112,6 +107,21 @@ namespace GrupoG.Prototipo.Preparacion
             {
                 MessageBox.Show("Por favor, ingrese una cantidad válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void ActualizarListaPrevisualizacion()
+        {
+            //ListaPrevisualizacionOrdenesPreparacion.Items.Clear();
+
+
+            //foreach (var mercaderia in ListaPrevisualizacionOrdenesPreparacion)
+            //{
+            //    var listItem = new ListViewItem(mercaderia.idMercaderia.ToString());
+            //    listItem.SubItems.Add(mercaderia.nombre);
+            //    listItem.SubItems.Add(mercaderia.CantidadTotal.ToString());
+
+            //    ListaPrevisualizacionOrdenesPreparacion.Items.Add(listItem);
+            //}
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -139,22 +149,7 @@ namespace GrupoG.Prototipo.Preparacion
             }
         }
 
-        private void ActualizarListaPrevisualizacion()
-        {
-            ListaPrevisualizacionOrdenesPreparacion.Items.Clear();
-
-            int numeroOrdenActual = int.Parse(textBoxNroOdenPrevisualizacion.Text);
-            var ordenesPreparacion = model.ObtenerMercaderiasPorCliente(numeroOrdenActual);
-
-            foreach (var mercaderia in ordenesPreparacion)
-            {
-                ////var listItem = new ListViewItem(mercaderia.idMercaderia.ToString());
-                ////listItem.SubItems.Add(mercaderia.nombre);
-                ////listItem.SubItems.Add(mercaderia.CantidadTotal.ToString());
-
-                //ListaPrevisualizacionOrdenesPreparacion.Items.Add(listItem);
-            }
-        }
+        
 
 
         private void btnGenerar_Click(object sender, EventArgs e)
