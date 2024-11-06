@@ -221,6 +221,7 @@ namespace GrupoG.Prototipo.Preparacion
             TextBoxCantidad.Text = "";
             TextBoxCantidad.Enabled = false;
             textBoxNroOdenPrevisualizacion.Text = model.SumaNumOrden().ToString();
+            model.MercaderiasAgregadas.Clear();
         }
 
         
