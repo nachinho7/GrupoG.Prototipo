@@ -14,8 +14,8 @@ namespace GrupoG.Prototipo.Almacenes.Mercaderias
         public int NroCliente { get; set; }
         public int CalcularTotalStock()
         {
-            return Ubicacion.Sum(s => s.Cantidad);
+            return Ubicacion.Sum(s => s.Cantidad); 
         }
-
     }
+
 }

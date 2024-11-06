@@ -8,7 +8,7 @@ namespace GrupoG.Prototipo.Almacenes.Mercaderias
 {
     internal class MercaderiasUbicacion
     {
-        public int NombreUbicacion { get; set; }
+        public string NombreUbicacion { get; set; }
         public int Cantidad { get; set; }
         public int NroDeposito { get; set; }
         public int idMercaderia { get; set; }

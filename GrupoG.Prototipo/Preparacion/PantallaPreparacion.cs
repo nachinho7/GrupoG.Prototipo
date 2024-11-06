@@ -29,8 +29,7 @@ namespace GrupoG.Prototipo.Preparacion
                     return;
                 }
 
-                var datosMercaderias = model.ObtenerMercaderiasPorCliente(nroCliente);
-                ActualizarListaMercaderias(datosMercaderias);
+                ActualizarListaMercaderias(model.ObtenerMercaderiasPorCliente(nroCliente));
             }
         }
         private void ActualizarListaMercaderias(List<Mercaderias> mercaderias)
@@ -47,16 +46,22 @@ namespace GrupoG.Prototipo.Preparacion
             }
         }
 
+        private void BotonLimpiarCliente_Click(object sender, EventArgs e)
+        {
+            LimpiarFormulario();
+        }
+
 
         private void ListaDatosMercaderia_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ListaDatosMercaderia.SelectedItems.Count > 0)
             {
                 var selectedItem = ListaDatosMercaderia.SelectedItems[0];
-                TextBoxCantidad.Text = "";
-                TextBoxCantidad.Enabled = true;
+                TextBoxCantidad.Text = "";  // Limpiar el campo
+                TextBoxCantidad.Enabled = true;  // Habilitar el TextBox
             }
         }
+
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -233,31 +238,7 @@ namespace GrupoG.Prototipo.Preparacion
             TextBoxCantidad.Enabled = false;
         }
 
-        private void BotonLimpiarCliente_Click(object sender, EventArgs e)
-        {
-            //if (!int.TryParse(numeroCliente.Text, out int clienteNumero))
-            //{
-            //    MessageBox.Show("Tenes que buscar un cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
-
-            //var mercaderiasOriginales = model.ObtenerMercaderia(clienteNumero);
-
-            //foreach (ListViewItem item in ListaPrevisualizacionOrdenesPreparacion.Items)
-            //{
-            //    var idMercaderia = int.Parse(item.SubItems[0].Text);
-            //    var cantidadMercaderia = int.Parse(item.SubItems[2].Text);
-
-            //    var mercaderiaOriginal = mercaderiasOriginales.FirstOrDefault(m => m.idMercaderia == idMercaderia);
-            //    if (mercaderiaOriginal != null)
-            //    {
-            //        mercaderiaOriginal.cantidadMercaderia += cantidadMercaderia;
-            //    }
-            //}
-
-            ActualizarListaPrevisualizacion();
-            LimpiarFormulario();
-        }
+        
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {

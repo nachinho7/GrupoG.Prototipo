@@ -22,18 +22,18 @@ namespace GrupoG.Prototipo.Almacenes.Mercaderias
         public static void Grabar()
         {
             var datos = JsonSerializer.Serialize(mercaderias);
-            File.WriteAllText(@"Json\Mercaderias.json", datos);
+            File.WriteAllText(@"Json\Mercaderia.json", datos);
         }
 
         public static void Leer()
         {
 
-            if (!File.Exists(@"Json\Mercaderias.json"))
+            if (!File.Exists(@"Json\Mercaderia.json"))
             {
                 return;
             }
 
-            var datos = File.ReadAllText(@"Json\Mercaderias.json");
+            var datos = File.ReadAllText(@"Json\Mercaderia.json");
 
             mercaderias = JsonSerializer.Deserialize<List<MercaderiasEntidad>>(datos)!;
         }

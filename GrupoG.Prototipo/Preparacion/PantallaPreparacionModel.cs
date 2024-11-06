@@ -41,7 +41,7 @@ namespace GrupoG.Prototipo.Preparacion
         {
             if (MercaderiasAlmacen.Mercaderias == null || !MercaderiasAlmacen.Mercaderias.Any())
             {
-                throw new Exception("No hay mercaderías disponibles para buscar.");
+                MessageBox.Show("No se encontraron mercaderías para el cliente.");
             }
 
             var mercaderias = MercaderiasAlmacen.Mercaderias
@@ -50,23 +50,17 @@ namespace GrupoG.Prototipo.Preparacion
                 {
                     idMercaderia = m.idMercaderia,
                     nombreMercaderia = m.nombreMercaderia,
-                    cantidadMercaderia = m.CalcularTotalStock() 
+                    cantidadMercaderia = m.CalcularTotalStock()
                 })
                 .ToList();
-
+            
             if (!mercaderias.Any())
             {
                 MessageBox.Show("No se encontraron mercaderías para el cliente.");
             }
-            else
-            {
-                MessageBox.Show($"Se encontraron {mercaderias.Count} mercaderías para el cliente.");
-            }
-
+            
             return mercaderias;
         }
-
-
 
 
         public List<DepositoEntidad> Depositos
