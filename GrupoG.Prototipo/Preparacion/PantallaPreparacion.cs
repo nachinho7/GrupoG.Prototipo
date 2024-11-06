@@ -109,7 +109,6 @@ namespace GrupoG.Prototipo.Preparacion
                     {
                         selectedItem.SubItems[2].Text = (cantidadDisponible - cantidadSeleccionada).ToString();
 
-                        // Agregar el producto a la lista de mercaderías agregadas
                         model.AgregarProducto(idMercaderia, nombreMercaderia, cantidadSeleccionada);
                     }
                     else
@@ -118,7 +117,7 @@ namespace GrupoG.Prototipo.Preparacion
                     }
                 }
 
-                ActualizarListaPrevisualizacion();  // Actualizar la lista de previsualización con los productos agregados
+                ActualizarListaPrevisualizacion();
             }
             else
             {
@@ -137,39 +136,34 @@ namespace GrupoG.Prototipo.Preparacion
             var selectedItem = ListaPrevisualizacionOrdenesPreparacion.SelectedItems[0];
             int idMercaderia = int.Parse(selectedItem.SubItems[0].Text);
 
-            // Eliminar del modelo
-            model.EliminarProducto(idMercaderia);
+            model.EliminarProducto(idMercaderia, ListaDatosMercaderia);
 
-            // Actualizar la lista de previsualización
             ActualizarListaPrevisualizacion();
         }
 
 
 
+
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-            // Validar número de orden
             if (!int.TryParse(textBoxNroOdenPrevisualizacion.Text, out int numeroOrdenGenerar))
             {
                 MessageBox.Show("El número de orden no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Validar DNI del transportista
             if (!int.TryParse(textBoxDNITransportista.Text, out int dniTransportista))
             {
                 MessageBox.Show("El DNI del transportista ingresado no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Validar fecha de despacho
             if (PickerFechaDespacho.Value.Date < DateTime.Today)
             {
                 MessageBox.Show("La fecha de despacho no puede ser menor a la fecha actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Verificar que no haya mercaderías con cantidad 0
             foreach (ListViewItem item in ListaPrevisualizacionOrdenesPreparacion.Items)
             {
                 if (int.TryParse(item.SubItems[2].Text, out int cantidad) && cantidad == 0)
@@ -179,24 +173,20 @@ namespace GrupoG.Prototipo.Preparacion
                 }
             }
 
-            // Obtener el número del cliente
             if (!int.TryParse(numeroCliente.Text, out int numerocliente))
             {
                 MessageBox.Show("El número de cliente no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Obtener el nombre del depósito
             string nombreDeposito = model.ObtenerNombreDepositoPorCliente(numerocliente);
 
-            // Verifica si se encontró un depósito
             if (string.IsNullOrEmpty(nombreDeposito) || nombreDeposito == "Depósito no encontrado")
             {
                 MessageBox.Show("No se encontró el depósito para el cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Resto de la lógica para crear la orden
             var fechaDespacho = PickerFechaDespacho.Value.Date;
             var mercaderias = new List<(int idMercaderia, int cantidad)>();
 
@@ -205,12 +195,10 @@ namespace GrupoG.Prototipo.Preparacion
                 if (int.TryParse(item.SubItems[0].Text, out int idMercaderia) &&
                     int.TryParse(item.SubItems[2].Text, out int cantidad))
                 {
-                    // Agregar a la lista de mercaderías como tuplas
                     mercaderias.Add((idMercaderia, cantidad));
                 }
             }
 
-            // Crear la orden
             model.CrearOrdenPreparacion(numerocliente, fechaDespacho, dniTransportista, nombreDeposito, mercaderias);
         }
 

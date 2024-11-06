@@ -68,31 +68,77 @@ namespace GrupoG.Prototipo.Preparacion
             return mercaderias;
         }
 
-        public List<Mercaderias> MercaderiasAgregadas = new List<Mercaderias>();
 
         public void AgregarProducto(int idMercaderia, string nombreMercaderia, int cantidadMercaderia)
         {
-            var mercaderiaAGrabar = new Mercaderias
+            var mercaderiaExistente = MercaderiasAgregadas.FirstOrDefault(m => m.idMercaderia == idMercaderia);
+
+            if (mercaderiaExistente != null)
             {
-                idMercaderia = idMercaderia,
-                nombreMercaderia = nombreMercaderia,
-                cantidadMercaderia = cantidadMercaderia
-            };
+                mercaderiaExistente.cantidadMercaderia += cantidadMercaderia;
+                MessageBox.Show($"Se ha sumado {cantidadMercaderia} más a {mercaderiaExistente.nombreMercaderia}.");
+            }
+            else
+            {
+                var mercaderiaAGrabar = new Mercaderias
+                {
+                    idMercaderia = idMercaderia,
+                    nombreMercaderia = nombreMercaderia,
+                    cantidadMercaderia = cantidadMercaderia
+                };
 
-            // Agregar la mercadería a la lista
-            MercaderiasAgregadas.Add(mercaderiaAGrabar);
-
-            MessageBox.Show($"Mercadería {mercaderiaAGrabar.nombreMercaderia} agregada correctamente.");
+                MercaderiasAgregadas.Add(mercaderiaAGrabar);
+                MessageBox.Show($"Mercadería {mercaderiaAGrabar.nombreMercaderia} agregada correctamente.");
+            }
         }
 
-        public void EliminarProducto(int idMercaderia)
+        public List<Mercaderias> MercaderiasAgregadas = new List<Mercaderias>();
+
+        public void EliminarProducto(int idMercaderia, ListView listaMercaderia)
         {
             var mercaderia = MercaderiasAgregadas.FirstOrDefault(m => m.idMercaderia == idMercaderia);
+
             if (mercaderia != null)
             {
+                var mercaderiaEnLista = listaMercaderia.Items
+                    .Cast<ListViewItem>()
+                    .FirstOrDefault(item => int.Parse(item.SubItems[0].Text) == idMercaderia);
+
+                if (mercaderiaEnLista != null)
+                {
+                    int cantidadEliminada = mercaderia.cantidadMercaderia;
+                    int cantidadDisponible = int.Parse(mercaderiaEnLista.SubItems[2].Text);
+                    mercaderiaEnLista.SubItems[2].Text = (cantidadDisponible + cantidadEliminada).ToString();
+                }
+
                 MercaderiasAgregadas.Remove(mercaderia);
                 MessageBox.Show($"Mercadería {mercaderia.nombreMercaderia} eliminada correctamente.");
             }
+        }
+
+
+        public List<DepositoEntidad> Depositos
+        {
+            get
+            {
+                var depositos = new List<DepositoEntidad>();
+                foreach (var depositoEntidad in DepositoAlmacen.Depositos)
+                {
+                    var deposito = new DepositoEntidad();
+                    deposito.NroDeposito = depositoEntidad.NroDeposito;
+                    deposito.NombreDeposito = depositoEntidad.NombreDeposito;
+
+                    depositos.Add(deposito);
+                }
+                return depositos;
+            }
+        }
+
+        public string ObtenerNombreDepositoPorCliente(int clienteNumero)
+        {
+            var deposito = Depositos.FirstOrDefault(d => d.NroCliente == clienteNumero);
+
+            return deposito != null ? deposito.NombreDeposito : "Depósito no encontrado";
         }
 
 
@@ -174,29 +220,7 @@ namespace GrupoG.Prototipo.Preparacion
             }
         }
 
-        public List<DepositoEntidad> Depositos
-        {
-            get
-            {
-                var depositos = new List<DepositoEntidad>();
-                foreach (var depositoEntidad in DepositoAlmacen.Depositos)
-                {
-                    var deposito = new DepositoEntidad();
-                    deposito.NroDeposito = depositoEntidad.NroDeposito;
-                    deposito.NombreDeposito = depositoEntidad.NombreDeposito;
-
-                    depositos.Add(deposito);
-                }
-                return depositos;
-            }
-        }
-
-        public string ObtenerNombreDepositoPorCliente(int clienteNumero)
-        {
-            var deposito = Depositos.FirstOrDefault(d => d.NroCliente == clienteNumero);
-
-            return deposito != null ? deposito.NombreDeposito : "Depósito no encontrado";
-        }
+        
 
     }
 }
