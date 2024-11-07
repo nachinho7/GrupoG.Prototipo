@@ -1,4 +1,5 @@
 ﻿using GrupoG.Prototipo.Almacenes.Mercaderias;
+using GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion;
 using GrupoG.Prototipo.Entrega;
 using System;
 using System.Collections.Generic;
@@ -11,31 +12,42 @@ namespace GrupoG.Prototipo.Almacenes.Ordenes.OrdenEntrega
 {
     internal class OrdenEntregaAlmacen
     {
-        private static List<OrdenEntregaEntidad> ordenEntrega = new List<OrdenEntregaEntidad>();
-        public static IReadOnlyCollection<OrdenEntregaEntidad> OrdenEntrega => ordenEntrega.AsReadOnly();
+        private static List<OrdenEntregaEntidad> ordenentrega = new List<OrdenEntregaEntidad>();
+
+        static OrdenEntregaAlmacen()
+        {
+            Leer();
+        }
+
+        public static IReadOnlyCollection<OrdenEntregaEntidad> OrdenEntrega => ordenentrega.AsReadOnly();
 
         public static void Grabar()
         {
-
-            var datos = JsonSerializer.Serialize(ordenEntrega);
-            File.WriteAllText("OrdenEntrega.json", datos);
+            var datos = JsonSerializer.Serialize(ordenentrega);
+            File.WriteAllText(@"Json\OrdenEntrega.json", datos);
         }
 
         public static void Leer()
         {
-            if (!File.Exists("OrdenEntrega.json"))
+
+            if (!File.Exists(@"Json\OrdenEntrega.json"))
             {
                 return;
             }
 
-            var datos = File.ReadAllText("OrdenEntrega.json");
+            var datos = File.ReadAllText(@"Json\OrdenEntrega.json");
 
-            ordenEntrega = JsonSerializer.Deserialize<List<OrdenEntregaEntidad>>(datos)!;
+            ordenentrega = JsonSerializer.Deserialize<List<OrdenEntregaEntidad>>(datos)!;
         }
 
-        public static void AgregarOrdenEntrega(OrdenEntregaEntidad ordenpreparacion)
+
+
+
+
+        public static void AgregarOrdenEntrega(OrdenEntregaEntidad ordenEntrega)
         {
-            ordenEntrega.Add(ordenpreparacion);
+            ordenentrega.Add(ordenEntrega);
         }
+        
     }
 }

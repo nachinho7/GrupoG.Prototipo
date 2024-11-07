@@ -75,15 +75,12 @@ namespace GrupoG.Prototipo.Empaquetar
                 return;
             }
 
-            // Obtiene el número de orden seleccionada desde el ComboBox
             int numeroOrdenSeleccionada = Convert.ToInt32(ComboBoxOrdenesPreparacion.SelectedItem.ToString().Split(' ')[2]);
 
-            // Cambia el estado de la orden de preparación seleccionada
             modelo.CambiarEstadoOrden(numeroOrdenSeleccionada);
 
             MessageBox.Show($"La orden de preparación N° {numeroOrdenSeleccionada} ha sido empaquetada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Recargar órdenes de preparación para reflejar el cambio de estado
             CargarOrdenesPreparacion();
 
             if (ComboBoxOrdenesPreparacion.Items.Count > 0)

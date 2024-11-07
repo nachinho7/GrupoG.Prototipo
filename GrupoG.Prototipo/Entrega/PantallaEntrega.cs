@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion;
 using GrupoG.Prototipo.Menu;
 
 namespace GrupoG.Prototipo.Entrega
@@ -24,14 +25,16 @@ namespace GrupoG.Prototipo.Entrega
         private void CargarOrdenes()
         {
             var ordenes = model.ObtenerOrdenes();
-
             ListaOrdenesEmpaquetar.Items.Clear();
+            
 
             foreach (var orden in ordenes)
             {
                 var item = new ListViewItem(orden.NumeroOrdenPreparacion.ToString());
-                item.SubItems.Add(orden.NumeroCliente.ToString());
-                item.SubItems.Add(orden.Mercaderias[0].cantidadMercaderia.ToString());
+                item.SubItems.Add(orden.NroCliente.ToString());
+                var cantidadTotal = orden.Detalle.Sum(d => d.Cantidad);
+                item.SubItems.Add(cantidadTotal.ToString());
+
                 item.SubItems.Add(orden.DNITransportista.ToString());
                 item.SubItems.Add(orden.FechaDespacho.ToString());
 
@@ -39,27 +42,23 @@ namespace GrupoG.Prototipo.Entrega
             }
         }
 
+
         private void BotonEntregar_Click(object sender, EventArgs e)
         {
-            
-
-            var ordenesSeleccionadas = new List<OrdenPreparacion>();
-            foreach (ListViewItem selectedItem in ListaOrdenesEmpaquetar.SelectedItems)
+            if (ListaOrdenesEmpaquetar.Items.Count == 0)
             {
-                var numeroOrdenPreparacion = int.Parse(selectedItem.Text);
-                var ordenPreparacion = model.ObtenerOrdenes().FirstOrDefault(o => o.NumeroOrdenPreparacion == numeroOrdenPreparacion);
-
-                if (ordenPreparacion != null)
-                {
-                    ordenesSeleccionadas.Add(ordenPreparacion);
-                }
+                MessageBox.Show("No hay órdenes disponibles para entregar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
-            var ordenesEntregas = model.GenerarOrdenEntrega(ordenesSeleccionadas);
+            var ordenesEmpaquetadas = model.ObtenerOrdenes();
+            var ordenesEntregas = model.GenerarOrdenEntregaPorOrden(ordenesEmpaquetadas);
 
             ListaOrdenesEmpaquetar.Items.Clear();
 
             MessageBox.Show("Las órdenes de entrega han sido generadas.", "Órdenes de Entrega Generadas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Navegar de vuelta al menú
             PantallaMenu menu = new PantallaMenu();
             this.Hide();
             menu.StartPosition = FormStartPosition.CenterScreen;
@@ -67,12 +66,15 @@ namespace GrupoG.Prototipo.Entrega
             menu.Show();
         }
 
+
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {
+            
             PantallaMenu menu = new PantallaMenu();
             this.Hide();
             menu.StartPosition = FormStartPosition.CenterScreen;
             menu.Location = this.Location;
         }
+
     }
 }

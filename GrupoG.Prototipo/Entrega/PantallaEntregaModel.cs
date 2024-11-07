@@ -1,62 +1,75 @@
-﻿using System;
+﻿using GrupoG.Prototipo.Almacenes.Mercaderias;
+using GrupoG.Prototipo.Almacenes.Ordenes.OrdenEntrega;
+using GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion;
+using System;
 using System.Collections.Generic;
 
 namespace GrupoG.Prototipo.Entrega
 {
     internal class PantallaEntregaModel
     {
-        public List<OrdenPreparacion> OrdenesPreparacion { get; private set; } = new List<OrdenPreparacion>
+        public List<OrdenPreparacionEntidad> ObtenerOrdenes()
         {
-            new OrdenPreparacion
-            {
-                NumeroOrdenPreparacion = 1,
-                NumeroCliente = 101,
-                Mercaderias = new List<Mercaderias>
-                {
-                    new Mercaderias { cantidadMercaderia = 15 },
-                },
-                DNITransportista = 12345678,
-                FechaDespacho = DateTime.Now
-                
-            },
-            new OrdenPreparacion
-            {
-                NumeroOrdenPreparacion = 2,
-                NumeroCliente = 102,
-                 Mercaderias = new List<Mercaderias>
-                {
-                    new Mercaderias { cantidadMercaderia = 20 },       
-                },
-                DNITransportista = 87654321,
-                FechaDespacho = DateTime.Now
-                  
-            }
-        };
-
-        public List<OrdenPreparacion> ObtenerOrdenes()
-        {
-            return OrdenesPreparacion;
+            return OrdenPreparacionAlmacen.OrdenPreparacion
+                .Where(o => o.Estado == OrdenPreparacionEstados.Empaquetada)
+                .ToList();
+            
         }
 
-        public List<OrdenEntrega> GenerarOrdenEntrega(List<OrdenPreparacion> seleccionadas)
+        public List<Mercaderias> ListarMercaderiasPorOrden(int numeroOrdenEmpaquetada)
         {
-            List<OrdenEntrega> ordenesEntregas = new List<OrdenEntrega>();
+            var orden = ObtenerOrdenes()
+                .FirstOrDefault(o => o.NumeroOrdenPreparacion == numeroOrdenEmpaquetada);
 
-            foreach (var orden in seleccionadas)
+            if (orden == null) return null;
+
+            return orden.Detalle.Select(detalle => new Mercaderias
             {
-                var nuevaOrdenEntrega = new OrdenEntrega
+                idMercaderia = detalle.idMercaderia,
+                cantidadMercaderia = detalle.Cantidad,
+            }).ToList();
+        }
+
+
+        public void CambiarEstadoOrden(int nroOrdenEmp)
+        {
+            var orden = OrdenPreparacionAlmacen.OrdenPreparacion.FirstOrDefault(o => o.NumeroOrdenPreparacion == nroOrdenEmp);
+            if (orden != null)
+            {
+                OrdenPreparacionAlmacen.ModificarEstado(orden, OrdenPreparacionEstados.ADespacho);
+
+            }
+        }
+
+        public List<OrdenEntregaEntidad> GenerarOrdenEntregaPorOrden(List<OrdenPreparacionEntidad> ordenesEmpaquetadas)
+        {
+            var ordenesEntregas = new List<OrdenEntregaEntidad>();
+
+            foreach (var ordenPreparacion in ordenesEmpaquetadas)
+            {
+                CambiarEstadoOrden(ordenPreparacion.NumeroOrdenPreparacion);
+
+                int nuevoNroOrdenEntrega = (OrdenEntregaAlmacen.OrdenEntrega.Any() ? OrdenEntregaAlmacen.OrdenEntrega.Max(o => o.NumeroOrdenEntrega) : 0) + 1;
+
+                var ordenEntrega = new OrdenEntregaEntidad
                 {
-                    NumeroOrdenEntrega = ordenesEntregas.Count + 1, 
-                    NroCliente = orden.NumeroCliente,
-                    sumaMercaderia = orden.Mercaderias.Sum(m => m.cantidadMercaderia),
-                    DNITransportista = orden.DNITransportista,
-                    FechaDespacho = orden.FechaDespacho
+                    NumeroOrdenEntrega = nuevoNroOrdenEntrega,
+                    NroCliente = ordenPreparacion.NroCliente,
+                    NroDeposito = ordenPreparacion.NroDeposito
                 };
 
-                ordenesEntregas.Add(nuevaOrdenEntrega);
+                ordenesEntregas.Add(ordenEntrega);
+
+                OrdenEntregaAlmacen.AgregarOrdenEntrega(ordenEntrega); 
             }
+
+            OrdenEntregaAlmacen.Grabar();
 
             return ordenesEntregas;
         }
+
+
+
+
     }
 }
