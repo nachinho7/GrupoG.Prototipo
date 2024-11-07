@@ -71,6 +71,7 @@ namespace GrupoG.Prototipo.Almacenes.Mercaderias
             mercaderia.Cantidad -= mercaderiaretirada;
         }
 
+        /*
         public static void RestarStockGlobal(int idMercaderia, int cantidadARestar)
         {
             var mercaderia = mercaderias.FirstOrDefault(m => m.idMercaderia == idMercaderia);
@@ -103,7 +104,7 @@ namespace GrupoG.Prototipo.Almacenes.Mercaderias
                 }
                 
             }
-        }
+        }*/
     }
 }
 
