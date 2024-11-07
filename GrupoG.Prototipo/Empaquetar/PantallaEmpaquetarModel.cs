@@ -1,10 +1,13 @@
-﻿using System;
+﻿using GrupoG.Prototipo.Almacenes.Mercaderias;
+using GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion;
+using System;
 using System.Collections.Generic;
 
 namespace GrupoG.Prototipo.Empaquetar
 {
     internal class PantallaEmpaquetarModel
     {
+        /*
         public List<OrdenPreparacion> OrdenesPreparacion { get; private set; } = new List<OrdenPreparacion>
         {
             new OrdenPreparacion
@@ -31,7 +34,7 @@ namespace GrupoG.Prototipo.Empaquetar
         {
             return OrdenesPreparacion;
         }
-
+        
 
         public void RemoverOrdenPreparacion(OrdenPreparacion orden)
         {
@@ -46,5 +49,152 @@ namespace GrupoG.Prototipo.Empaquetar
             }
             return new List<Mercaderias>();
         }
+        */
+
+        /*
+
+        public List<Mercaderias> ObtenerMercaderiasPorOrden(int numeroOrdenSeleccionada)
+        {
+            var orden = ObtenerOrdenPorNumero(numeroOrdenSeleccionada);  
+
+            if (orden == null) return null;
+
+            
+            return orden.Detalle.Select(detalle => new Mercaderias
+            {
+                idMercaderia = detalle.idMercaderia,  
+                cantidadMercaderia = detalle.Cantidad,
+                nombreMercaderia = MercaderiasAlmacen.BuscarNombreMercaderiaN(detalle.idMercaderia), // Aquí obtenemos el nombre
+            }).ToList();
+        }
+        
+        private OrdenPreparacionEntidad ObtenerOrdenPorNumero(int numeroOrden)
+        {
+            var ordenes = ObtenerOrdenesSeleccionadas();  
+            return ordenes.FirstOrDefault(o => o.NumeroOrdenPreparacion == numeroOrden);
+        }
+        */
+        public List<Mercaderias> ListarMercaderiasPorOrden(int numeroOrdenSeleccionada)
+        {
+            var orden = BuscarOrdenPorNumero(numeroOrdenSeleccionada);
+
+            if (orden == null) return null;
+
+
+            return orden.Detalle.Select(detalle => new Mercaderias
+            {
+                idMercaderia = detalle.idMercaderia,
+                cantidadMercaderia = detalle.Cantidad,
+                nombreMercaderia = MercaderiasAlmacen.BuscarNombreMercaderia(detalle.idMercaderia), //Cree un BuscarNombreMercaderiaN por los nulls
+            }).ToList();
+        }
+
+        private OrdenPreparacionEntidad BuscarOrdenPorNumero(int numeroOrden)
+        {
+            var ordenes = ListarOrdenesSeleccionadas();  
+            return ordenes.FirstOrDefault(o => o.NumeroOrdenPreparacion == numeroOrden);
+        }
+
+        public static List<OrdenPreparacionEntidad> ListarOrdenesSeleccionadas()
+        {
+            var ordenes = new List<OrdenPreparacionEntidad>();
+
+            foreach (var ordenPreparacionEntidad in OrdenPreparacionAlmacen.OrdenPreparacion
+                    .Where(o => o.Estado == OrdenPreparacionEstados.Seleccionada)
+                    .ToList())
+            {
+                var orden = new OrdenPreparacionEntidad
+                {
+                    NumeroOrdenPreparacion = ordenPreparacionEntidad.NumeroOrdenPreparacion,
+                    NroCliente = ordenPreparacionEntidad.NroCliente,
+                    Estado = ordenPreparacionEntidad.Estado,
+                    FechaDespacho = ordenPreparacionEntidad.FechaDespacho,
+                    DNITransportista = ordenPreparacionEntidad.DNITransportista,
+                    NroDeposito = ordenPreparacionEntidad.NroDeposito,
+                    Detalle = ordenPreparacionEntidad.Detalle 
+                };
+
+                ordenes.Add(orden);
+            }
+
+            return ordenes;
+        }
+
+        public int ObtenerNumeroOrdenEnPantalla()
+        {
+            return OrdenPreparacionAlmacen.OrdenPreparacion
+                .Where(o => o.Estado == OrdenPreparacionEstados.Seleccionada)
+                .OrderBy(o => o.NumeroOrdenPreparacion)
+                .Select(o => o.NumeroOrdenPreparacion)
+                .FirstOrDefault();
+        }
+
+        /*
+        public static List<OrdenPreparacion> ObtenerOrdenesSeleccionadas()
+        {
+            var ordenes = new List<OrdenPreparacion>();
+
+            foreach (var ordenPreparacionEntidad in OrdenPreparacionAlmacen.OrdenPreparacion
+                    .Where(o => o.Estado == OrdenPreparacionEstados.Seleccionada)
+                    .ToList())
+            {
+                var orden = new OrdenPreparacion
+                {
+                    NumeroOrdenPreparacion = ordenPreparacionEntidad.NumeroOrdenPreparacion,
+                    // Solo agregamos las mercaderías relacionadas con esta orden.
+                    Mercaderias = ordenPreparacionEntidad.Detalle.Select(detalle => new Mercaderias
+                    {
+                        idMercaderia = detalle.idMercaderia,
+                        nombreMercaderia = MercaderiasAlmacen.BuscarNombreMercaderiaN(detalle.idMercaderia),
+                        cantidadMercaderia = detalle.Cantidad
+                    }).ToList()
+                };
+
+                ordenes.Add(orden);
+            }
+
+            return ordenes;
+        }
+        */
+
+
+        //aca duda si OrdenPreparacionEntidad o OrdenPreparacion solo
+        /*
+        public static List<OrdenPreparacionEntidad> ObtenerOrdenesSeleccionadas()
+        {
+            var ordenes = new List<OrdenPreparacionEntidad>();
+
+            foreach (var ordenOriginal in OrdenPreparacionAlmacen.OrdenPreparacion
+                    .Where(o => o.Estado == OrdenPreparacionEstados.Seleccionada).ToList())
+            {
+                var orden = new OrdenPreparacionEntidad
+                {
+                    NumeroOrdenPreparacion = ordenOriginal.NumeroOrdenPreparacion,
+                    NroCliente = ordenOriginal.NroCliente,
+                    Estado = ordenOriginal.Estado,
+                    FechaDespacho = ordenOriginal.FechaDespacho,
+                    DNITransportista = ordenOriginal.DNITransportista,
+                    NroDeposito = ordenOriginal.NroDeposito,
+                    Detalle = ordenOriginal.Detalle // Asegúrate de copiar el detalle (mercadería) de la orden original
+                };
+
+                ordenes.Add(orden);
+            }
+
+            return ordenes;
+        }
+        */
+
+        public void CambiarEstadoOrden(int nroOrdenPrep)
+        {
+            var orden = OrdenPreparacionAlmacen.OrdenPreparacion.FirstOrDefault(o => o.NumeroOrdenPreparacion == nroOrdenPrep);
+            if (orden != null)
+            {
+                OrdenPreparacionAlmacen.ModificarEstado(orden, OrdenPreparacionEstados.Empaquetada);
+
+            }
+        }
+
+
     }
 }

@@ -22,7 +22,7 @@ namespace GrupoG.Prototipo.Empaquetar
 
         private void CargarOrdenesPreparacion()
         {
-            var ordenesPreparacion = modelo.ObtenerOrdenesPreparacion();
+            var ordenesPreparacion = PantallaEmpaquetarModel.ListarOrdenesSeleccionadas();
 
             ComboBoxOrdenesPreparacion.Items.Clear();
 
@@ -49,9 +49,12 @@ namespace GrupoG.Prototipo.Empaquetar
 
             if (ComboBoxOrdenesPreparacion.SelectedIndex == -1) return;
 
-            int indiceOrdenSeleccionada = ComboBoxOrdenesPreparacion.SelectedIndex;
+            // Obtiene el número real de la orden de preparación seleccionada
+            int numeroOrdenSeleccionada = Convert.ToInt32(
+                ComboBoxOrdenesPreparacion.SelectedItem.ToString().Split(' ')[2]);
 
-            var mercaderias = modelo.ObtenerMercaderiasPorOrden(indiceOrdenSeleccionada);
+            // Llama al método `ObtenerMercaderiasPorOrden` para obtener la mercadería correspondiente
+            var mercaderias = modelo.ListarMercaderiasPorOrden(numeroOrdenSeleccionada);
 
             if (mercaderias != null)
             {
@@ -65,6 +68,7 @@ namespace GrupoG.Prototipo.Empaquetar
             }
         }
 
+
         private void btnEmpaquetar_Click(object sender, EventArgs e)
         {
             if (listView1.Items.Count == 0)
@@ -73,46 +77,15 @@ namespace GrupoG.Prototipo.Empaquetar
                 return;
             }
 
-            var ordenSeleccionada = modelo.ObtenerOrdenesPreparacion()[ComboBoxOrdenesPreparacion.SelectedIndex];
+            // Obtiene el número de orden seleccionada desde el ComboBox
+            int numeroOrdenSeleccionada = Convert.ToInt32(ComboBoxOrdenesPreparacion.SelectedItem.ToString().Split(' ')[2]);
 
-           
-            if (ordenSeleccionada == null)
-            {
-                MessageBox.Show("La orden de preparación es nula.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            // Cambia el estado de la orden de preparación seleccionada
+            modelo.CambiarEstadoOrden(numeroOrdenSeleccionada);
 
-            if (ordenSeleccionada.Mercaderias == null || ordenSeleccionada.Mercaderias.Count == 0)
-            {
-                MessageBox.Show("La orden de preparación no tiene mercaderías.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            MessageBox.Show($"La orden de preparación N° {numeroOrdenSeleccionada} ha sido empaquetada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            foreach (var mercaderia in ordenSeleccionada.Mercaderias)
-            {
-                if (mercaderia.idMercaderia <= 0)
-                {
-                    MessageBox.Show($"La mercadería '{mercaderia.nombreMercaderia}' tiene un ID no válido ({mercaderia.idMercaderia}).", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (string.IsNullOrWhiteSpace(mercaderia.nombreMercaderia))
-                {
-                    MessageBox.Show($"La mercadería con ID {mercaderia.idMercaderia} no tiene un nombre válido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (mercaderia.cantidadMercaderia <= 0)
-                {
-                    MessageBox.Show($"La mercadería '{mercaderia.nombreMercaderia}' tiene una cantidad de {mercaderia.cantidadMercaderia}.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-            }
-            //aca terminan todas las validaciones :D
-
-            MessageBox.Show($"La orden de preparación N° {ordenSeleccionada.NumeroOrdenPreparacion} ha sido empaquetada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            modelo.RemoverOrdenPreparacion(ordenSeleccionada);
+            // Recargar órdenes de preparación para reflejar el cambio de estado
             CargarOrdenesPreparacion();
 
             if (ComboBoxOrdenesPreparacion.Items.Count > 0)
@@ -131,12 +104,14 @@ namespace GrupoG.Prototipo.Empaquetar
             }
         }
 
+
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {
             PantallaMenu menu = new PantallaMenu();
             this.Hide();
             menu.StartPosition = FormStartPosition.CenterScreen;
             menu.Location = this.Location;
+            menu.Show();
         }
     }
 }

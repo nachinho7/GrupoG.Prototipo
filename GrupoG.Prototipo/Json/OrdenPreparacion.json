@@ -4,11 +4,11 @@
     "NroCliente": 1,
     "FechaDespacho": "2024-11-05T08:30:00",
     "DNITransportista": 45678912,
-    "Estado": 0,
+    "Estado": 2,
     "NroDeposito": 1,
     "Detalle": [
       {
-        "IDMercaderia": 1013,
+        "idMercaderia": 1013,
         "Cantidad": 50
       }
     ]
@@ -18,11 +18,11 @@
     "NroCliente": 2,
     "FechaDespacho": "2024-11-06T10:00:00",
     "DNITransportista": 12345678,
-    "Estado": 1,
+    "Estado": 2,
     "NroDeposito": 1,
     "Detalle": [
       {
-        "IDMercaderia": 1014,
+        "idMercaderia": 1014,
         "Cantidad": 100
       }
     ]
@@ -36,7 +36,7 @@
     "NroDeposito": 3,
     "Detalle": [
       {
-        "IDMercaderia": 1015,
+        "idMercaderia": 1015,
         "Cantidad": 80
       }
     ]
@@ -50,7 +50,7 @@
     "NroDeposito": 1,
     "Detalle": [
       {
-        "IDMercaderia": 1013,
+        "idMercaderia": 1013,
         "Cantidad": 70
       }
     ]
@@ -64,7 +64,7 @@
     "NroDeposito": 1,
     "Detalle": [
       {
-        "IDMercaderia": 1014,
+        "idMercaderia": 1014,
         "Cantidad": 120
       }
     ]
@@ -78,7 +78,7 @@
     "NroDeposito": 3,
     "Detalle": [
       {
-        "IDMercaderia": 1015,
+        "idMercaderia": 1015,
         "Cantidad": 90
       }
     ]
@@ -92,7 +92,7 @@
     "NroDeposito": 1,
     "Detalle": [
       {
-        "IDMercaderia": 1013,
+        "idMercaderia": 1013,
         "Cantidad": 60
       }
     ]
@@ -106,7 +106,7 @@
     "NroDeposito": 1,
     "Detalle": [
       {
-        "IDMercaderia": 1014,
+        "idMercaderia": 1014,
         "Cantidad": 110
       }
     ]
@@ -120,7 +120,7 @@
     "NroDeposito": 3,
     "Detalle": [
       {
-        "IDMercaderia": 1016,
+        "idMercaderia": 1016,
         "Cantidad": 90
       }
     ]
@@ -134,7 +134,7 @@
     "NroDeposito": 1,
     "Detalle": [
       {
-        "IDMercaderia": 1015,
+        "idMercaderia": 1015,
         "Cantidad": 75
       }
     ]
@@ -148,7 +148,7 @@
     "NroDeposito": 2,
     "Detalle": [
       {
-        "IDMercaderia": 1016,
+        "idMercaderia": 1016,
         "Cantidad": 200
       }
     ]
@@ -162,11 +162,11 @@
     "NroDeposito": 1,
     "Detalle": [
       {
-        "IDMercaderia": 1022,
+        "idMercaderia": 1022,
         "Cantidad": 95
       },
       {
-        "IDMercaderia": 1017,
+        "idMercaderia": 1017,
         "Cantidad": 100
       }
     ]
@@ -180,7 +180,7 @@
     "NroDeposito": 2,
     "Detalle": [
       {
-        "IDMercaderia": 1021,
+        "idMercaderia": 1021,
         "Cantidad": 150
       }
     ]
@@ -194,7 +194,7 @@
     "NroDeposito": 3,
     "Detalle": [
       {
-        "IDMercaderia": 1020,
+        "idMercaderia": 1020,
         "Cantidad": 130
       }
     ]
@@ -208,7 +208,7 @@
     "NroDeposito": 1,
     "Detalle": [
       {
-        "IDMercaderia": 1018,
+        "idMercaderia": 1018,
         "Cantidad": 70
       }
     ]
@@ -222,7 +222,7 @@
     "NroDeposito": 3,
     "Detalle": [
       {
-        "IDMercaderia": 1015,
+        "idMercaderia": 1015,
         "Cantidad": 65
       }
     ]
@@ -236,7 +236,7 @@
     "NroDeposito": 1,
     "Detalle": [
       {
-        "IDMercaderia": 1014,
+        "idMercaderia": 1014,
         "Cantidad": 140
       }
     ]
@@ -250,7 +250,7 @@
     "NroDeposito": 1,
     "Detalle": [
       {
-        "IDMercaderia": 1013,
+        "idMercaderia": 1013,
         "Cantidad": 85
       }
     ]
@@ -264,7 +264,7 @@
     "NroDeposito": 3,
     "Detalle": [
       {
-        "IDMercaderia": 1015,
+        "idMercaderia": 1015,
         "Cantidad": 60
       }
     ]
@@ -278,7 +278,7 @@
     "NroDeposito": 1,
     "Detalle": [
       {
-        "IDMercaderia": 1014,
+        "idMercaderia": 1014,
         "Cantidad": 190
       }
     ]
