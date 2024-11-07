@@ -1,0 +1,16 @@
+﻿Caso 1(caso éxito- ingreso 1 producto):
+
+1. Tocar botón “Orden de preparación”[Abre formulario] Ingresar cliente 1 y presionar “obtener datos”.
+2. hacer click sobre el botón “nueva búsqueda”.
+3. Verificar que se limpien todos los campos
+4. Ingresar cliente 1 y presionar “obtener datos”.
+5. Verificar Datos de Mercadería: ID: 1013, Nombre: Latas de Tomate , Cantidad: 9000 y ID: 1018, Nombre: 6. Paquetes de azúcar, Cantidad: 2500 .
+6. Hacer click sobre la mercadería 1- Latas de Tomate  y en cantidad a agregar ingresar 2, luego presionar el botón “Agregar”.
+7. Verificar que se reduce la cantidad disponible del producto seleccionado.
+8. Verificar que aparece en pantalla dentro del recuadro de Previsualización orden de preparación un número de órden. Verificar que no pueda ser modificado.
+9. Ingresar en  fecha de Despacho una fecha posterior a la actual.
+10. Ingresar  en DNI transportista: 45678912.
+11. Tocar el botón “generar órden”.
+12. Verificar mensaje de éxito: ”Orden de preparación generada correctamente”.
+13. Hacer click en el botón volver al menú.
+14. Verificar que lleva al menú inicial.
