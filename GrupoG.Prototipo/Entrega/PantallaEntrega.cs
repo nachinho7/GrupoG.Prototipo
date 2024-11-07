@@ -63,7 +63,6 @@ namespace GrupoG.Prototipo.Entrega
             this.Hide();
             menu.StartPosition = FormStartPosition.CenterScreen;
             menu.Location = this.Location;
-            menu.Show();
         }
 
 
