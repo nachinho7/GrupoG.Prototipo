@@ -14,3 +14,73 @@
 12. Verificar mensaje : ”Orden de preparación generada correctamente”.
 13. Hacer click en volver al menú.
 14. Verificar que lleva al menú inicial.
+
+Caso 2(caso éxito- ingreso 2 productos):
+
+1. Tocar botón “Orden de preparación”
+2. [Abre formulario] Ingresar cliente 1 y presionar “obtener datos”.
+
+3. Verificar Datos de Mercadería:
+Id: 1013,
+Nombre: Latas de tomate
+Cantidad: 8585
+
+Id: 1018
+Nombre: Paquetes de Azucar
+Cantidad: 2130
+
+4. Hacer click sobre la mercadería Latas de tomate  y, en cantidad a agregar ingresar 100, luego presionar el botón “Agregar”.
+5. Hacer click sobre la mercadería Paquetes de azucar y, en cantidad a agregar ingresar 200, luego presionar el botón “Agregar”.
+6. Verificar que se reducen las cantidades disponible de los  productos seleccionados.
+7. Seleccionar la línea de la mercadería Paquetes de azucar, y hacer click sobre “limpiar dato seleccionado”.
+8. Verificar que se visualice el cartel "Mercaderia Latas de Tomate eliminada correctamente". --> creo que aca seguimos hablando de paquetes de azucar jajjaja
+9. Hacer click en "aceptar"
+10. Validar que no se visualiza en la tabla la mercadería Paquetes de azúcar.
+11. Validar que la cant mercaderia eliminada se volvio a agregar en la pantalla "Datos de Mercaderia"
+12. Verificar que se visualiza en pantalla Previsualización orden de preparación un número de órden.
+13. Ingresar en  fecha de Despacho una fecha posterior a la actual.
+14. Ingresar en DNI transportista: 45678912.
+15. Tocar botón “generar órden”.
+16. Verificar: mensaje ”Orden de preparación generada correctamente”.
+17. Hacer click en volver al menú.
+18. verificar que lleva al menú inicial.
+
+Caso 3(casos error):
+
+1. Tocar botón “Orden de preparación”
+
+* Ingreso Cuit inválido o inexistente:
+2. [Abre formulario] Ingresar cliente 0909 y presionar “obtener datos”.
+3. Verificar que se visualiza el mensaje “Cliente no encontrado”
+4. Hacer click en el boton Aceptar
+5. Ingresar cliente 1 y presionar “obtener datos”.
+
+* Error en ingreso de mercadería (omisión de selección de mercadería, ingreso de número negativo, cero o mayor al existente):
+6. Ingresar en "Cantidad a Agregar": 2, luego presionar el botón “Agregar”.
+7. Verificar mensaje de error “Por favor, seleccionar una mercadería”.
+8. Hacer click en el boton "Aceptar".
+9. Hacer click sobre el botón "Limpiar dato seleccionado”.
+10. Verificar mensaje: “Por favor, seleccione un elemento para eliminar”
+11. Hacer click en el boton "Aceptar".
+12. Hacer click sobre la  mercadería "Latas de Tomate" y en cantidad a agregar ingresar -1
+13. Hacer click en el boton “Agregar”.
+14. Verificar mensaje de error: "No se pueden agregar cantidades negativas".
+15. Hacer click en el boton "Aceptar"
+16. Hacer click sobre mercadería "Latas de Tomate" y en cantidad a agregar ingresar 10000
+17. Presionar el botón “Agregar”.
+18. Verificar: mensaje “La cantidad seleccionada es mayor  a la cantidad disponible”.
+19. Hacer click en boton "Aceptar"
+20. Hacer click sobre mercadería "Latas de Tomate" y no ingresar cantidad de mercaderia a agregar
+21. Presionar el botón agregar.
+22. Verificar: mensaje ”Por favor ingrese una cantidad válida”.
+23. Hacer click en boton "Aceptar"
+24. Hacer click sobre mercadería "Latas de Tomate" y en cantidad a agregar ingresar 0
+25. Hacer click en el boton "Agregar"
+26. Verificar mensaje: "Mercaderia Latas de Tomate agregadas corectamente".
+27. Seleccionar Fecha de Despacho posterior a la actual
+28. Ingresar DNI Transportista: 45678912
+29. Hacer click en "Generar Orden"
+30. Validar mensaje de error: "No se puede generar la orden. Hacer mercaderias con cantidad o
+31. Hacer click en boton "Aceptar"
+32. Hacer click en volver al menú.
+33. verificar que lleva al menú inicial.
