@@ -49,11 +49,9 @@ namespace GrupoG.Prototipo.Empaquetar
 
             if (ComboBoxOrdenesPreparacion.SelectedIndex == -1) return;
 
-            // Obtiene el número real de la orden de preparación seleccionada
             int numeroOrdenSeleccionada = Convert.ToInt32(
                 ComboBoxOrdenesPreparacion.SelectedItem.ToString().Split(' ')[2]);
 
-            // Llama al método `ObtenerMercaderiasPorOrden` para obtener la mercadería correspondiente
             var mercaderias = modelo.ListarMercaderiasPorOrden(numeroOrdenSeleccionada);
 
             if (mercaderias != null)
