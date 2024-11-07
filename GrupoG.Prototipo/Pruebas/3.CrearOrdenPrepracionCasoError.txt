@@ -1,0 +1,42 @@
+﻿Caso: 3 - Validaciones:
+
+Tocar botón “Orden de preparación”
+
+* Ingreso Nro Cliente inválido o inexistente:
+[Abre formulario]
+Ingresar cliente 0909 y presionar “Obtener Datos”
+Verificar mensaje de error “Cliente no encontrado”
+Hacer click en el boton Aceptar
+Ingresar Cliente AAA y presionar "Obtener Datos"
+Verificar mensaje de error: "Cliente no encontrado"
+Hacer click en el boton Aceptar
+Ingresar cliente 1 y presionar “Obtener Datos”
+
+* Error en ingreso de mercadería (omisión de selección de mercadería, ingreso de número negativo, cero o mayor al existente):
+Ingresar en "Cantidad a Agregar": 2, luego presionar el botón “Agregar”.
+Verificar mensaje de error “Por favor, seleccionar una mercadería”.
+Hacer click en el boton "Aceptar".
+Hacer click sobre el botón "Limpiar dato seleccionado”.
+Verificar mensaje: “Por favor, seleccione un elemento para eliminar”
+Hacer click en el boton "Aceptar".
+Hacer click sobre la  mercadería "Latas de Tomate" y en cantidad a agregar ingresar -1
+Hacer click en el boton “Agregar”.
+Verificar mensaje de error: "No se pueden agregar cantidades negativas".
+Hacer click en el boton "Aceptar"
+Hacer click sobre mercadería "Latas de Tomate" y en cantidad a agregar ingresar 10000
+Presionar el botón “Agregar”.
+Verificar: mensaje “La cantidad seleccionada es mayor  a la cantidad disponible”.
+Hacer click en boton "Aceptar"
+Hacer click sobre mercadería "Latas de Tomate" y no ingresar cantidad de mercaderia a agregar
+Presionar el botón agregar.
+Verificar: mensaje ”Por favor ingrese una cantidad válida”.
+Hacer click en boton "Aceptar"
+Hacer click sobre mercadería "Latas de Tomate" y en cantidad a agregar ingresar 0
+Hacer click en el boton "Agregar"
+Verificar mensaje: "Mercaderia Latas de Tomate agregadas corectamente".
+Seleccionar Fecha de Despacho posterior a la actual
+Ingresar DNI Transportista: 45678912
+Hacer click en "Generar Orden"
+Validar mensaje de error: "No se puede generar la orden. Hacer mercaderias con cantidad o
+Hacer click en boton "Aceptar"
+Salir del Sistema
