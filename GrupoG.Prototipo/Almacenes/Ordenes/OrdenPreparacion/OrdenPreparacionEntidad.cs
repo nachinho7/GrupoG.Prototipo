@@ -15,6 +15,5 @@ namespace GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion
         public OrdenPreparacionEstados Estado {  get; set; }
         public int NroDeposito { get; set; }
         public List<OrdenPreparacionDetalle> Detalle { get; set; } = new List<OrdenPreparacionDetalle>();
-        //public List<Mercaderias> Mercaderias { get; set; }
     }
 }

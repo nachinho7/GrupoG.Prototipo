@@ -2,12 +2,12 @@
   {
     "numeroOrdenSeleccion": 3001,
     "FechaCreacion": "2023-11-01T09:00:00",
-    "Estado": "Seleccionada"
+    "Estado": 0
   },
   {
     "numeroOrdenSeleccion": 3002,
     "FechaCreacion": "2023-11-02T10:15:00",
-    "Estado": "Cumplida"
+    "Estado": 1
   }
   
 ]

@@ -9,7 +9,7 @@ namespace GrupoG.Prototipo.Seleccion
 {
     public class OrdenSeleccion
     {
-        public int numeroOrdenSeleccion { get; set; }
+        public int NumeroOrdenSeleccion { get; set; }
         public DateTime FechaCreacion { get; set; }
         public List<OrdenPreparacion> OrdenPreparacion { get; set; }
     }

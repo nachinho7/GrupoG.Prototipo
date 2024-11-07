@@ -150,6 +150,7 @@
             // 
             // listView1
             // 
+            listView1.CheckBoxes = true;
             listView1.Columns.AddRange(new ColumnHeader[] { numeroOrdenPreparacion, columnaCliente, columnaFecha, columnaTransportista });
             listView1.FullRowSelect = true;
             listView1.GridLines = true;

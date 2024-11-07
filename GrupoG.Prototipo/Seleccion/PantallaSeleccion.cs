@@ -70,6 +70,13 @@ namespace GrupoG.Prototipo.Seleccion
             comboBoxTransportista.SelectedIndexChanged += ComboBoxTransportista_SelectedIndexChanged;
         }
 
+        private void BotonMostrarTodas_Click(object sender, EventArgs e)
+        {
+            datetimeDespacho.CustomFormat = " ";
+            comboBoxTransportista.SelectedIndex = 0;
+            comboBoxCliente.SelectedIndex = 0;
+            CargarOrdenes();
+        }
         private void dateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             
@@ -112,18 +119,22 @@ namespace GrupoG.Prototipo.Seleccion
             }
         }
 
+
+
         private void BotonGenerarOS_Click(object sender, EventArgs e)
         {
-            var ordenesSeleccionadas = listView1.SelectedItems
+            var ordenesSeleccionadas = listView1.CheckedItems
                 .Cast<ListViewItem>()
                 .Select(item => item.Tag as OrdenPreparacion)
+                .Where(orden => orden != null)
                 .ToList();
 
-            if (ordenesSeleccionadas.Count > 0)
+            if (ordenesSeleccionadas.Any())
             {
-                //var nuevaSeleccion = modelo.GenerarOrdenDeSeleccion(ordenesSeleccionadas);
-                //MessageBox.Show($"Orden de Selección N°{nuevaSeleccion.numeroOrdenSeleccion} generada!\n" +
-                //                $"Incluye {ordenesSeleccionadas.Count} órdenes de preparación.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var nuevaSeleccion = modelo.CrearOrdenSeleccion(ordenesSeleccionadas);
+                MessageBox.Show($"Orden de Selección N°{nuevaSeleccion.numeroOrdenSeleccion} generada!\n" +
+                                $"Incluye {ordenesSeleccionadas.Count} órdenes de preparación.",
+                                "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarOrdenes();
             }
             else
@@ -131,6 +142,7 @@ namespace GrupoG.Prototipo.Seleccion
                 MessageBox.Show("No se seleccionaron órdenes.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {
@@ -140,12 +152,6 @@ namespace GrupoG.Prototipo.Seleccion
             menu.Location = this.Location;
         }
 
-        private void BotonMostrarTodas_Click(object sender, EventArgs e)
-        {
-            datetimeDespacho.CustomFormat = " ";
-            comboBoxTransportista.SelectedIndex = 0;
-            comboBoxCliente.SelectedIndex = 0;
-            CargarOrdenes();
-        }
+        
     }
 }

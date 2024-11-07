@@ -1,6 +1,6 @@
 [
   {
-    "idMercaderia": 1,
+    "idMercaderia": 1013,
     "nombreMercaderia": "Latas de Tomate",
     "Ubicacion": [
       {
@@ -17,7 +17,7 @@
     "NroCliente": 1
   },
   {
-    "idMercaderia": 2,
+    "idMercaderia": 1022,
     "nombreMercaderia": "Paquetes de Arroz",
     "Ubicacion": [
       {

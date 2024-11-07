@@ -2,6 +2,8 @@
 using GrupoG.Prototipo.Almacenes.Clientes;
 using GrupoG.Prototipo.Almacenes.Mercaderias;
 using GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion;
+using GrupoG.Prototipo.Almacenes.Ordenes.OrdenSeleccion;
+using GrupoG.Prototipo.Stock;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +23,7 @@ namespace GrupoG.Prototipo.Seleccion
             }
 
             var ordenesPreparacion = OrdenPreparacionAlmacen.OrdenPreparacion
+                .Where(op => op.Estado == OrdenPreparacionEstados.Pendiente)
                 .Select(op => new OrdenPreparacion
                 {
                     NumeroOrdenPreparacion = op.NumeroOrdenPreparacion,
@@ -32,7 +35,7 @@ namespace GrupoG.Prototipo.Seleccion
 
             if (!ordenesPreparacion.Any())
             {
-                MessageBox.Show("No se encontraron mercaderías para el cliente.");
+                MessageBox.Show("No se encontraron ordenes para seleccionar.");
             }
 
             return ordenesPreparacion;
@@ -88,18 +91,44 @@ namespace GrupoG.Prototipo.Seleccion
                 .ToList();
         }
 
-        public List<OrdenSeleccion> OrdenesSeleccionAgregadas { get; private set; }
+        public static int SumaNumOrden()
+        {
+            int sumaNumOrden = (OrdenSeleccionAlmacen.OrdenSeleccion.Any() ? OrdenSeleccionAlmacen.OrdenSeleccion.Max(o => o.numeroOrdenSeleccion) : 0) + 1;
+            return sumaNumOrden;
+        }
 
-        //public OrdenSeleccion GenerarOrdenDeSeleccion(List<OrdenPreparacion> OrdenPreparacion)
-        //{
-        //    var nuevaSeleccion = new OrdenSeleccion
-        //    {
-        //        numeroOrdenSeleccion = siguienteIdSeleccion++,
-        //        FechaCreacion = DateTime.Now,
-        //        OrdenPreparacion = OrdenPreparacion
-        //    };
-        //    orde.Add(nuevaSeleccion);
-        //    return nuevaSeleccion;
-        //}
+        public OrdenSeleccionEntidad CrearOrdenSeleccion(List<OrdenPreparacion> listaOrdenesPreparacion)
+        {
+            int nroOrdenSeleccion = SumaNumOrden();
+            var estadoOrdenSeleccion = OrdenSeleccionEstados.Seleccionada;
+
+            var ordenesPreparacionEntidad = new List<OrdenPreparacionEntidad>();
+
+            foreach (var ordenPreparacion in listaOrdenesPreparacion)
+            {
+                var ordenEntidadExistente = OrdenPreparacionAlmacen.OrdenPreparacion
+                    .FirstOrDefault(op => op.NumeroOrdenPreparacion == ordenPreparacion.NumeroOrdenPreparacion);
+
+                if (ordenEntidadExistente != null)
+                {
+                    ordenEntidadExistente.Estado = OrdenPreparacionEstados.Seleccionada;
+                    ordenesPreparacionEntidad.Add(ordenEntidadExistente);
+                }
+            }
+
+            var nuevaOrdenSeleccion = new OrdenSeleccionEntidad
+            {
+                numeroOrdenSeleccion = nroOrdenSeleccion,
+                FechaCreacion = DateTime.Now,
+                Estado = estadoOrdenSeleccion,
+                OrdenPreparacion = ordenesPreparacionEntidad
+            };
+
+            OrdenSeleccionAlmacen.AgregarOrdenSeleccion(nuevaOrdenSeleccion);
+
+            return nuevaOrdenSeleccion;
+        }
+
+
     }
 }
