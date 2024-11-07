@@ -2,31 +2,146 @@
   {
     "idMercaderia": 1013,
     "nombreMercaderia": "Latas de Tomate",
+    "NroCliente": 1,
     "Ubicacion": [
       {
         "NombreUbicacion": "10-20-4",
-        "Cantidad": 500,
+        "Cantidad": 7000,
         "NroDeposito": 1
       },
       {
         "NombreUbicacion": "10-20-5",
-        "Cantidad": 200,
+        "Cantidad": 2000,
+        "NroDeposito": 1
+      }
+    ]
+  },
+  {
+    "idMercaderia": 1014,
+    "nombreMercaderia": "Paquetes de Arroz",
+    "NroCliente": 2,
+    "Ubicacion": [
+      {
+        "NombreUbicacion": "11-15-2",
+        "Cantidad": 3000,
+        "NroDeposito": 1
+      }
+    ]
+  },
+  {
+    "idMercaderia": 1015,
+    "nombreMercaderia": "Aceite de Oliva",
+    "NroCliente": 3,
+    "Ubicacion": [
+      {
+        "NombreUbicacion": "15-2-1",
+        "Cantidad": 1500,
+        "NroDeposito": 3
+      },
+      {
+        "NombreUbicacion": "15-2-2",
+        "Cantidad": 1000,
+        "NroDeposito": 3
+      }
+    ]
+  },
+  {
+    "idMercaderia": 1016,
+    "nombreMercaderia": "Cajas de Zapatillas",
+    "NroCliente": 4,
+    "Ubicacion": [
+      {
+        "NombreUbicacion": "17-12-3",
+        "Cantidad": 6000,
         "NroDeposito": 2
       }
-    ],
-    "NroCliente": 1
+    ]
+  },
+  {
+    "idMercaderia": 1017,
+    "nombreMercaderia": "Paquetes de Harina",
+    "NroCliente": 5,
+    "Ubicacion": [
+      {
+        "NombreUbicacion": "23-12-4",
+        "Cantidad": 4000,
+        "NroDeposito": 1
+      },
+      {
+        "NombreUbicacion": "23-12-5",
+        "Cantidad": 3000,
+        "NroDeposito": 1
+      }
+    ]
+  },
+  {
+    "idMercaderia": 1018,
+    "nombreMercaderia": "Paquetes de Azúcar",
+    "NroCliente": 1,
+    "Ubicacion": [
+      {
+        "NombreUbicacion": "15-4-6",
+        "Cantidad": 2500,
+        "NroDeposito": 1
+      }
+    ]
+  },
+  {
+    "idMercaderia": 1019,
+    "nombreMercaderia": "Paquetes de Sal",
+    "NroCliente": 2,
+    "Ubicacion": [
+      {
+        "NombreUbicacion": "26-7-17",
+        "Cantidad": 5000,
+        "NroDeposito": 1
+      }
+    ]
+  },
+  {
+    "idMercaderia": 1020,
+    "nombreMercaderia": "Leche en Polvo",
+    "NroCliente": 3,
+    "Ubicacion": [
+      {
+        "NombreUbicacion": "17-30-4",
+        "Cantidad": 4500,
+        "NroDeposito": 3
+      },
+      {
+        "NombreUbicacion": "17-30-5",
+        "Cantidad": 1500,
+        "NroDeposito": 3
+      }
+    ]
+  },
+  {
+    "idMercaderia": 1021,
+    "nombreMercaderia": "Cajas de Mochilas",
+    "NroCliente": 4,
+    "Ubicacion": [
+      {
+        "NombreUbicacion": "30-15-3",
+        "Cantidad": 6000,
+        "NroDeposito": 2
+      }
+    ]
   },
   {
     "idMercaderia": 1022,
-    "nombreMercaderia": "Paquetes de Arroz",
+    "nombreMercaderia": "Bolsas de Cemento",
+    "NroCliente": 5,
     "Ubicacion": [
       {
-        "NombreUbicacion": "5-5-3",
-        "Cantidad": 300,
+        "NombreUbicacion": "28-9-2",
+        "Cantidad": 2000,
+        "NroDeposito": 1
+      },
+      {
+        "NombreUbicacion": "28-9-3",
+        "Cantidad": 1000,
         "NroDeposito": 1
       }
-    ],
-    "NroCliente": 2
+    ]
   }
-  
 ]

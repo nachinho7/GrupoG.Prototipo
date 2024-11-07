@@ -1,22 +1,50 @@
 [
   {
     "NroDeposito": 1,
-    "NombreDeposito": "Deposito GBA Norte"
+    "NombreDeposito": "Deposito GBA Norte 1"
   },
   {
     "NroDeposito": 2,
-    "NombreDeposito": "Deposito GBA Sur"
+    "NombreDeposito": "Deposito GBA Norte 2"
   },
   {
     "NroDeposito": 3,
-    "NombreDeposito": "Deposito Rosario"
+    "NombreDeposito": "Deposito GBA Sur 1"
   },
   {
     "NroDeposito": 4,
-    "NombreDeposito": "Deposito Cordoba"
+    "NombreDeposito": "Deposito GBA Sur 2"
   },
   {
     "NroDeposito": 5,
+    "NombreDeposito": "Deposito Rosario"
+  },
+  {
+    "NroDeposito": 6,
+    "NombreDeposito": "Deposito Córdoba"
+  },
+  {
+    "NroDeposito": 7,
     "NombreDeposito": "Deposito Mendoza"
+  },
+  {
+    "NroDeposito": 8,
+    "NombreDeposito": "Deposito Bahía Blanca"
+  },
+  {
+    "NroDeposito": 9,
+    "NombreDeposito": "Deposito Tierra del Fuego"
+  },
+  {
+    "NroDeposito": 10,
+    "NombreDeposito": "Deposito Salta"
+  },
+  {
+    "NroDeposito": 11,
+    "NombreDeposito": "Deposito Neuquén"
+  },
+  {
+    "NroDeposito": 12,
+    "NombreDeposito": "Deposito Misiones"
   }
 ]

@@ -1,12 +1,17 @@
 [
   {
     "numeroOrdenSeleccion": 3001,
-    "FechaCreacion": "2023-11-01T09:00:00",
+    "FechaCreacion": "2024-11-16T14:15:00",
     "Estado": 0
   },
   {
     "numeroOrdenSeleccion": 3002,
-    "FechaCreacion": "2023-11-02T10:15:00",
+    "FechaCreacion": "2024-11-15T11:00:00",
+    "Estado": 1
+  },
+  {
+    "numeroOrdenSeleccion": 3003,
+    "FechaCreacion": "2024-11-12T14:30:00",
     "Estado": 1
   }
   
