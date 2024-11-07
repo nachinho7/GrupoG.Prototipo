@@ -31,16 +31,17 @@
             comboBox1 = new ComboBox();
             labelOrdenSeleccion = new Label();
             listView1 = new ListView();
+            ubicacionMercaderia = new ColumnHeader();
             idMercaderia = new ColumnHeader();
             nombreMercaderia = new ColumnHeader();
             cantidadMercaderia = new ColumnHeader();
-            ubicacionMercaderia = new ColumnHeader();
             VolverAlMenu = new Button();
             btnRetirarStock = new Button();
             SuspendLayout();
             // 
             // comboBox1
             // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(162, 25);
             comboBox1.Name = "comboBox1";
@@ -68,6 +69,11 @@
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
             // 
+            // ubicacionMercaderia
+            // 
+            ubicacionMercaderia.Text = "Ubicacion";
+            ubicacionMercaderia.Width = 200;
+            // 
             // idMercaderia
             // 
             idMercaderia.Text = "ID";
@@ -82,11 +88,6 @@
             // 
             cantidadMercaderia.Text = "Cantidad";
             cantidadMercaderia.Width = 120;
-            // 
-            // ubicacionMercaderia
-            // 
-            ubicacionMercaderia.Text = "Ubicacion";
-            ubicacionMercaderia.Width = 200;
             // 
             // VolverAlMenu
             // 

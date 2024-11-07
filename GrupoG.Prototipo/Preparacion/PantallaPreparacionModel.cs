@@ -56,7 +56,13 @@ namespace GrupoG.Prototipo.Preparacion
                 {
                     idMercaderia = m.idMercaderia,
                     nombreMercaderia = m.nombreMercaderia,
-                    cantidadMercaderia = m.CalcularTotalStock()
+                    cantidadMercaderia = m.CalcularTotalStock() - OrdenPreparacionAlmacen.OrdenPreparacion
+                                                                                         .Where(o => o.Estado == OrdenPreparacionEstados.Pendiente || o.Estado == OrdenPreparacionEstados.ASeleccionar)
+                                                                                         .SelectMany(o => o.Detalle)
+                                                                                         .Where(o => o.idMercaderia == m.idMercaderia)
+                                                                                         .Select(o => o.Cantidad)
+                                                                                         .DefaultIfEmpty()
+                                                                                         .Sum()
                 })
                 .ToList();
             
@@ -130,7 +136,7 @@ namespace GrupoG.Prototipo.Preparacion
                 int cantidad = item.cantidad;
 
                 // Resta el stock sin importar la ubicación
-                MercaderiasAlmacen.RestarStockGlobal(idMercaderia, cantidad);
+                //MercaderiasAlmacen.RestarStockGlobal(idMercaderia, cantidad);
 
                 var detalle = new OrdenPreparacionDetalle
                 {

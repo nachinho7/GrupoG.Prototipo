@@ -103,6 +103,7 @@
             // 
             // comboBoxTransportista
             // 
+            comboBoxTransportista.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxTransportista.ForeColor = SystemColors.WindowText;
             comboBoxTransportista.FormattingEnabled = true;
             comboBoxTransportista.Location = new Point(690, 24);
@@ -131,6 +132,7 @@
             // 
             // comboBoxCliente
             // 
+            comboBoxCliente.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxCliente.FormattingEnabled = true;
             comboBoxCliente.Location = new Point(406, 24);
             comboBoxCliente.Margin = new Padding(3, 2, 3, 2);

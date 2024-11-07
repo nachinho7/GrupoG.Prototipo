@@ -96,6 +96,7 @@
             // 
             // ComboBoxOrdenesPreparacion
             // 
+            ComboBoxOrdenesPreparacion.DropDownStyle = ComboBoxStyle.DropDownList;
             ComboBoxOrdenesPreparacion.FormattingEnabled = true;
             ComboBoxOrdenesPreparacion.Location = new Point(173, 34);
             ComboBoxOrdenesPreparacion.Margin = new Padding(3, 2, 3, 2);
