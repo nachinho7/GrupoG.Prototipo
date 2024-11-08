@@ -16,21 +16,6 @@ namespace GrupoG.Prototipo.Entrega
             
         }
 
-        public List<Mercaderias> ListarMercaderiasPorOrden(int numeroOrdenEmpaquetada)
-        {
-            var orden = ObtenerOrdenes()
-                .FirstOrDefault(o => o.NumeroOrdenPreparacion == numeroOrdenEmpaquetada);
-
-            if (orden == null) return null;
-
-            return orden.Detalle.Select(detalle => new Mercaderias
-            {
-                idMercaderia = detalle.idMercaderia,
-                cantidadMercaderia = detalle.Cantidad,
-            }).ToList();
-        }
-
-
         public void CambiarEstadoOrden(int nroOrdenEmp)
         {
             var orden = OrdenPreparacionAlmacen.OrdenPreparacion.FirstOrDefault(o => o.NumeroOrdenPreparacion == nroOrdenEmp);

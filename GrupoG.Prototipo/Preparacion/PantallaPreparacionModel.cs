@@ -21,27 +21,21 @@ namespace GrupoG.Prototipo.Preparacion
 
         public List<Clientes> ObtenerCliente(int numeroCliente)
         {
-            
             var clienteEntidad = ClientesAlmacen.ObtenerNroCliente(numeroCliente);
 
             if (clienteEntidad == null)
             {
-                
-                MessageBox.Show("Cliente no encontrado.");
-                return new List<Clientes>();
+                return null; 
             }
 
-            
             var cliente = new Clientes
             {
                 NroCliente = clienteEntidad.NroCliente
             };
 
-            
-            MessageBox.Show($"Cliente encontrado: NroCliente = {cliente.NroCliente}");
-
             return new List<Clientes> { cliente };
         }
+
 
         public List<Mercaderias> ObtenerMercaderiasPorCliente(int nroCliente)
         {
@@ -134,9 +128,6 @@ namespace GrupoG.Prototipo.Preparacion
             {
                 int idMercaderia = item.idMercaderia;
                 int cantidad = item.cantidad;
-
-                // Resta el stock sin importar la ubicación
-                //MercaderiasAlmacen.RestarStockGlobal(idMercaderia, cantidad);
 
                 var detalle = new OrdenPreparacionDetalle
                 {

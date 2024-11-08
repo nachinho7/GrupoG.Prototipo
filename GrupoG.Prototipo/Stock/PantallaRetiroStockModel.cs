@@ -1,54 +1,91 @@
-﻿using System;
+﻿using GrupoG.Prototipo.Almacenes.Mercaderias;
+using GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion;
+using GrupoG.Prototipo.Almacenes.Ordenes.OrdenSeleccion;
+using System;
 using System.Collections.Generic;
 
 namespace GrupoG.Prototipo.Stock
 {
     internal class PantallaRetiroStockModel
     {
-        public List<OrdenSeleccion> OrdenesSeleccionadas { get; private set; }
-
-        public PantallaRetiroStockModel()
+        public List<OrdenSeleccionEntidad> ObtenerOrdenesSeleccion()
         {
-            OrdenesSeleccionadas = new List<OrdenSeleccion>
+            return OrdenSeleccionAlmacen.OrdenSeleccion
+                .Where(o => o.Estado == OrdenSeleccionEstados.Seleccionada)
+                .ToList();
+        }
+
+        public List<MercaderiasEntidad> ListarMercaderiasPorOrden(int numeroOrdenSeleccionada)
+        {
+            var ordenSeleccionada = ObtenerOrdenesSeleccion()
+                .FirstOrDefault(o => o.numeroOrdenSeleccion == numeroOrdenSeleccionada);
+
+            if (ordenSeleccionada == null) return null;
+
+            var mercaderiasList = new List<MercaderiasEntidad>();
+
+            foreach (var ordenPreparacion in ordenSeleccionada.OrdenPreparacion)
             {
-                new OrdenSeleccion
+                foreach (var detalle in ordenPreparacion.Detalle)
                 {
-                    numeroOrdenSeleccion = 1,
-                    Mercaderias = new List<Mercaderias>
+                    var mercaderiaEntidad = MercaderiasAlmacen.Mercaderias
+                        .FirstOrDefault(m => m.idMercaderia == detalle.idMercaderia);
+
+                    if (mercaderiaEntidad != null)
                     {
-                        new Mercaderias { idMercaderia = 1, nombreMercaderia = "Producto A", cantidadMercaderia = 10, ubicacionMercaderia = "3-6-6" },
-                        new Mercaderias { idMercaderia = 1, nombreMercaderia = "Producto A", cantidadMercaderia = 2, ubicacionMercaderia = "4-8-6" },
-                        new Mercaderias { idMercaderia = 1, nombreMercaderia = "Producto A", cantidadMercaderia = 9, ubicacionMercaderia = "1-2-3" },
-                        new Mercaderias { idMercaderia = 2, nombreMercaderia = "Producto B", cantidadMercaderia = 5, ubicacionMercaderia = "12-1-2" },
-                        new Mercaderias { idMercaderia = 2, nombreMercaderia = "Producto B", cantidadMercaderia = 5, ubicacionMercaderia = "12-1-3" },
-                        new Mercaderias { idMercaderia = 2, nombreMercaderia = "Producto C", cantidadMercaderia = 5, ubicacionMercaderia = "12-2-2" }
-                    }
-                },
-                new OrdenSeleccion
-                {
-                    numeroOrdenSeleccion = 2,
-                    Mercaderias = new List<Mercaderias>
-                    {
-                        new Mercaderias { idMercaderia = 3, nombreMercaderia = "Producto C", cantidadMercaderia = 8, ubicacionMercaderia = "103-43-23" },
-                        new Mercaderias { idMercaderia = 4, nombreMercaderia = "Producto D", cantidadMercaderia = 12, ubicacionMercaderia = "2-5-6" } 
+                        var mercaderiaConUbicaciones = new MercaderiasEntidad
+                        {
+                            idMercaderia = mercaderiaEntidad.idMercaderia,
+                            nombreMercaderia = mercaderiaEntidad.nombreMercaderia,
+                            NroCliente = mercaderiaEntidad.NroCliente,
+                            Ubicacion = mercaderiaEntidad.Ubicacion
+                                .GroupBy(u => u.NombreUbicacion)
+                                .Select(grupo => new MercaderiasUbicacion
+                                {
+                                    NombreUbicacion = grupo.Key,
+                                    Cantidad = grupo.Sum(u => u.Cantidad),
+                                    NroDeposito = grupo.First().NroDeposito,
+                                    idMercaderia = detalle.idMercaderia
+                                })
+                                .ToList()
+                        };
+
+                        mercaderiasList.Add(mercaderiaConUbicaciones);
                     }
                 }
-            };
+            }
+
+            return mercaderiasList;
         }
 
-        public List<OrdenSeleccion> ObtenerOrdenesSeleccionadas()
+        public void RetiroStock(OrdenSeleccionEntidad ordenSeleccionada, List<Mercaderias> mercaderiasARetirar)
         {
-            return OrdenesSeleccionadas;
-        }
+            foreach (var mercaderia in mercaderiasARetirar)
+            {
+                var mercaderiaEntidad = MercaderiasAlmacen.Mercaderias
+                    .FirstOrDefault(m => m.idMercaderia == mercaderia.idMercaderia);
 
-        public void RemoverOrdenSeleccionada(OrdenSeleccion orden)
-        {
-            OrdenesSeleccionadas.Remove(orden);
-        }
+                if (mercaderiaEntidad != null)
+                {
+                    foreach (var ubicacion in mercaderiaEntidad.Ubicacion)
+                    {
+                        if (ubicacion.Cantidad >= mercaderia.cantidadMercaderia)
+                        {
+                            ubicacion.Cantidad -= mercaderia.cantidadMercaderia;
+                            break;
+                        }
+                    }
+                }
+            }
 
-        public void RemoverMercaderiaDeOrden(OrdenSeleccion orden, Mercaderias mercaderia)
-        {
-            orden.Mercaderias.Remove(mercaderia);
+            if (ordenSeleccionada.OrdenPreparacion.All(op => op.Detalle.All(d => d.Cantidad == 0)))
+            {
+                OrdenSeleccionAlmacen.ModificarEstado(ordenSeleccionada, OrdenSeleccionEstados.Cumplida);
+                foreach (var ordenPreparacion in ordenSeleccionada.OrdenPreparacion)
+                {
+                    OrdenPreparacionAlmacen.ModificarEstado(ordenPreparacion, OrdenPreparacionEstados.Cumplida);
+                }
+            }
         }
     }
 }

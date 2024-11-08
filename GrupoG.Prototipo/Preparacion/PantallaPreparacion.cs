@@ -20,19 +20,24 @@ namespace GrupoG.Prototipo.Preparacion
 
         private void BotonObtenerDatos_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(numeroCliente.Text, out int nroCliente))
+            if (int.TryParse(numeroCliente.Text, out int nroCliente) && nroCliente > 0)
             {
                 var cliente = model.ObtenerCliente(nroCliente);
 
                 if (cliente == null)
                 {
-                    MessageBox.Show("Cliente no encontrado");
+                    MessageBox.Show("No se encontraron clientes.");
                     return;
                 }
 
                 ActualizarListaMercaderias(model.ObtenerMercaderiasPorCliente(nroCliente));
             }
+            else
+            {
+                MessageBox.Show("Cliente no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
+
         private void ActualizarListaMercaderias(List<Mercaderias> mercaderias)
         {
             ListaDatosMercaderia.Items.Clear();
