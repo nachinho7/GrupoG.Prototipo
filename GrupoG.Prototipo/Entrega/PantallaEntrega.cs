@@ -68,11 +68,6 @@ namespace GrupoG.Prototipo.Entrega
             ListaOrdenesEmpaquetar.Items.Clear();
 
             MessageBox.Show("Las ordenes de entrega han sido generadas.", "Ordenes de Entrega Generadas", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            PantallaMenu menu = new PantallaMenu();
-            this.Hide();
-            menu.StartPosition = FormStartPosition.CenterScreen;
-            menu.Location = this.Location;
         }
 
 
