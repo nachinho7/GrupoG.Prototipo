@@ -43,7 +43,7 @@
             // 
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(162, 25);
+            comboBox1.Location = new Point(158, 30);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(188, 23);
             comboBox1.TabIndex = 0;
@@ -51,11 +51,11 @@
             // labelOrdenSeleccion
             // 
             labelOrdenSeleccion.AutoSize = true;
-            labelOrdenSeleccion.Location = new Point(23, 28);
+            labelOrdenSeleccion.Location = new Point(23, 33);
             labelOrdenSeleccion.Name = "labelOrdenSeleccion";
-            labelOrdenSeleccion.Size = new Size(112, 15);
+            labelOrdenSeleccion.Size = new Size(129, 15);
             labelOrdenSeleccion.TabIndex = 1;
-            labelOrdenSeleccion.Text = "Orden de Selección:";
+            labelOrdenSeleccion.Text = "Orden de Selección N°:";
             // 
             // listView1
             // 
@@ -64,7 +64,7 @@
             listView1.GridLines = true;
             listView1.Location = new Point(23, 74);
             listView1.Name = "listView1";
-            listView1.Size = new Size(612, 301);
+            listView1.Size = new Size(645, 301);
             listView1.TabIndex = 2;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;

@@ -56,11 +56,6 @@ namespace GrupoG.Prototipo.Almacenes.Mercaderias
             return mercaderia.nombreMercaderia;
         }
 
-        public static void AgregarStock(MercaderiasEntidad mercaderia)
-        {
-            mercaderias.Add(mercaderia);
-        }
-
         public static void EliminarPosicion(MercaderiasEntidad mercaderia)
         {
             mercaderia.Ubicacion = null;

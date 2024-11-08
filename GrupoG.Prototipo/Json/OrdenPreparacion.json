@@ -260,7 +260,7 @@
     "NroCliente": 3,
     "FechaDespacho": "2024-11-16T08:00:00",
     "DNITransportista": 98765432,
-    "Estado": 0,
+    "Estado": 2,
     "NroDeposito": 3,
     "Detalle": [
       {
@@ -280,6 +280,20 @@
       {
         "idMercaderia": 1014,
         "Cantidad": 190
+      }
+    ]
+  },
+  {
+    "NumeroOrdenPreparacion": 2021,
+    "NroCliente": 1,
+    "FechaDespacho": "2024-11-07T00:00:00-03:00",
+    "DNITransportista": 12343555,
+    "Estado": 2,
+    "NroDeposito": 1,
+    "Detalle": [
+      {
+        "idMercaderia": 1013,
+        "Cantidad": 10
       }
     ]
   }

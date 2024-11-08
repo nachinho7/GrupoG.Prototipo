@@ -1,5 +1,19 @@
 [
   {
+    "NroCliente": 10,
+    "NroDeposito": 1,
+    "Transportistas": [
+      {
+        "DNITransportista": 45678912,
+        "NombreTransportista": "Juan Pérez"
+      },
+      {
+        "DNITransportista": 78965432,
+        "NombreTransportista": "Carlos López"
+      }
+    ]
+  },
+  {
     "NroCliente": 1,
     "NroDeposito": 1,
     "Transportistas": [

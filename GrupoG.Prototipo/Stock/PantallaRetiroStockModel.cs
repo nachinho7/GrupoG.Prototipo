@@ -15,14 +15,15 @@ namespace GrupoG.Prototipo.Stock
                 .ToList();
         }
 
-        public List<MercaderiasEntidad> ListarMercaderiasPorOrden(int numeroOrdenSeleccionada)
+        public List<(string Ubicacion, int Id, string Nombre, int Cantidad, OrdenSeleccionEntidad OrdenSeleccion, OrdenPreparacionEntidad OrdenPreparacion)>
+        ListarMercaderiasPorOrden(int numeroOrdenSeleccionada)
         {
             var ordenSeleccionada = ObtenerOrdenesSeleccion()
                 .FirstOrDefault(o => o.numeroOrdenSeleccion == numeroOrdenSeleccionada);
 
             if (ordenSeleccionada == null) return null;
 
-            var mercaderiasList = new List<MercaderiasEntidad>();
+            var mercaderiasList = new List<(string Ubicacion, int Id, string Nombre, int Cantidad, OrdenSeleccionEntidad, OrdenPreparacionEntidad)>();
 
             foreach (var ordenPreparacion in ordenSeleccionada.OrdenPreparacion)
             {
@@ -33,24 +34,17 @@ namespace GrupoG.Prototipo.Stock
 
                     if (mercaderiaEntidad != null)
                     {
-                        var mercaderiaConUbicaciones = new MercaderiasEntidad
+                        foreach (var ubicacion in mercaderiaEntidad.Ubicacion)
                         {
-                            idMercaderia = mercaderiaEntidad.idMercaderia,
-                            nombreMercaderia = mercaderiaEntidad.nombreMercaderia,
-                            NroCliente = mercaderiaEntidad.NroCliente,
-                            Ubicacion = mercaderiaEntidad.Ubicacion
-                                .GroupBy(u => u.NombreUbicacion)
-                                .Select(grupo => new MercaderiasUbicacion
-                                {
-                                    NombreUbicacion = grupo.Key,
-                                    Cantidad = grupo.Sum(u => u.Cantidad),
-                                    NroDeposito = grupo.First().NroDeposito,
-                                    idMercaderia = detalle.idMercaderia
-                                })
-                                .ToList()
-                        };
-
-                        mercaderiasList.Add(mercaderiaConUbicaciones);
+                            mercaderiasList.Add((
+                                ubicacion.NombreUbicacion,
+                                mercaderiaEntidad.idMercaderia,
+                                mercaderiaEntidad.nombreMercaderia,
+                                detalle.Cantidad,
+                                ordenSeleccionada,
+                                ordenPreparacion
+                            ));
+                        }
                     }
                 }
             }
@@ -58,29 +52,56 @@ namespace GrupoG.Prototipo.Stock
             return mercaderiasList;
         }
 
-        public void RetiroStock(OrdenSeleccionEntidad ordenSeleccionada, List<Mercaderias> mercaderiasARetirar)
-        {
-            foreach (var mercaderia in mercaderiasARetirar)
-            {
-                var mercaderiaEntidad = MercaderiasAlmacen.Mercaderias
-                    .FirstOrDefault(m => m.idMercaderia == mercaderia.idMercaderia);
 
-                if (mercaderiaEntidad != null)
+        public void RetiroStock(OrdenSeleccionEntidad ordenSeleccionada, List<(MercaderiasEntidad mercaderia, int cantidadARetirar, string ubicacionSeleccionada)> mercaderiasARetirar)
+        {
+            var mercaderiasSeleccionadas = new List<(int idMercaderia, string ubicacion)>();
+
+            foreach (var (mercaderiaEntidad, cantidadARetirar, ubicacionSeleccionada) in mercaderiasARetirar)
+            {
+                var mercaderiaExistente = mercaderiasSeleccionadas.FirstOrDefault(m => m.idMercaderia == mercaderiaEntidad.idMercaderia);
+
+                if (mercaderiaExistente != default && mercaderiaExistente.ubicacion != ubicacionSeleccionada)
                 {
-                    foreach (var ubicacion in mercaderiaEntidad.Ubicacion)
+                    MessageBox.Show($"Solo se puede seleccionar una ubicación por mercadería por orden de preparación.");
+                    return;
+                }
+
+                mercaderiasSeleccionadas.Add((mercaderiaEntidad.idMercaderia, ubicacionSeleccionada));
+
+                var ubicacionesRelacionadas = mercaderiaEntidad.Ubicacion
+                    .Where(u => u.NombreUbicacion == ubicacionSeleccionada && u.idMercaderia == mercaderiaEntidad.idMercaderia)
+                    .ToList();
+
+                int cantidadRestante = cantidadARetirar;
+
+                foreach (var ubicacion in ubicacionesRelacionadas)
+                {
+                    if (ubicacion.Cantidad >= cantidadRestante)
                     {
-                        if (ubicacion.Cantidad >= mercaderia.cantidadMercaderia)
+                        MercaderiasAlmacen.CambiarCantidad(ubicacion, cantidadRestante);
+
+                        if (ubicacion.Cantidad == 0)
                         {
-                            ubicacion.Cantidad -= mercaderia.cantidadMercaderia;
-                            break;
+                            mercaderiaEntidad.Ubicacion.Remove(ubicacion);
                         }
+                        break;
+                    }
+                    else
+                    {
+                        MercaderiasAlmacen.CambiarCantidad(ubicacion, ubicacion.Cantidad);
+
+                        cantidadRestante -= ubicacion.Cantidad;
+
+                        mercaderiaEntidad.Ubicacion.Remove(ubicacion);
                     }
                 }
             }
 
-            if (ordenSeleccionada.OrdenPreparacion.All(op => op.Detalle.All(d => d.Cantidad == 0)))
+            if (mercaderiasARetirar.All(m => m.cantidadARetirar == 0))
             {
                 OrdenSeleccionAlmacen.ModificarEstado(ordenSeleccionada, OrdenSeleccionEstados.Cumplida);
+
                 foreach (var ordenPreparacion in ordenSeleccionada.OrdenPreparacion)
                 {
                     OrdenPreparacionAlmacen.ModificarEstado(ordenPreparacion, OrdenPreparacionEstados.Cumplida);
