@@ -10,6 +10,7 @@ namespace GrupoG.Prototipo.Despacho
     public partial class PantallaDespacho : Form
     {
         private PantallaDespachoModel model;
+        private bool transportistaValidado = false; // Nueva variable de control
 
         public PantallaDespacho()
         {
@@ -46,10 +47,12 @@ namespace GrupoG.Prototipo.Despacho
             {
                 MostrarOrdenes(ordenes, true);
                 MessageBox.Show("Transportista válido y con órdenes encontradas.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                transportistaValidado = true; 
             }
             else
             {
                 MessageBox.Show("No se encontraron órdenes para el transportista con ese DNI.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                transportistaValidado = false; 
             }
         }
 
@@ -69,6 +72,13 @@ namespace GrupoG.Prototipo.Despacho
 
         private void btnGenerarRemito_Click(object sender, EventArgs e)
         {
+            
+            if (!transportistaValidado)
+            {
+                MessageBox.Show("No se puede generar remito. Debe buscar y validar un transportista primero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(dniTransportista.Text) || !int.TryParse(dniTransportista.Text, out int dniTransportistaInt))
             {
                 MessageBox.Show("No se puede generar remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -94,8 +104,10 @@ namespace GrupoG.Prototipo.Despacho
                 MessageBox.Show(mensaje, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
+            
             dniTransportista.Text = string.Empty;
             listviewTransportista.Items.Clear();
+            transportistaValidado = false; 
 
             dniTransportista.Enabled = true;
             btnBuscarTransportista.Enabled = true;
