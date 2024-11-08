@@ -196,6 +196,7 @@
             Name = "PantallaSeleccion";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Orden de Seleccion";
+            Shown += PantallaSeleccion_Shown;
             Load += PantallaSeleccion_Load;
             groupBoxOrdenes.ResumeLayout(false);
             groupBoxOrdenes.PerformLayout();

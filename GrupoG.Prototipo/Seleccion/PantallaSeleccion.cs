@@ -24,15 +24,16 @@ namespace GrupoG.Prototipo.Seleccion
             {
                 MessageBox.Show("No se encontraron órdenes para seleccionar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-            CargarClientes();
-            CargarTransportistas();
+            
         }
 
         private void PantallaSeleccion_Load(object sender, EventArgs e)
         {
             datetimeDespacho.CustomFormat = " "; 
             datetimeDespacho.Format = DateTimePickerFormat.Custom;
+
+            CargarClientes();
+            CargarTransportistas();
         }
 
         private void CargarOrdenes()
