@@ -1,4 +1,5 @@
 ﻿using GrupoG.Prototipo.Almacenes.Mercaderias;
+using GrupoG.Prototipo.Almacenes.Remito;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,31 +11,38 @@ namespace GrupoG.Prototipo.Almacenes.Remito
 {
     internal class RemitoAlmacen
     {
-        private static List<RemitoEntidad> remitos = new List<RemitoEntidad>();
-        public static IReadOnlyCollection<RemitoEntidad> Remitos => remitos.AsReadOnly();
+        private static List<RemitoEntidad> remito = new List<RemitoEntidad>();
+
+        static RemitoAlmacen()
+        {
+            Leer();
+        }
+
+        public static IReadOnlyCollection<RemitoEntidad> Remito => remito.AsReadOnly();
 
         public static void Grabar()
         {
-
-            var datos = JsonSerializer.Serialize(remitos);
-            File.WriteAllText("Remitos.json", datos);
+            var datos = JsonSerializer.Serialize(remito);
+            File.WriteAllText(@"Json\Remito.json", datos);
         }
 
         public static void Leer()
         {
-            if (!File.Exists("Remitos.json"))
+
+            if (!File.Exists(@"Json\Remito.json"))
             {
                 return;
             }
 
-            var datos = File.ReadAllText("Remitos.json");
+            var datos = File.ReadAllText(@"Json\Remito.json");
 
-            remitos = JsonSerializer.Deserialize<List<RemitoEntidad>>(datos)!;
+            remito = JsonSerializer.Deserialize<List<RemitoEntidad>>(datos)!;
         }
 
-        public static void AgregarRemito(RemitoEntidad remito)
+
+        public static void AgregarRemito(RemitoEntidad ordenEntrega)
         {
-            remitos.Add(remito);
+            remito.Add(ordenEntrega);
         }
     }
 }

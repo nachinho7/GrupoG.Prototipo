@@ -1,46 +1,67 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using GrupoG.Prototipo.Almacenes;
+using GrupoG.Prototipo.Almacenes.Ordenes.OrdenEntrega;
+using GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion;
+using GrupoG.Prototipo.Almacenes.Remito;
 
 namespace GrupoG.Prototipo.Despacho
 {
     internal class PantallaDespachoModel
     {
-        public List<OrdenPreparacion> OrdenPreparacion { get; private set; } = new List<OrdenPreparacion>
+        public List<OrdenPreparacionEntidad> ObtenerOrdenesPorDni(int dniTransportista)
         {
-            new OrdenPreparacion{ NumeroOrdenPreparacion = 1, NroCliente = 1234, DNITransportista = 12345678},
-            new OrdenPreparacion{ NumeroOrdenPreparacion = 2, NroCliente = 1234, DNITransportista = 12345678},
-            new OrdenPreparacion{ NumeroOrdenPreparacion = 3, NroCliente = 5678, DNITransportista = 1234567},
-            new OrdenPreparacion{ NumeroOrdenPreparacion = 4, NroCliente = 2045, DNITransportista = 12345679},
-            new OrdenPreparacion{ NumeroOrdenPreparacion = 5, NroCliente = 2045, DNITransportista = 12345679},
-            new OrdenPreparacion{ NumeroOrdenPreparacion = 6, NroCliente = 1224, DNITransportista = 12345671},
-        };
-
-        public List<OrdenPreparacion> ObtenerOrdenesPorDni(int dniTransportista)
-        {
-            var ordenesFiltradas = OrdenPreparacion.Where(o => o.DNITransportista == dniTransportista).ToList();
+            var ordenesFiltradas = OrdenPreparacionAlmacen.OrdenPreparacion
+                .Where(o => o.DNITransportista == dniTransportista && o.Estado == OrdenPreparacionEstados.ADespacho)
+                .ToList();
             return ordenesFiltradas;
         }
 
-        public Remito GenerarRemito(int dniTransportista, List<OrdenPreparacion> ordenes)
+        public RemitoEntidad GenerarRemito(int dniTransportista, List<OrdenPreparacionEntidad> ordenes)
         {
-            Remito nuevoRemito = new Remito
+            // Verificar si hay órdenes para el transportista
+            if (ordenes == null || ordenes.Count == 0)
+                return null;
+
+            // Creo el remito a partir de las órdenes
+            var nuevoRemito = new RemitoEntidad
             {
-                NumeroRemito = OrdenPreparacion.Count + 1,
                 NroCliente = ordenes.First().NroCliente,
-                DNITransportista = dniTransportista
+                DNITransportista = dniTransportista,
+                NroDeposito = ordenes.First().NroDeposito,
+                NroRemito = (RemitoAlmacen.Remito.Any() ? RemitoAlmacen.Remito.Max(r => r.NroRemito) : 0) + 1
             };
+
+            // Detalles de la orden id, cantidad las agrego al remito
+            foreach (var orden in ordenes)
+            {
+                foreach (var detalle in orden.Detalle)
+                {
+                    nuevoRemito.Detalle.Add(new OrdenPreparacionDetalle
+                    {
+                        idMercaderia = detalle.idMercaderia,
+                        Cantidad = detalle.Cantidad
+                    });
+                }
+
+                CambiarEstadoOrdenPreparacion(orden.NumeroOrdenPreparacion);
+            }
+
+            RemitoAlmacen.AgregarRemito(nuevoRemito);
+            RemitoAlmacen.Grabar();
 
             return nuevoRemito;
         }
 
-        public void EliminarOrdenPorId(int NroOrdenPreparacion)
+
+        public void CambiarEstadoOrdenPreparacion(int nroOrdenEmp)
         {
-            var ordenAEliminar = OrdenPreparacion.FirstOrDefault(o => o.NumeroOrdenPreparacion == NroOrdenPreparacion);
-            if (ordenAEliminar != null)
+            var orden = OrdenPreparacionAlmacen.OrdenPreparacion.FirstOrDefault(o => o.NumeroOrdenPreparacion == nroOrdenEmp);
+            if (orden != null)
             {
-                OrdenPreparacion.Remove(ordenAEliminar);
+                OrdenPreparacionAlmacen.ModificarEstado(orden, OrdenPreparacionEstados.Despachada);
             }
         }
-        
     }
 }

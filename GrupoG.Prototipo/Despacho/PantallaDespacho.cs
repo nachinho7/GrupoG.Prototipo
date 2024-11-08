@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Windows.Forms;
 using GrupoG.Prototipo.Menu;
+using GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion;
+using GrupoG.Prototipo.Almacenes.Remito;
 
 namespace GrupoG.Prototipo.Despacho
 {
@@ -51,7 +53,7 @@ namespace GrupoG.Prototipo.Despacho
             }
         }
 
-        private void MostrarOrdenes(System.Collections.Generic.List<OrdenPreparacion> ordenes, bool habilitadoTransportista)
+        private void MostrarOrdenes(System.Collections.Generic.List<OrdenPreparacionEntidad> ordenes, bool habilitadoTransportista)
         {
             listviewTransportista.Items.Clear();
             string estadoTransportista = habilitadoTransportista ? "Habilitado" : "No habilitado";
@@ -81,17 +83,15 @@ namespace GrupoG.Prototipo.Despacho
                 return;
             }
 
-            Remito nuevoRemito = model.GenerarRemito(dniTransportistaInt, transportista);
+            RemitoEntidad nuevoRemito = model.GenerarRemito(dniTransportistaInt, transportista);
 
-            string mensaje = $"El remito ha sido generado.\n" +
-                             $"DNI Transportista: {dniTransportistaInt}\n" +
-                             $"Número de Remito: {nuevoRemito.NumeroRemito}";
-
-            MessageBox.Show(mensaje, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            foreach (var orden in transportista)
+            if (nuevoRemito != null)
             {
-                model.EliminarOrdenPorId(orden.NumeroOrdenPreparacion);
+                string mensaje = $"El remito ha sido generado.\n" +
+                                 $"DNI Transportista: {dniTransportistaInt}\n" +
+                                 $"Número de Remito: {nuevoRemito.NroRemito}";
+
+                MessageBox.Show(mensaje, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             dniTransportista.Text = string.Empty;
