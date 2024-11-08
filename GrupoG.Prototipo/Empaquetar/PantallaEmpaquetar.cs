@@ -96,13 +96,13 @@ namespace GrupoG.Prototipo.Empaquetar
             }
             else
             {
+                
                 listView1.Items.Clear();
-                PantallaMenu menu = new PantallaMenu();
-                this.Hide();
-                menu.StartPosition = FormStartPosition.CenterScreen;
-                menu.Location = this.Location;
+                MessageBox.Show("No hay más órdenes de preparación disponibles.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               
             }
         }
+
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {
