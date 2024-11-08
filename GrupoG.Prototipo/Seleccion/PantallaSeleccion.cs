@@ -14,7 +14,6 @@ namespace GrupoG.Prototipo.Seleccion
             InitializeComponent();
             modelo = new PantallaSeleccionModel();
 
-            this.Shown += PantallaSeleccion_Shown;
         }
 
         private void PantallaSeleccion_Shown(object sender, EventArgs e)

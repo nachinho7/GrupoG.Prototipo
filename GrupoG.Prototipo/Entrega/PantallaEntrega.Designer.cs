@@ -106,6 +106,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Orden de Entrega";
             Load += PantallaEntrega_Load;
+            Shown += PantallaEntrega_Shown;
             ResumeLayout(false);
         }
 

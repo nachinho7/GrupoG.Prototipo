@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion;
 using GrupoG.Prototipo.Menu;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GrupoG.Prototipo.Entrega
 {
@@ -21,6 +22,16 @@ namespace GrupoG.Prototipo.Entrega
         {
             CargarOrdenes();
         }
+
+        private void PantallaEntrega_Shown(object sender, EventArgs e)
+        {
+            if (ListaOrdenesEmpaquetar.Items.Count == 0)
+            {
+                MessageBox.Show("No se encontraron órdenes para seleccionar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        
 
         private void CargarOrdenes()
         {
