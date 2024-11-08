@@ -123,7 +123,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "PantallaRetiroStock";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "PantallaRetiroStock";
+            Text = "Retiro de Stock";
             Load += PantallaRetiroStock_Load_1;
             ResumeLayout(false);
             PerformLayout();

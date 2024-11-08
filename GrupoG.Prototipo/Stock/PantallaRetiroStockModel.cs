@@ -15,7 +15,7 @@ namespace GrupoG.Prototipo.Stock
                 .ToList();
         }
 
-        public List<(string Ubicacion, int Id, string Nombre, int Cantidad, OrdenSeleccionEntidad OrdenSeleccion, OrdenPreparacionEntidad OrdenPreparacion)>
+        public List<(string Ubicacion, int Id, string Nombre, int Cantidad, bool mercaderiaRetirada, OrdenSeleccionEntidad OrdenSeleccion, OrdenPreparacionEntidad OrdenPreparacion)>
         ListarMercaderiasPorOrden(int numeroOrdenSeleccionada)
         {
             var ordenSeleccionada = ObtenerOrdenesSeleccion()
@@ -23,10 +23,13 @@ namespace GrupoG.Prototipo.Stock
 
             if (ordenSeleccionada == null) return null;
 
-            var mercaderiasList = new List<(string Ubicacion, int Id, string Nombre, int Cantidad, OrdenSeleccionEntidad, OrdenPreparacionEntidad)>();
+            var mercaderiasList = new List<(string Ubicacion, int Id, string Nombre, int Cantidad, bool mercaderiaRetirada, OrdenSeleccionEntidad, OrdenPreparacionEntidad)>();
 
             foreach (var ordenPreparacion in ordenSeleccionada.OrdenPreparacion)
             {
+                if (ordenPreparacion.Estado != OrdenPreparacionEstados.Seleccionada)
+                    continue;
+
                 foreach (var detalle in ordenPreparacion.Detalle)
                 {
                     var mercaderiaEntidad = MercaderiasAlmacen.Mercaderias
@@ -41,6 +44,7 @@ namespace GrupoG.Prototipo.Stock
                                 mercaderiaEntidad.idMercaderia,
                                 mercaderiaEntidad.nombreMercaderia,
                                 detalle.Cantidad,
+                                false,
                                 ordenSeleccionada,
                                 ordenPreparacion
                             ));
@@ -53,60 +57,34 @@ namespace GrupoG.Prototipo.Stock
         }
 
 
-        public void RetiroStock(OrdenSeleccionEntidad ordenSeleccionada, List<(MercaderiasEntidad mercaderia, int cantidadARetirar, string ubicacionSeleccionada)> mercaderiasARetirar)
+        public void RetiroStock(int idMercaderia, string ubicacion, int cantidad)
         {
-            var mercaderiasSeleccionadas = new List<(int idMercaderia, string ubicacion)>();
+            var mercaderia = MercaderiasAlmacen.Mercaderias
+                .FirstOrDefault(m => m.idMercaderia == idMercaderia && m.Ubicacion.Any(u => u.NombreUbicacion == ubicacion));
 
-            foreach (var (mercaderiaEntidad, cantidadARetirar, ubicacionSeleccionada) in mercaderiasARetirar)
+            if (mercaderia != null)
             {
-                var mercaderiaExistente = mercaderiasSeleccionadas.FirstOrDefault(m => m.idMercaderia == mercaderiaEntidad.idMercaderia);
-
-                if (mercaderiaExistente != default && mercaderiaExistente.ubicacion != ubicacionSeleccionada)
-                {
-                    MessageBox.Show($"Solo se puede seleccionar una ubicación por mercadería por orden de preparación.");
-                    return;
-                }
-
-                mercaderiasSeleccionadas.Add((mercaderiaEntidad.idMercaderia, ubicacionSeleccionada));
-
-                var ubicacionesRelacionadas = mercaderiaEntidad.Ubicacion
-                    .Where(u => u.NombreUbicacion == ubicacionSeleccionada && u.idMercaderia == mercaderiaEntidad.idMercaderia)
-                    .ToList();
-
-                int cantidadRestante = cantidadARetirar;
-
-                foreach (var ubicacion in ubicacionesRelacionadas)
-                {
-                    if (ubicacion.Cantidad >= cantidadRestante)
-                    {
-                        MercaderiasAlmacen.CambiarCantidad(ubicacion, cantidadRestante);
-
-                        if (ubicacion.Cantidad == 0)
-                        {
-                            mercaderiaEntidad.Ubicacion.Remove(ubicacion);
-                        }
-                        break;
-                    }
-                    else
-                    {
-                        MercaderiasAlmacen.CambiarCantidad(ubicacion, ubicacion.Cantidad);
-
-                        cantidadRestante -= ubicacion.Cantidad;
-
-                        mercaderiaEntidad.Ubicacion.Remove(ubicacion);
-                    }
-                }
+                var ubicacionMercaderia = mercaderia.Ubicacion.First(u => u.NombreUbicacion == ubicacion);
+                ubicacionMercaderia.Cantidad -= cantidad;
             }
+        }
 
-            if (mercaderiasARetirar.All(m => m.cantidadARetirar == 0))
+        public void ActualizarEstadoOrdenSeleccionCumplida(int numeroOrdenSeleccion)
+        {
+            var ordenSeleccion = OrdenSeleccionAlmacen.OrdenSeleccion
+                .FirstOrDefault(o => o.numeroOrdenSeleccion == numeroOrdenSeleccion);
+
+            if (ordenSeleccion != null)
             {
-                OrdenSeleccionAlmacen.ModificarEstado(ordenSeleccionada, OrdenSeleccionEstados.Cumplida);
+                ordenSeleccion.Estado = OrdenSeleccionEstados.Cumplida;
 
-                foreach (var ordenPreparacion in ordenSeleccionada.OrdenPreparacion)
+                foreach (var ordenPreparacion in ordenSeleccion.OrdenPreparacion)
                 {
-                    OrdenPreparacionAlmacen.ModificarEstado(ordenPreparacion, OrdenPreparacionEstados.Cumplida);
+                    ordenPreparacion.Estado = OrdenPreparacionEstados.Cumplida;
                 }
             }
         }
+
+
     }
 }

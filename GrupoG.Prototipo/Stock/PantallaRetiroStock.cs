@@ -55,7 +55,7 @@ namespace GrupoG.Prototipo.Stock
 
             if (mercaderias != null)
             {
-                foreach (var (ubicacion, id, nombre, cantidad, _, _) in mercaderias)
+                foreach (var (ubicacion, id, nombre, cantidad, retirada, _, _) in mercaderias)
                 {
                     var item = new ListViewItem(ubicacion);
                     item.SubItems.Add(id.ToString());
@@ -72,66 +72,58 @@ namespace GrupoG.Prototipo.Stock
         {
             if (listView1.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Por favor, selecciona y marca al menos una mercadería para retirar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe seleccionar al menos un item para retirar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            int numeroOrdenSeleccionada = int.Parse(comboBox1.SelectedItem.ToString());
-            var ordenSeleccionada = modelo.ObtenerOrdenesSeleccion()
-                .FirstOrDefault(o => o.numeroOrdenSeleccion == numeroOrdenSeleccionada);
-
-            if (ordenSeleccionada == null)
-            {
-                MessageBox.Show("No se encontró la orden de selección.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            var mercaderiasARetirar = listView1.SelectedItems
-                .Cast<ListViewItem>()
-                .Select(item =>
+            var seleccionados = listView1.SelectedItems.Cast<ListViewItem>()
+                .Select(item => new
                 {
-                    int idMercaderia = int.Parse(item.SubItems[1].Text);
-                    int cantidad = int.Parse(item.SubItems[3].Text);
-                    string ubicacionSeleccionada = item.SubItems[0].Text;
+                    Ubicacion = item.Text,
+                    Id = (int)item.Tag,
+                    Nombre = item.SubItems[2].Text,
+                    Cantidad = int.Parse(item.SubItems[3].Text),
+                    OrdenSeleccion = int.Parse(comboBox1.SelectedItem.ToString())
+                }).ToList();
 
-                    var mercaderiaEntidad = MercaderiasAlmacen.Mercaderias.FirstOrDefault(m => m.idMercaderia == idMercaderia);
-                    return (mercaderiaEntidad, cantidad, ubicacionSeleccionada, item);
-                })
-                .Where(m => m.mercaderiaEntidad != null)
+            var duplicados = seleccionados.GroupBy(m => new { m.Id, m.Nombre, m.Cantidad, m.OrdenSeleccion })
+                .Where(g => g.Count() > 1)
+                .Select(g => g.Key)
                 .ToList();
 
-            modelo.RetiroStock(ordenSeleccionada, mercaderiasARetirar.Select(m => (m.mercaderiaEntidad, m.cantidad, m.ubicacionSeleccionada)).ToList());
-
-            foreach (var mercaderia in mercaderiasARetirar)
+            if (duplicados.Any())
             {
-                var itemsToRemove = listView1.Items
-                    .Cast<ListViewItem>()
-                    .Where(item =>
-                        item.SubItems[1].Text == mercaderia.item.SubItems[1].Text &&
-                        item.SubItems[3].Text == mercaderia.item.SubItems[3].Text &&
-                        item.SubItems[0].Text == mercaderia.item.SubItems[0].Text &&
-                        item.Tag.ToString() == mercaderia.item.Tag.ToString())
-                    .ToList();
+                MessageBox.Show("No puede retirar la misma mercadería de la misma orden en dos ubicaciones distintas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-                foreach (var item in itemsToRemove)
+            foreach (var item in seleccionados)
+            {
+                modelo.RetiroStock(item.Id, item.Ubicacion, item.Cantidad);
+
+                var itemsAEliminar = listView1.Items.Cast<ListViewItem>()
+                    .Where(lvItem =>
+                        lvItem.Tag != null &&
+                        (int)lvItem.Tag == item.Id &&
+                        lvItem.SubItems[2].Text == item.Nombre &&
+                        int.Parse(lvItem.SubItems[3].Text) == item.Cantidad &&
+                        comboBox1.SelectedItem.ToString() == item.OrdenSeleccion.ToString() 
+                    ).ToList();
+
+                foreach (var lvItem in itemsAEliminar)
                 {
-                    listView1.Items.Remove(item);
+                    listView1.Items.Remove(lvItem);
                 }
             }
 
-            if (modelo.ObtenerOrdenesSeleccion().Count == 0)
+
+            if (listView1.Items.Count == 0)
             {
-                MessageBox.Show("No quedan órdenes de selección.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                PantallaMenu menu = new PantallaMenu();
-                this.Hide();
-                menu.StartPosition = FormStartPosition.CenterScreen;
-                menu.Location = this.Location;
+                modelo.ActualizarEstadoOrdenSeleccionCumplida(int.Parse(comboBox1.SelectedItem.ToString()));
+                MessageBox.Show("Todos los items fueron retirados y el estado de la orden de selección ha sido actualizado a Cumplida.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CargarOrdenes();
             }
-            
         }
-
-
-
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {
