@@ -12,12 +12,21 @@ namespace GrupoG.Prototipo.Empaquetar
         public PantallaEmpaquetar()
         {
             InitializeComponent();
+            this.Shown += new EventHandler(PantallaEmpaquetar_Shown);
             modelo = new PantallaEmpaquetarModel();
         }
 
         private void PantallaEmpaquetar_Load(object sender, EventArgs e)
         {
             CargarOrdenesPreparacion();
+        }
+
+        private void PantallaEmpaquetar_Shown(object sender, EventArgs e)
+        {
+            if (ComboBoxOrdenesPreparacion.Items.Count == 0)
+            {
+                MessageBox.Show("No hay órdenes de preparación disponibles.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void CargarOrdenesPreparacion()
@@ -37,11 +46,9 @@ namespace GrupoG.Prototipo.Empaquetar
                 ComboBoxOrdenesPreparacion.SelectedIndexChanged += ComboBoxOrdenesPreparacion_SelectedIndexChanged;
                 ComboBoxOrdenesPreparacion_SelectedIndexChanged(this, EventArgs.Empty);
             }
-            else
-            {
-                MessageBox.Show("No hay órdenes de preparación disponibles.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
+
+
 
         private void ComboBoxOrdenesPreparacion_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -65,7 +72,6 @@ namespace GrupoG.Prototipo.Empaquetar
                 }
             }
         }
-
 
         private void btnEmpaquetar_Click(object sender, EventArgs e)
         {
@@ -97,7 +103,6 @@ namespace GrupoG.Prototipo.Empaquetar
                 menu.Location = this.Location;
             }
         }
-
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {
