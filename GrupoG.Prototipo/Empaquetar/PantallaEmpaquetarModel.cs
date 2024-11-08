@@ -26,7 +26,7 @@ namespace GrupoG.Prototipo.Empaquetar
         public static List<OrdenPreparacionEntidad> ListarOrdenesSeleccionadas()
         {
             return OrdenPreparacionAlmacen.OrdenPreparacion
-                .Where(o => o.Estado == OrdenPreparacionEstados.Seleccionada)
+                .Where(o => o.Estado == OrdenPreparacionEstados.Cumplida)
                 .ToList();
         }
 
