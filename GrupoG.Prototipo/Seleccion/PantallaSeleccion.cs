@@ -146,6 +146,12 @@ namespace GrupoG.Prototipo.Seleccion
                 MessageBox.Show($"Orden de Selección N°{nuevaSeleccion.numeroOrdenSeleccion} generada!\n" +
                                 $"Incluye {ordenesSeleccionadas.Count} órdenes de preparación.",
                                 "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                datetimeDespacho.CustomFormat = " "; 
+                comboBoxTransportista.SelectedIndex = 0;
+                comboBoxCliente.SelectedIndex = 0;       
+
+                
                 CargarOrdenes();
             }
             else
@@ -153,6 +159,7 @@ namespace GrupoG.Prototipo.Seleccion
                 MessageBox.Show("No se seleccionaron órdenes.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
 
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
