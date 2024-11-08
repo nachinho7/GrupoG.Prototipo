@@ -27,7 +27,7 @@ namespace GrupoG.Prototipo.Entrega
         {
             if (ListaOrdenesEmpaquetar.Items.Count == 0)
             {
-                MessageBox.Show("No se encontraron órdenes para seleccionar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No se encontraron órdenes para entregar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
