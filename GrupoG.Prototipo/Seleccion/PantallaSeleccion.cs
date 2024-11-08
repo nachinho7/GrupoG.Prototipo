@@ -13,16 +13,27 @@ namespace GrupoG.Prototipo.Seleccion
         {
             InitializeComponent();
             modelo = new PantallaSeleccionModel();
+
+            this.Shown += PantallaSeleccion_Shown;
+        }
+
+        private void PantallaSeleccion_Shown(object sender, EventArgs e)
+        {
+            CargarOrdenes();
+
+            if (listView1.Items.Count == 0)
+            {
+                MessageBox.Show("No se encontraron órdenes para seleccionar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            CargarClientes();
+            CargarTransportistas();
         }
 
         private void PantallaSeleccion_Load(object sender, EventArgs e)
         {
             datetimeDespacho.CustomFormat = " "; 
             datetimeDespacho.Format = DateTimePickerFormat.Custom;
-
-            CargarOrdenes();
-            CargarClientes();
-            CargarTransportistas();
         }
 
         private void CargarOrdenes()

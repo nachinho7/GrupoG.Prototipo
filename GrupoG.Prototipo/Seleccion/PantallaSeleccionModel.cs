@@ -33,11 +33,6 @@ namespace GrupoG.Prototipo.Seleccion
                 })
                 .ToList();
 
-            if (!ordenesPreparacion.Any())
-            {
-                MessageBox.Show("No se encontraron ordenes para seleccionar.");
-            }
-
             return ordenesPreparacion;
 
         }
