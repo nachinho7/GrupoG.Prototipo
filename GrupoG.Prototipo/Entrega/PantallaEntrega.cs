@@ -47,7 +47,7 @@ namespace GrupoG.Prototipo.Entrega
         {
             if (ListaOrdenesEmpaquetar.Items.Count == 0)
             {
-                MessageBox.Show("No hay órdenes disponibles para entregar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No hay ordenes disponibles para entregar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -56,9 +56,8 @@ namespace GrupoG.Prototipo.Entrega
 
             ListaOrdenesEmpaquetar.Items.Clear();
 
-            MessageBox.Show("Las órdenes de entrega han sido generadas.", "Órdenes de Entrega Generadas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Las ordenes de entrega han sido generadas.", "Ordenes de Entrega Generadas", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Navegar de vuelta al menú
             PantallaMenu menu = new PantallaMenu();
             this.Hide();
             menu.StartPosition = FormStartPosition.CenterScreen;
