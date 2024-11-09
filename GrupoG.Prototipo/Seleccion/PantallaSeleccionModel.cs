@@ -97,7 +97,7 @@ namespace GrupoG.Prototipo.Seleccion
             int nroOrdenSeleccion = SumaNumOrden();
             var estadoOrdenSeleccion = OrdenSeleccionEstados.Seleccionada;
 
-            var ordenesPreparacionEntidad = new List<OrdenPreparacionEntidad>();
+            var idsOrdenesPreparacion = new List<int>();
 
             foreach (var ordenPreparacion in listaOrdenesPreparacion)
             {
@@ -107,7 +107,8 @@ namespace GrupoG.Prototipo.Seleccion
                 if (ordenEntidadExistente != null)
                 {
                     ordenEntidadExistente.Estado = OrdenPreparacionEstados.Seleccionada;
-                    ordenesPreparacionEntidad.Add(ordenEntidadExistente);
+
+                    idsOrdenesPreparacion.Add(ordenEntidadExistente.NumeroOrdenPreparacion);
                 }
             }
 
@@ -116,7 +117,7 @@ namespace GrupoG.Prototipo.Seleccion
                 numeroOrdenSeleccion = nroOrdenSeleccion,
                 FechaCreacion = DateTime.Now,
                 Estado = estadoOrdenSeleccion,
-                OrdenPreparacion = ordenesPreparacionEntidad
+                OrdenPreparacion = idsOrdenesPreparacion 
             };
 
             OrdenSeleccionAlmacen.AgregarOrdenSeleccion(nuevaOrdenSeleccion);

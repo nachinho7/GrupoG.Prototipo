@@ -15,7 +15,7 @@ namespace GrupoG.Prototipo.Stock
                 .ToList();
         }
 
-        public List<(string Ubicacion, int Id, string Nombre, int Cantidad, bool mercaderiaRetirada, OrdenSeleccionEntidad OrdenSeleccion, OrdenPreparacionEntidad OrdenPreparacion)>
+        public List<(string Ubicacion, int CantidadUbicacion, int Id, string Nombre, int CantidadDetalle, OrdenSeleccionEntidad OrdenSeleccion, OrdenPreparacionEntidad OrdenPreparacion)>
         ListarMercaderiasPorOrden(int numeroOrdenSeleccionada)
         {
             var ordenSeleccionada = ObtenerOrdenesSeleccion()
@@ -23,11 +23,14 @@ namespace GrupoG.Prototipo.Stock
 
             if (ordenSeleccionada == null) return null;
 
-            var mercaderiasList = new List<(string Ubicacion, int Id, string Nombre, int Cantidad, bool mercaderiaRetirada, OrdenSeleccionEntidad, OrdenPreparacionEntidad)>();
+            var mercaderiasList = new List<(string Ubicacion, int CantidadUbicacion, int Id, string Nombre, int CantidadDetalle, OrdenSeleccionEntidad, OrdenPreparacionEntidad)>();
 
-            foreach (var ordenPreparacion in ordenSeleccionada.OrdenPreparacion)
+            foreach (var numeroOrdenPreparacion in ordenSeleccionada.OrdenPreparacion)
             {
-                if (ordenPreparacion.Estado != OrdenPreparacionEstados.Seleccionada)
+                var ordenPreparacion = OrdenPreparacionAlmacen.OrdenPreparacion
+                    .FirstOrDefault(op => op.NumeroOrdenPreparacion == numeroOrdenPreparacion);
+
+                if (ordenPreparacion == null || ordenPreparacion.Estado != OrdenPreparacionEstados.Seleccionada)
                     continue;
 
                 foreach (var detalle in ordenPreparacion.Detalle)
@@ -41,10 +44,10 @@ namespace GrupoG.Prototipo.Stock
                         {
                             mercaderiasList.Add((
                                 ubicacion.NombreUbicacion,
+                                ubicacion.Cantidad,
                                 mercaderiaEntidad.idMercaderia,
                                 mercaderiaEntidad.nombreMercaderia,
                                 detalle.Cantidad,
-                                false,
                                 ordenSeleccionada,
                                 ordenPreparacion
                             ));
@@ -57,7 +60,7 @@ namespace GrupoG.Prototipo.Stock
         }
 
 
-        public void RetiroStock(int idMercaderia, string ubicacion, int cantidad)
+        public void RetiroStock(int idMercaderia, string ubicacion, int cantidadDetalle)
         {
             var mercaderia = MercaderiasAlmacen.Mercaderias
                 .FirstOrDefault(m => m.idMercaderia == idMercaderia && m.Ubicacion.Any(u => u.NombreUbicacion == ubicacion));
@@ -65,7 +68,7 @@ namespace GrupoG.Prototipo.Stock
             if (mercaderia != null)
             {
                 var ubicacionMercaderia = mercaderia.Ubicacion.First(u => u.NombreUbicacion == ubicacion);
-                ubicacionMercaderia.Cantidad -= cantidad;
+                ubicacionMercaderia.Cantidad -= cantidadDetalle;
             }
         }
 
@@ -78,9 +81,15 @@ namespace GrupoG.Prototipo.Stock
             {
                 ordenSeleccion.Estado = OrdenSeleccionEstados.Cumplida;
 
-                foreach (var ordenPreparacion in ordenSeleccion.OrdenPreparacion)
+                foreach (var numeroOrdenPreparacion in ordenSeleccion.OrdenPreparacion)
                 {
-                    ordenPreparacion.Estado = OrdenPreparacionEstados.Cumplida;
+                    var ordenPreparacionAlmacen = OrdenPreparacionAlmacen.OrdenPreparacion
+                        .FirstOrDefault(op => op.NumeroOrdenPreparacion == numeroOrdenPreparacion);
+
+                    if (ordenPreparacionAlmacen != null)
+                    {
+                        ordenPreparacionAlmacen.Estado = OrdenPreparacionEstados.Cumplida;
+                    }
                 }
             }
         }

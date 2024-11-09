@@ -51,7 +51,7 @@ namespace GrupoG.Prototipo.Preparacion
                     idMercaderia = m.idMercaderia,
                     nombreMercaderia = m.nombreMercaderia,
                     cantidadMercaderia = m.CalcularTotalStock() - OrdenPreparacionAlmacen.OrdenPreparacion
-                                                                                         .Where(o => o.Estado == OrdenPreparacionEstados.Pendiente || o.Estado == OrdenPreparacionEstados.ASeleccionar)
+                                                                                         .Where(o => o.Estado == OrdenPreparacionEstados.Pendiente || o.Estado == OrdenPreparacionEstados.ASeleccionar || o.Estado == OrdenPreparacionEstados.Seleccionada)
                                                                                          .SelectMany(o => o.Detalle)
                                                                                          .Where(o => o.idMercaderia == m.idMercaderia)
                                                                                          .Select(o => o.Cantidad)

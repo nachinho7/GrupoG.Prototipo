@@ -7,12 +7,14 @@
       {
         "NombreUbicacion": "10-20-4",
         "Cantidad": 7000,
-        "NroDeposito": 1
+        "NroDeposito": 1,
+        "idMercaderia": 1013
       },
       {
         "NombreUbicacion": "10-20-5",
         "Cantidad": 2000,
-        "NroDeposito": 1
+        "NroDeposito": 1,
+        "idMercaderia": 1013
       }
     ]
   },
@@ -24,7 +26,8 @@
       {
         "NombreUbicacion": "11-15-2",
         "Cantidad": 3000,
-        "NroDeposito": 1
+        "NroDeposito": 1,
+        "idMercaderia": 1014
       }
     ]
   },
@@ -36,12 +39,14 @@
       {
         "NombreUbicacion": "15-2-1",
         "Cantidad": 1500,
-        "NroDeposito": 3
+        "NroDeposito": 3,
+        "idMercaderia": 1015
       },
       {
         "NombreUbicacion": "15-2-2",
         "Cantidad": 1000,
-        "NroDeposito": 3
+        "NroDeposito": 3,
+        "idMercaderia": 1015
       }
     ]
   },
@@ -53,7 +58,8 @@
       {
         "NombreUbicacion": "17-12-3",
         "Cantidad": 6000,
-        "NroDeposito": 2
+        "NroDeposito": 2,
+        "idMercaderia": 1016
       }
     ]
   },
@@ -65,12 +71,14 @@
       {
         "NombreUbicacion": "23-12-4",
         "Cantidad": 4000,
-        "NroDeposito": 1
+        "NroDeposito": 1,
+        "idMercaderia": 1017
       },
       {
         "NombreUbicacion": "23-12-5",
         "Cantidad": 3000,
-        "NroDeposito": 1
+        "NroDeposito": 1,
+        "idMercaderia": 1017
       }
     ]
   },
@@ -82,7 +90,8 @@
       {
         "NombreUbicacion": "15-4-6",
         "Cantidad": 2500,
-        "NroDeposito": 1
+        "NroDeposito": 1,
+        "idMercaderia": 1018
       }
     ]
   },
@@ -94,7 +103,8 @@
       {
         "NombreUbicacion": "26-7-17",
         "Cantidad": 5000,
-        "NroDeposito": 1
+        "NroDeposito": 1,
+        "idMercaderia": 1019
       }
     ]
   },
@@ -106,12 +116,14 @@
       {
         "NombreUbicacion": "17-30-4",
         "Cantidad": 4500,
-        "NroDeposito": 3
+        "NroDeposito": 3,
+        "idMercaderia": 1020
       },
       {
         "NombreUbicacion": "17-30-5",
         "Cantidad": 1500,
-        "NroDeposito": 3
+        "NroDeposito": 3,
+        "idMercaderia": 1020
       }
     ]
   },
@@ -123,7 +135,8 @@
       {
         "NombreUbicacion": "30-15-3",
         "Cantidad": 6000,
-        "NroDeposito": 2
+        "NroDeposito": 2,
+        "idMercaderia": 1021
       }
     ]
   },
@@ -135,12 +148,14 @@
       {
         "NombreUbicacion": "28-9-2",
         "Cantidad": 2000,
-        "NroDeposito": 1
+        "NroDeposito": 1,
+        "idMercaderia": 1022
       },
       {
         "NombreUbicacion": "28-9-3",
         "Cantidad": 1000,
-        "NroDeposito": 1
+        "NroDeposito": 1,
+        "idMercaderia": 1022
       }
     ]
   }

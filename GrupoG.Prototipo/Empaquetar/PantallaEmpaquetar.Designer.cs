@@ -120,6 +120,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Pantalla Empaquetar";
             Load += PantallaEmpaquetar_Load;
+            Shown += PantallaEmpaquetar_Shown;
             ResumeLayout(false);
             PerformLayout();
         }

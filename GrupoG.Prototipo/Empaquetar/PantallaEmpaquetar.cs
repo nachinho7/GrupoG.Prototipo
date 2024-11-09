@@ -12,22 +12,23 @@ namespace GrupoG.Prototipo.Empaquetar
         public PantallaEmpaquetar()
         {
             InitializeComponent();
-            this.Shown += new EventHandler(PantallaEmpaquetar_Shown);
             modelo = new PantallaEmpaquetarModel();
         }
 
-        private void PantallaEmpaquetar_Load(object sender, EventArgs e)
-        {
-            CargarOrdenesPreparacion();
-        }
-
+        
         private void PantallaEmpaquetar_Shown(object sender, EventArgs e)
         {
+            CargarOrdenesPreparacion();
             if (ComboBoxOrdenesPreparacion.Items.Count == 0)
             {
                 MessageBox.Show("No hay órdenes de preparación disponibles.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void PantallaEmpaquetar_Load(object sender, EventArgs e)
+        {
+        }
+
 
         private void CargarOrdenesPreparacion()
         {

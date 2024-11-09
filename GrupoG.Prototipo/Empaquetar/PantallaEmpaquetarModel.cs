@@ -8,6 +8,13 @@ namespace GrupoG.Prototipo.Empaquetar
     internal class PantallaEmpaquetarModel
     {
 
+        public static List<OrdenPreparacionEntidad> ListarOrdenesSeleccionadas()
+        {
+            return OrdenPreparacionAlmacen.OrdenPreparacion
+                .Where(o => o.Estado == OrdenPreparacionEstados.Cumplida)
+                .ToList();
+        }
+
         public List<Mercaderias> ListarMercaderiasPorOrden(int numeroOrdenSeleccionada)
         {
             var orden = ListarOrdenesSeleccionadas()
@@ -23,12 +30,7 @@ namespace GrupoG.Prototipo.Empaquetar
             }).ToList();
         }
 
-        public static List<OrdenPreparacionEntidad> ListarOrdenesSeleccionadas()
-        {
-            return OrdenPreparacionAlmacen.OrdenPreparacion
-                .Where(o => o.Estado == OrdenPreparacionEstados.Cumplida)
-                .ToList();
-        }
+        
 
         public void CambiarEstadoOrden(int nroOrdenPrep)
         {

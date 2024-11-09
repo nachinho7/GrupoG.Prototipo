@@ -12,7 +12,7 @@ namespace GrupoG.Prototipo.Almacenes.Ordenes.OrdenSeleccion
         public int numeroOrdenSeleccion { get; set; }
         public DateTime FechaCreacion { get; set; }
         public OrdenSeleccionEstados Estado { get; set; }
-        public List<OrdenPreparacionEntidad> OrdenPreparacion { get; set; } = new List<OrdenPreparacionEntidad>();
+        public List<int> OrdenPreparacion { get; set; }
 
     }
 }

@@ -3,57 +3,12 @@
     "numeroOrdenSeleccion": 3003,
     "FechaCreacion": "2024-11-12T14:30:00",
     "Estado": 0,
-    "OrdenPreparacion": [
-      {
-        "NumeroOrdenPreparacion": 2019,
-        "NroCliente": 3,
-        "FechaDespacho": "2024-11-16T08:00:00",
-        "DNITransportista": 98765432,
-        "Estado": 2,
-        "NroDeposito": 3,
-        "Detalle": [
-          {
-            "idMercaderia": 1015,
-            "Cantidad": 60
-          }
-        ]
-      },
-      {
-        "NumeroOrdenPreparacion": 2021,
-        "NroCliente": 1,
-        "FechaDespacho": "2024-11-07T00:00:00-03:00",
-        "DNITransportista": 12343555,
-        "Estado": 2,
-        "NroDeposito": 1,
-        "Detalle": [
-          {
-            "idMercaderia": 1013,
-            "Cantidad": 10
-          }
-        ]
-      }
-    ]
+    "OrdenPreparacion": [2019,2021]
   },
   {
     "numeroOrdenSeleccion": 3004,
     "FechaCreacion": "2024-11-12T14:30:00",
     "Estado": 0,
-    "OrdenPreparacion": [
-      {
-        "NumeroOrdenPreparacion": 2008,
-        "NroCliente": 2,
-        "FechaDespacho": "2024-11-10T09:30:00",
-        "DNITransportista": 12345678,
-        "Estado": 2,
-        "NroDeposito": 1,
-        "Detalle": [
-          {
-            "idMercaderia": 1014,
-            "Cantidad": 110
-          }
-        ]
-      }
-      
-    ]
+    "OrdenPreparacion": [2008]
   }
 ]

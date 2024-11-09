@@ -55,12 +55,13 @@ namespace GrupoG.Prototipo.Stock
 
             if (mercaderias != null)
             {
-                foreach (var (ubicacion, id, nombre, cantidad, retirada, _, _) in mercaderias)
+                foreach (var (ubicacion, cantidadUbicacion, id, nombre, cantidadDetalle, _, _) in mercaderias)
                 {
                     var item = new ListViewItem(ubicacion);
+                    item.SubItems.Add(cantidadUbicacion.ToString());
                     item.SubItems.Add(id.ToString());
                     item.SubItems.Add(nombre);
-                    item.SubItems.Add(cantidad.ToString());
+                    item.SubItems.Add(cantidadDetalle.ToString());
                     item.Tag = id;
 
                     listView1.Items.Add(item);
@@ -81,8 +82,8 @@ namespace GrupoG.Prototipo.Stock
                 {
                     Ubicacion = item.Text,
                     Id = (int)item.Tag,
-                    Nombre = item.SubItems[2].Text,
-                    Cantidad = int.Parse(item.SubItems[3].Text),
+                    Nombre = item.SubItems[3].Text,
+                    Cantidad = int.Parse(item.SubItems[4].Text),
                     OrdenSeleccion = int.Parse(comboBox1.SelectedItem.ToString())
                 }).ToList();
 
@@ -105,8 +106,8 @@ namespace GrupoG.Prototipo.Stock
                     .Where(lvItem =>
                         lvItem.Tag != null &&
                         (int)lvItem.Tag == item.Id &&
-                        lvItem.SubItems[2].Text == item.Nombre &&
-                        int.Parse(lvItem.SubItems[3].Text) == item.Cantidad &&
+                        lvItem.SubItems[3].Text == item.Nombre &&
+                        int.Parse(lvItem.SubItems[4].Text) == item.Cantidad &&
                         comboBox1.SelectedItem.ToString() == item.OrdenSeleccion.ToString() 
                     ).ToList();
 
