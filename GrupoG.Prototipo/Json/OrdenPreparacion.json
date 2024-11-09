@@ -296,5 +296,104 @@
         "Cantidad": 10
       }
     ]
+  },
+  {
+    "NumeroOrdenPreparacion": 2022,
+    "NroCliente": 6,
+    "FechaDespacho": "2024-11-20T10:00:00",
+    "DNITransportista": 11223344,
+    "Estado": 0,
+    "NroDeposito": 2,
+    "Detalle": [
+      {
+        "idMercaderia": 1023,
+        "Cantidad": 75
+      }
+    ]
+  },
+  {
+    "NumeroOrdenPreparacion": 2023,
+    "NroCliente": 7,
+    "FechaDespacho": "2024-11-21T12:00:00",
+    "DNITransportista": 55667788,
+    "Estado": 1,
+    "NroDeposito": 3,
+    "Detalle": [
+      {
+        "idMercaderia": 1024,
+        "Cantidad": 150
+      }
+    ]
+  },
+  {
+    "NumeroOrdenPreparacion": 2024,
+    "NroCliente": 8,
+    "FechaDespacho": "2024-11-22T15:30:00",
+    "DNITransportista": 99887766,
+    "Estado": 2,
+    "NroDeposito": 1,
+    "Detalle": [
+      {
+        "idMercaderia": 1017,
+        "Cantidad": 45
+      }
+    ]
+  },
+  {
+    "NumeroOrdenPreparacion": 2025,
+    "NroCliente": 9,
+    "FechaDespacho": "2024-11-23T11:15:00",
+    "DNITransportista": 33445566,
+    "Estado": 3,
+    "NroDeposito": 2,
+    "Detalle": [
+      {
+        "idMercaderia": 1025,
+        "Cantidad": 120
+      }
+    ]
+  },
+  {
+    "NumeroOrdenPreparacion": 2026,
+    "NroCliente": 10,
+    "FechaDespacho": "2024-11-24T08:45:00",
+    "DNITransportista": 22334455,
+    "Estado": 4,
+    "NroDeposito": 3,
+    "Detalle": [
+      {
+        "idMercaderia": 1018,
+        "Cantidad": 60
+      }
+    ]
+  },
+  {
+    "NumeroOrdenPreparacion": 2027,
+    "NroCliente": 11,
+    "FechaDespacho": "2024-11-25T09:00:00",
+    "DNITransportista": 66778899,
+    "Estado": 5,
+    "NroDeposito": 1,
+    "Detalle": [
+      {
+        "idMercaderia": 1019,
+        "Cantidad": 95
+      }
+    ]
+  },
+  {
+    "NumeroOrdenPreparacion": 2028,
+    "NroCliente": 12,
+    "FechaDespacho": "2024-11-26T14:00:00",
+    "DNITransportista": 44556677,
+    "Estado": 6,
+    "NroDeposito": 2,
+    "Detalle": [
+      {
+        "idMercaderia": 1020,
+        "Cantidad": 130
+      }
+    ]
   }
+
 ]
