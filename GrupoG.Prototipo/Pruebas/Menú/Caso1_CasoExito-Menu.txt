@@ -1,0 +1,20 @@
+﻿Ingresar al Menú Principal
+Seleccionar Orden de Preparación
+[Abre formulario Orden de Preparación]
+Hacer click en "Volver al Menú"
+Seleccionar "Orden de Selección"
+[Abre formulario "Orden de Selección]
+Hacer click en "Volver al Menú"
+Seleccionar "Retiro Stock"
+[Abre formulario Retiro Stock]
+Hacer click en "Volver al Menú"
+Seleccionar "Empaquetar"
+[Abre formulario Empaquetar]
+Hacer click en "Volver al Menú"
+Seleccionar "Orden de Entrega"
+[Abre formulario Orden de entrega]
+Hacer click en "Volver al Menú"
+Seleccionar "Orden de Despacho"
+[Abre formulario Orden de Despacho]
+Hacer click en "Volver al Menú"
+Salir del sistema

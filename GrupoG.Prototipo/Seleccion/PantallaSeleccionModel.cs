@@ -62,6 +62,7 @@ namespace GrupoG.Prototipo.Seleccion
             }
 
             var transportistasDisponibles = OrdenPreparacionAlmacen.OrdenPreparacion
+                .Where(op => op.Estado == OrdenPreparacionEstados.Pendiente)
                 .Select(op => op.DNITransportista)
                 .Distinct()
                 .ToList();

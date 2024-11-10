@@ -1,0 +1,26 @@
+﻿Tocar botón “Orden de preparación”
+[Abre formulario]
+Ingresar cliente 1
+Presionar “Obtener Datos”
+Verificar Datos de Mercadería:
+Id: 1013, Nombre: Latas de tomate, Cantidad: 8773 y Id: 1018, Nombre: Paquetes de Azúcar, Cantidad: 2430
+Hacer click en Latas de tomate
+En "Cantidad a agregar" ingresar 100
+Hacer click en "Agregar"
+Hacer click en Paquetes de azúcar
+En "Cantidad a agregar" ingresar 200
+Presionar el botón “Agregar”
+Verificar las cantidades de los productos seleccionados
+Seleccionar Paquetes de azúcar en "Previsualización Orden de Preparación"
+Hacer click en “Limpiar dato seleccionado”
+Verificar que se visualice el cartel "Mercadería Paquetes de azúcar eliminada correctamente"
+Hacer click en "Aceptar"
+Validar que no se visualice Paquetes de azúcar en "Previsualización Ordenes de Preparación"
+Validar la mercadería en "Datos de Mercadería"
+Verificar en "Previsualización orden de preparación" el número de orden
+Ingresar en fecha de Despacho fecha: 30/12/2024
+Ingresar en DNI transportista: 87654321
+Tocar botón “Generar orden”
+Verificar mensaje "Orden de preparación generada correctamente"
+Salir del sistema
+Verificación del archivo grabado correctamente

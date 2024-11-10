@@ -1,0 +1,8 @@
+﻿Tocar botón “Orden de Selección”
+[Abre formulario]
+Ingresar fecha 26/12/2024 en fecha de despacho
+Seleccionar N°Cliente: Todos - DNI transportista: Todos
+Hacer click en el botón generar “Orden de Selección”
+Verificar mensaje “No se seleccionaron órdenes”
+Hacer click en el botón “Ok”
+Salir del sistema

@@ -1,0 +1,15 @@
+﻿Tocar botón “Orden de Selección”
+[Abre formulario]
+Ingresar fecha 13/11/2024 en fecha de despacho
+Seleccioonar N°Cliente: Todos - DNI transportista: Todos
+Verificar tabla:
+N°Orden: 2013
+ N°Cliente: 4
+Fecha despacho: 11/13/2024 
+DNI transportista: 76541210
+Clickear para seleccionar orden
+Hacer click en el botón “Generar órden de selección".
+Verificar mensaje éxito: “Orden de selección N°3006 generada! Incluye 1 ordenes de preparación”
+Hacer click en el botón “ok”
+Salir del sistema
+Verificación del archivo grabado correctamente

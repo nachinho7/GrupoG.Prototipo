@@ -1,0 +1,24 @@
+﻿Tocar botón “Retiro Stock”
+[Abre formulario]
+Seleccionar en el menú desplegable Orden de Selección, la orden 3005
+Validar que se informe la mercaderia a retirar
+Seleccionar mercadería "Latas de Tomate"
+En el teclado presionar la tecla Ctrl
+Seleccionar mercadería “Latas de Tomate”
+Soltar la tecla Ctrl del teclado
+Hacer click en el botón “Retirar Stock”
+Validar mensaje de error “No puede retirar la misma mercadería de la misma orden en dos ubicaciones distintas” 
+Hacer click en botón “Ok”
+Seleccionar mercadería "Latas de Tomate"
+En el teclado presionar la tecla Ctrl
+Seleccionar la mercadería "Paquetes de Azúcar"
+Soltar la tecla Ctrl del teclado
+Hacer click en el botón “Retirar Stock”
+Validar que se visualicen mercaderías por retirar
+Seleccionar la mercadería pendiente a retirar
+Hacer click en el botón “Retirar Stock”
+Validar mensaje "Todos los ítems fueron retirados y el estado de la orden de selección ha sido actualizado a Cumplida."
+Hacer click en botón “Ok”
+Salir del sistema
+Verificación del archivo grabado correctamente
+

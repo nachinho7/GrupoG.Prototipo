@@ -1,0 +1,8 @@
+﻿Tocar botón “Orden de Entrega”
+[Abre formulario]
+Hacer click en el botón "Generar orden de Entrega"
+Validar mensaje de éxito "Las órdenes de entrega han sido generadas"
+Hacer click en “Generar orden de entrega”
+Validar mensaje de error “No hay órdenes disponibles para entregar”
+Hacer click en “Aceptar”
+Salir del sistema

@@ -1,23 +1,20 @@
-﻿Caso: 1 - Caso Exito: Ingreso 1 producto
-
-Tocar botón “Orden de preparación”
+﻿Tocar botón “Orden de preparación”
 [Abre formulario]
 Ingresar cliente 1
 Presionar “Obtener Datos”
 Hacer click en “Nueva Búsqueda”
 Verificar que se limpien todos los campos
 Ingresar cliente 1 y presionar “Obtener Datos”
-Verificar Mercadería: ID: 1013, Nombre: Latas de Tomate , Cantidad: 9000 y ID: 1018, Nombre: 6. Paquetes de azúcar, Cantidad: 2500
+Verificar Mercadería: ID: 1013, Nombre: Latas de Tomate, Cantidad: 8775 y ID: 1018, Nombre: 6. Paquetes de azúcar, Cantidad: 2430
 Hacer click sobre mercadería "Latas de Tomate"
 En "Cantidad a Agregar"" ingresar 2
 Presionar “Agregar”
 Verificar de Latas de Tomate
-Verificar en "Previsualización orden de preparación" el un número de órden
+Verificar en "Previsualización orden de preparación" el número de orden
 Verificar que no pueda ser modificado
 Ingresar en fecha de Despacho 12/12/2024
-Ingresar DNI transportista: 45678912
+Ingresar DNI transportista: 12345678
 Tocar “Generar Orden”
-Verificar mensaje : "Orden de preparación generada correctamente”
+Verificar mensaje: "Orden de preparación generada correctamente”
 Salir del sistema
-Verificacion del archivo grabado correctamente
-
+Verificación del archivo grabado correctamente

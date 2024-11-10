@@ -1,0 +1,19 @@
+﻿Tocar botón “Retiro Stock”
+[Abre formulario]
+Del menú desplegable "Orden de Selección" seleccionar orden 3003
+Verificar que se informen los datos de la mercadería
+Seleccionar mercadería "Latas de Tomate", en cualquier ubicación.
+Hacer click en botón "Retirar Stock"
+Validar que el ítem "Latas de Tomate" no se visualice en la lista
+Validar que el botón "Volver al menú" se encuentre deshabilitado
+Seleccionar mercadería "Aceite de Oliva" con cantidad 50
+Hacer click en botón "Retirar Stock"
+Validar mensaje “la ubicación 15-2-1 se ha quedado sin stock, por favor selecciona otra ubicación para retirar lo faltante.”
+Seleccionar mercadería "Aceite de Oliva" con cantidad 10
+Hacer click en botón "Retirar Stock"
+Validar mensaje "Todos los ítems fueron retirados y el estado de la orden de selección ha sido actualizado a Cumplida"
+Hacer click en "Aceptar"
+Validar que el botón "Volver al menú" se encuentre habilitado
+Validar que se informen los datos de una nueva orden
+Salir del sistema
+Verificación del archivo grabado correctamente

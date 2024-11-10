@@ -1,0 +1,18 @@
+﻿Tocar botón “Orden de Despacho”
+[Abre formulario]
+Ingresar DNI Transportista: AAA
+Hacer clic en el botón “Buscar transportista”
+Verificar mensaje: “Por favor, ingrese un DNI válido”.
+Hacer click en el botón “Ok”
+Ingresar DNI Transportista: 1234
+Hacer clic en el botón “Buscar transportista”
+Verificar mensaje: “Por favor, ingrese un DNI válido”.
+Hacer click en el botón “Ok”
+Ingresar DNI Transportista: 78965432
+Hacer clic en el botón “Buscar transportista”
+Verificar mensaje: “No se encontraron órdenes para el transportista con ese DNI”.
+Hacer click en el botón “Ok”
+Hacer click en el botón “Generar Remito”
+Validar mensaje de error “No se puede generar remito. Debe buscar y validar un transportista primero”.
+Hacer click en botón “Ok”
+Salir del sistema.

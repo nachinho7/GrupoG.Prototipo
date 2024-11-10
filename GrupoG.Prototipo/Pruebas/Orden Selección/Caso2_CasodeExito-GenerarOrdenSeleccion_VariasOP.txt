@@ -1,0 +1,11 @@
+﻿Tocar botón “Orden de Selección”
+[Abre formulario]
+Hacer click en el botón “Mostrar todas las órdenes”
+Verificar que se informen las órdenes disponibles
+Seleccionar dos órdenes.
+Hacer click en el botón “Generar orden de selección".
+Verificar mensaje éxito: “Orden de selección N°X  generada! Incluye 2 ordenes de preparación”
+Hacer click en el botón “Ok”
+Validar que no se visualicen las órdenes seleccionadas anteriormente
+Salir del sistema
+Verificación del archivo grabado correctamente

@@ -1,0 +1,17 @@
+﻿Tocar botón “Orden de Selección”
+[Abre formulario]
+Validar que se visualicen todas las órdenes
+Ingresar fecha 06/11/2024 en fecha de despacho
+Seleccionar N°Cliente: Todos - DNI transportista: Todos
+Validar que no se informen órdenes
+Hacer click en el botón “Mostrar todas las órdenes”
+Validar que se visualicen todas las órdenes
+Seleccionar N°Cliente: 1
+Validar que se informen todas las órdenes para ese cliente
+Hacer click en el botón “Mostrar todas las órdenes”
+Validar que se visualicen todas las órdenes
+Seleccionar DNI transportista: 76543210
+Validar que se visualicen las órdenes del transportista
+Hacer click en el botón “Mostrar todas las órdenes”
+Validar que se visualicen todas las órdenes
+Salir del sistema

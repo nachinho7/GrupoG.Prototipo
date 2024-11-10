@@ -1,0 +1,13 @@
+﻿Tocar botón “Orden de Despacho”
+[Abre formulario]
+Ingresar DNI Transportista 12343555
+Hacer clic en el botón “Buscar transportista”
+Verificar mensaje “Transportista válido y con órdenes encontradas”
+Hacer click en el botón “Ok”
+Verificar Tabla:
+N° Orden: 2026, N° Cliente: 1, Estado Transportista: habilitado.
+Hacer clic en el botón “Generar remito”
+Verificar mensaje éxito: “El remito ha sido generado. DNI Transportista: XXX. Número de Remito: XXX”
+Hacer click en el boton “Ok”
+Salir del sistema.
+Verificación del archivo grabado correctamente

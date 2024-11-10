@@ -1,0 +1,62 @@
+﻿Tocar botón “Orden de preparación”
+[Abre formulario]
+
+*Ingreso Nro Cliente sin mercaderías:
+Ingresar Nro de cliente 10
+Presionar “Obtener Datos”
+Validar mensaje de error "No se encontraron mercaderías para el cliente."
+Hacer click en "Ok"
+
+* Ingreso Nro Cliente inválido o inexistente:
+Ingresar cliente 0909 y presionar “Obtener Datos”
+Verificar mensaje de error “No se encontraron clientes”
+Hacer click en el botón Ok
+Ingresar Cliente AAA y presionar "Obtener Datos"
+Verificar mensaje de error: "Cliente no válido"
+Hacer click en el botón Ok
+Ingresar cliente 1 y presionar “Obtener Datos”
+
+* Error en ingreso de mercadería (omisión de selección de mercadería, ingreso de número negativo, cero o mayor al existente):
+
+Validar que no se pueda ingresar cantidad a agregar.
+Hacer click sobre el botón "Limpiar dato seleccionado”.
+Verificar mensaje: “Por favor, seleccione un elemento para eliminar”
+Hacer click en el botón "Ok".
+Hacer click sobre la mercadería "Latas de Tomate" y en cantidad a agregar ingresar -1
+Hacer click en el botón “Agregar”.
+Verificar mensaje de error: "No se pueden agregar cantidades negativas".
+Hacer click en el botón "Ok"
+Hacer click sobre mercadería "Latas de Tomate" y en cantidad a agregar ingresar 10000
+Presionar el botón “Agregar”.
+Verificar: mensaje “La cantidad seleccionada es mayor a la cantidad disponible”.
+Hacer click en botón "Ok"
+Hacer click sobre mercadería "Paquetes de Azúcar" y no ingresar cantidad de mercadería a agregar
+Presionar el botón "Agregar".
+Verificar: mensaje "Por favor ingrese una cantidad válida”.
+Hacer click en botón "Ok"
+Hacer click sobre mercadería "Latas de Tomate" y en cantidad a agregar ingresar 0
+Hacer click en el botón "Agregar"
+Validar que en Previsualización Orden de Preparación se visualice la mercadería agregada.
+*Error en Fecha de despacho
+Seleccionar Fecha de Despacho 1/10/2024
+Ingresar DNI Transportista: 45678912
+Hacer click en el botón “Generar Orden”
+Validar mensaje de error "La fecha de despacho no puede ser mejor a la fecha actual"
+Hacer click en "Ok"
+Seleccionar Fecha de Despacho 1/12/2024
+
+*Error en DNI Transportista:
+Ingresar DNI Transportista: 11
+Validar mensaje de error "El DNI del transportista debe tener entre 8 y 9 dígitos"
+Hacer click en "Ok"
+Ingresar DNI Transportista: AAA
+Validar mensaje de error: "El DNI del transportista ingresado no es válido"
+Hacer click en "Ok"
+Ingresar DNI Transportista: 45678912
+
+*Error en mercadería igual a 0
+Hacer click en "Generar Orden"
+Validar mensaje de error: "No se puede generar la orden. Hacer mercaderías con cantidad 0"
+Hacer click en botón "Ok"
+Salir del Sistema
+

@@ -1,0 +1,5 @@
+﻿Tocar botón “Orden de Entrega”
+[Abre formulario]
+Validar mensaje de error "No se encontraron órdenes para entregar"
+Hacer click en botón "Aceptar"
+Salir del sistema

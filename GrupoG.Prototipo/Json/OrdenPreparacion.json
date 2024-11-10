@@ -46,7 +46,7 @@
     "NroCliente": 1,
     "FechaDespacho": "2024-11-08T08:45:00",
     "DNITransportista": 78965432,
-    "Estado": 1,
+    "Estado": 2,
     "NroDeposito": 1,
     "Detalle": [
       {
@@ -74,7 +74,7 @@
     "NroCliente": 3,
     "FechaDespacho": "2024-11-09T11:30:00",
     "DNITransportista": 98765432,
-    "Estado": 1,
+    "Estado": 2,
     "NroDeposito": 3,
     "Detalle": [
       {
@@ -158,7 +158,7 @@
     "NroCliente": 5,
     "FechaDespacho": "2024-11-12T14:30:00",
     "DNITransportista": 65432109,
-    "Estado": 1,
+    "Estado": 2,
     "NroDeposito": 1,
     "Detalle": [
       {
@@ -190,7 +190,7 @@
     "NroCliente": 3,
     "FechaDespacho": "2024-11-13T13:00:00",
     "DNITransportista": 23456789,
-    "Estado": 1,
+    "Estado": 2,
     "NroDeposito": 3,
     "Detalle": [
       {
@@ -218,7 +218,7 @@
     "NroCliente": 3,
     "FechaDespacho": "2024-11-14T15:30:00",
     "DNITransportista": 23456789,
-    "Estado": 1,
+    "Estado": 2,
     "NroDeposito": 3,
     "Detalle": [
       {
@@ -246,7 +246,7 @@
     "NroCliente": 1,
     "FechaDespacho": "2024-11-15T12:30:00",
     "DNITransportista": 78965432,
-    "Estado": 1,
+    "Estado": 2,
     "NroDeposito": 1,
     "Detalle": [
       {
