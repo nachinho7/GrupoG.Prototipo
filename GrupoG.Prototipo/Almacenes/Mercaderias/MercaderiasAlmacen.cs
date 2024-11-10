@@ -56,15 +56,6 @@ namespace GrupoG.Prototipo.Almacenes.Mercaderias
             return mercaderia.nombreMercaderia;
         }
 
-        public static void EliminarPosicion(MercaderiasEntidad mercaderia)
-        {
-            mercaderia.Ubicacion = null;
-        }
-
-        public static void CambiarCantidad(MercaderiasUbicacion mercaderia, int mercaderiaretirada)
-        {
-            mercaderia.Cantidad -= mercaderiaretirada;
-        }
 
     }
 }

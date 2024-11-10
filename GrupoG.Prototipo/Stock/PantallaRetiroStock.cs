@@ -55,13 +55,14 @@ namespace GrupoG.Prototipo.Stock
 
             if (mercaderias != null)
             {
-                foreach (var (ubicacion, cantidadUbicacion, id, nombre, cantidadDetalle, _, _) in mercaderias)
+                foreach (var (ubicacion, cantidadUbicacion, id, nombre, cantidadDetalle, _, numeroordenpreparacion) in mercaderias)
                 {
                     var item = new ListViewItem(ubicacion);
                     item.SubItems.Add(cantidadUbicacion.ToString());
                     item.SubItems.Add(id.ToString());
                     item.SubItems.Add(nombre);
                     item.SubItems.Add(cantidadDetalle.ToString());
+                    item.SubItems.Add(numeroordenpreparacion.ToString());
                     item.Tag = id;
 
                     listView1.Items.Add(item);
@@ -81,13 +82,15 @@ namespace GrupoG.Prototipo.Stock
                 .Select(item => new
                 {
                     Ubicacion = item.Text,
+                    CantidadUbicacion = int.Parse(item.SubItems[1].Text),
                     Id = (int)item.Tag,
                     Nombre = item.SubItems[3].Text,
-                    Cantidad = int.Parse(item.SubItems[4].Text),
-                    OrdenSeleccion = int.Parse(comboBox1.SelectedItem.ToString())
+                    CantidadDetalle = int.Parse(item.SubItems[4].Text),
+                    OrdenSeleccion = int.Parse(comboBox1.SelectedItem.ToString()),
+                    NumOrdenPreparacion = int.Parse(item.SubItems[5].Text)
                 }).ToList();
 
-            var duplicados = seleccionados.GroupBy(m => new { m.Id, m.Nombre, m.Cantidad, m.OrdenSeleccion })
+            var duplicados = seleccionados.GroupBy(m => new { m.Id, m.Nombre, m.OrdenSeleccion, m.NumOrdenPreparacion })
                 .Where(g => g.Count() > 1)
                 .Select(g => g.Key)
                 .ToList();
@@ -100,31 +103,70 @@ namespace GrupoG.Prototipo.Stock
 
             foreach (var item in seleccionados)
             {
-                modelo.RetiroStock(item.Id, item.Ubicacion, item.Cantidad);
+                var cantidadRestante = modelo.RetiroStock(item.Id, item.Ubicacion, item.CantidadDetalle);
 
-                var itemsAEliminar = listView1.Items.Cast<ListViewItem>()
-                    .Where(lvItem =>
+                comboBox1.Enabled = false;
+                VolverAlMenu.Enabled = false;
+
+                var itemListView = listView1.Items.Cast<ListViewItem>()
+                    .FirstOrDefault(lvItem =>
                         lvItem.Tag != null &&
                         (int)lvItem.Tag == item.Id &&
                         lvItem.SubItems[3].Text == item.Nombre &&
-                        int.Parse(lvItem.SubItems[4].Text) == item.Cantidad &&
-                        comboBox1.SelectedItem.ToString() == item.OrdenSeleccion.ToString() 
-                    ).ToList();
+                        int.Parse(lvItem.SubItems[4].Text) == item.CantidadDetalle &&
+                        comboBox1.SelectedItem.ToString() == item.OrdenSeleccion.ToString() &&
+                        lvItem.SubItems[5].Text == item.NumOrdenPreparacion.ToString());
 
-                foreach (var lvItem in itemsAEliminar)
+                if (itemListView != null)
                 {
-                    listView1.Items.Remove(lvItem);
+                    if (cantidadRestante == 0)
+                    {
+                        var itemsRelacionados = listView1.Items.Cast<ListViewItem>()
+                            .Where(lvItem => lvItem.Tag != null &&
+                                             (int)lvItem.Tag == item.Id &&
+                                             lvItem.SubItems[3].Text == item.Nombre &&
+                                             comboBox1.SelectedItem.ToString() == item.OrdenSeleccion.ToString() &&
+                                             lvItem.SubItems[5].Text == item.NumOrdenPreparacion.ToString())
+                            .ToList();
+
+                        foreach (var relatedItem in itemsRelacionados)
+                        {
+                            listView1.Items.Remove(relatedItem);
+                        }
+                    }
+                    else
+                    {
+                        var itemsRelacionados = listView1.Items.Cast<ListViewItem>()
+                            .Where(lvItem => lvItem.Tag != null &&
+                                             (int)lvItem.Tag == item.Id &&
+                                             lvItem.SubItems[3].Text == item.Nombre &&
+                                             comboBox1.SelectedItem.ToString() == item.OrdenSeleccion.ToString() &&
+                                             lvItem.SubItems[5].Text == item.NumOrdenPreparacion.ToString())
+                            .ToList();
+
+                        foreach (var relatedItem in itemsRelacionados)
+                        {
+                            if (relatedItem != itemListView)
+                            {
+                                relatedItem.SubItems[4].Text = cantidadRestante.ToString();
+                            }
+                        }
+
+                        listView1.Items.Remove(itemListView);
+                    }
                 }
             }
-
 
             if (listView1.Items.Count == 0)
             {
                 modelo.ActualizarEstadoOrdenSeleccionCumplida(int.Parse(comboBox1.SelectedItem.ToString()));
                 MessageBox.Show("Todos los items fueron retirados y el estado de la orden de selección ha sido actualizado a Cumplida.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarOrdenes();
+                comboBox1.Enabled = true;
+                VolverAlMenu.Enabled = true;
             }
         }
+
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {
