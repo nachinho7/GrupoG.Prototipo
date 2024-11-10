@@ -16,7 +16,15 @@ namespace GrupoG.Prototipo.Stock
             modelo = new PantallaRetiroStockModel();
         }
 
-        private void PantallaRetiroStock_Load_1(object sender, EventArgs e)
+        private void PantallaRetiroStock_Shown(object sender, EventArgs e)
+        {
+            if (comboBox1.Items.Count == 0)
+            {
+                MessageBox.Show("No hay órdenes de selección disponibles.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void PantallaRetiroStock_Load(object sender, EventArgs e)
         {
             CargarOrdenes();
         }

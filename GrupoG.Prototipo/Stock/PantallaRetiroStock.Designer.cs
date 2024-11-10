@@ -130,7 +130,8 @@
             Name = "PantallaRetiroStock";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Retiro de Stock";
-            Load += PantallaRetiroStock_Load_1;
+            Shown += PantallaRetiroStock_Shown;
+            Load += PantallaRetiroStock_Load;
             ResumeLayout(false);
             PerformLayout();
         }
