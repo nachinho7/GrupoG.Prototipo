@@ -359,6 +359,20 @@
         "Cantidad": 2
       }
     ]
+  },
+  {
+    "NumeroOrdenPreparacion": 2026,
+    "NroCliente": 1,
+    "FechaDespacho": "2024-11-07T00:00:00-03:00",
+    "DNITransportista": 12343555,
+    "Estado": 5,
+    "NroDeposito": 1,
+    "Detalle": [
+      {
+        "idMercaderia": 1018,
+        "Cantidad": 5
+      }
+    ]
   }
 
 
