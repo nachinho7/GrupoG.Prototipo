@@ -9,6 +9,12 @@
     "numeroOrdenSeleccion": 3004,
     "FechaCreacion": "2024-11-12T14:30:00",
     "Estado": 0,
-    "OrdenPreparacion": [2008]
+    "OrdenPreparacion": [ 2008 ]
+  },
+  {
+    "numeroOrdenSeleccion": 3005,
+    "FechaCreacion": "2024-11-12T14:30:00",
+    "Estado": 0,
+    "OrdenPreparacion": [ 2024,2025 ]
   }
 ]
