@@ -76,7 +76,6 @@ namespace GrupoG.Prototipo.Preparacion
             if (mercaderiaExistente != null)
             {
                 mercaderiaExistente.cantidadMercaderia += cantidadMercaderia;
-                MessageBox.Show($"Se ha sumado {cantidadMercaderia} más a {mercaderiaExistente.nombreMercaderia}.");
             }
             else
             {
@@ -88,7 +87,6 @@ namespace GrupoG.Prototipo.Preparacion
                 };
 
                 MercaderiasAgregadas.Add(mercaderiaAGrabar);
-                MessageBox.Show($"Mercadería {mercaderiaAGrabar.nombreMercaderia} agregada correctamente.");
             }
         }
 

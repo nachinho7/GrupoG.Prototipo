@@ -27,6 +27,7 @@ namespace GrupoG.Prototipo.Preparacion
                 if (cliente == null)
                 {
                     MessageBox.Show("No se encontraron clientes.");
+                    LimpiarFormulario();
                     return;
                 }
 
@@ -35,6 +36,7 @@ namespace GrupoG.Prototipo.Preparacion
             else
             {
                 MessageBox.Show("Cliente no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                LimpiarFormulario();
             }
         }
 
