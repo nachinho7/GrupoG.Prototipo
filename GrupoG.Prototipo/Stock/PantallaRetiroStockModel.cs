@@ -115,6 +115,7 @@ namespace GrupoG.Prototipo.Stock
                     }
                 }
             }
+            MercaderiasAlmacen.Grabar();
         }
 
 
