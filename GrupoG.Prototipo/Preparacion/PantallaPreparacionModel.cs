@@ -144,12 +144,23 @@ namespace GrupoG.Prototipo.Preparacion
                 Estado = estadoOrdenPreparacion,
                 FechaDespacho = fechadespacho,
                 DNITransportista = dni,
-                NroDeposito = numeroDeposito,
                 Detalle = ordenPreparacionDetalle,
             };
 
-            OrdenPreparacionAlmacen.AgregarOrdenPreparacion(nuevaorden);
+            var cliente = ClientesAlmacen.Clientes.FirstOrDefault(c => c.NroCliente == nrocliente);
+            if (cliente != null)
+            {
+                var transportistaExistente = cliente.Transportistas.FirstOrDefault(t => t.DNITransportista == dni);
+                if (transportistaExistente == null)
+                {
+                    cliente.Transportistas.Add(new ClientesTransportista
+                    {
+                        DNITransportista = dni
+                    });
+                }
+            }
 
+            OrdenPreparacionAlmacen.AgregarOrdenPreparacion(nuevaorden);
         }
     }
 }

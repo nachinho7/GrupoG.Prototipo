@@ -13,7 +13,6 @@ namespace GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion
         public DateTime FechaDespacho { get; set; }
         public int DNITransportista { get; set; }
         public OrdenPreparacionEstados Estado {  get; set; }
-        public int NroDeposito { get; set; }
         public List<OrdenPreparacionDetalle> Detalle { get; set; } = new List<OrdenPreparacionDetalle>();
     }
 }

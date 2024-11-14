@@ -9,7 +9,6 @@ namespace GrupoG.Prototipo.Almacenes.Clientes
     internal class ClientesTransportista
     {
         public int DNITransportista { get; set; }
-        public string NombreTransportista { get; set; }
         
     }
 }

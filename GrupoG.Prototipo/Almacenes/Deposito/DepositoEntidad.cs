@@ -10,7 +10,6 @@ namespace GrupoG.Prototipo.Almacenes.Deposito
     {
         public int NroDeposito { get; set; }
         public string NombreDeposito { get; set; }
-        public int NroCliente { get; set; }
 
     }
 }

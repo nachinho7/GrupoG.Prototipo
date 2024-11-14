@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GrupoG.Prototipo.Almacenes.Remito;
+using GrupoG.Prototipo.Despacho;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -49,5 +51,6 @@ namespace GrupoG.Prototipo.Almacenes.Clientes
             var numeroDeposito = Clientes.FirstOrDefault(c => c.NroCliente == numeroCliente);
             return numeroDeposito.NroDeposito;
         }
+
     }
 }

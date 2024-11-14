@@ -11,7 +11,7 @@ namespace GrupoG.Prototipo.Almacenes.Clientes
     {
         public int NroCliente { get; set; }
         public int NroDeposito { get; set; }
-        public List<ClientesTransportista> Transportistas { get; } = new();
+        public List<ClientesTransportista> Transportistas { get; set; } = new List<ClientesTransportista>();
 
     }
 }

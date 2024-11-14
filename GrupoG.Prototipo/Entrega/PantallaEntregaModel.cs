@@ -1,8 +1,10 @@
-﻿using GrupoG.Prototipo.Almacenes.Mercaderias;
+﻿using GrupoG.Prototipo.Almacenes.Clientes;
+using GrupoG.Prototipo.Almacenes.Mercaderias;
 using GrupoG.Prototipo.Almacenes.Ordenes.OrdenEntrega;
 using GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GrupoG.Prototipo.Entrega
 {
@@ -13,8 +15,9 @@ namespace GrupoG.Prototipo.Entrega
             return OrdenPreparacionAlmacen.OrdenPreparacion
                 .Where(o => o.Estado == OrdenPreparacionEstados.Empaquetada)
                 .ToList();
-            
         }
+
+        
 
         public void CambiarEstadoOrden(int nroOrdenEmp)
         {
@@ -35,26 +38,27 @@ namespace GrupoG.Prototipo.Entrega
                 CambiarEstadoOrden(ordenPreparacion.NumeroOrdenPreparacion);
 
                 int nuevoNroOrdenEntrega = (OrdenEntregaAlmacen.OrdenEntrega.Any() ? OrdenEntregaAlmacen.OrdenEntrega.Max(o => o.NumeroOrdenEntrega) : 0) + 1;
+                var cliente = ClientesAlmacen.ObtenerNroCliente(ordenPreparacion.NroCliente);
 
-                var ordenEntrega = new OrdenEntregaEntidad
+                if (cliente != null)
                 {
-                    NumeroOrdenEntrega = nuevoNroOrdenEntrega,
-                    NroCliente = ordenPreparacion.NroCliente,
-                    NroDeposito = ordenPreparacion.NroDeposito
-                };
+                    var ordenEntrega = new OrdenEntregaEntidad
+                    {
+                        NumeroOrdenEntrega = nuevoNroOrdenEntrega,
+                        NroCliente = ordenPreparacion.NroCliente,
+                        NroDeposito = cliente.NroDeposito
+                    };
 
-                ordenesEntregas.Add(ordenEntrega);
+                    ordenesEntregas.Add(ordenEntrega);
 
-                OrdenEntregaAlmacen.AgregarOrdenEntrega(ordenEntrega); 
+                    OrdenEntregaAlmacen.AgregarOrdenEntrega(ordenEntrega);
+                }
             }
 
             OrdenEntregaAlmacen.Grabar();
 
             return ordenesEntregas;
         }
-
-
-
 
     }
 }

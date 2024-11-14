@@ -4,13 +4,13 @@ using System.Windows.Forms;
 using GrupoG.Prototipo.Menu;
 using GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion;
 using GrupoG.Prototipo.Almacenes.Remito;
+using System.Reflection;
 
 namespace GrupoG.Prototipo.Despacho
 {
     public partial class PantallaDespacho : Form
     {
         private PantallaDespachoModel model;
-        private bool transportistaValidado = false; // Nueva variable de control
 
         public PantallaDespacho()
         {
@@ -41,59 +41,59 @@ namespace GrupoG.Prototipo.Despacho
                 return;
             }
 
-            var ordenes = model.ObtenerOrdenesPorDni(dniInt);
+            var clientes = model.ObtenerClientesPorDni(dniInt);
 
-            if (ordenes != null && ordenes.Count > 0)
+            if (clientes != null && clientes.Count > 0)
             {
-                MostrarOrdenes(ordenes, true);
-                MessageBox.Show("Transportista válido y con órdenes encontradas.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                transportistaValidado = true; 
+                comboBoxClientes.DataSource = clientes;
+                comboBoxClientes.DisplayMember = "NombreCliente";
+                comboBoxClientes.ValueMember = "NroCliente";
+                comboBoxClientes.SelectedIndex = 0;
+                comboBoxClientes.Enabled = true;
             }
             else
             {
-                MessageBox.Show("No se encontraron órdenes para el transportista con ese DNI.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                transportistaValidado = false; 
+                MessageBox.Show("No se encontraron clientes relacionados al DNI ingresado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void MostrarOrdenes(System.Collections.Generic.List<OrdenPreparacionEntidad> ordenes, bool habilitadoTransportista)
+
+        private void comboBoxClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
             listviewTransportista.Items.Clear();
-            string estadoTransportista = habilitadoTransportista ? "Habilitado" : "No habilitado";
 
-            foreach (var orden in ordenes)
+            if (comboBoxClientes.SelectedValue is int nroClienteSeleccionado)
             {
-                var ordenItem = new ListViewItem(orden.NumeroOrdenPreparacion.ToString());
-                ordenItem.SubItems.Add(orden.NroCliente.ToString());
-                ordenItem.SubItems.Add(estadoTransportista);
-                listviewTransportista.Items.Add(ordenItem);
+                var ordenes = model.ObtenerOrdenesPorDni(nroClienteSeleccionado);
+
+                foreach (var orden in ordenes)
+                {
+                    var item = new ListViewItem(orden.NumeroOrdenPreparacion.ToString());
+                    item.SubItems.Add(orden.NroCliente.ToString());
+                    listviewTransportista.Items.Add(item);
+                }
             }
         }
+
 
         private void btnGenerarRemito_Click(object sender, EventArgs e)
         {
-            
-            if (!transportistaValidado)
-            {
-                MessageBox.Show("No se puede generar remito. Debe buscar y validar un transportista primero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             if (string.IsNullOrWhiteSpace(dniTransportista.Text) || !int.TryParse(dniTransportista.Text, out int dniTransportistaInt))
             {
-                MessageBox.Show("No se puede generar remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, ingrese un DNI válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            var transportista = model.ObtenerOrdenesPorDni(dniTransportistaInt);
+            var ordenesSeleccionadas = listviewTransportista.SelectedItems.Cast<ListViewItem>()
+                .Select(item => int.Parse(item.Text)).ToList();
 
-            if (transportista == null || transportista.Count == 0)
+            if (ordenesSeleccionadas.Count == 0)
             {
-                MessageBox.Show("No se puede generar remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe seleccionar al menos una orden de preparación.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            RemitoEntidad nuevoRemito = model.GenerarRemito(dniTransportistaInt, transportista);
+            var nuevoRemito = model.GenerarRemito(dniTransportistaInt, ordenesSeleccionadas);
 
             if (nuevoRemito != null)
             {
@@ -103,14 +103,15 @@ namespace GrupoG.Prototipo.Despacho
 
                 MessageBox.Show(mensaje, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            else
+            {
+                MessageBox.Show("No se pudo generar el remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-            
             dniTransportista.Text = string.Empty;
             listviewTransportista.Items.Clear();
-            transportistaValidado = false; 
-
-            dniTransportista.Enabled = true;
-            btnBuscarTransportista.Enabled = true;
+            comboBoxClientes.DataSource = null;
         }
+
     }
 }

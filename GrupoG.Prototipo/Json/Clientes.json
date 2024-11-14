@@ -4,12 +4,10 @@
     "NroDeposito": 1,
     "Transportistas": [
       {
-        "DNITransportista": 45678912,
-        "NombreTransportista": "Juan Pérez"
+        "DNITransportista": 45678912
       },
       {
-        "DNITransportista": 78965432,
-        "NombreTransportista": "Carlos López"
+        "DNITransportista": 78965432
       }
     ]
   },
@@ -18,12 +16,13 @@
     "NroDeposito": 1,
     "Transportistas": [
       {
-        "DNITransportista": 45678912,
-        "NombreTransportista": "Juan Pérez"
+        "DNITransportista": 23425346
       },
       {
-        "DNITransportista": 78965432,
-        "NombreTransportista": "Carlos López"
+        "DNITransportista": 784659811
+      },
+      {
+        "DNITransportista": 12343555
       }
     ]
   },
@@ -32,12 +31,10 @@
     "NroDeposito": 1,
     "Transportistas": [
       {
-        "DNITransportista": 12345678,
-        "NombreTransportista": "Ana Rodríguez"
+        "DNITransportista": 12345678
       },
       {
-        "DNITransportista": 87654321,
-        "NombreTransportista": "María Gómez"
+        "DNITransportista": 87654321
       }
     ]
   },
@@ -46,12 +43,10 @@
     "NroDeposito": 3,
     "Transportistas": [
       {
-        "DNITransportista": 23456789,
-        "NombreTransportista": "Pedro Martínez"
+        "DNITransportista": 23456789
       },
       {
-        "DNITransportista": 98765432,
-        "NombreTransportista": "Laura Sánchez"
+        "DNITransportista": 98765432
       }
     ]
   },
@@ -60,12 +55,13 @@
     "NroDeposito": 2,
     "Transportistas": [
       {
-        "DNITransportista": 34567890,
-        "NombreTransportista": "Luis Gómez"
+        "DNITransportista": 34567890
       },
       {
-        "DNITransportista": 76543210,
-        "NombreTransportista": "Elena Díaz"
+        "DNITransportista": 76543210
+      },
+      {
+        "DNITransportista": 12343555
       }
     ]
   },
@@ -74,12 +70,10 @@
     "NroDeposito": 1,
     "Transportistas": [
       {
-        "DNITransportista": 45678901,
-        "NombreTransportista": "Diego Torres"
+        "DNITransportista": 45678901
       },
       {
-        "DNITransportista": 65432109,
-        "NombreTransportista": "Paula Fernández"
+        "DNITransportista": 65432109
       }
     ]
   }

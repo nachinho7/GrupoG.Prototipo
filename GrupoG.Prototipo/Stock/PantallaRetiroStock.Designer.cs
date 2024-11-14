@@ -37,7 +37,6 @@
             cantidadMercaderia = new ColumnHeader();
             VolverAlMenu = new Button();
             btnRetirarStock = new Button();
-            cantidadUbicacion = new ColumnHeader();
             SuspendLayout();
             // 
             // comboBox1
@@ -60,12 +59,12 @@
             // 
             // listView1
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { ubicacionMercaderia, cantidadUbicacion, idMercaderia, nombreMercaderia, cantidadMercaderia });
+            listView1.Columns.AddRange(new ColumnHeader[] { idMercaderia, ubicacionMercaderia, cantidadMercaderia, nombreMercaderia });
             listView1.FullRowSelect = true;
             listView1.GridLines = true;
             listView1.Location = new Point(23, 74);
             listView1.Name = "listView1";
-            listView1.Size = new Size(794, 301);
+            listView1.Size = new Size(645, 301);
             listView1.TabIndex = 2;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -92,7 +91,7 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(693, 406);
+            VolverAlMenu.Location = new Point(555, 406);
             VolverAlMenu.Name = "VolverAlMenu";
             VolverAlMenu.Size = new Size(113, 38);
             VolverAlMenu.TabIndex = 6;
@@ -102,7 +101,7 @@
             // 
             // btnRetirarStock
             // 
-            btnRetirarStock.Location = new Point(570, 406);
+            btnRetirarStock.Location = new Point(437, 406);
             btnRetirarStock.Name = "btnRetirarStock";
             btnRetirarStock.Size = new Size(98, 38);
             btnRetirarStock.TabIndex = 7;
@@ -110,17 +109,12 @@
             btnRetirarStock.UseVisualStyleBackColor = true;
             btnRetirarStock.Click += btnRetirarStock_Click;
             // 
-            // cantidadUbicacion
-            // 
-            cantidadUbicacion.Text = "Cantidad por Ubicación";
-            cantidadUbicacion.Width = 150;
-            // 
             // PantallaRetiroStock
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(856, 456);
+            ClientSize = new Size(698, 456);
             Controls.Add(btnRetirarStock);
             Controls.Add(VolverAlMenu);
             Controls.Add(listView1);
@@ -130,8 +124,8 @@
             Name = "PantallaRetiroStock";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Retiro de Stock";
-            Shown += PantallaRetiroStock_Shown;
             Load += PantallaRetiroStock_Load;
+            Shown += PantallaRetiroStock_Shown;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -147,6 +141,5 @@
         private ColumnHeader ubicacionMercaderia;
         private Button VolverAlMenu;
         private Button btnRetirarStock;
-        private ColumnHeader cantidadUbicacion;
     }
 }

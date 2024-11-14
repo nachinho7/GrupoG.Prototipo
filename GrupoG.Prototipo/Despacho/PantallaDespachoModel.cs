@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GrupoG.Prototipo.Almacenes;
+using GrupoG.Prototipo.Almacenes.Clientes;
 using GrupoG.Prototipo.Almacenes.Ordenes.OrdenEntrega;
 using GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion;
 using GrupoG.Prototipo.Almacenes.Remito;
@@ -10,42 +11,57 @@ namespace GrupoG.Prototipo.Despacho
 {
     internal class PantallaDespachoModel
     {
-        public List<OrdenPreparacionEntidad> ObtenerOrdenesPorDni(int dniTransportista)
+        public List<ClientesEntidad> ObtenerClientesPorDni(int dniTransportista)
+        {
+            var clientesFiltrados = ClientesAlmacen.Clientes
+                .Where(c => c.Transportistas.Any(t => t.DNITransportista == dniTransportista))
+                .ToList();
+            return clientesFiltrados;
+        }
+
+
+        public List<OrdenPreparacionEntidad> ObtenerOrdenesPorDni(int nroCliente)
         {
             var ordenesFiltradas = OrdenPreparacionAlmacen.OrdenPreparacion
-                .Where(o => o.DNITransportista == dniTransportista && o.Estado == OrdenPreparacionEstados.ADespacho)
+                .Where(o => o.NroCliente == nroCliente && o.Estado == OrdenPreparacionEstados.ADespacho)
                 .ToList();
             return ordenesFiltradas;
         }
 
-        public RemitoEntidad GenerarRemito(int dniTransportista, List<OrdenPreparacionEntidad> ordenes)
+        public RemitoEntidad GenerarRemito(int dniTransportista, List<int> ordenesIds)
         {
-            // Verificar si hay órdenes para el transportista
-            if (ordenes == null || ordenes.Count == 0)
+            if (ordenesIds == null || ordenesIds.Count == 0)
                 return null;
 
-            // Creo el remito a partir de las órdenes
+            
+            var primerOrden = OrdenPreparacionAlmacen.OrdenPreparacion
+                .FirstOrDefault(o => o.NumeroOrdenPreparacion == ordenesIds.First());
+
+            if (primerOrden == null)
+                return null; 
+
+            
+            int nroCliente = primerOrden.NroCliente;
+
+            
+            var deposito = ClientesAlmacen.ObtenerNroDeposito(nroCliente);
+
+            if (deposito == null)
+                return null; 
+
             var nuevoRemito = new RemitoEntidad
             {
-                NroCliente = ordenes.First().NroCliente,
+                NroCliente = nroCliente,
                 DNITransportista = dniTransportista,
-                NroDeposito = ordenes.First().NroDeposito,
+                NroDeposito = deposito, 
                 NroRemito = (RemitoAlmacen.Remito.Any() ? RemitoAlmacen.Remito.Max(r => r.NroRemito) : 0) + 1
             };
 
-            // Detalles de la orden id, cantidad las agrego al remito
-            foreach (var orden in ordenes)
-            {
-                foreach (var detalle in orden.Detalle)
-                {
-                    nuevoRemito.Detalle.Add(new OrdenPreparacionDetalle
-                    {
-                        idMercaderia = detalle.idMercaderia,
-                        Cantidad = detalle.Cantidad
-                    });
-                }
+            nuevoRemito.Detalle.AddRange(ordenesIds);
 
-                CambiarEstadoOrdenPreparacion(orden.NumeroOrdenPreparacion);
+            foreach (var nroOrden in ordenesIds)
+            {
+                CambiarEstadoOrdenPreparacion(nroOrden);
             }
 
             RemitoAlmacen.AgregarRemito(nuevoRemito);
@@ -53,7 +69,6 @@ namespace GrupoG.Prototipo.Despacho
 
             return nuevoRemito;
         }
-
 
         public void CambiarEstadoOrdenPreparacion(int nroOrdenEmp)
         {

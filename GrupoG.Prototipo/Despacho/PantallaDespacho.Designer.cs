@@ -31,17 +31,18 @@
             btnGenerarRemito = new Button();
             VolverAlMenu = new Button();
             listviewTransportista = new ListView();
-            EstadoTransportista = new ColumnHeader();
             ColumnaIdOrden = new ColumnHeader();
             ColumnaCliente = new ColumnHeader();
             btnBuscarTransportista = new Button();
             dniTransportista = new TextBox();
             labelTransportista = new Label();
+            nroclienteLabel = new Label();
+            comboBoxClientes = new ComboBox();
             SuspendLayout();
             // 
             // btnGenerarRemito
             // 
-            btnGenerarRemito.Location = new Point(867, 390);
+            btnGenerarRemito.Location = new Point(446, 437);
             btnGenerarRemito.Name = "btnGenerarRemito";
             btnGenerarRemito.Size = new Size(107, 38);
             btnGenerarRemito.TabIndex = 5;
@@ -51,7 +52,7 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(1013, 390);
+            VolverAlMenu.Location = new Point(578, 437);
             VolverAlMenu.Name = "VolverAlMenu";
             VolverAlMenu.Size = new Size(107, 38);
             VolverAlMenu.TabIndex = 25;
@@ -61,30 +62,25 @@
             // 
             // listviewTransportista
             // 
-            listviewTransportista.Columns.AddRange(new ColumnHeader[] { ColumnaIdOrden, ColumnaCliente, EstadoTransportista });
+            listviewTransportista.Columns.AddRange(new ColumnHeader[] { ColumnaIdOrden, ColumnaCliente });
             listviewTransportista.FullRowSelect = true;
             listviewTransportista.GridLines = true;
-            listviewTransportista.Location = new Point(12, 106);
+            listviewTransportista.Location = new Point(12, 160);
             listviewTransportista.Name = "listviewTransportista";
-            listviewTransportista.Size = new Size(1047, 255);
+            listviewTransportista.Size = new Size(671, 255);
             listviewTransportista.TabIndex = 29;
             listviewTransportista.UseCompatibleStateImageBehavior = false;
             listviewTransportista.View = View.Details;
             // 
-            // EstadoTransportista
-            // 
-            EstadoTransportista.Text = "Estado Transportista";
-            EstadoTransportista.Width = 150;
-            // 
             // ColumnaIdOrden
             // 
             ColumnaIdOrden.Text = "Nro de Orden";
-            ColumnaIdOrden.Width = 120;
+            ColumnaIdOrden.Width = 250;
             // 
             // ColumnaCliente
             // 
             ColumnaCliente.Text = "Nro de Cliente";
-            ColumnaCliente.Width = 120;
+            ColumnaCliente.Width = 250;
             // 
             // btnBuscarTransportista
             // 
@@ -114,12 +110,32 @@
             labelTransportista.TabIndex = 26;
             labelTransportista.Text = "Ingrese DNI del Transportista";
             // 
+            // nroclienteLabel
+            // 
+            nroclienteLabel.AutoSize = true;
+            nroclienteLabel.Location = new Point(12, 94);
+            nroclienteLabel.Name = "nroclienteLabel";
+            nroclienteLabel.Size = new Size(99, 15);
+            nroclienteLabel.TabIndex = 30;
+            nroclienteLabel.Text = "Ingrese N°Cliente";
+            // 
+            // comboBoxClientes
+            // 
+            comboBoxClientes.FormattingEnabled = true;
+            comboBoxClientes.Location = new Point(156, 91);
+            comboBoxClientes.Name = "comboBoxClientes";
+            comboBoxClientes.Size = new Size(130, 23);
+            comboBoxClientes.TabIndex = 31;
+            comboBoxClientes.SelectedIndexChanged += comboBoxClientes_SelectedIndexChanged;
+            // 
             // PantallaDespacho
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(1151, 468);
+            ClientSize = new Size(746, 497);
+            Controls.Add(comboBoxClientes);
+            Controls.Add(nroclienteLabel);
             Controls.Add(listviewTransportista);
             Controls.Add(btnBuscarTransportista);
             Controls.Add(dniTransportista);
@@ -139,11 +155,12 @@
         private Button btnGenerarRemito;
         private Button VolverAlMenu;
         private ListView listviewTransportista;
-        private ColumnHeader EstadoTransportista;
         private Button btnBuscarTransportista;
         private TextBox dniTransportista;
         private Label labelTransportista;
         private ColumnHeader ColumnaIdOrden;
         private ColumnHeader ColumnaCliente;
+        private Label nroclienteLabel;
+        private ComboBox comboBoxClientes;
     }
 }
