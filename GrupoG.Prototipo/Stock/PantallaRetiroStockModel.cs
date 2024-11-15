@@ -93,17 +93,9 @@ namespace GrupoG.Prototipo.Stock
 
                 int cantidadARetirar = Math.Min(cantidadRestante, ubicacionMercaderia.Cantidad);
 
-                MessageBox.Show($"Retiro de Stock - Mercadería ID: {idMercaderia}, Ubicación: {ubicacion}, " +
-                                $"Cantidad disponible: {ubicacionMercaderia.Cantidad}, Cantidad a retirar: {cantidadARetirar}",
-                                "Depuración", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 ubicacionMercaderia.Cantidad -= cantidadARetirar;
 
                 cantidadRestante -= cantidadARetirar;
-
-                MessageBox.Show($"Cantidad restante después del retiro: {cantidadRestante}, " +
-                                $"Cantidad restante en ubicación: {ubicacionMercaderia.Cantidad}",
-                                "Depuración", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 if (cantidadRestante == 0)
                     break;

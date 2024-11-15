@@ -88,12 +88,6 @@ namespace GrupoG.Prototipo.Stock
 
                         cantidadPendiente -= cantidadARetirar;
                     }
-
-                    if (cantidadPendiente > 0)
-                    {
-                        MessageBox.Show($"No se pudo retirar toda la cantidad para la mercadería ID {idMercaderia}. " +
-                                         $"Cantidad restante: {cantidadPendiente}", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
                 }
             }
         }
