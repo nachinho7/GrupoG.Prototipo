@@ -121,6 +121,7 @@
             // 
             // comboBoxClientes
             // 
+            comboBoxClientes.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxClientes.FormattingEnabled = true;
             comboBoxClientes.Location = new Point(156, 91);
             comboBoxClientes.Name = "comboBoxClientes";

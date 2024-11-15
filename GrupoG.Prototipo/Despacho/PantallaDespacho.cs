@@ -62,9 +62,9 @@ namespace GrupoG.Prototipo.Despacho
         {
             listviewTransportista.Items.Clear();
 
-            if (comboBoxClientes.SelectedValue is int nroClienteSeleccionado)
+            if (comboBoxClientes.SelectedValue is int nroClienteSeleccionado && dniTransportista.Text is string dnitransportista)
             {
-                var ordenes = model.ObtenerOrdenesPorDni(nroClienteSeleccionado);
+                var ordenes = model.ObtenerOrdenesPorDni(nroClienteSeleccionado, int.Parse(dnitransportista));
 
                 foreach (var orden in ordenes)
                 {

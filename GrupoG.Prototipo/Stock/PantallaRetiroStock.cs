@@ -53,7 +53,7 @@ namespace GrupoG.Prototipo.Stock
             }
         }
 
-       
+
 
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -67,25 +67,36 @@ namespace GrupoG.Prototipo.Stock
 
             if (mercaderias != null)
             {
-                foreach (var (id, nombre, cantidadTotal, ubicaciones) in mercaderias)
+                foreach (var (idMercaderia, nombreMercaderia, cantidadTotal, ubicaciones) in mercaderias)
                 {
+                    int cantidadPendiente = cantidadTotal;
+
                     foreach (var (ubicacion, cantidadUbicacion) in ubicaciones)
                     {
-                        var item = new ListViewItem(id.ToString());
-                        item.SubItems.Add(nombre);
-                        item.SubItems.Add(cantidadTotal.ToString());
+                        if (cantidadPendiente <= 0) break;
+
+                        int cantidadARetirar = Math.Min(cantidadPendiente, cantidadUbicacion);
+
+                        var item = new ListViewItem(idMercaderia.ToString());
                         item.SubItems.Add(ubicacion);
-                        item.SubItems.Add(cantidadUbicacion.ToString());
-                        item.Tag = id;
+                        item.SubItems.Add(cantidadARetirar.ToString());
+                        item.SubItems.Add(nombreMercaderia);
+                        item.SubItems.Add(cantidadARetirar.ToString());
+                        item.Tag = idMercaderia;
 
                         listView1.Items.Add(item);
+
+                        cantidadPendiente -= cantidadARetirar;
+                    }
+
+                    if (cantidadPendiente > 0)
+                    {
+                        MessageBox.Show($"No se pudo retirar toda la cantidad para la mercadería ID {idMercaderia}. " +
+                                         $"Cantidad restante: {cantidadPendiente}", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
         }
-
-
-
 
 
         private void btnRetirarStock_Click(object sender, EventArgs e)
@@ -99,19 +110,25 @@ namespace GrupoG.Prototipo.Stock
             int numeroOrdenSeleccionada = int.Parse(comboBox1.SelectedItem.ToString());
             bool stockCompletoRetirado = true;
 
-            foreach (ListViewItem item in listView1.Items)
+            foreach (ListViewItem item in listView1.Items.Cast<ListViewItem>().ToList())
             {
                 int idMercaderia = (int)item.Tag;
                 int cantidadDetalle = int.Parse(item.SubItems[4].Text);
 
                 var ubicaciones = modelo.ListarMercaderiasPorOrden(numeroOrdenSeleccionada)
-                                          .Where(m => m.Id == idMercaderia)
-                                          .SelectMany(m => m.Item4).ToList();
+                    .Where(m => m.IdMercaderia == idMercaderia)
+                    .SelectMany(m => m.Item4)
+                    .ToList();
 
                 int cantidadRestante = modelo.RetiroStock(idMercaderia, ubicaciones, cantidadDetalle);
 
-                if (cantidadRestante > 0)
+                if (cantidadRestante == 0)
                 {
+                    listView1.Items.Remove(item);
+                }
+                else
+                {
+                    item.SubItems[4].Text = cantidadRestante.ToString();
                     stockCompletoRetirado = false;
                 }
             }
@@ -123,16 +140,12 @@ namespace GrupoG.Prototipo.Stock
                 listView1.Items.Clear();
                 comboBox1.Items.Remove(numeroOrdenSeleccionada);
 
-
-                
                 if (comboBox1.Items.Count > 0)
                 {
-                    comboBox1.SelectedIndex = 0; 
+                    comboBox1.SelectedIndex = 0;
                 }
-
-                if (comboBox1.Items.Count == 0)
+                else
                 {
-                    listView1.Items.Clear();
                     MessageBox.Show("No hay más órdenes de selección.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -141,6 +154,9 @@ namespace GrupoG.Prototipo.Stock
                 MessageBox.Show("No se pudo retirar todo el stock de algunas mercaderías. Verifique la cantidad disponible.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+
+
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {
