@@ -6,12 +6,12 @@
     "Ubicacion": [
       {
         "NombreUbicacion": "10-20-4",
-        "Cantidad": 7000,
+        "Cantidad": 100,
         "NroDeposito": 1
       },
       {
         "NombreUbicacion": "10-20-5",
-        "Cantidad": 2000,
+        "Cantidad": 9000,
         "NroDeposito": 1
       }
     ]

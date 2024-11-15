@@ -285,14 +285,14 @@
   },
   {
     "NumeroOrdenPreparacion": 2021,
-    "NroCliente": 1,
+    "NroCliente": 3,
     "FechaDespacho": "2024-11-07T00:00:00-03:00",
     "DNITransportista": 12343555,
     "Estado": 2,
-    "NroDeposito": 1,
+    "NroDeposito": 3,
     "Detalle": [
       {
-        "idMercaderia": 1013,
+        "idMercaderia": 1015,
         "Cantidad": 10
       }
     ]

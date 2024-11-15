@@ -53,9 +53,6 @@ namespace GrupoG.Prototipo.Stock
             }
         }
 
-
-
-
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             listView1.Items.Clear();
@@ -67,30 +64,24 @@ namespace GrupoG.Prototipo.Stock
 
             if (mercaderias != null)
             {
-                foreach (var (idMercaderia, nombreMercaderia, cantidadTotal, ubicaciones) in mercaderias)
+                foreach (var (idMercaderia, nombreMercaderia, ubicaciones) in mercaderias)
                 {
-                    int cantidadPendiente = cantidadTotal;
-
                     foreach (var (ubicacion, cantidadUbicacion) in ubicaciones)
                     {
-                        if (cantidadPendiente <= 0) break;
-
-                        int cantidadARetirar = Math.Min(cantidadPendiente, cantidadUbicacion);
-
                         var item = new ListViewItem(idMercaderia.ToString());
                         item.SubItems.Add(ubicacion);
-                        item.SubItems.Add(cantidadARetirar.ToString());
+                        item.SubItems.Add(cantidadUbicacion.ToString());
                         item.SubItems.Add(nombreMercaderia);
-                        item.SubItems.Add(cantidadARetirar.ToString());
-                        item.Tag = idMercaderia;
+                        item.Tag = idMercaderia;  
 
                         listView1.Items.Add(item);
-
-                        cantidadPendiente -= cantidadARetirar;
                     }
                 }
             }
         }
+
+
+
 
 
         private void btnRetirarStock_Click(object sender, EventArgs e)
@@ -103,22 +94,24 @@ namespace GrupoG.Prototipo.Stock
 
             int numeroOrdenSeleccionada = int.Parse(comboBox1.SelectedItem.ToString());
             bool stockCompletoRetirado = true;
+            List<ListViewItem> itemsAEliminar = new List<ListViewItem>();
 
             foreach (ListViewItem item in listView1.Items.Cast<ListViewItem>().ToList())
             {
                 int idMercaderia = (int)item.Tag;
-                int cantidadDetalle = int.Parse(item.SubItems[4].Text);
+                int cantidadDetalle = int.Parse(item.SubItems[2].Text);
 
                 var ubicaciones = modelo.ListarMercaderiasPorOrden(numeroOrdenSeleccionada)
                     .Where(m => m.IdMercaderia == idMercaderia)
-                    .SelectMany(m => m.Item4)
+                    .SelectMany(m => m.Item3) 
                     .ToList();
 
                 int cantidadRestante = modelo.RetiroStock(idMercaderia, ubicaciones, cantidadDetalle);
 
+                
                 if (cantidadRestante == 0)
                 {
-                    listView1.Items.Remove(item);
+                    itemsAEliminar.Add(item);
                 }
                 else
                 {
@@ -127,12 +120,17 @@ namespace GrupoG.Prototipo.Stock
                 }
             }
 
+            foreach (ListViewItem item in itemsAEliminar)
+            {
+                listView1.Items.Remove(item);
+            }
+
             if (stockCompletoRetirado)
             {
                 modelo.ActualizarEstadoOrdenSeleccionCumplida(numeroOrdenSeleccionada);
                 MessageBox.Show("Orden de selección completada y stock retirado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                listView1.Items.Clear();
-                comboBox1.Items.Remove(numeroOrdenSeleccionada);
+                listView1.Items.Clear(); 
+                comboBox1.Items.Remove(numeroOrdenSeleccionada); 
 
                 if (comboBox1.Items.Count > 0)
                 {
@@ -148,6 +146,8 @@ namespace GrupoG.Prototipo.Stock
                 MessageBox.Show("No se pudo retirar todo el stock de algunas mercaderías. Verifique la cantidad disponible.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+
 
 
 
