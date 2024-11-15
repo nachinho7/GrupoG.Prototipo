@@ -27,6 +27,8 @@ namespace GrupoG.Prototipo.Stock
         private void PantallaRetiroStock_Load(object sender, EventArgs e)
         {
             CargarOrdenes();
+            comboBox1.Enabled = false;
+
         }
 
         private void CargarOrdenes()

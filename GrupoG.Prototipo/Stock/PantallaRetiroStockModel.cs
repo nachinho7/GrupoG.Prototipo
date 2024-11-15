@@ -88,12 +88,12 @@ namespace GrupoG.Prototipo.Stock
                 {
                     ubicacionMercaderia.Cantidad -= cantidadRestante;
                     cantidadRestante = 0;
-                    break; // Salimos del bucle si ya retiramos toda la cantidad requerida
+                    break; 
                 }
                 else
                 {
                     cantidadRestante -= ubicacionMercaderia.Cantidad;
-                    ubicacionMercaderia.Cantidad = 0; // Agotamos esta ubicación
+                    ubicacionMercaderia.Cantidad = 0; 
                 }
             }
 
