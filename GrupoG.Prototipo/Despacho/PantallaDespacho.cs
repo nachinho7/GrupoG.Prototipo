@@ -46,7 +46,7 @@ namespace GrupoG.Prototipo.Despacho
             if (clientes != null && clientes.Count > 0)
             {
                 comboBoxClientes.DataSource = clientes;
-                comboBoxClientes.DisplayMember = "NombreCliente";
+                comboBoxClientes.DisplayMember = "NroCliente"; 
                 comboBoxClientes.ValueMember = "NroCliente";
                 comboBoxClientes.SelectedIndex = 0;
                 comboBoxClientes.Enabled = true;
@@ -84,22 +84,24 @@ namespace GrupoG.Prototipo.Despacho
                 return;
             }
 
-            var ordenesSeleccionadas = listviewTransportista.SelectedItems.Cast<ListViewItem>()
-                .Select(item => int.Parse(item.Text)).ToList();
-
-            if (ordenesSeleccionadas.Count == 0)
+            if (listviewTransportista.Items.Count == 0)
             {
-                MessageBox.Show("Debe seleccionar al menos una orden de preparación.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No hay órdenes disponibles para generar el remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            var nuevoRemito = model.GenerarRemito(dniTransportistaInt, ordenesSeleccionadas);
+            var ordenesIds = listviewTransportista.Items.Cast<ListViewItem>()
+                .Select(item => int.Parse(item.Text))
+                .ToList();
+
+            var nuevoRemito = model.GenerarRemito(dniTransportistaInt, ordenesIds);
 
             if (nuevoRemito != null)
             {
                 string mensaje = $"El remito ha sido generado.\n" +
                                  $"DNI Transportista: {dniTransportistaInt}\n" +
-                                 $"Número de Remito: {nuevoRemito.NroRemito}";
+                                 $"Número de Remito: {nuevoRemito.NroRemito}\n" +
+                                 $"Ordenes: {ordenesIds.Count}";
 
                 MessageBox.Show(mensaje, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
