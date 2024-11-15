@@ -27,7 +27,6 @@ namespace GrupoG.Prototipo.Stock
         private void PantallaRetiroStock_Load(object sender, EventArgs e)
         {
             CargarOrdenes();
-            comboBox1.Enabled = false;
 
         }
 
@@ -53,6 +52,9 @@ namespace GrupoG.Prototipo.Stock
                 ComboBox1_SelectedIndexChanged(this, EventArgs.Empty);
             }
         }
+
+       
+
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -83,6 +85,9 @@ namespace GrupoG.Prototipo.Stock
         }
 
 
+
+
+
         private void btnRetirarStock_Click(object sender, EventArgs e)
         {
             if (comboBox1.SelectedIndex == -1 || listView1.Items.Count == 0)
@@ -100,8 +105,8 @@ namespace GrupoG.Prototipo.Stock
                 int cantidadDetalle = int.Parse(item.SubItems[4].Text);
 
                 var ubicaciones = modelo.ListarMercaderiasPorOrden(numeroOrdenSeleccionada)
-                                      .Where(m => m.Id == idMercaderia)
-                                      .SelectMany(m => m.Item4).ToList();
+                                          .Where(m => m.Id == idMercaderia)
+                                          .SelectMany(m => m.Item4).ToList();
 
                 int cantidadRestante = modelo.RetiroStock(idMercaderia, ubicaciones, cantidadDetalle);
 
@@ -116,15 +121,17 @@ namespace GrupoG.Prototipo.Stock
                 modelo.ActualizarEstadoOrdenSeleccionCumplida(numeroOrdenSeleccionada);
                 MessageBox.Show("Orden de selección completada y stock retirado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 listView1.Items.Clear();
+                comboBox1.Items.Remove(numeroOrdenSeleccionada);
 
-                int siguienteIndice = comboBox1.SelectedIndex + 1;
-                if (siguienteIndice < comboBox1.Items.Count)
+
+                
+                if (comboBox1.Items.Count > 0)
                 {
-                    comboBox1.SelectedIndex = siguienteIndice;
+                    comboBox1.SelectedIndex = 0; 
                 }
-                else
+
+                if (comboBox1.Items.Count == 0)
                 {
-                    comboBox1.SelectedIndex = -1;
                     listView1.Items.Clear();
                     MessageBox.Show("No hay más órdenes de selección.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -134,10 +141,6 @@ namespace GrupoG.Prototipo.Stock
                 MessageBox.Show("No se pudo retirar todo el stock de algunas mercaderías. Verifique la cantidad disponible.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-
-
-
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {
