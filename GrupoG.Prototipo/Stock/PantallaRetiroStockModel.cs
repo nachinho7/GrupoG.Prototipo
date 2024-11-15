@@ -15,15 +15,14 @@ namespace GrupoG.Prototipo.Stock
                 .ToList();
         }
 
-        public List<(string Ubicacion, int CantidadUbicacion, int Id, string Nombre, int CantidadDetalle, OrdenSeleccionEntidad OrdenSeleccion, int numOrdenPreparacion)>
-        ListarMercaderiasPorOrden(int numeroOrdenSeleccionada)
+        public List<(int Id, string Nombre, int CantidadTotal, List<(string Ubicacion, int Cantidad)>)> ListarMercaderiasPorOrden(int numeroOrdenSeleccionada)
         {
             var ordenSeleccionada = ObtenerOrdenesSeleccion()
                 .FirstOrDefault(o => o.numeroOrdenSeleccion == numeroOrdenSeleccionada);
 
             if (ordenSeleccionada == null) return null;
 
-            var mercaderiasList = new List<(string Ubicacion, int CantidadUbicacion, int Id, string Nombre, int CantidadDetalle, OrdenSeleccionEntidad, int numOrdenPreparacion)>();
+            var mercaderiasList = new List<(int Id, string Nombre, int CantidadTotal, List<(string Ubicacion, int Cantidad)>)>();
 
             foreach (var numeroOrdenPreparacion in ordenSeleccionada.OrdenPreparacion)
             {
@@ -40,18 +39,28 @@ namespace GrupoG.Prototipo.Stock
 
                     if (mercaderiaEntidad != null)
                     {
+                        int cantidadTotal = ordenPreparacion.Detalle
+                            .Where(d => d.idMercaderia == detalle.idMercaderia)
+                            .Sum(d => d.Cantidad);
+
+                        var ubicacionesNecesarias = new List<(string Ubicacion, int Cantidad)>();
+                        int cantidadPendiente = cantidadTotal;
+
                         foreach (var ubicacion in mercaderiaEntidad.Ubicacion)
                         {
-                            mercaderiasList.Add((
-                                ubicacion.NombreUbicacion,
-                                ubicacion.Cantidad,
-                                mercaderiaEntidad.idMercaderia,
-                                mercaderiaEntidad.nombreMercaderia,
-                                detalle.Cantidad,
-                                ordenSeleccionada,
-                                numeroOrdenPreparacion
-                            ));
+                            if (cantidadPendiente <= 0) break;
+
+                            int cantidadRetirar = Math.Min(ubicacion.Cantidad, cantidadPendiente);
+                            ubicacionesNecesarias.Add((ubicacion.NombreUbicacion, cantidadRetirar));
+                            cantidadPendiente -= cantidadRetirar;
                         }
+
+                        mercaderiasList.Add((
+                            mercaderiaEntidad.idMercaderia,
+                            mercaderiaEntidad.nombreMercaderia,
+                            cantidadTotal,
+                            ubicacionesNecesarias
+                        ));
                     }
                 }
             }
@@ -60,37 +69,44 @@ namespace GrupoG.Prototipo.Stock
         }
 
 
-        public int RetiroStock(int idMercaderia, string ubicacion, int cantidadDetalle)
+
+        public int RetiroStock(int idMercaderia, List<(string Ubicacion, int Cantidad)> ubicaciones, int cantidadTotalRetirar)
         {
-            int cantidadRestante = cantidadDetalle; 
+            int cantidadRestante = cantidadTotalRetirar;
 
-            var mercaderia = MercaderiasAlmacen.Mercaderias
-                .FirstOrDefault(m => m.idMercaderia == idMercaderia && m.Ubicacion.Any(u => u.NombreUbicacion == ubicacion));
-
-            if (mercaderia != null)
+            foreach (var (ubicacion, cantidadDisponible) in ubicaciones)
             {
+                var mercaderia = MercaderiasAlmacen.Mercaderias
+                    .FirstOrDefault(m => m.idMercaderia == idMercaderia &&
+                                         m.Ubicacion.Any(u => u.NombreUbicacion == ubicacion));
+
+                if (mercaderia == null) continue;
+
                 var ubicacionMercaderia = mercaderia.Ubicacion.First(u => u.NombreUbicacion == ubicacion);
 
                 if (ubicacionMercaderia.Cantidad >= cantidadRestante)
                 {
-                    ubicacionMercaderia.Cantidad -= cantidadRestante; 
-                    cantidadRestante = 0; 
+                    ubicacionMercaderia.Cantidad -= cantidadRestante;
+                    cantidadRestante = 0;
+                    break; // Salimos del bucle si ya retiramos toda la cantidad requerida
                 }
                 else
                 {
-                    cantidadRestante -= ubicacionMercaderia.Cantidad; 
-                    ubicacionMercaderia.Cantidad = 0;  
-
-                    if (ubicacionMercaderia.Cantidad == 0)
-                    {
-                        MessageBox.Show($"La Ubicacion {ubicacion} se ha quedado sin stock, por favor selecciona otra ubicación para retirar lo faltante.",
-                            "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                    cantidadRestante -= ubicacionMercaderia.Cantidad;
+                    ubicacionMercaderia.Cantidad = 0; // Agotamos esta ubicación
                 }
             }
 
-            return cantidadRestante; 
+            if (cantidadRestante > 0)
+            {
+                MessageBox.Show("No se pudo retirar toda la cantidad solicitada. Verifique las ubicaciones de stock.",
+                                "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            return cantidadRestante;
         }
+
+
 
 
 

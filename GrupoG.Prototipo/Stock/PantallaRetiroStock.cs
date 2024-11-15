@@ -63,20 +63,23 @@ namespace GrupoG.Prototipo.Stock
 
             if (mercaderias != null)
             {
-                foreach (var (ubicacion, cantidadUbicacion, id, nombre, cantidadDetalle, _, numeroordenpreparacion) in mercaderias)
+                foreach (var (id, nombre, cantidadTotal, ubicaciones) in mercaderias)
                 {
-                    var item = new ListViewItem(ubicacion);
-                    item.SubItems.Add(cantidadUbicacion.ToString());
-                    item.SubItems.Add(id.ToString());
-                    item.SubItems.Add(nombre);
-                    item.SubItems.Add(cantidadDetalle.ToString());
-                    item.SubItems.Add(numeroordenpreparacion.ToString());
-                    item.Tag = id;
+                    foreach (var (ubicacion, cantidadUbicacion) in ubicaciones)
+                    {
+                        var item = new ListViewItem(id.ToString());
+                        item.SubItems.Add(nombre);
+                        item.SubItems.Add(cantidadTotal.ToString());
+                        item.SubItems.Add(ubicacion);
+                        item.SubItems.Add(cantidadUbicacion.ToString());
+                        item.Tag = id;
 
-                    listView1.Items.Add(item);
+                        listView1.Items.Add(item);
+                    }
                 }
             }
         }
+
 
         private void btnRetirarStock_Click(object sender, EventArgs e)
         {
@@ -92,10 +95,13 @@ namespace GrupoG.Prototipo.Stock
             foreach (ListViewItem item in listView1.Items)
             {
                 int idMercaderia = (int)item.Tag;
-                string ubicacion = item.SubItems[0].Text;
                 int cantidadDetalle = int.Parse(item.SubItems[4].Text);
 
-                int cantidadRestante = modelo.RetiroStock(idMercaderia, ubicacion, cantidadDetalle);
+                var ubicaciones = modelo.ListarMercaderiasPorOrden(numeroOrdenSeleccionada)
+                                      .Where(m => m.Id == idMercaderia)
+                                      .SelectMany(m => m.Item4).ToList();
+
+                int cantidadRestante = modelo.RetiroStock(idMercaderia, ubicaciones, cantidadDetalle);
 
                 if (cantidadRestante > 0)
                 {
@@ -107,8 +113,8 @@ namespace GrupoG.Prototipo.Stock
             {
                 modelo.ActualizarEstadoOrdenSeleccionCumplida(numeroOrdenSeleccionada);
                 MessageBox.Show("Orden de selección completada y stock retirado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                listView1.Items.Clear();
 
-                // Avanzar a la siguiente orden de selección en el ComboBox
                 int siguienteIndice = comboBox1.SelectedIndex + 1;
                 if (siguienteIndice < comboBox1.Items.Count)
                 {
@@ -117,7 +123,7 @@ namespace GrupoG.Prototipo.Stock
                 else
                 {
                     comboBox1.SelectedIndex = -1;
-                    listView1.Items.Clear(); 
+                    listView1.Items.Clear();
                     MessageBox.Show("No hay más órdenes de selección.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -126,6 +132,8 @@ namespace GrupoG.Prototipo.Stock
                 MessageBox.Show("No se pudo retirar todo el stock de algunas mercaderías. Verifique la cantidad disponible.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+
 
 
 
