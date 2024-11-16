@@ -23,7 +23,7 @@ namespace GrupoG.Prototipo.Despacho
         public List<OrdenPreparacionEntidad> ObtenerOrdenesPorDni(int nroCliente, int dnitransportista)
         {
             var ordenesFiltradas = OrdenPreparacionAlmacen.OrdenPreparacion
-                .Where(o => o.NroCliente == nroCliente && o.Estado == OrdenPreparacionEstados.ADespacho && o.DNITransportista == dnitransportista && o.FechaDespacho == DateTime.Today)
+                .Where(o => o.NroCliente == nroCliente && o.Estado == OrdenPreparacionEstados.ADespacho && o.DNITransportista == dnitransportista /*&& o.FechaDespacho == DateTime.Today*/)
                 .ToList();
             return ordenesFiltradas;
         }

@@ -19,6 +19,7 @@ namespace GrupoG.Prototipo.Despacho
 
             dniTransportista.Enabled = true;
             btnBuscarTransportista.Enabled = true;
+            comboBoxClientes.Enabled = false;
         }
 
         private void PantallaDespacho_Load(object sender, EventArgs e)
@@ -46,10 +47,12 @@ namespace GrupoG.Prototipo.Despacho
             if (clientes != null && clientes.Count > 0)
             {
                 comboBoxClientes.DataSource = clientes;
-                comboBoxClientes.DisplayMember = "NroCliente"; 
+                comboBoxClientes.DisplayMember = "NroCliente";
                 comboBoxClientes.ValueMember = "NroCliente";
                 comboBoxClientes.SelectedIndex = 0;
                 comboBoxClientes.Enabled = true;
+                dniTransportista.Enabled = false;
+                btnBuscarTransportista.Enabled = false;
             }
             else
             {
@@ -115,5 +118,14 @@ namespace GrupoG.Prototipo.Despacho
             comboBoxClientes.DataSource = null;
         }
 
+        private void btnNuevaBusqueda(object sender, EventArgs e)
+        {
+            dniTransportista.Text = "";
+            dniTransportista.Enabled = true;
+            comboBoxClientes.Enabled = false;
+            comboBoxClientes.DataSource = null;
+            btnBuscarTransportista.Enabled = true;
+            listviewTransportista.Items.Clear();
+        }
     }
 }

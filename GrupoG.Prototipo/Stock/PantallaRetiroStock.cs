@@ -88,7 +88,7 @@ namespace GrupoG.Prototipo.Stock
         {
             if (comboBox1.SelectedIndex == -1 || listView1.Items.Count == 0)
             {
-                MessageBox.Show("Seleccione una orden válida con mercaderías para retirar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No hay más ordenes para retirar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

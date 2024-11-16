@@ -38,6 +38,7 @@
             labelTransportista = new Label();
             nroclienteLabel = new Label();
             comboBoxClientes = new ComboBox();
+            button1 = new Button();
             SuspendLayout();
             // 
             // btnGenerarRemito
@@ -85,9 +86,9 @@
             // btnBuscarTransportista
             // 
             btnBuscarTransportista.Enabled = false;
-            btnBuscarTransportista.Location = new Point(478, 19);
+            btnBuscarTransportista.Location = new Point(376, 19);
             btnBuscarTransportista.Name = "btnBuscarTransportista";
-            btnBuscarTransportista.Size = new Size(205, 38);
+            btnBuscarTransportista.Size = new Size(163, 38);
             btnBuscarTransportista.TabIndex = 28;
             btnBuscarTransportista.Text = "Buscar Transportista";
             btnBuscarTransportista.UseVisualStyleBackColor = true;
@@ -98,7 +99,7 @@
             dniTransportista.Enabled = false;
             dniTransportista.Location = new Point(188, 28);
             dniTransportista.Name = "dniTransportista";
-            dniTransportista.Size = new Size(257, 23);
+            dniTransportista.Size = new Size(155, 23);
             dniTransportista.TabIndex = 27;
             // 
             // labelTransportista
@@ -113,21 +114,31 @@
             // nroclienteLabel
             // 
             nroclienteLabel.AutoSize = true;
-            nroclienteLabel.Location = new Point(12, 70);
+            nroclienteLabel.Location = new Point(31, 70);
             nroclienteLabel.Name = "nroclienteLabel";
-            nroclienteLabel.Size = new Size(99, 15);
+            nroclienteLabel.Size = new Size(117, 15);
             nroclienteLabel.TabIndex = 30;
-            nroclienteLabel.Text = "Ingrese N°Cliente";
+            nroclienteLabel.Text = "Seleccione N°Cliente";
             // 
             // comboBoxClientes
             // 
             comboBoxClientes.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxClientes.FormattingEnabled = true;
-            comboBoxClientes.Location = new Point(128, 67);
+            comboBoxClientes.Location = new Point(188, 67);
             comboBoxClientes.Name = "comboBoxClientes";
             comboBoxClientes.Size = new Size(130, 23);
             comboBoxClientes.TabIndex = 31;
             comboBoxClientes.SelectedIndexChanged += comboBoxClientes_SelectedIndexChanged;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(545, 19);
+            button1.Name = "button1";
+            button1.Size = new Size(163, 38);
+            button1.TabIndex = 32;
+            button1.Text = "Nueva Busqueda";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += btnNuevaBusqueda;
             // 
             // PantallaDespacho
             // 
@@ -135,6 +146,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(746, 460);
+            Controls.Add(button1);
             Controls.Add(comboBoxClientes);
             Controls.Add(nroclienteLabel);
             Controls.Add(listviewTransportista);
@@ -163,5 +175,6 @@
         private ColumnHeader ColumnaCliente;
         private Label nroclienteLabel;
         private ComboBox comboBoxClientes;
+        private Button button1;
     }
 }
