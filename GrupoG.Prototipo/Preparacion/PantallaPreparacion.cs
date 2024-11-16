@@ -167,6 +167,11 @@ namespace GrupoG.Prototipo.Preparacion
                 MessageBox.Show("El DNI del transportista ingresado no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (dniTransportista < 0)
+            {
+                MessageBox.Show("El DNI del transportista no puede ser un número negativo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (textBoxDNITransportista.Text.Length < 8 || textBoxDNITransportista.Text.Length > 9)
             {
                 MessageBox.Show("El DNI del transportista debe tener entre 8 y 9 dígitos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
