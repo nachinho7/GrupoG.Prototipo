@@ -53,6 +53,10 @@ namespace GrupoG.Prototipo.Despacho
                 comboBoxClientes.Enabled = true;
                 dniTransportista.Enabled = false;
                 btnBuscarTransportista.Enabled = false;
+            // Se selecciona
+                comboBoxClientes.SelectedIndexChanged += comboBoxClientes_SelectedIndexChanged;
+                comboBoxClientes_SelectedIndexChanged(comboBoxClientes, EventArgs.Empty);
+
             }
             else
             {
