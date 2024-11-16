@@ -11,7 +11,7 @@ namespace GrupoG.Prototipo.Almacenes.Ordenes.OrdenEntrega
         public int NumeroOrdenEntrega { get; set; }
         public int NroCliente { get; set; }
         public int NroDeposito { get; set; }
-        public int NumeroOrdenPrepracion { get; set; }
+        public int NumeroOrdenPreparacion { get; set; }
 
     }
 }

@@ -39,7 +39,7 @@ namespace GrupoG.Prototipo.Entrega
 
                 int nuevoNroOrdenEntrega = (OrdenEntregaAlmacen.OrdenEntrega.Any() ? OrdenEntregaAlmacen.OrdenEntrega.Max(o => o.NumeroOrdenEntrega) : 0) + 1;
                 var cliente = ClientesAlmacen.ObtenerNroCliente(ordenPreparacion.NroCliente);
-                var numOrdenPrepracion = ordenPreparacion.NumeroOrdenPreparacion;
+                var numOrdenPreparacion = ordenPreparacion.NumeroOrdenPreparacion;
 
                 if (cliente != null)
                 {
@@ -47,7 +47,7 @@ namespace GrupoG.Prototipo.Entrega
                     {
                         NumeroOrdenEntrega = nuevoNroOrdenEntrega,
                         NroCliente = ordenPreparacion.NroCliente,
-                        NumeroOrdenPrepracion = numOrdenPrepracion,
+                        NumeroOrdenPreparacion = numOrdenPreparacion,
                         NroDeposito = cliente.NroDeposito
                     };
 

@@ -46,6 +46,9 @@ namespace GrupoG.Prototipo.Despacho
 
             if (clientes != null && clientes.Count > 0)
             {
+                // Desvincular evento
+                comboBoxClientes.SelectedIndexChanged -= comboBoxClientes_SelectedIndexChanged; 
+
                 comboBoxClientes.DataSource = clientes;
                 comboBoxClientes.DisplayMember = "NroCliente";
                 comboBoxClientes.ValueMember = "NroCliente";
@@ -53,7 +56,7 @@ namespace GrupoG.Prototipo.Despacho
                 comboBoxClientes.Enabled = true;
                 dniTransportista.Enabled = false;
                 btnBuscarTransportista.Enabled = false;
-            // Se selecciona
+                // Se selecciona
                 comboBoxClientes.SelectedIndexChanged += comboBoxClientes_SelectedIndexChanged;
                 comboBoxClientes_SelectedIndexChanged(comboBoxClientes, EventArgs.Empty);
 
@@ -73,14 +76,27 @@ namespace GrupoG.Prototipo.Despacho
             {
                 var ordenes = model.ObtenerOrdenesPorDni(nroClienteSeleccionado, int.Parse(dnitransportista));
 
-                foreach (var orden in ordenes)
+                if (ordenes != null && ordenes.Count > 0)
                 {
-                    var item = new ListViewItem(orden.NumeroOrdenPreparacion.ToString());
-                    item.SubItems.Add(orden.NroCliente.ToString());
-                    listviewTransportista.Items.Add(item);
+                    foreach (var orden in ordenes)
+                    {
+                        var item = new ListViewItem(orden.NumeroOrdenPreparacion.ToString());
+                        item.SubItems.Add(orden.NroCliente.ToString());
+                        listviewTransportista.Items.Add(item);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "El cliente seleccionado no tiene órdenes disponibles en este momento.",
+                        "Información",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
                 }
             }
         }
+
 
 
         private void btnGenerarRemito_Click(object sender, EventArgs e)
