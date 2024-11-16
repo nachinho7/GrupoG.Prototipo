@@ -140,6 +140,7 @@ namespace GrupoG.Prototipo.Preparacion
             var nuevaorden = new OrdenPreparacionEntidad
             {
                 NumeroOrdenPreparacion = nroOrdenPreparacion,
+                NroDeposito = numeroDeposito,
                 NroCliente = nrocliente,
                 Estado = estadoOrdenPreparacion,
                 FechaDespacho = fechadespacho,
