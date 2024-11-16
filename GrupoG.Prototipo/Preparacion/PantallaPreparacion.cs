@@ -20,6 +20,7 @@ namespace GrupoG.Prototipo.Preparacion
 
         private void BotonObtenerDatos_Click(object sender, EventArgs e)
         {
+
             if (int.TryParse(numeroCliente.Text, out int nroCliente) && nroCliente > 0)
             {
                 var cliente = model.ObtenerCliente(nroCliente);
@@ -30,8 +31,10 @@ namespace GrupoG.Prototipo.Preparacion
                     LimpiarFormulario();
                     return;
                 }
-
                 ActualizarListaMercaderias(model.ObtenerMercaderiasPorCliente(nroCliente));
+
+                numeroCliente.Enabled = false;
+                BotonObtenerDatos.Enabled = false;
             }
             else
             {
@@ -221,6 +224,7 @@ namespace GrupoG.Prototipo.Preparacion
         {
             numeroCliente.Text = "";
             numeroCliente.Enabled = true;
+            BotonObtenerDatos.Enabled = true;
             textBoxDNITransportista.Text = "";
             PickerFechaDespacho.Value = DateTime.Today;
             ListaDatosMercaderia.Items.Clear();

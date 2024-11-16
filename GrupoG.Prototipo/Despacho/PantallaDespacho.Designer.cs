@@ -42,7 +42,7 @@
             // 
             // btnGenerarRemito
             // 
-            btnGenerarRemito.Location = new Point(446, 437);
+            btnGenerarRemito.Location = new Point(432, 397);
             btnGenerarRemito.Name = "btnGenerarRemito";
             btnGenerarRemito.Size = new Size(107, 38);
             btnGenerarRemito.TabIndex = 5;
@@ -52,7 +52,7 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(578, 437);
+            VolverAlMenu.Location = new Point(576, 397);
             VolverAlMenu.Name = "VolverAlMenu";
             VolverAlMenu.Size = new Size(107, 38);
             VolverAlMenu.TabIndex = 25;
@@ -65,7 +65,7 @@
             listviewTransportista.Columns.AddRange(new ColumnHeader[] { ColumnaIdOrden, ColumnaCliente });
             listviewTransportista.FullRowSelect = true;
             listviewTransportista.GridLines = true;
-            listviewTransportista.Location = new Point(12, 160);
+            listviewTransportista.Location = new Point(12, 110);
             listviewTransportista.Name = "listviewTransportista";
             listviewTransportista.Size = new Size(671, 255);
             listviewTransportista.TabIndex = 29;
@@ -113,7 +113,7 @@
             // nroclienteLabel
             // 
             nroclienteLabel.AutoSize = true;
-            nroclienteLabel.Location = new Point(12, 94);
+            nroclienteLabel.Location = new Point(12, 70);
             nroclienteLabel.Name = "nroclienteLabel";
             nroclienteLabel.Size = new Size(99, 15);
             nroclienteLabel.TabIndex = 30;
@@ -123,7 +123,7 @@
             // 
             comboBoxClientes.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxClientes.FormattingEnabled = true;
-            comboBoxClientes.Location = new Point(156, 91);
+            comboBoxClientes.Location = new Point(128, 67);
             comboBoxClientes.Name = "comboBoxClientes";
             comboBoxClientes.Size = new Size(130, 23);
             comboBoxClientes.TabIndex = 31;
@@ -134,7 +134,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(746, 497);
+            ClientSize = new Size(746, 460);
             Controls.Add(comboBoxClientes);
             Controls.Add(nroclienteLabel);
             Controls.Add(listviewTransportista);
