@@ -30,11 +30,13 @@
             ColumnaDniTransportista = new ColumnHeader();
             ColumnaFecha = new ColumnHeader();
             BotonVolverMenu = new Button();
+            ComboBoxDeposito = new ComboBox();
+            DepositoLabel = new Label();
             SuspendLayout();
             // 
             // btnEntregar
             // 
-            btnEntregar.Location = new Point(722, 397);
+            btnEntregar.Location = new Point(721, 448);
             btnEntregar.Name = "btnEntregar";
             btnEntregar.Size = new Size(156, 51);
             btnEntregar.TabIndex = 7;
@@ -47,9 +49,9 @@
             ListaOrdenesEmpaquetar.Columns.AddRange(new ColumnHeader[] { ColumnaNumeroOrden, ColumnaNCliente, ColumnaProductos, ColumnaDniTransportista, ColumnaFecha });
             ListaOrdenesEmpaquetar.FullRowSelect = true;
             ListaOrdenesEmpaquetar.GridLines = true;
-            ListaOrdenesEmpaquetar.Location = new Point(26, 27);
+            ListaOrdenesEmpaquetar.Location = new Point(26, 95);
             ListaOrdenesEmpaquetar.Name = "ListaOrdenesEmpaquetar";
-            ListaOrdenesEmpaquetar.Size = new Size(1047, 343);
+            ListaOrdenesEmpaquetar.Size = new Size(1047, 346);
             ListaOrdenesEmpaquetar.TabIndex = 9;
             ListaOrdenesEmpaquetar.UseCompatibleStateImageBehavior = false;
             ListaOrdenesEmpaquetar.View = View.Details;
@@ -81,7 +83,7 @@
             // 
             // BotonVolverMenu
             // 
-            BotonVolverMenu.Location = new Point(917, 397);
+            BotonVolverMenu.Location = new Point(906, 448);
             BotonVolverMenu.Margin = new Padding(3, 4, 3, 4);
             BotonVolverMenu.Name = "BotonVolverMenu";
             BotonVolverMenu.Size = new Size(156, 51);
@@ -90,12 +92,31 @@
             BotonVolverMenu.UseVisualStyleBackColor = true;
             BotonVolverMenu.Click += VolverAlMenu_Click;
             // 
+            // ComboBoxDeposito
+            // 
+            ComboBoxDeposito.FormattingEnabled = true;
+            ComboBoxDeposito.Location = new Point(26, 46);
+            ComboBoxDeposito.Name = "ComboBoxDeposito";
+            ComboBoxDeposito.Size = new Size(416, 28);
+            ComboBoxDeposito.TabIndex = 11;
+            // 
+            // DepositoLabel
+            // 
+            DepositoLabel.AutoSize = true;
+            DepositoLabel.Location = new Point(26, 23);
+            DepositoLabel.Name = "DepositoLabel";
+            DepositoLabel.Size = new Size(151, 20);
+            DepositoLabel.TabIndex = 12;
+            DepositoLabel.Text = "Numero De Deposito";
+            // 
             // PantallaEntrega
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(1098, 467);
+            ClientSize = new Size(1098, 511);
+            Controls.Add(DepositoLabel);
+            Controls.Add(ComboBoxDeposito);
             Controls.Add(BotonVolverMenu);
             Controls.Add(ListaOrdenesEmpaquetar);
             Controls.Add(btnEntregar);
@@ -106,6 +127,7 @@
             Load += PantallaEntrega_Load;
             Shown += PantallaEntrega_Shown;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -117,5 +139,7 @@
         private ColumnHeader ColumnaProductos;
         private ColumnHeader ColumnaDniTransportista;
         private ColumnHeader ColumnaFecha;
+        private ComboBox ComboBoxDeposito;
+        private Label DepositoLabel;
     }
 }

@@ -37,6 +37,8 @@
             nombreMercaderia = new ColumnHeader();
             VolverAlMenu = new Button();
             btnRetirarStock = new Button();
+            comboBox2 = new ComboBox();
+            DepositoLabel = new Label();
             SuspendLayout();
             // 
             // comboBox1
@@ -46,7 +48,7 @@
             comboBox1.Location = new Point(26, 33);
             comboBox1.Margin = new Padding(3, 4, 3, 4);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(214, 28);
+            comboBox1.Size = new Size(240, 28);
             comboBox1.TabIndex = 0;
             // 
             // labelOrdenSeleccion
@@ -113,12 +115,31 @@
             btnRetirarStock.UseVisualStyleBackColor = true;
             btnRetirarStock.Click += btnRetirarStock_Click;
             // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(329, 33);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(240, 28);
+            comboBox2.TabIndex = 8;
+            // 
+            // DepositoLabel
+            // 
+            DepositoLabel.AutoSize = true;
+            DepositoLabel.Location = new Point(330, 9);
+            DepositoLabel.Name = "DepositoLabel";
+            DepositoLabel.Size = new Size(156, 20);
+            DepositoLabel.TabIndex = 9;
+            DepositoLabel.Text = "Numero de Deposito: ";
+            // 
             // PantallaRetiroStock
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(867, 586);
+            Controls.Add(DepositoLabel);
+            Controls.Add(comboBox2);
             Controls.Add(btnRetirarStock);
             Controls.Add(VolverAlMenu);
             Controls.Add(listView1);
@@ -146,5 +167,7 @@
         private ColumnHeader ubicacionMercaderia;
         private Button VolverAlMenu;
         private Button btnRetirarStock;
+        private ComboBox comboBox2;
+        private Label DepositoLabel;
     }
 }

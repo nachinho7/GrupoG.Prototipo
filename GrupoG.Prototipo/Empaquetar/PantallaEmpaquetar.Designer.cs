@@ -36,6 +36,8 @@
             btnEmpaquetar = new Button();
             VolverAlMenu = new Button();
             ComboBoxOrdenesPreparacion = new ComboBox();
+            ComboBoxDeposito = new ComboBox();
+            DepositoLabel = new Label();
             SuspendLayout();
             // 
             // numeroOrdenPreparacion
@@ -106,12 +108,31 @@
             ComboBoxOrdenesPreparacion.Size = new Size(324, 28);
             ComboBoxOrdenesPreparacion.TabIndex = 32;
             // 
+            // ComboBoxDeposito
+            // 
+            ComboBoxDeposito.FormattingEnabled = true;
+            ComboBoxDeposito.Location = new Point(399, 43);
+            ComboBoxDeposito.Name = "ComboBoxDeposito";
+            ComboBoxDeposito.Size = new Size(324, 28);
+            ComboBoxDeposito.TabIndex = 33;
+            // 
+            // DepositoLabel
+            // 
+            DepositoLabel.AutoSize = true;
+            DepositoLabel.Location = new Point(399, 20);
+            DepositoLabel.Name = "DepositoLabel";
+            DepositoLabel.Size = new Size(152, 20);
+            DepositoLabel.TabIndex = 34;
+            DepositoLabel.Text = "Numero de Deposito:";
+            // 
             // PantallaEmpaquetar
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(938, 508);
+            Controls.Add(DepositoLabel);
+            Controls.Add(ComboBoxDeposito);
             Controls.Add(ComboBoxOrdenesPreparacion);
             Controls.Add(VolverAlMenu);
             Controls.Add(btnEmpaquetar);
@@ -138,5 +159,7 @@
         private Button btnEmpaquetar;
         private Button VolverAlMenu;
         private ComboBox ComboBoxOrdenesPreparacion;
+        private ComboBox ComboBoxDeposito;
+        private Label DepositoLabel;
     }
 }
