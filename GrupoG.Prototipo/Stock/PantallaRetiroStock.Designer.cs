@@ -43,7 +43,7 @@
             // 
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(194, 41);
+            comboBox1.Location = new Point(26, 33);
             comboBox1.Margin = new Padding(3, 4, 3, 4);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(214, 28);
@@ -52,7 +52,7 @@
             // labelOrdenSeleccion
             // 
             labelOrdenSeleccion.AutoSize = true;
-            labelOrdenSeleccion.Location = new Point(26, 44);
+            labelOrdenSeleccion.Location = new Point(26, 9);
             labelOrdenSeleccion.Name = "labelOrdenSeleccion";
             labelOrdenSeleccion.Size = new Size(162, 20);
             labelOrdenSeleccion.TabIndex = 1;
@@ -66,7 +66,7 @@
             listView1.Location = new Point(26, 99);
             listView1.Margin = new Padding(3, 4, 3, 4);
             listView1.Name = "listView1";
-            listView1.Size = new Size(737, 400);
+            listView1.Size = new Size(808, 400);
             listView1.TabIndex = 2;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -74,7 +74,7 @@
             // idMercaderia
             // 
             idMercaderia.Text = "ID";
-            idMercaderia.Width = 70;
+            idMercaderia.Width = 200;
             // 
             // ubicacionMercaderia
             // 
@@ -84,19 +84,19 @@
             // cantidadMercaderia
             // 
             cantidadMercaderia.Text = "Cantidad";
-            cantidadMercaderia.Width = 120;
+            cantidadMercaderia.Width = 200;
             // 
             // nombreMercaderia
             // 
             nombreMercaderia.Text = "Nombre";
-            nombreMercaderia.Width = 250;
+            nombreMercaderia.Width = 200;
             // 
             // VolverAlMenu
             // 
             VolverAlMenu.Location = new Point(634, 541);
             VolverAlMenu.Margin = new Padding(3, 4, 3, 4);
             VolverAlMenu.Name = "VolverAlMenu";
-            VolverAlMenu.Size = new Size(129, 51);
+            VolverAlMenu.Size = new Size(200, 51);
             VolverAlMenu.TabIndex = 6;
             VolverAlMenu.Text = "Volver al Menú";
             VolverAlMenu.UseVisualStyleBackColor = true;
@@ -104,10 +104,10 @@
             // 
             // btnRetirarStock
             // 
-            btnRetirarStock.Location = new Point(499, 541);
+            btnRetirarStock.Location = new Point(394, 541);
             btnRetirarStock.Margin = new Padding(3, 4, 3, 4);
             btnRetirarStock.Name = "btnRetirarStock";
-            btnRetirarStock.Size = new Size(112, 51);
+            btnRetirarStock.Size = new Size(200, 51);
             btnRetirarStock.TabIndex = 7;
             btnRetirarStock.Text = "Retirar Stock";
             btnRetirarStock.UseVisualStyleBackColor = true;
@@ -118,7 +118,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(798, 608);
+            ClientSize = new Size(867, 608);
             Controls.Add(btnRetirarStock);
             Controls.Add(VolverAlMenu);
             Controls.Add(listView1);

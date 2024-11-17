@@ -34,10 +34,9 @@
             // 
             // btnEntregar
             // 
-            btnEntregar.Location = new Point(820, 346);
-            btnEntregar.Margin = new Padding(3, 2, 3, 2);
+            btnEntregar.Location = new Point(798, 444);
             btnEntregar.Name = "btnEntregar";
-            btnEntregar.Size = new Size(107, 38);
+            btnEntregar.Size = new Size(122, 51);
             btnEntregar.TabIndex = 7;
             btnEntregar.Text = "Generar Orden de Entrega";
             btnEntregar.UseVisualStyleBackColor = true;
@@ -48,10 +47,9 @@
             ListaOrdenesEmpaquetar.Columns.AddRange(new ColumnHeader[] { ColumnaNumeroOrden, ColumnaNCliente, ColumnaProductos, ColumnaDniTransportista, ColumnaFecha });
             ListaOrdenesEmpaquetar.FullRowSelect = true;
             ListaOrdenesEmpaquetar.GridLines = true;
-            ListaOrdenesEmpaquetar.Location = new Point(23, 53);
-            ListaOrdenesEmpaquetar.Margin = new Padding(3, 2, 3, 2);
+            ListaOrdenesEmpaquetar.Location = new Point(26, 71);
             ListaOrdenesEmpaquetar.Name = "ListaOrdenesEmpaquetar";
-            ListaOrdenesEmpaquetar.Size = new Size(904, 258);
+            ListaOrdenesEmpaquetar.Size = new Size(1047, 343);
             ListaOrdenesEmpaquetar.TabIndex = 9;
             ListaOrdenesEmpaquetar.UseCompatibleStateImageBehavior = false;
             ListaOrdenesEmpaquetar.View = View.Details;
@@ -59,12 +57,12 @@
             // ColumnaNumeroOrden
             // 
             ColumnaNumeroOrden.Text = "Nº de Orden";
-            ColumnaNumeroOrden.Width = 140;
+            ColumnaNumeroOrden.Width = 200;
             // 
             // ColumnaNCliente
             // 
             ColumnaNCliente.Text = "N° Cliente";
-            ColumnaNCliente.Width = 140;
+            ColumnaNCliente.Width = 200;
             // 
             // ColumnaProductos
             // 
@@ -74,18 +72,19 @@
             // ColumnaDniTransportista
             // 
             ColumnaDniTransportista.Text = "Dni Transportista";
-            ColumnaDniTransportista.Width = 140;
+            ColumnaDniTransportista.Width = 200;
             // 
             // ColumnaFecha
             // 
             ColumnaFecha.Text = "Fecha Despacho";
-            ColumnaFecha.Width = 260;
+            ColumnaFecha.Width = 240;
             // 
             // BotonVolverMenu
             // 
-            BotonVolverMenu.Location = new Point(938, 346);
+            BotonVolverMenu.Location = new Point(951, 444);
+            BotonVolverMenu.Margin = new Padding(3, 4, 3, 4);
             BotonVolverMenu.Name = "BotonVolverMenu";
-            BotonVolverMenu.Size = new Size(107, 38);
+            BotonVolverMenu.Size = new Size(122, 51);
             BotonVolverMenu.TabIndex = 10;
             BotonVolverMenu.Text = "Volver al Menú";
             BotonVolverMenu.UseVisualStyleBackColor = true;
@@ -93,15 +92,14 @@
             // 
             // PantallaEntrega
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(1057, 408);
+            ClientSize = new Size(1098, 511);
             Controls.Add(BotonVolverMenu);
             Controls.Add(ListaOrdenesEmpaquetar);
             Controls.Add(btnEntregar);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(3, 2, 3, 2);
             Name = "PantallaEntrega";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Orden de Entrega";

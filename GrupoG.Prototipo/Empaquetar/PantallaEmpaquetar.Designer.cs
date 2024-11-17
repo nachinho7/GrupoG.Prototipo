@@ -41,9 +41,9 @@
             // numeroOrdenPreparacion
             // 
             numeroOrdenPreparacion.AutoSize = true;
-            numeroOrdenPreparacion.Location = new Point(12, 36);
+            numeroOrdenPreparacion.Location = new Point(14, 20);
             numeroOrdenPreparacion.Name = "numeroOrdenPreparacion";
-            numeroOrdenPreparacion.Size = new Size(142, 15);
+            numeroOrdenPreparacion.Size = new Size(178, 20);
             numeroOrdenPreparacion.TabIndex = 0;
             numeroOrdenPreparacion.Text = "N° Orden de Preparación:";
             // 
@@ -52,9 +52,10 @@
             listView1.Columns.AddRange(new ColumnHeader[] { idMercaderia, nombreMercaderia, cantidadMercaderia });
             listView1.FullRowSelect = true;
             listView1.GridLines = true;
-            listView1.Location = new Point(12, 66);
+            listView1.Location = new Point(14, 90);
+            listView1.Margin = new Padding(3, 4, 3, 4);
             listView1.Name = "listView1";
-            listView1.Size = new Size(812, 243);
+            listView1.Size = new Size(906, 323);
             listView1.TabIndex = 1;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -62,7 +63,7 @@
             // idMercaderia
             // 
             idMercaderia.Text = "ID Mercadería";
-            idMercaderia.Width = 200;
+            idMercaderia.Width = 300;
             // 
             // nombreMercaderia
             // 
@@ -76,9 +77,10 @@
             // 
             // btnEmpaquetar
             // 
-            btnEmpaquetar.Location = new Point(672, 339);
+            btnEmpaquetar.Location = new Point(656, 438);
+            btnEmpaquetar.Margin = new Padding(3, 4, 3, 4);
             btnEmpaquetar.Name = "btnEmpaquetar";
-            btnEmpaquetar.Size = new Size(106, 38);
+            btnEmpaquetar.Size = new Size(121, 51);
             btnEmpaquetar.TabIndex = 2;
             btnEmpaquetar.Text = "Empaquetar";
             btnEmpaquetar.UseVisualStyleBackColor = true;
@@ -86,9 +88,10 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(793, 339);
+            VolverAlMenu.Location = new Point(798, 438);
+            VolverAlMenu.Margin = new Padding(3, 4, 3, 4);
             VolverAlMenu.Name = "VolverAlMenu";
-            VolverAlMenu.Size = new Size(107, 38);
+            VolverAlMenu.Size = new Size(122, 51);
             VolverAlMenu.TabIndex = 31;
             VolverAlMenu.Text = "Volver al Menú";
             VolverAlMenu.UseVisualStyleBackColor = true;
@@ -98,24 +101,24 @@
             // 
             ComboBoxOrdenesPreparacion.DropDownStyle = ComboBoxStyle.DropDownList;
             ComboBoxOrdenesPreparacion.FormattingEnabled = true;
-            ComboBoxOrdenesPreparacion.Location = new Point(173, 34);
-            ComboBoxOrdenesPreparacion.Margin = new Padding(3, 2, 3, 2);
+            ComboBoxOrdenesPreparacion.Location = new Point(14, 43);
             ComboBoxOrdenesPreparacion.Name = "ComboBoxOrdenesPreparacion";
-            ComboBoxOrdenesPreparacion.Size = new Size(278, 23);
+            ComboBoxOrdenesPreparacion.Size = new Size(324, 28);
             ComboBoxOrdenesPreparacion.TabIndex = 32;
             // 
             // PantallaEmpaquetar
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(928, 406);
+            ClientSize = new Size(938, 508);
             Controls.Add(ComboBoxOrdenesPreparacion);
             Controls.Add(VolverAlMenu);
             Controls.Add(btnEmpaquetar);
             Controls.Add(listView1);
             Controls.Add(numeroOrdenPreparacion);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "PantallaEmpaquetar";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Pantalla Empaquetar";

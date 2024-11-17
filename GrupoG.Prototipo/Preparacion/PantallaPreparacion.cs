@@ -67,7 +67,7 @@ namespace GrupoG.Prototipo.Preparacion
             if (ListaDatosMercaderia.SelectedItems.Count > 0)
             {
                 var selectedItem = ListaDatosMercaderia.SelectedItems[0];
-                TextBoxCantidad.Text = ""; 
+                TextBoxCantidad.Text = "";
                 TextBoxCantidad.Enabled = true;
             }
         }
@@ -240,7 +240,7 @@ namespace GrupoG.Prototipo.Preparacion
             model.MercaderiasAgregadas.Clear();
         }
 
-        
+
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {
@@ -249,5 +249,7 @@ namespace GrupoG.Prototipo.Preparacion
             menu.StartPosition = FormStartPosition.CenterScreen;
             menu.Location = this.Location;
         }
+
+        
     }
 }
