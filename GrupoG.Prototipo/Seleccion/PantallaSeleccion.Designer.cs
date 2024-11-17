@@ -36,8 +36,8 @@
             comboBoxTransportista = new ComboBox();
             labelTransportista = new Label();
             labelCliente = new Label();
-            comboBoxCliente = new ComboBox();
             mostrartTodasOrdenes = new Button();
+            comboBoxCliente = new ComboBox();
             listView1 = new ListView();
             numeroOrdenPreparacion = new ColumnHeader();
             columnaCliente = new ColumnHeader();
@@ -134,15 +134,6 @@
             labelCliente.TabIndex = 11;
             labelCliente.Text = "N° Cliente:";
             // 
-            // comboBoxCliente
-            // 
-            comboBoxCliente.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxCliente.FormattingEnabled = true;
-            comboBoxCliente.Location = new Point(596, 62);
-            comboBoxCliente.Name = "comboBoxCliente";
-            comboBoxCliente.Size = new Size(237, 28);
-            comboBoxCliente.TabIndex = 10;
-            // 
             // mostrartTodasOrdenes
             // 
             mostrartTodasOrdenes.Location = new Point(855, 29);
@@ -153,6 +144,15 @@
             mostrartTodasOrdenes.Text = "Mostrar todas las ordenes";
             mostrartTodasOrdenes.UseVisualStyleBackColor = true;
             mostrartTodasOrdenes.Click += BotonMostrarTodas_Click;
+            // 
+            // comboBoxCliente
+            // 
+            comboBoxCliente.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxCliente.FormattingEnabled = true;
+            comboBoxCliente.Location = new Point(596, 62);
+            comboBoxCliente.Name = "comboBoxCliente";
+            comboBoxCliente.Size = new Size(237, 28);
+            comboBoxCliente.TabIndex = 10;
             // 
             // listView1
             // 
@@ -171,22 +171,22 @@
             // numeroOrdenPreparacion
             // 
             numeroOrdenPreparacion.Text = "N° Orden";
-            numeroOrdenPreparacion.Width = 210;
+            numeroOrdenPreparacion.Width = 260;
             // 
             // columnaCliente
             // 
             columnaCliente.Text = "N° Cliente";
-            columnaCliente.Width = 210;
+            columnaCliente.Width = 260;
             // 
             // columnaFecha
             // 
             columnaFecha.Text = "Fecha Despacho";
-            columnaFecha.Width = 240;
+            columnaFecha.Width = 260;
             // 
             // columnaTransportista
             // 
             columnaTransportista.Text = "Dni Transportista";
-            columnaTransportista.Width = 240;
+            columnaTransportista.Width = 260;
             // 
             // PantallaSeleccion
             // 
