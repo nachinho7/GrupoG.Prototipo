@@ -48,10 +48,10 @@
             // 
             // BotonGenerarOS
             // 
-            BotonGenerarOS.Location = new Point(610, 609);
+            BotonGenerarOS.Location = new Point(732, 591);
             BotonGenerarOS.Margin = new Padding(3, 4, 3, 4);
             BotonGenerarOS.Name = "BotonGenerarOS";
-            BotonGenerarOS.Size = new Size(230, 61);
+            BotonGenerarOS.Size = new Size(156, 51);
             BotonGenerarOS.TabIndex = 1;
             BotonGenerarOS.Text = "Generar Orden de Seleccion";
             BotonGenerarOS.UseVisualStyleBackColor = true;
@@ -59,10 +59,10 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(869, 609);
+            VolverAlMenu.Location = new Point(933, 591);
             VolverAlMenu.Margin = new Padding(3, 4, 3, 4);
             VolverAlMenu.Name = "VolverAlMenu";
-            VolverAlMenu.Size = new Size(220, 61);
+            VolverAlMenu.Size = new Size(156, 51);
             VolverAlMenu.TabIndex = 5;
             VolverAlMenu.Text = "Volver al Menú";
             VolverAlMenu.UseVisualStyleBackColor = true;
@@ -136,10 +136,10 @@
             // 
             // mostrartTodasOrdenes
             // 
-            mostrartTodasOrdenes.Location = new Point(855, 29);
+            mostrartTodasOrdenes.Location = new Point(919, 39);
             mostrartTodasOrdenes.Margin = new Padding(3, 4, 3, 4);
             mostrartTodasOrdenes.Name = "mostrartTodasOrdenes";
-            mostrartTodasOrdenes.Size = new Size(220, 61);
+            mostrartTodasOrdenes.Size = new Size(156, 51);
             mostrartTodasOrdenes.TabIndex = 9;
             mostrartTodasOrdenes.Text = "Mostrar todas las ordenes";
             mostrartTodasOrdenes.UseVisualStyleBackColor = true;
@@ -193,7 +193,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(1130, 704);
+            ClientSize = new Size(1130, 657);
             Controls.Add(groupBoxOrdenes);
             Controls.Add(VolverAlMenu);
             Controls.Add(BotonGenerarOS);

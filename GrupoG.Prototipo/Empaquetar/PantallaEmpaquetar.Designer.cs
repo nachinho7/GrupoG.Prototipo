@@ -77,10 +77,10 @@
             // 
             // btnEmpaquetar
             // 
-            btnEmpaquetar.Location = new Point(656, 438);
+            btnEmpaquetar.Location = new Point(567, 438);
             btnEmpaquetar.Margin = new Padding(3, 4, 3, 4);
             btnEmpaquetar.Name = "btnEmpaquetar";
-            btnEmpaquetar.Size = new Size(121, 51);
+            btnEmpaquetar.Size = new Size(156, 51);
             btnEmpaquetar.TabIndex = 2;
             btnEmpaquetar.Text = "Empaquetar";
             btnEmpaquetar.UseVisualStyleBackColor = true;
@@ -88,10 +88,10 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(798, 438);
+            VolverAlMenu.Location = new Point(764, 438);
             VolverAlMenu.Margin = new Padding(3, 4, 3, 4);
             VolverAlMenu.Name = "VolverAlMenu";
-            VolverAlMenu.Size = new Size(122, 51);
+            VolverAlMenu.Size = new Size(156, 51);
             VolverAlMenu.TabIndex = 31;
             VolverAlMenu.Text = "Volver al Menú";
             VolverAlMenu.UseVisualStyleBackColor = true;

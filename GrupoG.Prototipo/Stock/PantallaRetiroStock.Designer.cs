@@ -93,10 +93,10 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(634, 541);
+            VolverAlMenu.Location = new Point(678, 522);
             VolverAlMenu.Margin = new Padding(3, 4, 3, 4);
             VolverAlMenu.Name = "VolverAlMenu";
-            VolverAlMenu.Size = new Size(200, 51);
+            VolverAlMenu.Size = new Size(156, 51);
             VolverAlMenu.TabIndex = 6;
             VolverAlMenu.Text = "Volver al Menú";
             VolverAlMenu.UseVisualStyleBackColor = true;
@@ -104,10 +104,10 @@
             // 
             // btnRetirarStock
             // 
-            btnRetirarStock.Location = new Point(394, 541);
+            btnRetirarStock.Location = new Point(495, 522);
             btnRetirarStock.Margin = new Padding(3, 4, 3, 4);
             btnRetirarStock.Name = "btnRetirarStock";
-            btnRetirarStock.Size = new Size(200, 51);
+            btnRetirarStock.Size = new Size(156, 51);
             btnRetirarStock.TabIndex = 7;
             btnRetirarStock.Text = "Retirar Stock";
             btnRetirarStock.UseVisualStyleBackColor = true;
@@ -118,7 +118,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(867, 608);
+            ClientSize = new Size(867, 586);
             Controls.Add(btnRetirarStock);
             Controls.Add(VolverAlMenu);
             Controls.Add(listView1);

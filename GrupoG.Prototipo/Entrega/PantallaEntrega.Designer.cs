@@ -34,9 +34,9 @@
             // 
             // btnEntregar
             // 
-            btnEntregar.Location = new Point(798, 444);
+            btnEntregar.Location = new Point(742, 444);
             btnEntregar.Name = "btnEntregar";
-            btnEntregar.Size = new Size(122, 51);
+            btnEntregar.Size = new Size(156, 51);
             btnEntregar.TabIndex = 7;
             btnEntregar.Text = "Generar Orden de Entrega";
             btnEntregar.UseVisualStyleBackColor = true;
@@ -81,10 +81,10 @@
             // 
             // BotonVolverMenu
             // 
-            BotonVolverMenu.Location = new Point(951, 444);
+            BotonVolverMenu.Location = new Point(917, 444);
             BotonVolverMenu.Margin = new Padding(3, 4, 3, 4);
             BotonVolverMenu.Name = "BotonVolverMenu";
-            BotonVolverMenu.Size = new Size(122, 51);
+            BotonVolverMenu.Size = new Size(156, 51);
             BotonVolverMenu.TabIndex = 10;
             BotonVolverMenu.Text = "Volver al Menú";
             BotonVolverMenu.UseVisualStyleBackColor = true;

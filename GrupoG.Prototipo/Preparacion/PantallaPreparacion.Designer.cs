@@ -75,10 +75,10 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(540, 256);
+            btnAgregar.Location = new Point(571, 256);
             btnAgregar.Margin = new Padding(3, 4, 3, 4);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(187, 51);
+            btnAgregar.Size = new Size(156, 51);
             btnAgregar.TabIndex = 7;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
@@ -86,10 +86,10 @@
             // 
             // btnGenerar
             // 
-            btnGenerar.Location = new Point(387, 988);
+            btnGenerar.Location = new Point(415, 988);
             btnGenerar.Margin = new Padding(3, 4, 3, 4);
             btnGenerar.Name = "btnGenerar";
-            btnGenerar.Size = new Size(184, 51);
+            btnGenerar.Size = new Size(156, 51);
             btnGenerar.TabIndex = 14;
             btnGenerar.Text = "Generar Orden";
             btnGenerar.UseVisualStyleBackColor = true;
@@ -170,10 +170,10 @@
             // 
             // BotonObtenerDatos
             // 
-            BotonObtenerDatos.Location = new Point(387, 23);
+            BotonObtenerDatos.Location = new Point(410, 23);
             BotonObtenerDatos.Margin = new Padding(3, 4, 3, 4);
             BotonObtenerDatos.Name = "BotonObtenerDatos";
-            BotonObtenerDatos.Size = new Size(179, 51);
+            BotonObtenerDatos.Size = new Size(156, 51);
             BotonObtenerDatos.TabIndex = 29;
             BotonObtenerDatos.Text = "Obtener Datos";
             BotonObtenerDatos.UseVisualStyleBackColor = true;
@@ -181,10 +181,10 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(586, 988);
+            VolverAlMenu.Location = new Point(617, 988);
             VolverAlMenu.Margin = new Padding(3, 4, 3, 4);
             VolverAlMenu.Name = "VolverAlMenu";
-            VolverAlMenu.Size = new Size(187, 51);
+            VolverAlMenu.Size = new Size(156, 51);
             VolverAlMenu.TabIndex = 30;
             VolverAlMenu.Text = "Volver al Menú";
             VolverAlMenu.UseVisualStyleBackColor = true;
@@ -192,10 +192,10 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(540, 439);
+            btnEliminar.Location = new Point(571, 448);
             btnEliminar.Margin = new Padding(3, 4, 3, 4);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(187, 51);
+            btnEliminar.Size = new Size(156, 51);
             btnEliminar.TabIndex = 31;
             btnEliminar.Text = "Limpiar Dato Seleccionado";
             btnEliminar.UseVisualStyleBackColor = true;
@@ -203,10 +203,10 @@
             // 
             // BotonLimpiarCliente
             // 
-            BotonLimpiarCliente.Location = new Point(586, 23);
+            BotonLimpiarCliente.Location = new Point(617, 23);
             BotonLimpiarCliente.Margin = new Padding(3, 4, 3, 4);
             BotonLimpiarCliente.Name = "BotonLimpiarCliente";
-            BotonLimpiarCliente.Size = new Size(187, 51);
+            BotonLimpiarCliente.Size = new Size(156, 51);
             BotonLimpiarCliente.TabIndex = 32;
             BotonLimpiarCliente.Text = "Nueva Busqueda";
             BotonLimpiarCliente.UseVisualStyleBackColor = true;
