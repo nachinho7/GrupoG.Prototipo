@@ -34,7 +34,7 @@
             // 
             // btnEntregar
             // 
-            btnEntregar.Location = new Point(742, 444);
+            btnEntregar.Location = new Point(722, 397);
             btnEntregar.Name = "btnEntregar";
             btnEntregar.Size = new Size(156, 51);
             btnEntregar.TabIndex = 7;
@@ -47,7 +47,7 @@
             ListaOrdenesEmpaquetar.Columns.AddRange(new ColumnHeader[] { ColumnaNumeroOrden, ColumnaNCliente, ColumnaProductos, ColumnaDniTransportista, ColumnaFecha });
             ListaOrdenesEmpaquetar.FullRowSelect = true;
             ListaOrdenesEmpaquetar.GridLines = true;
-            ListaOrdenesEmpaquetar.Location = new Point(26, 71);
+            ListaOrdenesEmpaquetar.Location = new Point(26, 27);
             ListaOrdenesEmpaquetar.Name = "ListaOrdenesEmpaquetar";
             ListaOrdenesEmpaquetar.Size = new Size(1047, 343);
             ListaOrdenesEmpaquetar.TabIndex = 9;
@@ -81,7 +81,7 @@
             // 
             // BotonVolverMenu
             // 
-            BotonVolverMenu.Location = new Point(917, 444);
+            BotonVolverMenu.Location = new Point(917, 397);
             BotonVolverMenu.Margin = new Padding(3, 4, 3, 4);
             BotonVolverMenu.Name = "BotonVolverMenu";
             BotonVolverMenu.Size = new Size(156, 51);
@@ -95,7 +95,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(1098, 511);
+            ClientSize = new Size(1098, 467);
             Controls.Add(BotonVolverMenu);
             Controls.Add(ListaOrdenesEmpaquetar);
             Controls.Add(btnEntregar);
