@@ -3,7 +3,7 @@
     "numeroOrdenSeleccion": 3003,
     "FechaCreacion": "2024-11-12T14:30:00",
     "Estado": 0,
-    "OrdenPreparacion": [2019,2021]
+    "OrdenPreparacion": [ 2019, 2021 ]
   },
   {
     "numeroOrdenSeleccion": 3004,
@@ -22,5 +22,19 @@
     "FechaCreacion": "2024-11-12T14:30:00",
     "Estado": 1,
     "OrdenPreparacion": [ 2026 ]
+  },
+  {
+    "numeroOrdenSeleccion": 3007,
+    "FechaCreacion": "2024-11-19T09:30:00",
+    "Estado": 1,
+    "OrdenPreparacion": [ 2029 ]
+  },
+  {
+    "numeroOrdenSeleccion": 3008,
+    "FechaCreacion": "2024-11-20T11:00:00",
+    "Estado": 1,
+    "OrdenPreparacion": [ 2030 ]
   }
+
+
 ]

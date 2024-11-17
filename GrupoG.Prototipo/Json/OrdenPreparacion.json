@@ -331,5 +331,31 @@
         "Cantidad": 2
       }
     ]
+  },
+  {
+    "NumeroOrdenPreparacion": 2026,
+    "NroCliente": 4,
+    "FechaDespacho": "2024-11-19T09:00:00",
+    "DNITransportista": 34567890,
+    "Estado": 5,
+    "Detalle": [
+      {
+        "idMercaderia": 1016,
+        "Cantidad": 100
+      }
+    ]
+  },
+  {
+    "NumeroOrdenPreparacion": 2027,
+    "NroCliente": 5,
+    "FechaDespacho": "2024-11-20T10:30:00",
+    "DNITransportista": 65432109,
+    "Estado": 5,
+    "Detalle": [
+      {
+        "idMercaderia": 1017,
+        "Cantidad": 200
+      }
+    ]
   }
 ]

@@ -28,5 +28,17 @@
     "NumeroOrdenEntrega": 1006,
     "NroDeposito": 1,
     "Detalle": []
+  },
+  {
+    "NumeroOrdenEntrega": 1007,
+    "NroDeposito": 2,
+    "Detalle": [ 2029 ]
+  },
+  {
+    "NumeroOrdenEntrega": 1008,
+    "NroDeposito": 2,
+    "Detalle": [ 2030 ]
   }
+
+
 ]
