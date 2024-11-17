@@ -115,6 +115,8 @@
             ComboBoxDeposito.Name = "ComboBoxDeposito";
             ComboBoxDeposito.Size = new Size(324, 28);
             ComboBoxDeposito.TabIndex = 33;
+            ComboBoxDeposito.DropDownStyle = ComboBoxStyle.DropDownList;
+
             // 
             // DepositoLabel
             // 

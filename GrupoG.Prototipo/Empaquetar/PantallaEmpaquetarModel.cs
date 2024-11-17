@@ -1,4 +1,5 @@
-﻿using GrupoG.Prototipo.Almacenes.Mercaderias;
+﻿using GrupoG.Prototipo.Almacenes.Clientes;
+using GrupoG.Prototipo.Almacenes.Mercaderias;
 using GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,24 @@ namespace GrupoG.Prototipo.Empaquetar
                 OrdenPreparacionAlmacen.ModificarEstado(orden, OrdenPreparacionEstados.Empaquetada);
 
             }
+        }
+
+        public static List<int> ListarDepositosDisponibles()
+        {
+            var clientes = ClientesAlmacen.Clientes; // Asumiendo que hay un almacén estático de clientes
+            return clientes.Select(c => c.NroDeposito).Distinct().ToList();
+        }
+
+        public static List<OrdenPreparacionEntidad> ListarOrdenesPorDeposito(int nroDeposito)
+        {
+            var clientes = ClientesAlmacen.Clientes
+                .Where(c => c.NroDeposito == nroDeposito)
+                .Select(c => c.NroCliente)
+                .ToList();
+
+            return OrdenPreparacionAlmacen.OrdenPreparacion
+                .Where(o => clientes.Contains(o.NroCliente) && o.Estado == OrdenPreparacionEstados.Cumplida)
+                .ToList();
         }
 
 
