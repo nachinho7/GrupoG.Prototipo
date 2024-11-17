@@ -48,6 +48,7 @@ namespace GrupoG.Prototipo.Seleccion
                 item.SubItems.Add(orden.NroCliente.ToString());
                 item.SubItems.Add(orden.FechaDespacho.ToShortDateString());
                 item.SubItems.Add(orden.DNITransportista.ToString());
+                item.SubItems.Add(orden.Deposito.ToString());
                 item.Tag = orden;
                 listView1.Items.Add(item);
             }
@@ -125,6 +126,7 @@ namespace GrupoG.Prototipo.Seleccion
                 item.SubItems.Add(orden.NroCliente.ToString());
                 item.SubItems.Add(orden.FechaDespacho.ToShortDateString());
                 item.SubItems.Add(orden.DNITransportista.ToString());
+                item.SubItems.Add(orden.Deposito.ToString());
                 item.Tag = orden;
                 listView1.Items.Add(item);
             }
@@ -142,16 +144,24 @@ namespace GrupoG.Prototipo.Seleccion
 
             if (ordenesSeleccionadas.Any())
             {
+                var depositoUnico = ordenesSeleccionadas.Select(o => o.Deposito).Distinct().Count() == 1;
+
+                if (!depositoUnico)
+                {
+                    MessageBox.Show("No se puede generar una orden de selección con números de depósito distintos.",
+                                    "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 var nuevaSeleccion = modelo.CrearOrdenSeleccion(ordenesSeleccionadas);
                 MessageBox.Show($"Orden de Selección N°{nuevaSeleccion.numeroOrdenSeleccion} generada!\n" +
                                 $"Incluye {ordenesSeleccionadas.Count} órdenes de preparación.",
                                 "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                datetimeDespacho.CustomFormat = " "; 
+                datetimeDespacho.CustomFormat = " ";
                 comboBoxTransportista.SelectedIndex = 0;
-                comboBoxCliente.SelectedIndex = 0;       
+                comboBoxCliente.SelectedIndex = 0;
 
-                
                 CargarOrdenes();
             }
             else
@@ -159,7 +169,6 @@ namespace GrupoG.Prototipo.Seleccion
                 MessageBox.Show("No se seleccionaron órdenes.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
 
 
         private void VolverAlMenu_Click(object sender, EventArgs e)

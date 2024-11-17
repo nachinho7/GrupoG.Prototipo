@@ -5,7 +5,6 @@
     "FechaDespacho": "2024-11-05T08:30:00",
     "DNITransportista": 45678912,
     "Estado": 4,
-    "NroDeposito": 1,
     "Detalle": [
       {
         "idMercaderia": 1013,
@@ -19,7 +18,6 @@
     "FechaDespacho": "2024-11-06T10:00:00",
     "DNITransportista": 12345678,
     "Estado": 4,
-    "NroDeposito": 1,
     "Detalle": [
       {
         "idMercaderia": 1014,
@@ -33,7 +31,6 @@
     "FechaDespacho": "2024-11-07T09:00:00",
     "DNITransportista": 23456789,
     "Estado": 0,
-    "NroDeposito": 3,
     "Detalle": [
       {
         "idMercaderia": 1015,
@@ -47,7 +44,6 @@
     "FechaDespacho": "2024-11-08T08:45:00",
     "DNITransportista": 78965432,
     "Estado": 2,
-    "NroDeposito": 1,
     "Detalle": [
       {
         "idMercaderia": 1013,
@@ -61,7 +57,6 @@
     "FechaDespacho": "2024-11-08T14:00:00",
     "DNITransportista": 87654321,
     "Estado": 0,
-    "NroDeposito": 1,
     "Detalle": [
       {
         "idMercaderia": 1014,
@@ -75,7 +70,6 @@
     "FechaDespacho": "2024-11-09T11:30:00",
     "DNITransportista": 98765432,
     "Estado": 2,
-    "NroDeposito": 3,
     "Detalle": [
       {
         "idMercaderia": 1015,
@@ -89,7 +83,6 @@
     "FechaDespacho": "2024-11-09T15:15:00",
     "DNITransportista": 45678912,
     "Estado": 0,
-    "NroDeposito": 1,
     "Detalle": [
       {
         "idMercaderia": 1013,
@@ -103,7 +96,6 @@
     "FechaDespacho": "2024-11-10T09:30:00",
     "DNITransportista": 12345678,
     "Estado": 2,
-    "NroDeposito": 1,
     "Detalle": [
       {
         "idMercaderia": 1014,
@@ -117,10 +109,9 @@
     "FechaDespacho": "2024-11-11T12:00:00",
     "DNITransportista": 98765432,
     "Estado": 0,
-    "NroDeposito": 3,
     "Detalle": [
       {
-        "idMercaderia": 1016,
+        "idMercaderia": 1020,
         "Cantidad": 90
       }
     ]
@@ -131,7 +122,6 @@
     "FechaDespacho": "2024-11-11T16:00:00",
     "DNITransportista": 45678912,
     "Estado": 4,
-    "NroDeposito": 1,
     "Detalle": [
       {
         "idMercaderia": 1013,
@@ -145,7 +135,6 @@
     "FechaDespacho": "2024-11-12T10:00:00",
     "DNITransportista": 34567890,
     "Estado": 4,
-    "NroDeposito": 2,
     "Detalle": [
       {
         "idMercaderia": 1016,
@@ -159,7 +148,6 @@
     "FechaDespacho": "2024-11-12T14:30:00",
     "DNITransportista": 65432109,
     "Estado": 2,
-    "NroDeposito": 1,
     "Detalle": [
       {
         "idMercaderia": 1022,
@@ -177,7 +165,6 @@
     "FechaDespacho": "2024-11-13T08:30:00",
     "DNITransportista": 76543210,
     "Estado": 0,
-    "NroDeposito": 2,
     "Detalle": [
       {
         "idMercaderia": 1021,
@@ -191,7 +178,6 @@
     "FechaDespacho": "2024-11-13T13:00:00",
     "DNITransportista": 23456789,
     "Estado": 2,
-    "NroDeposito": 3,
     "Detalle": [
       {
         "idMercaderia": 1020,
@@ -205,7 +191,6 @@
     "FechaDespacho": "2024-11-14T09:45:00",
     "DNITransportista": 45678912,
     "Estado": 0,
-    "NroDeposito": 1,
     "Detalle": [
       {
         "idMercaderia": 1018,
@@ -219,7 +204,6 @@
     "FechaDespacho": "2024-11-14T15:30:00",
     "DNITransportista": 23456789,
     "Estado": 2,
-    "NroDeposito": 3,
     "Detalle": [
       {
         "idMercaderia": 1015,
@@ -233,7 +217,6 @@
     "FechaDespacho": "2024-11-15T11:00:00",
     "DNITransportista": 12345678,
     "Estado": 0,
-    "NroDeposito": 1,
     "Detalle": [
       {
         "idMercaderia": 1014,
@@ -247,7 +230,6 @@
     "FechaDespacho": "2024-11-15T12:30:00",
     "DNITransportista": 78965432,
     "Estado": 2,
-    "NroDeposito": 1,
     "Detalle": [
       {
         "idMercaderia": 1013,
@@ -261,7 +243,6 @@
     "FechaDespacho": "2024-11-16T08:00:00",
     "DNITransportista": 98765432,
     "Estado": 2,
-    "NroDeposito": 3,
     "Detalle": [
       {
         "idMercaderia": 1015,
@@ -275,7 +256,6 @@
     "FechaDespacho": "2024-11-16T14:15:00",
     "DNITransportista": 87654321,
     "Estado": 1,
-    "NroDeposito": 1,
     "Detalle": [
       {
         "idMercaderia": 1014,
@@ -289,7 +269,6 @@
     "FechaDespacho": "2024-11-07T00:00:00-03:00",
     "DNITransportista": 12343555,
     "Estado": 2,
-    "NroDeposito": 3,
     "Detalle": [
       {
         "idMercaderia": 1015,
@@ -303,7 +282,6 @@
     "FechaDespacho": "2024-11-07T00:00:00-03:00",
     "DNITransportista": 12343555,
     "Estado": 3,
-    "NroDeposito": 1,
     "Detalle": [
       {
         "idMercaderia": 1013,
@@ -317,7 +295,6 @@
     "FechaDespacho": "2024-11-07T00:00:00-03:00",
     "DNITransportista": 12343555,
     "Estado": 3,
-    "NroDeposito": 1,
     "Detalle": [
       {
         "idMercaderia": 1013,
@@ -325,15 +302,12 @@
       }
     ]
   },
-
-
   {
     "NumeroOrdenPreparacion": 2024,
     "NroCliente": 1,
     "FechaDespacho": "2024-11-07T00:00:00-03:00",
     "DNITransportista": 12343555,
     "Estado": 2,
-    "NroDeposito": 1,
     "Detalle": [
       {
         "idMercaderia": 1013,
@@ -343,7 +317,6 @@
         "idMercaderia": 1018,
         "Cantidad": 1
       }
-
     ]
   },
   {
@@ -351,29 +324,12 @@
     "NroCliente": 1,
     "FechaDespacho": "2024-11-07T00:00:00-03:00",
     "DNITransportista": 12343555,
-    "Estado": 5,
-    "NroDeposito": 1,
+    "Estado": 2,
     "Detalle": [
       {
         "idMercaderia": 1018,
         "Cantidad": 2
       }
     ]
-  },
-  {
-    "NumeroOrdenPreparacion": 2026,
-    "NroCliente": 1,
-    "FechaDespacho": "2024-11-07T00:00:00-03:00",
-    "DNITransportista": 12343555,
-    "Estado": 5,
-    "NroDeposito": 1,
-    "Detalle": [
-      {
-        "idMercaderia": 1018,
-        "Cantidad": 5
-      }
-    ]
   }
-
-
 ]

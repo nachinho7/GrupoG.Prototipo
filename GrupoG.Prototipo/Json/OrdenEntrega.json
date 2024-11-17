@@ -1,32 +1,32 @@
 [
   {
     "NumeroOrdenEntrega": 1001,
-    "NroCliente": 1,
-    "NroDeposito": 1
+    "NroDeposito": 1,
+    "Detalle": []
   },
   {
     "NumeroOrdenEntrega": 1002,
-    "NroCliente": 2,
-    "NroDeposito": 1
+    "NroDeposito": 1,
+    "Detalle": []
   },
   {
     "NumeroOrdenEntrega": 1003,
-    "NroCliente": 3,
-    "NroDeposito": 3
+    "NroDeposito": 3,
+    "Detalle": []
   },
   {
     "NumeroOrdenEntrega": 1004,
-    "NroCliente": 4,
-    "NroDeposito": 2
+    "NroDeposito": 2,
+    "Detalle": []
   },
   {
     "NumeroOrdenEntrega": 1005,
-    "NroCliente": 5,
-    "NroDeposito": 1
+    "NroDeposito": 1,
+    "Detalle": []
   },
   {
     "NumeroOrdenEntrega": 1006,
-    "NroCliente": 1,
-    "NroDeposito": 1
+    "NroDeposito": 1,
+    "Detalle": []
   }
 ]

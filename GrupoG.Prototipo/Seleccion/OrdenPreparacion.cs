@@ -9,5 +9,6 @@ namespace GrupoG.Prototipo.Seleccion
         public int NroCliente { get; set; }
         public DateTime FechaDespacho { get; set; }
         public int DNITransportista { get; set; }
+        public int Deposito { get; set; }
     }
 }

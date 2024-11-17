@@ -1,16 +1,5 @@
 [
-  {
-    "NroCliente": 10,
-    "NroDeposito": 1,
-    "Transportistas": [
-      {
-        "DNITransportista": 45678912
-      },
-      {
-        "DNITransportista": 78965432
-      }
-    ]
-  },
+
   {
     "NroCliente": 1,
     "NroDeposito": 1,
@@ -40,7 +29,7 @@
   },
   {
     "NroCliente": 3,
-    "NroDeposito": 3,
+    "NroDeposito": 1,
     "Transportistas": [
       {
         "DNITransportista": 23456789
@@ -67,13 +56,25 @@
   },
   {
     "NroCliente": 5,
-    "NroDeposito": 1,
+    "NroDeposito": 2,
     "Transportistas": [
       {
         "DNITransportista": 45678901
       },
       {
         "DNITransportista": 65432109
+      }
+    ]
+  },
+  {
+    "NroCliente": 10,
+    "NroDeposito": 2,
+    "Transportistas": [
+      {
+        "DNITransportista": 45678912
+      },
+      {
+        "DNITransportista": 78965432
       }
     ]
   }

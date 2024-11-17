@@ -11,7 +11,6 @@ namespace GrupoG.Prototipo.Almacenes.Remito
         public int NroCliente { get; set; }
         public int NroRemito { get; set; }
         public int DNITransportista { get; set; }
-        public int NroDeposito { get; set; }
         public List<int> Detalle { get; } = new();
     }
 }

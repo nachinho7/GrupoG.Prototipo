@@ -40,10 +40,6 @@ namespace GrupoG.Prototipo.Almacenes.Ordenes.OrdenEntrega
             ordenentrega = JsonSerializer.Deserialize<List<OrdenEntregaEntidad>>(datos)!;
         }
 
-
-
-
-
         public static void AgregarOrdenEntrega(OrdenEntregaEntidad ordenEntrega)
         {
             ordenentrega.Add(ordenEntrega);

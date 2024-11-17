@@ -46,8 +46,8 @@ namespace GrupoG.Prototipo.Entrega
                     var ordenEntrega = new OrdenEntregaEntidad
                     {
                         NumeroOrdenEntrega = nuevoNroOrdenEntrega,
-                        NroCliente = ordenPreparacion.NroCliente,
-                        NumeroOrdenPreparacion = numOrdenPreparacion,
+                        //NroCliente = ordenPreparacion.NroCliente,
+                        //NumeroOrdenPreparacion = numOrdenPreparacion,
                         NroDeposito = cliente.NroDeposito
                     };
 

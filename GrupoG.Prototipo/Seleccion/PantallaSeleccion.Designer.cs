@@ -43,15 +43,15 @@
             columnaCliente = new ColumnHeader();
             columnaFecha = new ColumnHeader();
             columnaTransportista = new ColumnHeader();
+            columnaDeposito = new ColumnHeader();
             groupBoxOrdenes.SuspendLayout();
             SuspendLayout();
             // 
             // BotonGenerarOS
             // 
-            BotonGenerarOS.Location = new Point(732, 591);
-            BotonGenerarOS.Margin = new Padding(3, 4, 3, 4);
+            BotonGenerarOS.Location = new Point(622, 443);
             BotonGenerarOS.Name = "BotonGenerarOS";
-            BotonGenerarOS.Size = new Size(156, 51);
+            BotonGenerarOS.Size = new Size(136, 38);
             BotonGenerarOS.TabIndex = 1;
             BotonGenerarOS.Text = "Generar Orden de Seleccion";
             BotonGenerarOS.UseVisualStyleBackColor = true;
@@ -59,10 +59,9 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(933, 591);
-            VolverAlMenu.Margin = new Padding(3, 4, 3, 4);
+            VolverAlMenu.Location = new Point(793, 443);
             VolverAlMenu.Name = "VolverAlMenu";
-            VolverAlMenu.Size = new Size(156, 51);
+            VolverAlMenu.Size = new Size(136, 38);
             VolverAlMenu.TabIndex = 5;
             VolverAlMenu.Text = "Volver al Menú";
             VolverAlMenu.UseVisualStyleBackColor = true;
@@ -71,19 +70,18 @@
             // datetimeDespacho
             // 
             datetimeDespacho.Format = DateTimePickerFormat.Short;
-            datetimeDespacho.Location = new Point(18, 60);
-            datetimeDespacho.Margin = new Padding(3, 4, 3, 4);
+            datetimeDespacho.Location = new Point(16, 45);
             datetimeDespacho.Name = "datetimeDespacho";
-            datetimeDespacho.Size = new Size(237, 27);
+            datetimeDespacho.Size = new Size(208, 23);
             datetimeDespacho.TabIndex = 6;
             datetimeDespacho.ValueChanged += dateTimePicker_ValueChanged;
             // 
             // fechaDespacho
             // 
             fechaDespacho.AutoSize = true;
-            fechaDespacho.Location = new Point(18, 32);
+            fechaDespacho.Location = new Point(16, 24);
             fechaDespacho.Name = "fechaDespacho";
-            fechaDespacho.Size = new Size(138, 20);
+            fechaDespacho.Size = new Size(109, 15);
             fechaDespacho.TabIndex = 7;
             fechaDespacho.Text = "Fecha de Despacho";
             // 
@@ -97,11 +95,9 @@
             groupBoxOrdenes.Controls.Add(listView1);
             groupBoxOrdenes.Controls.Add(fechaDespacho);
             groupBoxOrdenes.Controls.Add(datetimeDespacho);
-            groupBoxOrdenes.Location = new Point(14, 16);
-            groupBoxOrdenes.Margin = new Padding(3, 4, 3, 4);
+            groupBoxOrdenes.Location = new Point(12, 12);
             groupBoxOrdenes.Name = "groupBoxOrdenes";
-            groupBoxOrdenes.Padding = new Padding(3, 4, 3, 4);
-            groupBoxOrdenes.Size = new Size(1097, 557);
+            groupBoxOrdenes.Size = new Size(940, 418);
             groupBoxOrdenes.TabIndex = 8;
             groupBoxOrdenes.TabStop = false;
             groupBoxOrdenes.Text = "Ordenes de Preparación a seleccionar:";
@@ -111,35 +107,35 @@
             comboBoxTransportista.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxTransportista.ForeColor = SystemColors.WindowText;
             comboBoxTransportista.FormattingEnabled = true;
-            comboBoxTransportista.Location = new Point(312, 62);
+            comboBoxTransportista.Location = new Point(273, 46);
+            comboBoxTransportista.Margin = new Padding(3, 2, 3, 2);
             comboBoxTransportista.Name = "comboBoxTransportista";
-            comboBoxTransportista.Size = new Size(237, 28);
+            comboBoxTransportista.Size = new Size(208, 23);
             comboBoxTransportista.TabIndex = 13;
             // 
             // labelTransportista
             // 
             labelTransportista.AutoSize = true;
-            labelTransportista.Location = new Point(596, 32);
+            labelTransportista.Location = new Point(522, 24);
             labelTransportista.Name = "labelTransportista";
-            labelTransportista.Size = new Size(124, 20);
+            labelTransportista.Size = new Size(98, 15);
             labelTransportista.TabIndex = 12;
             labelTransportista.Text = "Dni Transportista:";
             // 
             // labelCliente
             // 
             labelCliente.AutoSize = true;
-            labelCliente.Location = new Point(312, 32);
+            labelCliente.Location = new Point(273, 24);
             labelCliente.Name = "labelCliente";
-            labelCliente.Size = new Size(79, 20);
+            labelCliente.Size = new Size(64, 15);
             labelCliente.TabIndex = 11;
             labelCliente.Text = "N° Cliente:";
             // 
             // mostrartTodasOrdenes
             // 
-            mostrartTodasOrdenes.Location = new Point(919, 39);
-            mostrartTodasOrdenes.Margin = new Padding(3, 4, 3, 4);
+            mostrartTodasOrdenes.Location = new Point(759, 37);
             mostrartTodasOrdenes.Name = "mostrartTodasOrdenes";
-            mostrartTodasOrdenes.Size = new Size(156, 51);
+            mostrartTodasOrdenes.Size = new Size(158, 38);
             mostrartTodasOrdenes.TabIndex = 9;
             mostrartTodasOrdenes.Text = "Mostrar todas las ordenes";
             mostrartTodasOrdenes.UseVisualStyleBackColor = true;
@@ -149,21 +145,21 @@
             // 
             comboBoxCliente.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxCliente.FormattingEnabled = true;
-            comboBoxCliente.Location = new Point(596, 62);
+            comboBoxCliente.Location = new Point(522, 46);
+            comboBoxCliente.Margin = new Padding(3, 2, 3, 2);
             comboBoxCliente.Name = "comboBoxCliente";
-            comboBoxCliente.Size = new Size(237, 28);
+            comboBoxCliente.Size = new Size(208, 23);
             comboBoxCliente.TabIndex = 10;
             // 
             // listView1
             // 
             listView1.CheckBoxes = true;
-            listView1.Columns.AddRange(new ColumnHeader[] { numeroOrdenPreparacion, columnaCliente, columnaFecha, columnaTransportista });
+            listView1.Columns.AddRange(new ColumnHeader[] { numeroOrdenPreparacion, columnaCliente, columnaFecha, columnaTransportista, columnaDeposito });
             listView1.FullRowSelect = true;
             listView1.GridLines = true;
-            listView1.Location = new Point(18, 132);
-            listView1.Margin = new Padding(3, 4, 3, 4);
+            listView1.Location = new Point(6, 98);
             listView1.Name = "listView1";
-            listView1.Size = new Size(1057, 417);
+            listView1.Size = new Size(911, 314);
             listView1.TabIndex = 8;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -171,34 +167,38 @@
             // numeroOrdenPreparacion
             // 
             numeroOrdenPreparacion.Text = "N° Orden";
-            numeroOrdenPreparacion.Width = 260;
+            numeroOrdenPreparacion.Width = 150;
             // 
             // columnaCliente
             // 
             columnaCliente.Text = "N° Cliente";
-            columnaCliente.Width = 260;
+            columnaCliente.Width = 120;
             // 
             // columnaFecha
             // 
             columnaFecha.Text = "Fecha Despacho";
-            columnaFecha.Width = 260;
+            columnaFecha.Width = 220;
             // 
             // columnaTransportista
             // 
             columnaTransportista.Text = "Dni Transportista";
             columnaTransportista.Width = 260;
             // 
+            // columnaDeposito
+            // 
+            columnaDeposito.Text = "Nº Deposito";
+            columnaDeposito.Width = 150;
+            // 
             // PantallaSeleccion
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(1130, 657);
+            ClientSize = new Size(976, 493);
             Controls.Add(groupBoxOrdenes);
             Controls.Add(VolverAlMenu);
             Controls.Add(BotonGenerarOS);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(3, 4, 3, 4);
             Name = "PantallaSeleccion";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Orden de Seleccion";
@@ -226,5 +226,6 @@
         private ComboBox comboBoxCliente;
         private ComboBox comboBoxTransportista;
         private Label labelTransportista;
+        private ColumnHeader columnaDeposito;
     }
 }

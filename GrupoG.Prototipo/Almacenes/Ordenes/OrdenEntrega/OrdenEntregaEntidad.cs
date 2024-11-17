@@ -9,9 +9,7 @@ namespace GrupoG.Prototipo.Almacenes.Ordenes.OrdenEntrega
     internal class OrdenEntregaEntidad
     {
         public int NumeroOrdenEntrega { get; set; }
-        public int NroCliente { get; set; }
         public int NroDeposito { get; set; }
-        public int NumeroOrdenPreparacion { get; set; }
-
+        public List<int> Detalle { get; set; }
     }
 }

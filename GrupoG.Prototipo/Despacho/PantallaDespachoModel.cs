@@ -53,7 +53,6 @@ namespace GrupoG.Prototipo.Despacho
             {
                 NroCliente = nroCliente,
                 DNITransportista = dniTransportista,
-                NroDeposito = deposito, 
                 NroRemito = (RemitoAlmacen.Remito.Any() ? RemitoAlmacen.Remito.Max(r => r.NroRemito) : 0) + 1
             };
 

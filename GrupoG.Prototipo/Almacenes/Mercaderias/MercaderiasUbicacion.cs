@@ -10,6 +10,5 @@ namespace GrupoG.Prototipo.Almacenes.Mercaderias
     {
         public string NombreUbicacion { get; set; }
         public int Cantidad { get; set; }
-        public int NroDeposito { get; set; }
     }
 }

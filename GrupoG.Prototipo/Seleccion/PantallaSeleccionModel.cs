@@ -30,11 +30,12 @@ namespace GrupoG.Prototipo.Seleccion
                     NroCliente = op.NroCliente,
                     FechaDespacho = op.FechaDespacho,
                     DNITransportista = op.DNITransportista,
+                    Deposito = ClientesAlmacen.Clientes
+                        .FirstOrDefault(c => c.NroCliente == op.NroCliente)?.NroDeposito ?? 0
                 })
                 .ToList();
 
             return ordenesPreparacion;
-
         }
 
         public List<int> ObtenerClientesDisponibles()
