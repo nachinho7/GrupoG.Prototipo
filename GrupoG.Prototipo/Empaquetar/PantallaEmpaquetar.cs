@@ -13,7 +13,6 @@ namespace GrupoG.Prototipo.Empaquetar
         {
             InitializeComponent();
             modelo = new PantallaEmpaquetarModel();
-            ComboBoxDeposito.SelectedIndexChanged += ComboBoxDeposito_SelectedIndexChanged;
 
         }
 
@@ -28,15 +27,6 @@ namespace GrupoG.Prototipo.Empaquetar
                 MessageBox.Show("No hay órdenes de preparación disponibles.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
-
-        private void PantallaEmpaquetar_Load(object sender, EventArgs e)
-        {
-        }
-
-        
-
-
         private void CargarOrdenesPreparacion()
         {
             var ordenesPreparacion = PantallaEmpaquetarModel.ListarOrdenesSeleccionadas();
@@ -58,20 +48,21 @@ namespace GrupoG.Prototipo.Empaquetar
 
         private void CargarDepositos()
         {
-            var depositos = PantallaEmpaquetarModel.ListarDepositosDisponibles();
+            // Listar solo depósitos con órdenes disponibles
+            var depositosConOrdenes = PantallaEmpaquetarModel.ListarDepositosConOrdenes();
 
             ComboBoxDeposito.Items.Clear();
 
-            if (depositos.Count > 0)
+            if (depositosConOrdenes.Count > 0)
             {
-                ComboBoxDeposito.Items.AddRange(depositos.Select(d => $"Depósito N° {d}").ToArray());
+                ComboBoxDeposito.Items.AddRange(depositosConOrdenes.Select(d => $"Depósito N° {d}").ToArray());
                 ComboBoxDeposito.SelectedIndex = 0;
+                ComboBoxDeposito_SelectedIndexChanged(this, EventArgs.Empty);
             }
-            else
-            {
-                MessageBox.Show("No hay depósitos disponibles.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
+
+
         private void ComboBoxDeposito_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ComboBoxDeposito.SelectedIndex == -1) return;

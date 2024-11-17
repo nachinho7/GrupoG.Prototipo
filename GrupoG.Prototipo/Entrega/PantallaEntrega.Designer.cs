@@ -36,9 +36,10 @@
             // 
             // btnEntregar
             // 
-            btnEntregar.Location = new Point(721, 448);
+            btnEntregar.Location = new Point(672, 336);
+            btnEntregar.Margin = new Padding(3, 2, 3, 2);
             btnEntregar.Name = "btnEntregar";
-            btnEntregar.Size = new Size(156, 51);
+            btnEntregar.Size = new Size(136, 38);
             btnEntregar.TabIndex = 7;
             btnEntregar.Text = "Generar Orden de Entrega";
             btnEntregar.UseVisualStyleBackColor = true;
@@ -49,9 +50,10 @@
             ListaOrdenesEmpaquetar.Columns.AddRange(new ColumnHeader[] { ColumnaNumeroOrden, ColumnaNCliente, ColumnaProductos, ColumnaDniTransportista, ColumnaFecha });
             ListaOrdenesEmpaquetar.FullRowSelect = true;
             ListaOrdenesEmpaquetar.GridLines = true;
-            ListaOrdenesEmpaquetar.Location = new Point(26, 95);
+            ListaOrdenesEmpaquetar.Location = new Point(23, 71);
+            ListaOrdenesEmpaquetar.Margin = new Padding(3, 2, 3, 2);
             ListaOrdenesEmpaquetar.Name = "ListaOrdenesEmpaquetar";
-            ListaOrdenesEmpaquetar.Size = new Size(1047, 346);
+            ListaOrdenesEmpaquetar.Size = new Size(946, 260);
             ListaOrdenesEmpaquetar.TabIndex = 9;
             ListaOrdenesEmpaquetar.UseCompatibleStateImageBehavior = false;
             ListaOrdenesEmpaquetar.View = View.Details;
@@ -59,12 +61,12 @@
             // ColumnaNumeroOrden
             // 
             ColumnaNumeroOrden.Text = "Nº de Orden";
-            ColumnaNumeroOrden.Width = 200;
+            ColumnaNumeroOrden.Width = 150;
             // 
             // ColumnaNCliente
             // 
             ColumnaNCliente.Text = "N° Cliente";
-            ColumnaNCliente.Width = 200;
+            ColumnaNCliente.Width = 150;
             // 
             // ColumnaProductos
             // 
@@ -83,10 +85,9 @@
             // 
             // BotonVolverMenu
             // 
-            BotonVolverMenu.Location = new Point(906, 448);
-            BotonVolverMenu.Margin = new Padding(3, 4, 3, 4);
+            BotonVolverMenu.Location = new Point(833, 336);
             BotonVolverMenu.Name = "BotonVolverMenu";
-            BotonVolverMenu.Size = new Size(156, 51);
+            BotonVolverMenu.Size = new Size(136, 38);
             BotonVolverMenu.TabIndex = 10;
             BotonVolverMenu.Text = "Volver al Menú";
             BotonVolverMenu.UseVisualStyleBackColor = true;
@@ -94,37 +95,40 @@
             // 
             // ComboBoxDeposito
             // 
+            ComboBoxDeposito.DropDownStyle = ComboBoxStyle.DropDownList;
             ComboBoxDeposito.FormattingEnabled = true;
-            ComboBoxDeposito.Location = new Point(26, 46);
+            ComboBoxDeposito.Location = new Point(23, 34);
+            ComboBoxDeposito.Margin = new Padding(3, 2, 3, 2);
             ComboBoxDeposito.Name = "ComboBoxDeposito";
-            ComboBoxDeposito.Size = new Size(416, 28);
+            ComboBoxDeposito.Size = new Size(364, 23);
             ComboBoxDeposito.TabIndex = 11;
+            ComboBoxDeposito.SelectedIndexChanged += ComboBoxDeposito_SelectedIndexChanged;
             // 
             // DepositoLabel
             // 
             DepositoLabel.AutoSize = true;
-            DepositoLabel.Location = new Point(26, 23);
+            DepositoLabel.Location = new Point(23, 17);
             DepositoLabel.Name = "DepositoLabel";
-            DepositoLabel.Size = new Size(151, 20);
+            DepositoLabel.Size = new Size(118, 15);
             DepositoLabel.TabIndex = 12;
             DepositoLabel.Text = "Numero De Deposito";
             // 
             // PantallaEntrega
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(1098, 511);
+            ClientSize = new Size(992, 383);
             Controls.Add(DepositoLabel);
             Controls.Add(ComboBoxDeposito);
             Controls.Add(BotonVolverMenu);
             Controls.Add(ListaOrdenesEmpaquetar);
             Controls.Add(btnEntregar);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "PantallaEntrega";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Orden de Entrega";
-            Load += PantallaEntrega_Load;
             Shown += PantallaEntrega_Shown;
             ResumeLayout(false);
             PerformLayout();

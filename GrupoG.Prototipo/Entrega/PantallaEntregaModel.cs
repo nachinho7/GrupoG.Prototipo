@@ -1,4 +1,5 @@
 ﻿using GrupoG.Prototipo.Almacenes.Clientes;
+using GrupoG.Prototipo.Almacenes.Deposito;
 using GrupoG.Prototipo.Almacenes.Mercaderias;
 using GrupoG.Prototipo.Almacenes.Ordenes.OrdenEntrega;
 using GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion;
@@ -17,7 +18,23 @@ namespace GrupoG.Prototipo.Entrega
                 .ToList();
         }
 
-        
+        public static List<int> ListarDepositosDisponibles()
+        {
+            var depositos = DepositoAlmacen.Depositos;
+            return depositos.Select(d => d.NroDeposito).ToList();
+        }
+
+        public static List<OrdenPreparacionEntidad> ListarOrdenesPorDeposito(int nroDeposito)
+        {
+            var clientes = ClientesAlmacen.Clientes
+                .Where(c => c.NroDeposito == nroDeposito)
+                .Select(c => c.NroCliente)
+                .ToList();
+
+            return OrdenPreparacionAlmacen.OrdenPreparacion
+                .Where(o => clientes.Contains(o.NroCliente) && o.Estado == OrdenPreparacionEstados.Empaquetada)
+                .ToList();
+        }
 
         public void CambiarEstadoOrden(int nroOrdenEmp)
         {
@@ -29,38 +46,45 @@ namespace GrupoG.Prototipo.Entrega
             }
         }
 
-        public List<OrdenEntregaEntidad> GenerarOrdenEntregaPorOrden(List<OrdenPreparacionEntidad> ordenesEmpaquetadas)
+        public OrdenPreparacionEntidad ObtenerOrdenPorNumero(int numeroOrden)
         {
-            var ordenesEntregas = new List<OrdenEntregaEntidad>();
+            return OrdenPreparacionAlmacen.OrdenPreparacion
+                .FirstOrDefault(o => o.NumeroOrdenPreparacion == numeroOrden);
+        }
+
+
+        public OrdenEntregaEntidad GenerarOrdenEntregaPorOrden(List<OrdenPreparacionEntidad> ordenesEmpaquetadas)
+        {
+            var depositoUnico = ordenesEmpaquetadas
+                .Select(o => ClientesAlmacen.ObtenerNroCliente(o.NroCliente)?.NroDeposito)
+                .Distinct()
+                .SingleOrDefault();
+
+            if (depositoUnico == null)
+            {
+                throw new InvalidOperationException("No se puede generar una orden de entrega para órdenes de depósitos diferentes.");
+            }
+
+            int nuevoNroOrdenEntrega = (OrdenEntregaAlmacen.OrdenEntrega.Any() ? OrdenEntregaAlmacen.OrdenEntrega.Max(o => o.NumeroOrdenEntrega) : 0) + 1;
+
+            var nuevaOrdenEntrega = new OrdenEntregaEntidad
+            {
+                NumeroOrdenEntrega = nuevoNroOrdenEntrega,
+                Detalle = ordenesEmpaquetadas.Select(o => o.NumeroOrdenPreparacion).ToList(),
+                NroDeposito = depositoUnico.Value
+            };
 
             foreach (var ordenPreparacion in ordenesEmpaquetadas)
             {
                 CambiarEstadoOrden(ordenPreparacion.NumeroOrdenPreparacion);
-
-                int nuevoNroOrdenEntrega = (OrdenEntregaAlmacen.OrdenEntrega.Any() ? OrdenEntregaAlmacen.OrdenEntrega.Max(o => o.NumeroOrdenEntrega) : 0) + 1;
-                var cliente = ClientesAlmacen.ObtenerNroCliente(ordenPreparacion.NroCliente);
-                var numOrdenPreparacion = ordenPreparacion.NumeroOrdenPreparacion;
-
-                if (cliente != null)
-                {
-                    var ordenEntrega = new OrdenEntregaEntidad
-                    {
-                        NumeroOrdenEntrega = nuevoNroOrdenEntrega,
-                        //NroCliente = ordenPreparacion.NroCliente,
-                        //NumeroOrdenPreparacion = numOrdenPreparacion,
-                        NroDeposito = cliente.NroDeposito
-                    };
-
-                    ordenesEntregas.Add(ordenEntrega);
-
-                    OrdenEntregaAlmacen.AgregarOrdenEntrega(ordenEntrega);
-                }
             }
 
+            OrdenEntregaAlmacen.AgregarOrdenEntrega(nuevaOrdenEntrega);
             OrdenEntregaAlmacen.Grabar();
 
-            return ordenesEntregas;
+            return nuevaOrdenEntrega;
         }
+
 
     }
 }

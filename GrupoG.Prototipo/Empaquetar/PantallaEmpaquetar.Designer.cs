@@ -43,9 +43,9 @@
             // numeroOrdenPreparacion
             // 
             numeroOrdenPreparacion.AutoSize = true;
-            numeroOrdenPreparacion.Location = new Point(14, 20);
+            numeroOrdenPreparacion.Location = new Point(329, 15);
             numeroOrdenPreparacion.Name = "numeroOrdenPreparacion";
-            numeroOrdenPreparacion.Size = new Size(178, 20);
+            numeroOrdenPreparacion.Size = new Size(142, 15);
             numeroOrdenPreparacion.TabIndex = 0;
             numeroOrdenPreparacion.Text = "N° Orden de Preparación:";
             // 
@@ -54,10 +54,9 @@
             listView1.Columns.AddRange(new ColumnHeader[] { idMercaderia, nombreMercaderia, cantidadMercaderia });
             listView1.FullRowSelect = true;
             listView1.GridLines = true;
-            listView1.Location = new Point(14, 90);
-            listView1.Margin = new Padding(3, 4, 3, 4);
+            listView1.Location = new Point(12, 68);
             listView1.Name = "listView1";
-            listView1.Size = new Size(906, 323);
+            listView1.Size = new Size(709, 243);
             listView1.TabIndex = 1;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -65,7 +64,7 @@
             // idMercaderia
             // 
             idMercaderia.Text = "ID Mercadería";
-            idMercaderia.Width = 300;
+            idMercaderia.Width = 200;
             // 
             // nombreMercaderia
             // 
@@ -75,14 +74,13 @@
             // cantidadMercaderia
             // 
             cantidadMercaderia.Text = "Cantidad";
-            cantidadMercaderia.Width = 300;
+            cantidadMercaderia.Width = 200;
             // 
             // btnEmpaquetar
             // 
-            btnEmpaquetar.Location = new Point(567, 438);
-            btnEmpaquetar.Margin = new Padding(3, 4, 3, 4);
+            btnEmpaquetar.Location = new Point(434, 331);
             btnEmpaquetar.Name = "btnEmpaquetar";
-            btnEmpaquetar.Size = new Size(156, 51);
+            btnEmpaquetar.Size = new Size(136, 38);
             btnEmpaquetar.TabIndex = 2;
             btnEmpaquetar.Text = "Empaquetar";
             btnEmpaquetar.UseVisualStyleBackColor = true;
@@ -90,10 +88,9 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(764, 438);
-            VolverAlMenu.Margin = new Padding(3, 4, 3, 4);
+            VolverAlMenu.Location = new Point(585, 331);
             VolverAlMenu.Name = "VolverAlMenu";
-            VolverAlMenu.Size = new Size(156, 51);
+            VolverAlMenu.Size = new Size(136, 38);
             VolverAlMenu.TabIndex = 31;
             VolverAlMenu.Text = "Volver al Menú";
             VolverAlMenu.UseVisualStyleBackColor = true;
@@ -103,36 +100,38 @@
             // 
             ComboBoxOrdenesPreparacion.DropDownStyle = ComboBoxStyle.DropDownList;
             ComboBoxOrdenesPreparacion.FormattingEnabled = true;
-            ComboBoxOrdenesPreparacion.Location = new Point(14, 43);
+            ComboBoxOrdenesPreparacion.Location = new Point(329, 40);
+            ComboBoxOrdenesPreparacion.Margin = new Padding(3, 2, 3, 2);
             ComboBoxOrdenesPreparacion.Name = "ComboBoxOrdenesPreparacion";
-            ComboBoxOrdenesPreparacion.Size = new Size(324, 28);
+            ComboBoxOrdenesPreparacion.Size = new Size(284, 23);
             ComboBoxOrdenesPreparacion.TabIndex = 32;
             // 
             // ComboBoxDeposito
             // 
-            ComboBoxDeposito.FormattingEnabled = true;
-            ComboBoxDeposito.Location = new Point(399, 43);
-            ComboBoxDeposito.Name = "ComboBoxDeposito";
-            ComboBoxDeposito.Size = new Size(324, 28);
-            ComboBoxDeposito.TabIndex = 33;
             ComboBoxDeposito.DropDownStyle = ComboBoxStyle.DropDownList;
-
+            ComboBoxDeposito.FormattingEnabled = true;
+            ComboBoxDeposito.Location = new Point(12, 40);
+            ComboBoxDeposito.Margin = new Padding(3, 2, 3, 2);
+            ComboBoxDeposito.Name = "ComboBoxDeposito";
+            ComboBoxDeposito.Size = new Size(284, 23);
+            ComboBoxDeposito.TabIndex = 33;
+            ComboBoxDeposito.SelectedIndexChanged += ComboBoxDeposito_SelectedIndexChanged;
             // 
             // DepositoLabel
             // 
             DepositoLabel.AutoSize = true;
-            DepositoLabel.Location = new Point(399, 20);
+            DepositoLabel.Location = new Point(12, 15);
             DepositoLabel.Name = "DepositoLabel";
-            DepositoLabel.Size = new Size(152, 20);
+            DepositoLabel.Size = new Size(120, 15);
             DepositoLabel.TabIndex = 34;
             DepositoLabel.Text = "Numero de Deposito:";
             // 
             // PantallaEmpaquetar
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(938, 508);
+            ClientSize = new Size(739, 381);
             Controls.Add(DepositoLabel);
             Controls.Add(ComboBoxDeposito);
             Controls.Add(ComboBoxOrdenesPreparacion);
@@ -141,11 +140,9 @@
             Controls.Add(listView1);
             Controls.Add(numeroOrdenPreparacion);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(3, 4, 3, 4);
             Name = "PantallaEmpaquetar";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Pantalla Empaquetar";
-            Load += PantallaEmpaquetar_Load;
             Shown += PantallaEmpaquetar_Shown;
             ResumeLayout(false);
             PerformLayout();

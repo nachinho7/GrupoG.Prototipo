@@ -43,10 +43,9 @@
             // 
             // btnGenerarRemito
             // 
-            btnGenerarRemito.Location = new Point(396, 504);
-            btnGenerarRemito.Margin = new Padding(3, 4, 3, 4);
+            btnGenerarRemito.Location = new Point(327, 378);
             btnGenerarRemito.Name = "btnGenerarRemito";
-            btnGenerarRemito.Size = new Size(156, 51);
+            btnGenerarRemito.Size = new Size(136, 38);
             btnGenerarRemito.TabIndex = 5;
             btnGenerarRemito.Text = "Generar Remito";
             btnGenerarRemito.UseVisualStyleBackColor = true;
@@ -54,10 +53,9 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(622, 504);
-            VolverAlMenu.Margin = new Padding(3, 4, 3, 4);
+            VolverAlMenu.Location = new Point(482, 378);
             VolverAlMenu.Name = "VolverAlMenu";
-            VolverAlMenu.Size = new Size(158, 51);
+            VolverAlMenu.Size = new Size(138, 38);
             VolverAlMenu.TabIndex = 25;
             VolverAlMenu.Text = "Volver al Menú";
             VolverAlMenu.UseVisualStyleBackColor = true;
@@ -68,10 +66,9 @@
             listviewTransportista.Columns.AddRange(new ColumnHeader[] { ColumnaIdOrden, ColumnaCliente });
             listviewTransportista.FullRowSelect = true;
             listviewTransportista.GridLines = true;
-            listviewTransportista.Location = new Point(14, 147);
-            listviewTransportista.Margin = new Padding(3, 4, 3, 4);
+            listviewTransportista.Location = new Point(12, 110);
             listviewTransportista.Name = "listviewTransportista";
-            listviewTransportista.Size = new Size(766, 339);
+            listviewTransportista.Size = new Size(608, 255);
             listviewTransportista.TabIndex = 29;
             listviewTransportista.UseCompatibleStateImageBehavior = false;
             listviewTransportista.View = View.Details;
@@ -79,20 +76,19 @@
             // ColumnaIdOrden
             // 
             ColumnaIdOrden.Text = "Nro de Orden";
-            ColumnaIdOrden.Width = 380;
+            ColumnaIdOrden.Width = 300;
             // 
             // ColumnaCliente
             // 
             ColumnaCliente.Text = "Nro de Cliente";
-            ColumnaCliente.Width = 380;
+            ColumnaCliente.Width = 300;
             // 
             // btnBuscarTransportista
             // 
             btnBuscarTransportista.Enabled = false;
-            btnBuscarTransportista.Location = new Point(396, 37);
-            btnBuscarTransportista.Margin = new Padding(3, 4, 3, 4);
+            btnBuscarTransportista.Location = new Point(318, 28);
             btnBuscarTransportista.Name = "btnBuscarTransportista";
-            btnBuscarTransportista.Size = new Size(156, 93);
+            btnBuscarTransportista.Size = new Size(136, 70);
             btnBuscarTransportista.TabIndex = 28;
             btnBuscarTransportista.Text = "Buscar Transportista";
             btnBuscarTransportista.UseVisualStyleBackColor = true;
@@ -101,27 +97,26 @@
             // dniTransportista
             // 
             dniTransportista.Enabled = false;
-            dniTransportista.Location = new Point(14, 37);
-            dniTransportista.Margin = new Padding(3, 4, 3, 4);
+            dniTransportista.Location = new Point(12, 28);
             dniTransportista.Name = "dniTransportista";
-            dniTransportista.Size = new Size(302, 27);
+            dniTransportista.Size = new Size(265, 23);
             dniTransportista.TabIndex = 27;
             // 
             // labelTransportista
             // 
             labelTransportista.AutoSize = true;
-            labelTransportista.Location = new Point(12, 13);
+            labelTransportista.Location = new Point(10, 10);
             labelTransportista.Name = "labelTransportista";
-            labelTransportista.Size = new Size(201, 20);
+            labelTransportista.Size = new Size(157, 15);
             labelTransportista.TabIndex = 26;
             labelTransportista.Text = "Ingrese DNI del Transportista";
             // 
             // nroclienteLabel
             // 
             nroclienteLabel.AutoSize = true;
-            nroclienteLabel.Location = new Point(12, 78);
+            nroclienteLabel.Location = new Point(10, 58);
             nroclienteLabel.Name = "nroclienteLabel";
-            nroclienteLabel.Size = new Size(147, 20);
+            nroclienteLabel.Size = new Size(117, 15);
             nroclienteLabel.TabIndex = 30;
             nroclienteLabel.Text = "Seleccione N°Cliente";
             // 
@@ -129,19 +124,17 @@
             // 
             comboBoxClientes.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxClientes.FormattingEnabled = true;
-            comboBoxClientes.Location = new Point(14, 102);
-            comboBoxClientes.Margin = new Padding(3, 4, 3, 4);
+            comboBoxClientes.Location = new Point(12, 76);
             comboBoxClientes.Name = "comboBoxClientes";
-            comboBoxClientes.Size = new Size(302, 28);
+            comboBoxClientes.Size = new Size(265, 23);
             comboBoxClientes.TabIndex = 31;
             comboBoxClientes.SelectedIndexChanged += comboBoxClientes_SelectedIndexChanged;
             // 
             // button1
             // 
-            button1.Location = new Point(622, 37);
-            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Location = new Point(482, 28);
             button1.Name = "button1";
-            button1.Size = new Size(158, 93);
+            button1.Size = new Size(138, 70);
             button1.TabIndex = 32;
             button1.Text = "Nueva Busqueda";
             button1.UseVisualStyleBackColor = true;
@@ -149,10 +142,10 @@
             // 
             // PantallaDespacho
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(800, 570);
+            ClientSize = new Size(642, 428);
             Controls.Add(button1);
             Controls.Add(comboBoxClientes);
             Controls.Add(nroclienteLabel);
@@ -163,7 +156,6 @@
             Controls.Add(VolverAlMenu);
             Controls.Add(btnGenerarRemito);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(3, 4, 3, 4);
             Name = "PantallaDespacho";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Orden de Despacho";

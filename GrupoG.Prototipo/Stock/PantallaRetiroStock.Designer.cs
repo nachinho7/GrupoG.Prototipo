@@ -45,18 +45,17 @@
             // 
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(26, 50);
-            comboBox1.Margin = new Padding(3, 4, 3, 4);
+            comboBox1.Location = new Point(23, 38);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(240, 28);
+            comboBox1.Size = new Size(210, 23);
             comboBox1.TabIndex = 0;
             // 
             // labelOrdenSeleccion
             // 
             labelOrdenSeleccion.AutoSize = true;
-            labelOrdenSeleccion.Location = new Point(26, 26);
+            labelOrdenSeleccion.Location = new Point(23, 20);
             labelOrdenSeleccion.Name = "labelOrdenSeleccion";
-            labelOrdenSeleccion.Size = new Size(162, 20);
+            labelOrdenSeleccion.Size = new Size(129, 15);
             labelOrdenSeleccion.TabIndex = 1;
             labelOrdenSeleccion.Text = "Orden de Selección N°:";
             // 
@@ -65,10 +64,9 @@
             listView1.Columns.AddRange(new ColumnHeader[] { idMercaderia, ubicacionMercaderia, cantidadMercaderia, nombreMercaderia });
             listView1.FullRowSelect = true;
             listView1.GridLines = true;
-            listView1.Location = new Point(26, 99);
-            listView1.Margin = new Padding(3, 4, 3, 4);
+            listView1.Location = new Point(23, 74);
             listView1.Name = "listView1";
-            listView1.Size = new Size(808, 400);
+            listView1.Size = new Size(804, 301);
             listView1.TabIndex = 2;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -95,10 +93,9 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(678, 522);
-            VolverAlMenu.Margin = new Padding(3, 4, 3, 4);
+            VolverAlMenu.Location = new Point(691, 392);
             VolverAlMenu.Name = "VolverAlMenu";
-            VolverAlMenu.Size = new Size(156, 51);
+            VolverAlMenu.Size = new Size(136, 38);
             VolverAlMenu.TabIndex = 6;
             VolverAlMenu.Text = "Volver al Menú";
             VolverAlMenu.UseVisualStyleBackColor = true;
@@ -106,10 +103,9 @@
             // 
             // btnRetirarStock
             // 
-            btnRetirarStock.Location = new Point(495, 522);
-            btnRetirarStock.Margin = new Padding(3, 4, 3, 4);
+            btnRetirarStock.Location = new Point(534, 392);
             btnRetirarStock.Name = "btnRetirarStock";
-            btnRetirarStock.Size = new Size(156, 51);
+            btnRetirarStock.Size = new Size(136, 38);
             btnRetirarStock.TabIndex = 7;
             btnRetirarStock.Text = "Retirar Stock";
             btnRetirarStock.UseVisualStyleBackColor = true;
@@ -117,27 +113,28 @@
             // 
             // DepositoTxtBox
             // 
-            DepositoTxtBox.Location = new Point(672, 51);
+            DepositoTxtBox.Location = new Point(685, 38);
+            DepositoTxtBox.Margin = new Padding(3, 2, 3, 2);
             DepositoTxtBox.Name = "DepositoTxtBox";
             DepositoTxtBox.ReadOnly = true;
-            DepositoTxtBox.Size = new Size(162, 27);
+            DepositoTxtBox.Size = new Size(142, 23);
             DepositoTxtBox.TabIndex = 8;
             // 
             // DepositoLabel
             // 
             DepositoLabel.AutoSize = true;
-            DepositoLabel.Location = new Point(672, 28);
+            DepositoLabel.Location = new Point(685, 20);
             DepositoLabel.Name = "DepositoLabel";
-            DepositoLabel.Size = new Size(149, 20);
+            DepositoLabel.Size = new Size(117, 15);
             DepositoLabel.TabIndex = 9;
             DepositoLabel.Text = "Numero de Deposito";
             // 
             // PantallaRetiroStock
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(867, 586);
+            ClientSize = new Size(848, 440);
             Controls.Add(DepositoLabel);
             Controls.Add(DepositoTxtBox);
             Controls.Add(btnRetirarStock);
@@ -146,7 +143,6 @@
             Controls.Add(labelOrdenSeleccion);
             Controls.Add(comboBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(3, 4, 3, 4);
             Name = "PantallaRetiroStock";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Retiro de Stock";

@@ -43,11 +43,7 @@ namespace GrupoG.Prototipo.Empaquetar
             }
         }
 
-        public static List<int> ListarDepositosDisponibles()
-        {
-            var clientes = ClientesAlmacen.Clientes; // Asumiendo que hay un almacén estático de clientes
-            return clientes.Select(c => c.NroDeposito).Distinct().ToList();
-        }
+        
 
         public static List<OrdenPreparacionEntidad> ListarOrdenesPorDeposito(int nroDeposito)
         {
@@ -59,6 +55,23 @@ namespace GrupoG.Prototipo.Empaquetar
             return OrdenPreparacionAlmacen.OrdenPreparacion
                 .Where(o => clientes.Contains(o.NroCliente) && o.Estado == OrdenPreparacionEstados.Cumplida)
                 .ToList();
+        }
+
+        public static List<int> ListarDepositosConOrdenes()
+        {
+            var ordenesPorDeposito = OrdenPreparacionAlmacen.OrdenPreparacion
+                .Where(o => o.Estado == OrdenPreparacionEstados.Cumplida)
+                .Select(o => o.NroCliente)
+                .Distinct()
+                .ToList();
+
+            var depositosConOrdenes = ClientesAlmacen.Clientes
+                .Where(c => ordenesPorDeposito.Contains(c.NroCliente))
+                .Select(c => c.NroDeposito)
+                .Distinct()
+                .ToList();
+
+            return depositosConOrdenes;
         }
 
 
