@@ -9,7 +9,6 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="Extra\ConsultaStock\" />
 		<Folder Include="Json\" />
 	</ItemGroup>
 

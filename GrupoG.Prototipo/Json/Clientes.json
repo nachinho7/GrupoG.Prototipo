@@ -51,6 +51,9 @@
       },
       {
         "DNITransportista": 12343555
+      },
+      {
+        "DNITransportista": 34567890
       }
     ]
   },
@@ -63,6 +66,9 @@
       },
       {
         "DNITransportista": 65432109
+      },
+      {
+        "DNITransportista": 34567890
       }
     ]
   },

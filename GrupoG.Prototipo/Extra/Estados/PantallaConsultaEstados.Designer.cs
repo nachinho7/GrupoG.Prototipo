@@ -36,13 +36,13 @@
             groupBoxEstados = new GroupBox();
             ClearEstados = new Button();
             groupBoxOrden = new GroupBox();
+            BuscarOrden = new Button();
             ClearOrden = new Button();
             textBoxEstadoOrden = new TextBox();
             labelEstadoOrden = new Label();
             labelOrden = new Label();
             textBox1 = new TextBox();
             BotonVolverMenu = new Button();
-            BuscarOrden = new Button();
             groupBoxEstados.SuspendLayout();
             groupBoxOrden.SuspendLayout();
             SuspendLayout();
@@ -125,6 +125,16 @@
             groupBoxOrden.TabStop = false;
             groupBoxOrden.Text = "Busque por Orden";
             // 
+            // BuscarOrden
+            // 
+            BuscarOrden.Location = new Point(165, 106);
+            BuscarOrden.Name = "BuscarOrden";
+            BuscarOrden.Size = new Size(68, 23);
+            BuscarOrden.TabIndex = 5;
+            BuscarOrden.Text = "Buscar";
+            BuscarOrden.UseVisualStyleBackColor = true;
+            BuscarOrden.Click += BuscarOrden_Click;
+            // 
             // ClearOrden
             // 
             ClearOrden.Location = new Point(243, 106);
@@ -178,16 +188,6 @@
             BotonVolverMenu.UseVisualStyleBackColor = true;
             BotonVolverMenu.Click += BotonVolverMenu_Click;
             // 
-            // BuscarOrden
-            // 
-            BuscarOrden.Location = new Point(165, 106);
-            BuscarOrden.Name = "BuscarOrden";
-            BuscarOrden.Size = new Size(68, 23);
-            BuscarOrden.TabIndex = 5;
-            BuscarOrden.Text = "Buscar";
-            BuscarOrden.UseVisualStyleBackColor = true;
-            BuscarOrden.Click += BuscarOrden_Click;
-            // 
             // PantallaConsultaEstados
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -197,7 +197,7 @@
             Controls.Add(groupBoxOrden);
             Controls.Add(groupBoxEstados);
             Name = "PantallaConsultaEstados";
-            Text = "Consulta Estados";
+            Text = " ";
             groupBoxEstados.ResumeLayout(false);
             groupBoxEstados.PerformLayout();
             groupBoxOrden.ResumeLayout(false);
