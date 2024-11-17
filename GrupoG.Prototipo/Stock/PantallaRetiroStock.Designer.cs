@@ -37,13 +37,15 @@
             nombreMercaderia = new ColumnHeader();
             VolverAlMenu = new Button();
             btnRetirarStock = new Button();
+            DepositoTxtBox = new TextBox();
+            DepositoLabel = new Label();
             SuspendLayout();
             // 
             // comboBox1
             // 
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(26, 33);
+            comboBox1.Location = new Point(26, 50);
             comboBox1.Margin = new Padding(3, 4, 3, 4);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(240, 28);
@@ -52,7 +54,7 @@
             // labelOrdenSeleccion
             // 
             labelOrdenSeleccion.AutoSize = true;
-            labelOrdenSeleccion.Location = new Point(26, 9);
+            labelOrdenSeleccion.Location = new Point(26, 26);
             labelOrdenSeleccion.Name = "labelOrdenSeleccion";
             labelOrdenSeleccion.Size = new Size(162, 20);
             labelOrdenSeleccion.TabIndex = 1;
@@ -113,12 +115,30 @@
             btnRetirarStock.UseVisualStyleBackColor = true;
             btnRetirarStock.Click += btnRetirarStock_Click;
             // 
+            // DepositoTxtBox
+            // 
+            DepositoTxtBox.Location = new Point(672, 51);
+            DepositoTxtBox.Name = "DepositoTxtBox";
+            DepositoTxtBox.Size = new Size(162, 27);
+            DepositoTxtBox.TabIndex = 8;
+            // 
+            // DepositoLabel
+            // 
+            DepositoLabel.AutoSize = true;
+            DepositoLabel.Location = new Point(672, 28);
+            DepositoLabel.Name = "DepositoLabel";
+            DepositoLabel.Size = new Size(149, 20);
+            DepositoLabel.TabIndex = 9;
+            DepositoLabel.Text = "Numero de Deposito";
+            // 
             // PantallaRetiroStock
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(867, 586);
+            Controls.Add(DepositoLabel);
+            Controls.Add(DepositoTxtBox);
             Controls.Add(btnRetirarStock);
             Controls.Add(VolverAlMenu);
             Controls.Add(listView1);
@@ -146,5 +166,7 @@
         private ColumnHeader ubicacionMercaderia;
         private Button VolverAlMenu;
         private Button btnRetirarStock;
+        private TextBox DepositoTxtBox;
+        private Label DepositoLabel;
     }
 }
