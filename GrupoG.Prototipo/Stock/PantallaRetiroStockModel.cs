@@ -102,6 +102,26 @@ namespace GrupoG.Prototipo.Stock
         }
 
 
+        public int? ObtenerDepositoPorOrden(int numeroOrdenSeleccion)
+        {
+            var ordenSeleccionada = ObtenerOrdenesSeleccion()
+                .FirstOrDefault(o => o.numeroOrdenSeleccion == numeroOrdenSeleccion);
+
+            if (ordenSeleccionada == null) return null;
+
+            foreach (var numeroOrdenPreparacion in ordenSeleccionada.OrdenPreparacion)
+            {
+                var ordenPreparacion = OrdenPreparacionAlmacen.OrdenPreparacion
+                    .FirstOrDefault(op => op.NumeroOrdenPreparacion == numeroOrdenPreparacion);
+
+                if (ordenPreparacion != null)
+                {
+                    return ordenPreparacion.NroCliente; 
+                }
+            }
+
+            return null;
+        }
 
 
 

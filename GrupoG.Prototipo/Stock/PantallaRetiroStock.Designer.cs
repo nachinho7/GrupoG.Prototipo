@@ -119,6 +119,7 @@
             // 
             DepositoTxtBox.Location = new Point(672, 51);
             DepositoTxtBox.Name = "DepositoTxtBox";
+            DepositoTxtBox.ReadOnly = true;
             DepositoTxtBox.Size = new Size(162, 27);
             DepositoTxtBox.TabIndex = 8;
             // 

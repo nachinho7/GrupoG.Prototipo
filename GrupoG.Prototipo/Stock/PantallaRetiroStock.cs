@@ -60,8 +60,9 @@ namespace GrupoG.Prototipo.Stock
             if (comboBox1.SelectedIndex == -1) return;
 
             int numeroOrdenSeleccionada = int.Parse(comboBox1.SelectedItem.ToString());
-            var mercaderias = modelo.ListarMercaderiasPorOrden(numeroOrdenSeleccionada);
 
+            
+            var mercaderias = modelo.ListarMercaderiasPorOrden(numeroOrdenSeleccionada);
             if (mercaderias != null)
             {
                 foreach (var (idMercaderia, nombreMercaderia, ubicaciones) in mercaderias)
@@ -72,13 +73,18 @@ namespace GrupoG.Prototipo.Stock
                         item.SubItems.Add(ubicacion);
                         item.SubItems.Add(cantidadUbicacion.ToString());
                         item.SubItems.Add(nombreMercaderia);
-                        item.Tag = idMercaderia;  
+                        item.Tag = idMercaderia;
 
                         listView1.Items.Add(item);
                     }
                 }
             }
+
+            // Obtener el depósito asociado a la orden seleccionada
+            var depositoAsociado = modelo.ObtenerDepositoPorOrden(numeroOrdenSeleccionada);
+            DepositoTxtBox.Text = depositoAsociado?.ToString() ?? "No disponible"; 
         }
+
 
 
 
