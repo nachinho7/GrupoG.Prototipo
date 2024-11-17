@@ -1,4 +1,5 @@
-﻿using GrupoG.Prototipo.Almacenes.Mercaderias;
+﻿using GrupoG.Prototipo.Almacenes.Clientes;
+using GrupoG.Prototipo.Almacenes.Mercaderias;
 using GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion;
 using GrupoG.Prototipo.Almacenes.Ordenes.OrdenSeleccion;
 using System;
@@ -116,11 +117,14 @@ namespace GrupoG.Prototipo.Stock
 
                 if (ordenPreparacion != null)
                 {
-                    return ordenPreparacion.NroCliente; 
+                    int numeroCliente = ordenPreparacion.NroCliente;
+
+                    int deposito = ClientesAlmacen.ObtenerNroDeposito(numeroCliente);
+                    return deposito; 
                 }
             }
 
-            return null;
+            return null; 
         }
 
 
