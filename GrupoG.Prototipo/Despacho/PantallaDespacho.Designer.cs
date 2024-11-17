@@ -39,11 +39,13 @@
             nroclienteLabel = new Label();
             comboBoxClientes = new ComboBox();
             button1 = new Button();
+            numDepositoLabel = new Label();
+            depositoTxtBoxDisabled = new TextBox();
             SuspendLayout();
             // 
             // btnGenerarRemito
             // 
-            btnGenerarRemito.Location = new Point(327, 378);
+            btnGenerarRemito.Location = new Point(318, 420);
             btnGenerarRemito.Name = "btnGenerarRemito";
             btnGenerarRemito.Size = new Size(136, 38);
             btnGenerarRemito.TabIndex = 5;
@@ -53,7 +55,7 @@
             // 
             // VolverAlMenu
             // 
-            VolverAlMenu.Location = new Point(482, 378);
+            VolverAlMenu.Location = new Point(482, 420);
             VolverAlMenu.Name = "VolverAlMenu";
             VolverAlMenu.Size = new Size(138, 38);
             VolverAlMenu.TabIndex = 25;
@@ -66,7 +68,7 @@
             listviewTransportista.Columns.AddRange(new ColumnHeader[] { ColumnaIdOrden, ColumnaCliente });
             listviewTransportista.FullRowSelect = true;
             listviewTransportista.GridLines = true;
-            listviewTransportista.Location = new Point(12, 110);
+            listviewTransportista.Location = new Point(12, 159);
             listviewTransportista.Name = "listviewTransportista";
             listviewTransportista.Size = new Size(608, 255);
             listviewTransportista.TabIndex = 29;
@@ -140,12 +142,32 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += btnNuevaBusqueda;
             // 
+            // numDepositoLabel
+            // 
+            numDepositoLabel.AutoSize = true;
+            numDepositoLabel.Location = new Point(12, 111);
+            numDepositoLabel.Name = "numDepositoLabel";
+            numDepositoLabel.Size = new Size(71, 15);
+            numDepositoLabel.TabIndex = 33;
+            numDepositoLabel.Text = "Nº Deposito";
+            // 
+            // depositoTxtBoxDisabled
+            // 
+            depositoTxtBoxDisabled.Location = new Point(12, 131);
+            depositoTxtBoxDisabled.Margin = new Padding(3, 2, 3, 2);
+            depositoTxtBoxDisabled.Name = "depositoTxtBoxDisabled";
+            depositoTxtBoxDisabled.ReadOnly = true;
+            depositoTxtBoxDisabled.Size = new Size(142, 23);
+            depositoTxtBoxDisabled.TabIndex = 34;
+            // 
             // PantallaDespacho
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(642, 428);
+            ClientSize = new Size(642, 470);
+            Controls.Add(depositoTxtBoxDisabled);
+            Controls.Add(numDepositoLabel);
             Controls.Add(button1);
             Controls.Add(comboBoxClientes);
             Controls.Add(nroclienteLabel);
@@ -176,5 +198,7 @@
         private Label nroclienteLabel;
         private ComboBox comboBoxClientes;
         private Button button1;
+        private Label numDepositoLabel;
+        private TextBox depositoTxtBoxDisabled;
     }
 }

@@ -46,7 +46,6 @@ namespace GrupoG.Prototipo.Despacho
 
             if (clientes != null && clientes.Count > 0)
             {
-                // Desvincular evento
                 comboBoxClientes.SelectedIndexChanged -= comboBoxClientes_SelectedIndexChanged; 
 
                 comboBoxClientes.DataSource = clientes;
@@ -56,7 +55,7 @@ namespace GrupoG.Prototipo.Despacho
                 comboBoxClientes.Enabled = true;
                 dniTransportista.Enabled = false;
                 btnBuscarTransportista.Enabled = false;
-                // Se selecciona
+
                 comboBoxClientes.SelectedIndexChanged += comboBoxClientes_SelectedIndexChanged;
                 comboBoxClientes_SelectedIndexChanged(comboBoxClientes, EventArgs.Empty);
 
@@ -94,9 +93,12 @@ namespace GrupoG.Prototipo.Despacho
                         MessageBoxIcon.Information
                     );
                 }
+
+                // Obtener el depósito asociado al cliente y mostrarlo en el TextBox
+                var depositoAsociado = model.ObtenerDepositoPorCliente(nroClienteSeleccionado);
+                depositoTxtBoxDisabled.Text = depositoAsociado.ToString() ?? "No disponible";
             }
         }
-
 
 
         private void btnGenerarRemito_Click(object sender, EventArgs e)
@@ -133,19 +135,23 @@ namespace GrupoG.Prototipo.Despacho
                 MessageBox.Show("No se pudo generar el remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            dniTransportista.Text = string.Empty;
-            listviewTransportista.Items.Clear();
-            comboBoxClientes.DataSource = null;
+            LimpiarFormulario();
         }
 
         private void btnNuevaBusqueda(object sender, EventArgs e)
         {
-            dniTransportista.Text = "";
+            LimpiarFormulario();
+        }
+
+        private void LimpiarFormulario()
+        {
+            dniTransportista.Text = string.Empty;
             dniTransportista.Enabled = true;
             comboBoxClientes.Enabled = false;
             comboBoxClientes.DataSource = null;
             btnBuscarTransportista.Enabled = true;
             listviewTransportista.Items.Clear();
+            depositoTxtBoxDisabled.Text = string.Empty;
         }
     }
 }

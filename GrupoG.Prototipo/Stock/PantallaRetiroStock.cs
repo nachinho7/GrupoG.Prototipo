@@ -80,7 +80,6 @@ namespace GrupoG.Prototipo.Stock
                 }
             }
 
-            // Obtener el depósito asociado a la orden seleccionada
             var depositoAsociado = modelo.ObtenerDepositoPorOrden(numeroOrdenSeleccionada);
             DepositoTxtBox.Text = depositoAsociado?.ToString() ?? "No disponible"; 
         }

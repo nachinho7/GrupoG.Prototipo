@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using GrupoG.Prototipo.Almacenes;
 using GrupoG.Prototipo.Almacenes.Clientes;
+using GrupoG.Prototipo.Almacenes.Deposito;
 using GrupoG.Prototipo.Almacenes.Ordenes.OrdenEntrega;
 using GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion;
 using GrupoG.Prototipo.Almacenes.Remito;
@@ -19,6 +20,11 @@ namespace GrupoG.Prototipo.Despacho
             return clientesFiltrados;
         }
 
+        public int ObtenerDepositoPorCliente(int nroCliente)
+        {
+            int deposito = ClientesAlmacen.ObtenerNroDeposito(nroCliente);
+            return deposito;
+        }
 
         public List<OrdenPreparacionEntidad> ObtenerOrdenesPorDni(int nroCliente, int dnitransportista)
         {
