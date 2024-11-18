@@ -92,12 +92,11 @@ namespace GrupoG.Prototipo.Empaquetar
 
             if (ComboBoxOrdenesPreparacion.SelectedIndex == -1) return;
 
-            int numeroOrdenSeleccionada = Convert.ToInt32(
-                ComboBoxOrdenesPreparacion.SelectedItem.ToString().Split(' ')[2]);
+            int numeroOrdenSeleccionada = Convert.ToInt32(ComboBoxOrdenesPreparacion.SelectedItem.ToString().Split(' ')[2]);
 
             var mercaderias = modelo.ListarMercaderiasPorOrden(numeroOrdenSeleccionada);
 
-            if (mercaderias != null)
+            if (mercaderias != null && mercaderias.Any())
             {
                 foreach (var mercaderia in mercaderias)
                 {
@@ -106,6 +105,10 @@ namespace GrupoG.Prototipo.Empaquetar
                     item.SubItems.Add(mercaderia.cantidadMercaderia.ToString());
                     listView1.Items.Add(item);
                 }
+            }
+            else
+            {
+                MessageBox.Show($"No se encontraron mercaderías para la orden N° {numeroOrdenSeleccionada}.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

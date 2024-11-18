@@ -105,6 +105,8 @@
             ComboBoxOrdenesPreparacion.Name = "ComboBoxOrdenesPreparacion";
             ComboBoxOrdenesPreparacion.Size = new Size(284, 23);
             ComboBoxOrdenesPreparacion.TabIndex = 32;
+            ComboBoxOrdenesPreparacion.SelectedIndexChanged += ComboBoxOrdenesPreparacion_SelectedIndexChanged;
+
             // 
             // ComboBoxDeposito
             // 
@@ -115,7 +117,6 @@
             ComboBoxDeposito.Name = "ComboBoxDeposito";
             ComboBoxDeposito.Size = new Size(284, 23);
             ComboBoxDeposito.TabIndex = 33;
-            ComboBoxDeposito.SelectedIndexChanged += ComboBoxDeposito_SelectedIndexChanged;
             // 
             // DepositoLabel
             // 
