@@ -29,17 +29,16 @@
         private void InitializeComponent()
         {
             labelnumeroCliente = new Label();
-            textBoxNumeroCliente = new TextBox();
+            textBoxCliente = new TextBox();
             buttonBuscar = new Button();
             buttonClear = new Button();
             listViewMercaderias = new ListView();
             idMercaderia = new ColumnHeader();
             nombreMercadería = new ColumnHeader();
-            cantidadMercaderia = new ColumnHeader();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            labelAgregarMercaderia = new Label();
-            labelSacarMercaderia = new Label();
+            mercaderiaUbicacion = new ColumnHeader();
+            cantidadPorUbicacionMercaderia = new ColumnHeader();
+            textBoxCantidad = new TextBox();
+            labelAgregarSacarMercaderia = new Label();
             buttonAgregar = new Button();
             buttonSacar = new Button();
             BotonVolverMenu = new Button();
@@ -54,12 +53,12 @@
             labelnumeroCliente.TabIndex = 0;
             labelnumeroCliente.Text = "Ingrese Nº Cliente";
             // 
-            // textBoxNumeroCliente
+            // textBoxCliente
             // 
-            textBoxNumeroCliente.Location = new Point(120, 22);
-            textBoxNumeroCliente.Name = "textBoxNumeroCliente";
-            textBoxNumeroCliente.Size = new Size(142, 23);
-            textBoxNumeroCliente.TabIndex = 1;
+            textBoxCliente.Location = new Point(120, 22);
+            textBoxCliente.Name = "textBoxCliente";
+            textBoxCliente.Size = new Size(142, 23);
+            textBoxCliente.TabIndex = 1;
             // 
             // buttonBuscar
             // 
@@ -84,11 +83,11 @@
             // listViewMercaderias
             // 
             listViewMercaderias.CheckBoxes = true;
-            listViewMercaderias.Columns.AddRange(new ColumnHeader[] { idMercaderia, nombreMercadería, cantidadMercaderia });
+            listViewMercaderias.Columns.AddRange(new ColumnHeader[] { idMercaderia, nombreMercadería, mercaderiaUbicacion, cantidadPorUbicacionMercaderia });
             listViewMercaderias.GridLines = true;
             listViewMercaderias.Location = new Point(14, 60);
             listViewMercaderias.Name = "listViewMercaderias";
-            listViewMercaderias.Size = new Size(574, 252);
+            listViewMercaderias.Size = new Size(727, 252);
             listViewMercaderias.TabIndex = 4;
             listViewMercaderias.UseCompatibleStateImageBehavior = false;
             listViewMercaderias.View = View.Details;
@@ -104,48 +103,37 @@
             nombreMercadería.Text = "Nombre";
             nombreMercadería.Width = 220;
             // 
-            // cantidadMercaderia
+            // mercaderiaUbicacion
             // 
-            cantidadMercaderia.Text = "Cantidad";
-            cantidadMercaderia.Width = 200;
+            mercaderiaUbicacion.Text = "Ubicación";
+            mercaderiaUbicacion.Width = 150;
             // 
-            // textBox1
+            // cantidadPorUbicacionMercaderia
             // 
-            textBox1.Location = new Point(143, 321);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(161, 23);
-            textBox1.TabIndex = 5;
+            cantidadPorUbicacionMercaderia.Text = "Cantidad";
+            cantidadPorUbicacionMercaderia.Width = 200;
             // 
-            // textBox2
+            // textBoxCantidad
             // 
-            textBox2.Location = new Point(143, 359);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(161, 23);
-            textBox2.TabIndex = 6;
+            textBoxCantidad.Location = new Point(188, 354);
+            textBoxCantidad.Name = "textBoxCantidad";
+            textBoxCantidad.Size = new Size(161, 23);
+            textBoxCantidad.TabIndex = 5;
             // 
-            // labelAgregarMercaderia
+            // labelAgregarSacarMercaderia
             // 
-            labelAgregarMercaderia.AutoSize = true;
-            labelAgregarMercaderia.Location = new Point(14, 324);
-            labelAgregarMercaderia.Name = "labelAgregarMercaderia";
-            labelAgregarMercaderia.Size = new Size(114, 15);
-            labelAgregarMercaderia.TabIndex = 7;
-            labelAgregarMercaderia.Text = "Agregar Mercadería:";
-            // 
-            // labelSacarMercaderia
-            // 
-            labelSacarMercaderia.AutoSize = true;
-            labelSacarMercaderia.Location = new Point(14, 362);
-            labelSacarMercaderia.Name = "labelSacarMercaderia";
-            labelSacarMercaderia.Size = new Size(100, 15);
-            labelSacarMercaderia.TabIndex = 8;
-            labelSacarMercaderia.Text = "Sacar Mercadería:";
+            labelAgregarSacarMercaderia.AutoSize = true;
+            labelAgregarSacarMercaderia.Location = new Point(12, 357);
+            labelAgregarSacarMercaderia.Name = "labelAgregarSacarMercaderia";
+            labelAgregarSacarMercaderia.Size = new Size(155, 15);
+            labelAgregarSacarMercaderia.TabIndex = 7;
+            labelAgregarSacarMercaderia.Text = "Agregar o Sacar Mercadería:";
             // 
             // buttonAgregar
             // 
-            buttonAgregar.Location = new Point(331, 321);
+            buttonAgregar.Location = new Point(355, 324);
             buttonAgregar.Name = "buttonAgregar";
-            buttonAgregar.Size = new Size(75, 23);
+            buttonAgregar.Size = new Size(90, 38);
             buttonAgregar.TabIndex = 9;
             buttonAgregar.Text = "Agregar";
             buttonAgregar.UseVisualStyleBackColor = true;
@@ -153,9 +141,9 @@
             // 
             // buttonSacar
             // 
-            buttonSacar.Location = new Point(331, 362);
+            buttonSacar.Location = new Point(355, 368);
             buttonSacar.Name = "buttonSacar";
-            buttonSacar.Size = new Size(75, 23);
+            buttonSacar.Size = new Size(90, 38);
             buttonSacar.TabIndex = 10;
             buttonSacar.Text = "Sacar";
             buttonSacar.UseVisualStyleBackColor = true;
@@ -163,7 +151,7 @@
             // 
             // BotonVolverMenu
             // 
-            BotonVolverMenu.Location = new Point(452, 405);
+            BotonVolverMenu.Location = new Point(573, 345);
             BotonVolverMenu.Name = "BotonVolverMenu";
             BotonVolverMenu.Size = new Size(136, 38);
             BotonVolverMenu.TabIndex = 12;
@@ -175,18 +163,16 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(607, 455);
+            ClientSize = new Size(762, 416);
             Controls.Add(BotonVolverMenu);
             Controls.Add(buttonSacar);
             Controls.Add(buttonAgregar);
-            Controls.Add(labelSacarMercaderia);
-            Controls.Add(labelAgregarMercaderia);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(labelAgregarSacarMercaderia);
+            Controls.Add(textBoxCantidad);
             Controls.Add(listViewMercaderias);
             Controls.Add(buttonClear);
             Controls.Add(buttonBuscar);
-            Controls.Add(textBoxNumeroCliente);
+            Controls.Add(textBoxCliente);
             Controls.Add(labelnumeroCliente);
             Name = "PantallaConsultaMercaderia";
             Text = "Consulta Mercaderia";
@@ -197,19 +183,18 @@
         #endregion
 
         private Label labelnumeroCliente;
-        private TextBox textBoxNumeroCliente;
+        private TextBox textBoxCliente;
         private Button buttonBuscar;
         private Button buttonClear;
         private ListView listViewMercaderias;
         private ColumnHeader idMercaderia;
         private ColumnHeader nombreMercadería;
-        private ColumnHeader cantidadMercaderia;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private Label labelAgregarMercaderia;
-        private Label labelSacarMercaderia;
+        private ColumnHeader cantidadPorUbicacionMercaderia;
+        private TextBox textBoxCantidad;
+        private Label labelAgregarSacarMercaderia;
         private Button buttonAgregar;
         private Button buttonSacar;
         private Button BotonVolverMenu;
+        private ColumnHeader mercaderiaUbicacion;
     }
 }

@@ -41,7 +41,7 @@
             textBoxEstadoOrden = new TextBox();
             labelEstadoOrden = new Label();
             labelOrden = new Label();
-            textBox1 = new TextBox();
+            textBoxOrden = new TextBox();
             BotonVolverMenu = new Button();
             groupBoxEstados.SuspendLayout();
             groupBoxOrden.SuspendLayout();
@@ -117,7 +117,7 @@
             groupBoxOrden.Controls.Add(textBoxEstadoOrden);
             groupBoxOrden.Controls.Add(labelEstadoOrden);
             groupBoxOrden.Controls.Add(labelOrden);
-            groupBoxOrden.Controls.Add(textBox1);
+            groupBoxOrden.Controls.Add(textBoxOrden);
             groupBoxOrden.Location = new Point(12, 355);
             groupBoxOrden.Name = "groupBoxOrden";
             groupBoxOrden.Size = new Size(344, 135);
@@ -171,12 +171,12 @@
             labelOrden.TabIndex = 1;
             labelOrden.Text = "Ingrese Nº Orden";
             // 
-            // textBox1
+            // textBoxOrden
             // 
-            textBox1.Location = new Point(165, 31);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(146, 23);
-            textBox1.TabIndex = 0;
+            textBoxOrden.Location = new Point(165, 31);
+            textBoxOrden.Name = "textBoxOrden";
+            textBoxOrden.Size = new Size(146, 23);
+            textBoxOrden.TabIndex = 0;
             // 
             // BotonVolverMenu
             // 
@@ -215,7 +215,7 @@
         private GroupBox groupBoxEstados;
         private GroupBox groupBoxOrden;
         private Label labelOrden;
-        private TextBox textBox1;
+        private TextBox textBoxOrden;
         private TextBox textBoxEstadoOrden;
         private Label labelEstadoOrden;
         private Button ClearEstados;
