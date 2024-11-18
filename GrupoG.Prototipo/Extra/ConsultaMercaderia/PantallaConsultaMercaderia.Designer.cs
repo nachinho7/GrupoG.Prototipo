@@ -1,4 +1,4 @@
-﻿namespace GrupoG.Prototipo.Extra.ConsultaStock
+﻿namespace GrupoG.Prototipo.Extra.ConsultaMercaderia
 {
     partial class PantallaConsultaMercaderia
     {
@@ -91,7 +91,7 @@
             listViewMercaderias.TabIndex = 4;
             listViewMercaderias.UseCompatibleStateImageBehavior = false;
             listViewMercaderias.View = View.Details;
-            listViewMercaderias.SelectedIndexChanged += listViewMercaderias_SelectedIndexChanged;
+            listViewMercaderias.MultiSelect = false;
             // 
             // idMercaderia
             // 

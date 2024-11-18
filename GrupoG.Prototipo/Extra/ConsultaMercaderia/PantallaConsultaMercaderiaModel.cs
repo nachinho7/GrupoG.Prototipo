@@ -1,5 +1,6 @@
 ﻿using GrupoG.Prototipo.Almacenes.Clientes;
 using GrupoG.Prototipo.Almacenes.Mercaderias;
+using GrupoG.Prototipo.Menu;
 using System;
 using System.Collections.Generic;
 using System.Linq;

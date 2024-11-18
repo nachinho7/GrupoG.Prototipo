@@ -1,13 +1,12 @@
-﻿using GrupoG.Prototipo.Extra.ConsultaStock;
+﻿using GrupoG.Prototipo.Extra.ConsultaMercaderia;
 using GrupoG.Prototipo.Almacenes.Mercaderias;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using GrupoG.Prototipo.Extra.ConsultaMercaderia;
 using GrupoG.Prototipo.Menu;
 
-namespace GrupoG.Prototipo.Extra.ConsultaStock
+namespace GrupoG.Prototipo.Extra.ConsultaMercaderia
 {
     public partial class PantallaConsultaMercaderia : Form
     {
@@ -34,42 +33,44 @@ namespace GrupoG.Prototipo.Extra.ConsultaStock
             {
                 listViewMercaderias.Items.Clear();
 
-                foreach (var mercaderia in mercaderias)
+                foreach (var (IdMercaderia, NombreMercaderia, Ubicaciones) in mercaderias)
                 {
-                    var item = new ListViewItem(mercaderia.NombreMercaderia);
-                    item.SubItems.Add(mercaderia.IdMercaderia.ToString());
-
-                    foreach (var ubicacion in mercaderia.Item3)
+                    foreach (var (Ubicacion, Cantidad) in Ubicaciones) 
                     {
-                        item.SubItems.Add($"{ubicacion.Ubicacion} - {ubicacion.Cantidad}");
-                    }
+                        var item = new ListViewItem(IdMercaderia.ToString()); 
+                        item.SubItems.Add(NombreMercaderia);                
+                        item.SubItems.Add(Ubicacion);                      
+                        item.SubItems.Add(Cantidad.ToString());            
 
-                    listViewMercaderias.Items.Add(item);
+                        listViewMercaderias.Items.Add(item);
+                    }
                 }
 
                 textBoxCliente.Enabled = false;
                 buttonBuscar.Enabled = false;
             }
+            else
+            {
+                MessageBox.Show("No se encontraron mercaderías para el cliente especificado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
-
-
 
 
         private void buttonAgregar_Click(object sender, EventArgs e)
         {
-            if (listViewMercaderias.SelectedItems.Count == 0)
+            if (listViewMercaderias.CheckedItems.Count != 1)
             {
-                MessageBox.Show("Por favor, seleccione una mercadería.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, marque una única mercadería para agregar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            var itemSeleccionado = listViewMercaderias.SelectedItems[0];
-            int idMercaderia = int.Parse(itemSeleccionado.SubItems[1].Text);
-            string nombreMercaderia = itemSeleccionado.Text;
-            string ubicacion = itemSeleccionado.SubItems[2].Text.Split('-')[0].Trim();
-            int cantidad;
+            var itemSeleccionado = listViewMercaderias.CheckedItems[0];
 
-            // Verificamos si la cantidad es válida
+            int idMercaderia = int.Parse(itemSeleccionado.SubItems[0].Text); 
+            string nombreMercaderia = itemSeleccionado.SubItems[1].Text;    
+            string ubicacion = itemSeleccionado.SubItems[2].Text;          
+
+            int cantidad;
             if (!int.TryParse(textBoxCantidad.Text, out cantidad) || cantidad <= 0)
             {
                 MessageBox.Show("Por favor, ingrese una cantidad válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -77,22 +78,29 @@ namespace GrupoG.Prototipo.Extra.ConsultaStock
             }
 
             model.AgregarCantidadMercaderia(idMercaderia, nombreMercaderia, ubicacion, cantidad);
+
+            MessageBox.Show($"Se agregó correctamente la cantidad {cantidad} de '{nombreMercaderia}' en la ubicación '{ubicacion}'.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+           
+            itemSeleccionado.Checked = false;
         }
+
+
 
         private void buttonSacar_Click(object sender, EventArgs e)
         {
-            if (listViewMercaderias.SelectedItems.Count == 0)
+            if (listViewMercaderias.CheckedItems.Count == 0)
             {
                 MessageBox.Show("Por favor, seleccione una mercadería.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            var itemSeleccionado = listViewMercaderias.SelectedItems[0];
-            int idMercaderia = int.Parse(itemSeleccionado.SubItems[1].Text);
-            string nombreMercaderia = itemSeleccionado.Text;
-            string ubicacion = itemSeleccionado.SubItems[2].Text.Split('-')[0].Trim();
-            int cantidad;
+            var itemSeleccionado = listViewMercaderias.CheckedItems[0];
 
+            int idMercaderia = int.Parse(itemSeleccionado.SubItems[0].Text);
+            string nombreMercaderia = itemSeleccionado.SubItems[1].Text;
+            string ubicacion = itemSeleccionado.SubItems[2].Text;
+            
+            int cantidad;
             if (!int.TryParse(textBoxCantidad.Text, out cantidad) || cantidad <= 0)
             {
                 MessageBox.Show("Por favor, ingrese una cantidad válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -100,6 +108,9 @@ namespace GrupoG.Prototipo.Extra.ConsultaStock
             }
 
             model.RestarCantidadMercaderia(idMercaderia, nombreMercaderia, ubicacion, cantidad);
+            MessageBox.Show($"Se agregó correctamente la cantidad {cantidad} de '{nombreMercaderia}' en la ubicación '{ubicacion}'.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            itemSeleccionado.Checked = false;
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
@@ -121,9 +132,6 @@ namespace GrupoG.Prototipo.Extra.ConsultaStock
             menu.Show();
         }
 
-        private void listViewMercaderias_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Aquí podrías agregar alguna validación o mostrar más detalles si es necesario
-        }
+       
     }
 }

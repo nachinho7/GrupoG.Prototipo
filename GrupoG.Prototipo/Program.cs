@@ -7,7 +7,7 @@ using GrupoG.Prototipo.Almacenes.Ordenes.OrdenPreparacion;
 using GrupoG.Prototipo.Almacenes.Ordenes.OrdenSeleccion;
 using GrupoG.Prototipo.Almacenes.Remito;
 using GrupoG.Prototipo.Despacho;
-using GrupoG.Prototipo.Extra.ConsultaStock;
+using GrupoG.Prototipo.Extra.ConsultaMercaderia;
 using GrupoG.Prototipo.Extra.Estados;
 using GrupoG.Prototipo.Menu;
 
