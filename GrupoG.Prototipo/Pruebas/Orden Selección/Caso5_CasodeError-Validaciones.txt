@@ -5,4 +5,9 @@ Seleccionar N°Cliente: Todos - DNI transportista: Todos
 Hacer click en el botón generar “Orden de Selección”
 Verificar mensaje “No se seleccionaron órdenes”
 Hacer click en el botón “Ok”
+Hacer click en “Mostrar todas las ordenes”
+Validar que se visualicen ordenes
+Hacer click en “Generar orden de Seleccion”
+Validar mensaje “No se seleccionaron ordenes”
+Hacer click en boton “Aceptar”
 Salir del sistema

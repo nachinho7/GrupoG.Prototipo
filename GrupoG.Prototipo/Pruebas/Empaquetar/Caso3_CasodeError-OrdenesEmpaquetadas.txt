@@ -1,6 +1,6 @@
 ﻿Tocar botón "Empaquetar"
 [Abre formulario]
-Verificar mensaje de error "No hay ordenes de preparación disponibles"
+Verificar mensaje "No hay depósitos con órdenes disponibles"
 Hacer click en botón "Aceptar"
 Hacer click en botón "Empaquetar"
 Verificar mensaje de error "No hay mercaderías para empaquetar en esta orden"

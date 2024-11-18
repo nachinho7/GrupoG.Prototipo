@@ -1,15 +1,17 @@
 ﻿Tocar botón "Empaquetar"
 [Abre formulario]
 Seleccionar dentro del menú desplegable de N° Orden de preparación, la Orden N° 2023
-Verificar Mercadería: ID: 1013, Nombre: Latas de Tomate, Cantidad: 7
+Verificar Mercadería: ID: 1014, Nombre: Latas de Tomate, Cantidad: 7
 Hacer click en el botón "Empaquetar"
 Verificar mensaje: "La orden de preparación N° 2023 ha sido empaquetada con éxito"
-Hacer click en el botón "Aceptar"
-Verificar que la orden de preparación N° 2023 desaparece del menú desplegable y el Sistema muestra la siguiente orden
-Repetir estos pasos hasta que no se visualicen órdenes para empaquetar
-Verificar mensaje “No hay más órdenes de preparación disponibles”
-Hacer click en el botón "Empaquetar"
-Verificar mensaje de error "No hay mercaderías para empaquetar en esta orden"
-Hacer click en botón "Aceptar"
+Hacer click en el botón "Aceptar”
+Realizar esta acción hasta que no se visualicen más órdenes para empaquetar
+Validar mensaje “No hay depósitos con órdenes disponibles”
+Hacer click en botón “Aceptar”
+Validar mensaje “No hay más órdenes de preparación disponibles”
+Validar que no se informen órdenes
+Hacer click en el botón “Empaquetar”
+Validar mensaje “No hay mercaderías para empaquetar en esta orden”
+Hacer click en el botón “Aceptar”
 Salir del sistema
 Verificación del archivo grabado correctamente

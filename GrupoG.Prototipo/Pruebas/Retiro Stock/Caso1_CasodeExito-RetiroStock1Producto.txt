@@ -1,19 +1,28 @@
 ﻿Tocar botón “Retiro Stock”
 [Abre formulario]
 Del menú desplegable "Orden de Selección" seleccionar orden 3003
+Validar que se informe “Numero de Deposito: 1” y no se pueda modificar
 Verificar que se informen los datos de la mercadería
-Seleccionar mercadería "Latas de Tomate", en cualquier ubicación.
 Hacer click en botón "Retirar Stock"
-Validar que el ítem "Latas de Tomate" no se visualice en la lista
-Validar que el botón "Volver al menú" se encuentre deshabilitado
-Seleccionar mercadería "Aceite de Oliva" con cantidad 50
+Validar mensaje “Orden de selección completada y stock retirado”
+Hacer click en botón “Aceptar”
+Del menú desplegable "Orden de Selección" seleccionar orden 3004
+Verificar que se informen los datos de la mercadería
+Validar que se informe “Numero de Deposito: 1” y no se pueda modificar
 Hacer click en botón "Retirar Stock"
-Validar mensaje “la ubicación 15-2-1 se ha quedado sin stock, por favor selecciona otra ubicación para retirar lo faltante.”
-Seleccionar mercadería "Aceite de Oliva" con cantidad 10
+Validar mensaje “Orden de selección completada y stock retirado”
+Hacer click en botón “Aceptar”
+Del menú desplegable "Orden de Selección" seleccionar orden 3005
+Validar que se informe “Numero de Deposito: 1” y no se pueda modificar
+Verificar que se informen los datos de la mercadería
 Hacer click en botón "Retirar Stock"
-Validar mensaje "Todos los ítems fueron retirados y el estado de la orden de selección ha sido actualizado a Cumplida"
-Hacer click en "Aceptar"
-Validar que el botón "Volver al menú" se encuentre habilitado
-Validar que se informen los datos de una nueva orden
+Validar mensaje “Orden de selección completada y stock retirado”
+Hacer click en botón “Aceptar”
+Retirar todas las órdenes disponibles
+Verificar mensaje “No hay más órdenes de selección”
+Hacer click en el botón “Aceptar”
+Hacer click en el botón “Retirar Stock”
+Validar mensaje de error “No hay más órdenes para retirar”
+Hacer click en botón “Aceptar”
 Salir del sistema
 Verificación del archivo grabado correctamente

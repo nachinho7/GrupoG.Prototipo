@@ -3,7 +3,7 @@
 Ingresar cliente 1
 Presionar “Obtener Datos”
 Verificar Datos de Mercadería:
-Id: 1013, Nombre: Latas de tomate, Cantidad: 8773 y Id: 1018, Nombre: Paquetes de Azúcar, Cantidad: 2430
+Id: 1013, Nombre: Latas de tomate, Cantidad: 8880 y Id: 1018, Nombre: Paquetes de Azúcar, Cantidad: 2427
 Hacer click en Latas de tomate
 En "Cantidad a agregar" ingresar 100
 Hacer click en "Agregar"
@@ -15,12 +15,13 @@ Seleccionar Paquetes de azúcar en "Previsualización Orden de Preparación"
 Hacer click en “Limpiar dato seleccionado”
 Verificar que se visualice el cartel "Mercadería Paquetes de azúcar eliminada correctamente"
 Hacer click en "Aceptar"
-Validar que no se visualice Paquetes de azúcar en "Previsualización Ordenes de Preparación"
+Validar que no se visualice Paquetes de azúcar en "Previsualización Órdenes de Preparación"
 Validar la mercadería en "Datos de Mercadería"
 Verificar en "Previsualización orden de preparación" el número de orden
 Ingresar en fecha de Despacho fecha: 30/12/2024
 Ingresar en DNI transportista: 87654321
 Tocar botón “Generar orden”
 Verificar mensaje "Orden de preparación generada correctamente"
+Hacer click en botón “Aceptar”
 Salir del sistema
 Verificación del archivo grabado correctamente

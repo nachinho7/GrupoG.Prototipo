@@ -1,5 +1,6 @@
 ﻿Tocar botón “Orden de Entrega”
 [Abre formulario]
-Validar mensaje de error "No se encontraron órdenes para entregar"
+Validar mensaje de error "No se encontraron depósitos con órdenes disponibles"
 Hacer click en botón "Aceptar"
+Validar que no se informen órdenes
 Salir del sistema

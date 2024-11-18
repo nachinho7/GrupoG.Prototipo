@@ -1,0 +1,12 @@
+﻿Tocar botón “Orden de Despacho”
+[Abre formulario]
+Ingresar DNI Transportista 45678912
+Hacer clic en el botón “Buscar transportista”
+Verificar mensaje “El cliente seleccionado no tiene órdenes disponibles en este momento”
+Hacer click en botón “Aceptar”
+Validar que se informe en pantalla, el número de cliente y de deposito
+Hacer click en el botón “Generar Remito”
+Validar mensaje “No hay órdenes disponibles para generar el remito.”
+Hacer click en el botón “Aceptar”
+Validar que no se pueda ingresar un nuevo DNI Transportista
+Salir del sistema
