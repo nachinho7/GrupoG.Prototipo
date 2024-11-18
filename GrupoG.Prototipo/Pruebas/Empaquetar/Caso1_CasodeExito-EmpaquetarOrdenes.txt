@@ -1,6 +1,7 @@
 ﻿Tocar botón empaquetar 
 [Abre formulario]
 Seleccionar dentro del menú desplegable de N° Orden de preparación, la Orden N° 2022
+“Verificar Numero de Deposito: Deposito Nº1”
 Verificar Mercadería: ID: 1013, Nombre: Latas de Tomate, Cantidad: 4
 Hacer click en el botón "Empaquetar"
 Verificar mensaje: "La orden de preparación N° 2022 ha sido empaquetada con éxito"

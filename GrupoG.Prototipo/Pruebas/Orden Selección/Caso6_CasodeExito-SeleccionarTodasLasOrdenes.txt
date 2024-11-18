@@ -1,7 +1,7 @@
 ﻿Tocar botón “Orden de Selección”
 [Abre formulario]
 Validar que se visualicen todas las órdenes de preparación
-Seleccionar todas las órdenes de preparación
+Seleccionar todas las órdenes de preparación disponibles
 Hacer click en el botón “Generar orden de Selección”
 Validar mensaje de éxito “Orden de selección N°X  generada! Incluye X ordenes de preparación”
 Hacer click en el botón “Ok”

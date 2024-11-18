@@ -1,8 +1,15 @@
 ﻿Tocar botón “Orden de Entrega”
 [Abre formulario]
+En “Numero de Deposito” seleccionar Deposito Nº2
+Validar que se informen los datos correspondientes
 Hacer click en el botón "Generar orden de Entrega"
-Validar mensaje de éxito "Las órdenes de entrega han sido generadas"
-Hacer click en “Generar orden de entrega”
-Validar mensaje de error “No hay órdenes disponibles para entregar”
-Hacer click en “Aceptar”
+Validar mensaje de éxito "La orden de entrega ha sido generada correctamente"
+Hacer click en botón “Aceptar”
+Validar que se informen las órdenes del depósito 1
+Hacer click en el botón "Generar orden de Entrega"
+Validar mensaje de éxito "La orden de entrega ha sido generada correctamente"
+Hacer click en botón “Aceptar”
+Validar mensaje “No se encontraron depósitos con órdenes disponibles”
+Hacer click en el botón “Aceptar”
+Validar que no se visualicen más órdenes
 Salir del sistema

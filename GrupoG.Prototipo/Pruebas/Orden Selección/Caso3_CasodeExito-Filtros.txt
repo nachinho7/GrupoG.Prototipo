@@ -7,7 +7,7 @@ Validar que no se informen órdenes
 Hacer click en el botón “Mostrar todas las órdenes”
 Validar que se visualicen todas las órdenes
 Seleccionar N°Cliente: 1
-Validar que se informen todas las órdenes para ese cliente
+Validar que se informen las órdenes para ese cliente
 Hacer click en el botón “Mostrar todas las órdenes”
 Validar que se visualicen todas las órdenes
 Seleccionar DNI transportista: 76543210

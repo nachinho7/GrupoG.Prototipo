@@ -1,0 +1,5 @@
+﻿Tocar botón “Retiro Stock”
+[Abre formulario]
+Validar mensaje “No hay ordenes de selección disponibles”
+Hacer click en botón “Aceptar”
+Salir del sistema

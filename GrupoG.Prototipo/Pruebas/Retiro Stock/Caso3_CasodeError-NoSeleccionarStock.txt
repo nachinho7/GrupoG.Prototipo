@@ -1,9 +1,0 @@
-﻿Tocar botón “Retiro Stock”
-[Abre formulario]
-Seleccionar en el menú desplegable de Orden de Selección, la orden 3004
-Validar que se informe la mercaderia a retirar
-Hacer click en el boton "Retirar Stock"
-Validar mensaje “Debe seleccionar al menos un item para retirar”
-Hacer click en el botón "Ok"
-Salir del sistema
-

@@ -5,7 +5,7 @@ Presionar “Obtener Datos”
 Hacer click en “Nueva Búsqueda”
 Verificar que se limpien todos los campos
 Ingresar cliente 1 y presionar “Obtener Datos”
-Verificar Mercadería: ID: 1013, Nombre: Latas de Tomate, Cantidad: 8775 y ID: 1018, Nombre: 6. Paquetes de azúcar, Cantidad: 2430
+Verificar Mercadería: ID: 1013, Nombre: Latas de Tomate, Cantidad: 8882 y ID: 1018, Nombre: Paquetes de azúcar, Cantidad: 2727
 Hacer click sobre mercadería "Latas de Tomate"
 En "Cantidad a Agregar"" ingresar 2
 Presionar “Agregar”
@@ -16,5 +16,6 @@ Ingresar en fecha de Despacho 12/12/2024
 Ingresar DNI transportista: 12345678
 Tocar “Generar Orden”
 Verificar mensaje: "Orden de preparación generada correctamente”
+Hacer click en botón “Aceptar”
 Salir del sistema
 Verificación del archivo grabado correctamente

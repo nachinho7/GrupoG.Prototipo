@@ -2,7 +2,7 @@
 [Abre formulario]
 Validar que se visualicen todas las órdenes
 Seleccionar N°Cliente: 1
-Validar que se visualicen todas las órdenes para el cliente seleccionado
+Validar que se visualicen las órdenes para el cliente seleccionado
 Seleccionar una orden del cliente
 Hacer click en el botón “Generar orden de Selección”
 Validar mensaje de éxito “Orden de selección N°X  generada! Incluye X ordenes de preparación”
