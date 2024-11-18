@@ -8,7 +8,6 @@ namespace GrupoG.Prototipo.Empaquetar
 {
     internal class PantallaEmpaquetarModel
     {
-
         public static List<OrdenPreparacionEntidad> ListarOrdenesSeleccionadas()
         {
             return OrdenPreparacionAlmacen.OrdenPreparacion
@@ -30,20 +29,6 @@ namespace GrupoG.Prototipo.Empaquetar
                 nombreMercaderia = MercaderiasAlmacen.BuscarNombreMercaderia(detalle.idMercaderia),
             }).ToList();
         }
-
-        
-
-        public void CambiarEstadoOrden(int nroOrdenPrep)
-        {
-            var orden = OrdenPreparacionAlmacen.OrdenPreparacion.FirstOrDefault(o => o.NumeroOrdenPreparacion == nroOrdenPrep);
-            if (orden != null)
-            {
-                OrdenPreparacionAlmacen.ModificarEstado(orden, OrdenPreparacionEstados.Empaquetada);
-
-            }
-        }
-
-        
 
         public static List<OrdenPreparacionEntidad> ListarOrdenesPorDeposito(int nroDeposito)
         {
@@ -74,6 +59,13 @@ namespace GrupoG.Prototipo.Empaquetar
             return depositosConOrdenes;
         }
 
-
+        public void CambiarEstadoOrden(int nroOrdenPrep)
+        {
+            var orden = OrdenPreparacionAlmacen.OrdenPreparacion.FirstOrDefault(o => o.NumeroOrdenPreparacion == nroOrdenPrep);
+            if (orden != null)
+            {
+                OrdenPreparacionAlmacen.ModificarEstado(orden, OrdenPreparacionEstados.Empaquetada);
+            }
+        }
     }
 }

@@ -13,86 +13,78 @@ namespace GrupoG.Prototipo.Empaquetar
         {
             InitializeComponent();
             modelo = new PantallaEmpaquetarModel();
-
         }
-
 
         private void PantallaEmpaquetar_Shown(object sender, EventArgs e)
         {
             CargarDepositos();
-            CargarOrdenesPreparacion();
 
-            if (ComboBoxOrdenesPreparacion.Items.Count == 0)
-            {
-                MessageBox.Show("No hay órdenes de preparación disponibles.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-        private void CargarOrdenesPreparacion()
-        {
-            var ordenesPreparacion = PantallaEmpaquetarModel.ListarOrdenesSeleccionadas();
-
-            ComboBoxOrdenesPreparacion.Items.Clear();
-
-            if (ordenesPreparacion.Count > 0)
-            {
-                foreach (var orden in ordenesPreparacion)
-                {
-                    ComboBoxOrdenesPreparacion.Items.Add($"Orden N° {orden.NumeroOrdenPreparacion}");
-                }
-
-                ComboBoxOrdenesPreparacion.SelectedIndex = 0;
-                ComboBoxOrdenesPreparacion.SelectedIndexChanged += ComboBoxOrdenesPreparacion_SelectedIndexChanged;
-                ComboBoxOrdenesPreparacion_SelectedIndexChanged(this, EventArgs.Empty);
-            }
+            //if (ComboBoxOrdenesPreparacion.Items.Count == 0)
+            //{
+            //    MessageBox.Show("No hay depósitos con órdenes disponibles", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
 
         private void CargarDepositos()
         {
-            // Listar solo depósitos con órdenes disponibles
             var depositosConOrdenes = PantallaEmpaquetarModel.ListarDepositosConOrdenes();
 
             ComboBoxDeposito.Items.Clear();
 
             if (depositosConOrdenes.Count > 0)
             {
+                depositosConOrdenes.Sort();
                 ComboBoxDeposito.Items.AddRange(depositosConOrdenes.Select(d => $"Depósito N° {d}").ToArray());
                 ComboBoxDeposito.SelectedIndex = 0;
-                ComboBoxDeposito_SelectedIndexChanged(this, EventArgs.Empty);
+
+                int numeroDepositoSeleccionado = Convert.ToInt32(depositosConOrdenes.First());
+                CargarOrdenesPreparacionDelDeposito(numeroDepositoSeleccionado);
             }
-            
+            else
+            {
+                MessageBox.Show("No hay depósitos con órdenes disponibles.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ComboBoxOrdenesPreparacion.Items.Clear();
+                listView1.Items.Clear();
+            }
         }
 
 
-        private void ComboBoxDeposito_SelectedIndexChanged(object sender, EventArgs e)
+
+
+        private void CargarOrdenesPreparacionDelDeposito(int numeroDeposito)
         {
-            if (ComboBoxDeposito.SelectedIndex == -1) return;
-
             listView1.Items.Clear();
-
-            int numeroDepositoSeleccionado = Convert.ToInt32(
-                ComboBoxDeposito.SelectedItem.ToString().Split(' ')[2]);
-
-            var ordenesFiltradas = PantallaEmpaquetarModel.ListarOrdenesPorDeposito(numeroDepositoSeleccionado);
-
             ComboBoxOrdenesPreparacion.Items.Clear();
+
+            var ordenesFiltradas = PantallaEmpaquetarModel.ListarOrdenesPorDeposito(numeroDeposito);
 
             if (ordenesFiltradas.Count > 0)
             {
+                ordenesFiltradas = ordenesFiltradas.OrderBy(o => o.NumeroOrdenPreparacion).ToList();
+
                 foreach (var orden in ordenesFiltradas)
                 {
                     ComboBoxOrdenesPreparacion.Items.Add($"Orden N° {orden.NumeroOrdenPreparacion}");
                 }
 
                 ComboBoxOrdenesPreparacion.SelectedIndex = 0;
-                ComboBoxOrdenesPreparacion_SelectedIndexChanged(this, EventArgs.Empty); 
+                ComboBoxOrdenesPreparacion_SelectedIndexChanged(this, EventArgs.Empty);
             }
             else
             {
-                MessageBox.Show("No hay órdenes de preparación para el depósito seleccionado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"No hay órdenes de preparación para el depósito N° {numeroDeposito}.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
+        private void ComboBoxDeposito_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ComboBoxDeposito.SelectedIndex == -1) return;
 
+            int numeroDepositoSeleccionado = Convert.ToInt32(
+                ComboBoxDeposito.SelectedItem.ToString().Split(' ')[2]);
+
+            CargarOrdenesPreparacionDelDeposito(numeroDepositoSeleccionado);
+        }
 
         private void ComboBoxOrdenesPreparacion_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -131,7 +123,7 @@ namespace GrupoG.Prototipo.Empaquetar
 
             MessageBox.Show($"La orden de preparación N° {numeroOrdenSeleccionada} ha sido empaquetada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            CargarOrdenesPreparacion();
+            CargarDepositos();
 
             if (ComboBoxOrdenesPreparacion.Items.Count > 0)
             {
@@ -140,13 +132,12 @@ namespace GrupoG.Prototipo.Empaquetar
             }
             else
             {
-                
                 listView1.Items.Clear();
+                ComboBoxOrdenesPreparacion.Items.Clear();
+
                 MessageBox.Show("No hay más órdenes de preparación disponibles.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-               
             }
         }
-
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {
