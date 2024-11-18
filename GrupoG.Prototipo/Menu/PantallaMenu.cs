@@ -4,6 +4,8 @@ using GrupoG.Prototipo.Stock;
 using GrupoG.Prototipo.Entrega;
 using GrupoG.Prototipo.Empaquetar;
 using GrupoG.Prototipo.Despacho;
+using GrupoG.Prototipo.Extra.ConsultaMercaderia;
+using GrupoG.Prototipo.Extra.Estados;
 
 using System;
 using System.Windows.Forms;
@@ -63,11 +65,20 @@ namespace GrupoG.Prototipo.Menu
             ordendespacho.ShowDialog();
         }
 
-        private void PantallaMenu_Load(object sender, EventArgs e)
+        private void BotonEstados_Click(object sender, EventArgs e)
         {
-
+            PantallaConsultaEstados consultaestados = new PantallaConsultaEstados();
+            consultaestados.StartPosition = FormStartPosition.CenterScreen;
+            consultaestados.Location = this.Location;
+            consultaestados.ShowDialog();
         }
 
-
+        private void BotonConsultaMercaderia_Click(object sender, EventArgs e)
+        {
+            PantallaConsultaMercaderia consultamercaderia = new PantallaConsultaMercaderia();
+            consultamercaderia.StartPosition = FormStartPosition.CenterScreen;
+            consultamercaderia.Location = this.Location;
+            consultamercaderia.ShowDialog();
+        }
     }
 }

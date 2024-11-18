@@ -94,7 +94,6 @@ namespace GrupoG.Prototipo.Extra.Estados
             this.Hide();
             menu.StartPosition = FormStartPosition.CenterScreen;
             menu.Location = this.Location;
-            menu.Show();
         }
     }
 }

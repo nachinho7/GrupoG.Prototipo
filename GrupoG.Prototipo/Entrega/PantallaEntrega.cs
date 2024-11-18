@@ -134,7 +134,6 @@ namespace GrupoG.Prototipo.Entrega
 
         private void VolverAlMenu_Click(object sender, EventArgs e)
         {
-
             PantallaMenu menu = new PantallaMenu();
             this.Hide();
             menu.StartPosition = FormStartPosition.CenterScreen;
