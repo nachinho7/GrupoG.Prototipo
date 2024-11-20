@@ -12,9 +12,9 @@ namespace GrupoG.Prototipo.Extra.ConsultaMercaderia
 {
     internal class PantallaConsultaMercaderiaModel
     {
-        public List<ClientesEntidad> ObtenerCliente(int numeroCliente)
+        public (ClientesEntidad Cliente, int NumeroDeposito)? ObtenerCliente(int numeroCliente)
         {
-            var clienteEntidad = ClientesAlmacen.ObtenerNroCliente(numeroCliente); 
+            var clienteEntidad = ClientesAlmacen.ObtenerNroCliente(numeroCliente);
 
             if (clienteEntidad == null)
             {
@@ -22,14 +22,15 @@ namespace GrupoG.Prototipo.Extra.ConsultaMercaderia
                 return null;
             }
 
-            return new List<ClientesEntidad> { clienteEntidad };
+            int numeroDeposito = clienteEntidad.NroDeposito;
+            return (clienteEntidad, numeroDeposito);
         }
+
 
         public List<(int IdMercaderia, string NombreMercaderia, List<(string Ubicacion, int Cantidad)>)> ObtenerMercaderiasPorCliente(int nroCliente)
         {
             if (MercaderiasAlmacen.Mercaderias == null || !MercaderiasAlmacen.Mercaderias.Any())
             {
-                MessageBox.Show("No se encontraron mercaderías.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return null;
             }
 
@@ -42,10 +43,6 @@ namespace GrupoG.Prototipo.Extra.ConsultaMercaderia
                 ))
                 .ToList();
 
-            if (!mercaderias.Any())
-            {
-                MessageBox.Show("No se encontraron mercaderías para el cliente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
 
             return mercaderias;
         }
@@ -75,19 +72,27 @@ namespace GrupoG.Prototipo.Extra.ConsultaMercaderia
                 MessageBox.Show("Mercadería no encontrada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             var ubicacionMercaderia = mercaderia.Ubicacion.FirstOrDefault(u => u.NombreUbicacion == ubicacion);
             if (ubicacionMercaderia == null)
             {
                 MessageBox.Show("Ubicación no encontrada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             if (ubicacionMercaderia.Cantidad < cantidad)
             {
-                MessageBox.Show("No hay suficiente cantidad en la ubicación.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"No hay suficiente cantidad en la ubicación '{ubicacion}'. Cantidad disponible: {ubicacionMercaderia.Cantidad}.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             ubicacionMercaderia.Cantidad -= cantidad;
+
+            MessageBox.Show($"Se sacó correctamente la cantidad {cantidad} de '{nombreMercaderia}' en la ubicación '{ubicacion}'.",
+                            "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
 
 
 
