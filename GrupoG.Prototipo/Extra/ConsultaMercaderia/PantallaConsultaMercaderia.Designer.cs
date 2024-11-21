@@ -78,7 +78,7 @@
             buttonClear.Name = "buttonClear";
             buttonClear.Size = new Size(157, 60);
             buttonClear.TabIndex = 3;
-            buttonClear.Text = "Clear";
+            buttonClear.Text = "Limpiar Datos";
             buttonClear.UseVisualStyleBackColor = true;
             buttonClear.Click += buttonClear_Click;
             // 
@@ -195,6 +195,7 @@
             Controls.Add(buttonBuscar);
             Controls.Add(textBoxCliente);
             Controls.Add(labelnumeroCliente);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "PantallaConsultaMercaderia";
             Text = "Consulta Mercaderia";
             ResumeLayout(false);

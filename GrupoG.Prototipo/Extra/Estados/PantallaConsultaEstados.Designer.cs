@@ -102,11 +102,11 @@
             // 
             // ClearEstados
             // 
-            ClearEstados.Location = new Point(257, 292);
+            ClearEstados.Location = new Point(199, 292);
             ClearEstados.Name = "ClearEstados";
-            ClearEstados.Size = new Size(69, 23);
+            ClearEstados.Size = new Size(127, 23);
             ClearEstados.TabIndex = 3;
-            ClearEstados.Text = "Clear";
+            ClearEstados.Text = "Limpiar Datos";
             ClearEstados.UseVisualStyleBackColor = true;
             ClearEstados.Click += ClearEstados_Click;
             // 
@@ -139,9 +139,9 @@
             // 
             ClearOrden.Location = new Point(243, 106);
             ClearOrden.Name = "ClearOrden";
-            ClearOrden.Size = new Size(68, 23);
+            ClearOrden.Size = new Size(95, 23);
             ClearOrden.TabIndex = 4;
-            ClearOrden.Text = "Clear";
+            ClearOrden.Text = "Limpiar Datos";
             ClearOrden.UseVisualStyleBackColor = true;
             ClearOrden.Click += ClearOrden_Click;
             // 
@@ -196,6 +196,7 @@
             Controls.Add(BotonVolverMenu);
             Controls.Add(groupBoxOrden);
             Controls.Add(groupBoxEstados);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "PantallaConsultaEstados";
             Text = " ";
             groupBoxEstados.ResumeLayout(false);
