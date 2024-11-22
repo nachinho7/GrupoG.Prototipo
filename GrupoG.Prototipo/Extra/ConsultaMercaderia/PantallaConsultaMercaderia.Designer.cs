@@ -49,24 +49,26 @@
             // labelnumeroCliente
             // 
             labelnumeroCliente.AutoSize = true;
-            labelnumeroCliente.Location = new Point(12, 30);
+            labelnumeroCliente.Location = new Point(14, 40);
             labelnumeroCliente.Name = "labelnumeroCliente";
-            labelnumeroCliente.Size = new Size(105, 15);
+            labelnumeroCliente.Size = new Size(131, 20);
             labelnumeroCliente.TabIndex = 0;
             labelnumeroCliente.Text = "Ingrese Nº Cliente:";
             // 
             // textBoxCliente
             // 
-            textBoxCliente.Location = new Point(136, 27);
+            textBoxCliente.Location = new Point(155, 36);
+            textBoxCliente.Margin = new Padding(3, 4, 3, 4);
             textBoxCliente.Name = "textBoxCliente";
-            textBoxCliente.Size = new Size(142, 23);
+            textBoxCliente.Size = new Size(266, 27);
             textBoxCliente.TabIndex = 1;
             // 
             // buttonBuscar
             // 
-            buttonBuscar.Location = new Point(311, 22);
+            buttonBuscar.Location = new Point(565, 29);
+            buttonBuscar.Margin = new Padding(3, 4, 3, 4);
             buttonBuscar.Name = "buttonBuscar";
-            buttonBuscar.Size = new Size(157, 60);
+            buttonBuscar.Size = new Size(179, 80);
             buttonBuscar.TabIndex = 2;
             buttonBuscar.Text = "Buscar";
             buttonBuscar.UseVisualStyleBackColor = true;
@@ -74,9 +76,10 @@
             // 
             // buttonClear
             // 
-            buttonClear.Location = new Point(485, 22);
+            buttonClear.Location = new Point(776, 29);
+            buttonClear.Margin = new Padding(3, 4, 3, 4);
             buttonClear.Name = "buttonClear";
-            buttonClear.Size = new Size(157, 60);
+            buttonClear.Size = new Size(179, 80);
             buttonClear.TabIndex = 3;
             buttonClear.Text = "Limpiar Datos";
             buttonClear.UseVisualStyleBackColor = true;
@@ -87,10 +90,11 @@
             listViewMercaderias.CheckBoxes = true;
             listViewMercaderias.Columns.AddRange(new ColumnHeader[] { idMercaderia, nombreMercadería, mercaderiaUbicacion, cantidadPorUbicacionMercaderia });
             listViewMercaderias.GridLines = true;
-            listViewMercaderias.Location = new Point(12, 99);
+            listViewMercaderias.Location = new Point(14, 132);
+            listViewMercaderias.Margin = new Padding(3, 4, 3, 4);
             listViewMercaderias.MultiSelect = false;
             listViewMercaderias.Name = "listViewMercaderias";
-            listViewMercaderias.Size = new Size(727, 252);
+            listViewMercaderias.Size = new Size(1077, 335);
             listViewMercaderias.TabIndex = 4;
             listViewMercaderias.UseCompatibleStateImageBehavior = false;
             listViewMercaderias.View = View.Details;
@@ -117,25 +121,27 @@
             // 
             // textBoxCantidad
             // 
-            textBoxCantidad.Location = new Point(188, 387);
+            textBoxCantidad.Location = new Point(215, 516);
+            textBoxCantidad.Margin = new Padding(3, 4, 3, 4);
             textBoxCantidad.Name = "textBoxCantidad";
-            textBoxCantidad.Size = new Size(161, 23);
+            textBoxCantidad.Size = new Size(183, 27);
             textBoxCantidad.TabIndex = 5;
             // 
             // labelAgregarSacarMercaderia
             // 
             labelAgregarSacarMercaderia.AutoSize = true;
-            labelAgregarSacarMercaderia.Location = new Point(12, 390);
+            labelAgregarSacarMercaderia.Location = new Point(14, 520);
             labelAgregarSacarMercaderia.Name = "labelAgregarSacarMercaderia";
-            labelAgregarSacarMercaderia.Size = new Size(155, 15);
+            labelAgregarSacarMercaderia.Size = new Size(198, 20);
             labelAgregarSacarMercaderia.TabIndex = 7;
             labelAgregarSacarMercaderia.Text = "Agregar o Sacar Mercadería:";
             // 
             // buttonAgregar
             // 
-            buttonAgregar.Location = new Point(355, 357);
+            buttonAgregar.Location = new Point(565, 505);
+            buttonAgregar.Margin = new Padding(3, 4, 3, 4);
             buttonAgregar.Name = "buttonAgregar";
-            buttonAgregar.Size = new Size(90, 38);
+            buttonAgregar.Size = new Size(179, 51);
             buttonAgregar.TabIndex = 9;
             buttonAgregar.Text = "Agregar";
             buttonAgregar.UseVisualStyleBackColor = true;
@@ -143,9 +149,10 @@
             // 
             // buttonSacar
             // 
-            buttonSacar.Location = new Point(355, 401);
+            buttonSacar.Location = new Point(776, 504);
+            buttonSacar.Margin = new Padding(3, 4, 3, 4);
             buttonSacar.Name = "buttonSacar";
-            buttonSacar.Size = new Size(90, 38);
+            buttonSacar.Size = new Size(179, 51);
             buttonSacar.TabIndex = 10;
             buttonSacar.Text = "Sacar";
             buttonSacar.UseVisualStyleBackColor = true;
@@ -153,9 +160,10 @@
             // 
             // BotonVolverMenu
             // 
-            BotonVolverMenu.Location = new Point(573, 378);
+            BotonVolverMenu.Location = new Point(927, 580);
+            BotonVolverMenu.Margin = new Padding(3, 4, 3, 4);
             BotonVolverMenu.Name = "BotonVolverMenu";
-            BotonVolverMenu.Size = new Size(136, 38);
+            BotonVolverMenu.Size = new Size(155, 51);
             BotonVolverMenu.TabIndex = 12;
             BotonVolverMenu.Text = "Volver al Menú";
             BotonVolverMenu.UseVisualStyleBackColor = true;
@@ -164,25 +172,26 @@
             // labelNumDeposito
             // 
             labelNumDeposito.AutoSize = true;
-            labelNumDeposito.Location = new Point(12, 67);
+            labelNumDeposito.Location = new Point(14, 89);
             labelNumDeposito.Name = "labelNumDeposito";
-            labelNumDeposito.Size = new Size(74, 15);
+            labelNumDeposito.Size = new Size(94, 20);
             labelNumDeposito.TabIndex = 13;
             labelNumDeposito.Text = "N° Deposito:";
             // 
             // textBoxNumDeposito
             // 
-            textBoxNumDeposito.Location = new Point(136, 68);
+            textBoxNumDeposito.Location = new Point(155, 91);
+            textBoxNumDeposito.Margin = new Padding(3, 4, 3, 4);
             textBoxNumDeposito.Name = "textBoxNumDeposito";
             textBoxNumDeposito.ReadOnly = true;
-            textBoxNumDeposito.Size = new Size(142, 23);
+            textBoxNumDeposito.Size = new Size(266, 27);
             textBoxNumDeposito.TabIndex = 14;
             // 
             // PantallaConsultaMercaderia
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(762, 454);
+            ClientSize = new Size(1103, 644);
             Controls.Add(textBoxNumDeposito);
             Controls.Add(labelNumDeposito);
             Controls.Add(BotonVolverMenu);
@@ -196,6 +205,7 @@
             Controls.Add(textBoxCliente);
             Controls.Add(labelnumeroCliente);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "PantallaConsultaMercaderia";
             Text = "Consulta Mercaderia";
             ResumeLayout(false);

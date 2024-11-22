@@ -50,9 +50,9 @@
             // labelSeleccioneEstado
             // 
             labelSeleccioneEstado.AutoSize = true;
-            labelSeleccioneEstado.Location = new Point(19, 37);
+            labelSeleccioneEstado.Location = new Point(22, 24);
             labelSeleccioneEstado.Name = "labelSeleccioneEstado";
-            labelSeleccioneEstado.Size = new Size(101, 15);
+            labelSeleccioneEstado.Size = new Size(129, 20);
             labelSeleccioneEstado.TabIndex = 0;
             labelSeleccioneEstado.Text = "Seleccione Estado";
             // 
@@ -60,9 +60,10 @@
             // 
             comboBoxEstados.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxEstados.FormattingEnabled = true;
-            comboBoxEstados.Location = new Point(126, 34);
+            comboBoxEstados.Location = new Point(22, 48);
+            comboBoxEstados.Margin = new Padding(3, 4, 3, 4);
             comboBoxEstados.Name = "comboBoxEstados";
-            comboBoxEstados.Size = new Size(121, 23);
+            comboBoxEstados.Size = new Size(312, 28);
             comboBoxEstados.TabIndex = 1;
             comboBoxEstados.SelectedIndexChanged += comboBoxEstados_SelectedIndexChanged;
             // 
@@ -70,9 +71,10 @@
             // 
             listViewConsultaEstados.Columns.AddRange(new ColumnHeader[] { numeroOrden, numeroCliente });
             listViewConsultaEstados.GridLines = true;
-            listViewConsultaEstados.Location = new Point(19, 63);
+            listViewConsultaEstados.Location = new Point(22, 84);
+            listViewConsultaEstados.Margin = new Padding(3, 4, 3, 4);
             listViewConsultaEstados.Name = "listViewConsultaEstados";
-            listViewConsultaEstados.Size = new Size(307, 223);
+            listViewConsultaEstados.Size = new Size(921, 266);
             listViewConsultaEstados.TabIndex = 2;
             listViewConsultaEstados.UseCompatibleStateImageBehavior = false;
             listViewConsultaEstados.View = View.Details;
@@ -93,18 +95,21 @@
             groupBoxEstados.Controls.Add(listViewConsultaEstados);
             groupBoxEstados.Controls.Add(labelSeleccioneEstado);
             groupBoxEstados.Controls.Add(comboBoxEstados);
-            groupBoxEstados.Location = new Point(12, 12);
+            groupBoxEstados.Location = new Point(14, 16);
+            groupBoxEstados.Margin = new Padding(3, 4, 3, 4);
             groupBoxEstados.Name = "groupBoxEstados";
-            groupBoxEstados.Size = new Size(344, 326);
+            groupBoxEstados.Padding = new Padding(3, 4, 3, 4);
+            groupBoxEstados.Size = new Size(949, 435);
             groupBoxEstados.TabIndex = 3;
             groupBoxEstados.TabStop = false;
             groupBoxEstados.Text = "Busque por Estados";
             // 
             // ClearEstados
             // 
-            ClearEstados.Location = new Point(199, 292);
+            ClearEstados.Location = new Point(22, 358);
+            ClearEstados.Margin = new Padding(3, 4, 3, 4);
             ClearEstados.Name = "ClearEstados";
-            ClearEstados.Size = new Size(127, 23);
+            ClearEstados.Size = new Size(312, 61);
             ClearEstados.TabIndex = 3;
             ClearEstados.Text = "Limpiar Datos";
             ClearEstados.UseVisualStyleBackColor = true;
@@ -118,18 +123,21 @@
             groupBoxOrden.Controls.Add(labelEstadoOrden);
             groupBoxOrden.Controls.Add(labelOrden);
             groupBoxOrden.Controls.Add(textBoxOrden);
-            groupBoxOrden.Location = new Point(12, 355);
+            groupBoxOrden.Location = new Point(14, 473);
+            groupBoxOrden.Margin = new Padding(3, 4, 3, 4);
             groupBoxOrden.Name = "groupBoxOrden";
-            groupBoxOrden.Size = new Size(344, 135);
+            groupBoxOrden.Padding = new Padding(3, 4, 3, 4);
+            groupBoxOrden.Size = new Size(949, 195);
             groupBoxOrden.TabIndex = 4;
             groupBoxOrden.TabStop = false;
             groupBoxOrden.Text = "Busque por Orden";
             // 
             // BuscarOrden
             // 
-            BuscarOrden.Location = new Point(165, 106);
+            BuscarOrden.Location = new Point(189, 138);
+            BuscarOrden.Margin = new Padding(3, 4, 3, 4);
             BuscarOrden.Name = "BuscarOrden";
-            BuscarOrden.Size = new Size(68, 23);
+            BuscarOrden.Size = new Size(145, 49);
             BuscarOrden.TabIndex = 5;
             BuscarOrden.Text = "Buscar";
             BuscarOrden.UseVisualStyleBackColor = true;
@@ -137,9 +145,10 @@
             // 
             // ClearOrden
             // 
-            ClearOrden.Location = new Point(243, 106);
+            ClearOrden.Location = new Point(359, 138);
+            ClearOrden.Margin = new Padding(3, 4, 3, 4);
             ClearOrden.Name = "ClearOrden";
-            ClearOrden.Size = new Size(95, 23);
+            ClearOrden.Size = new Size(145, 49);
             ClearOrden.TabIndex = 4;
             ClearOrden.Text = "Limpiar Datos";
             ClearOrden.UseVisualStyleBackColor = true;
@@ -147,42 +156,45 @@
             // 
             // textBoxEstadoOrden
             // 
-            textBoxEstadoOrden.Location = new Point(165, 66);
+            textBoxEstadoOrden.Location = new Point(189, 88);
+            textBoxEstadoOrden.Margin = new Padding(3, 4, 3, 4);
             textBoxEstadoOrden.Name = "textBoxEstadoOrden";
             textBoxEstadoOrden.ReadOnly = true;
-            textBoxEstadoOrden.Size = new Size(146, 23);
+            textBoxEstadoOrden.Size = new Size(362, 27);
             textBoxEstadoOrden.TabIndex = 3;
             // 
             // labelEstadoOrden
             // 
             labelEstadoOrden.AutoSize = true;
-            labelEstadoOrden.Location = new Point(35, 69);
+            labelEstadoOrden.Location = new Point(40, 92);
             labelEstadoOrden.Name = "labelEstadoOrden";
-            labelEstadoOrden.Size = new Size(94, 15);
+            labelEstadoOrden.Size = new Size(120, 20);
             labelEstadoOrden.TabIndex = 2;
             labelEstadoOrden.Text = "Estado de Orden";
             // 
             // labelOrden
             // 
             labelOrden.AutoSize = true;
-            labelOrden.Location = new Point(35, 34);
+            labelOrden.Location = new Point(40, 45);
             labelOrden.Name = "labelOrden";
-            labelOrden.Size = new Size(98, 15);
+            labelOrden.Size = new Size(123, 20);
             labelOrden.TabIndex = 1;
             labelOrden.Text = "Ingrese Nº Orden";
             // 
             // textBoxOrden
             // 
-            textBoxOrden.Location = new Point(165, 31);
+            textBoxOrden.Location = new Point(189, 38);
+            textBoxOrden.Margin = new Padding(3, 4, 3, 4);
             textBoxOrden.Name = "textBoxOrden";
-            textBoxOrden.Size = new Size(146, 23);
+            textBoxOrden.Size = new Size(362, 27);
             textBoxOrden.TabIndex = 0;
             // 
             // BotonVolverMenu
             // 
-            BotonVolverMenu.Location = new Point(220, 505);
+            BotonVolverMenu.Location = new Point(802, 676);
+            BotonVolverMenu.Margin = new Padding(3, 4, 3, 4);
             BotonVolverMenu.Name = "BotonVolverMenu";
-            BotonVolverMenu.Size = new Size(136, 38);
+            BotonVolverMenu.Size = new Size(155, 51);
             BotonVolverMenu.TabIndex = 11;
             BotonVolverMenu.Text = "Volver al Menú";
             BotonVolverMenu.UseVisualStyleBackColor = true;
@@ -190,13 +202,14 @@
             // 
             // PantallaConsultaEstados
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(371, 555);
+            ClientSize = new Size(975, 740);
             Controls.Add(BotonVolverMenu);
             Controls.Add(groupBoxOrden);
             Controls.Add(groupBoxEstados);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "PantallaConsultaEstados";
             Text = " ";
             groupBoxEstados.ResumeLayout(false);
